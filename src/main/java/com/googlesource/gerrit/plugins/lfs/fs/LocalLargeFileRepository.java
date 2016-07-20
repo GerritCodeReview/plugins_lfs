@@ -18,11 +18,13 @@ import com.google.common.base.Strings;
 import com.google.gerrit.extensions.annotations.PluginCanonicalWebUrl;
 import com.google.gerrit.extensions.annotations.PluginData;
 import com.google.gerrit.extensions.annotations.PluginName;
-import com.google.gerrit.server.config.PluginConfig;
 import com.google.gerrit.server.config.PluginConfigFactory;
 import com.google.inject.Inject;
 
+import com.googlesource.gerrit.plugins.lfs.LfsBackend;
+
 import org.eclipse.jgit.lfs.server.fs.FileLfsRepository;
+import org.eclipse.jgit.lib.Config;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -47,8 +49,9 @@ public class LocalLargeFileRepository extends FileLfsRepository {
 
   private static Path getOrCreateDataDir(PluginConfigFactory cfgFactory,
       String pluginName, Path defaultDataDir) throws IOException {
-    PluginConfig cfg = cfgFactory.getFromGerritConfig(pluginName);
-    String dataDir = cfg.getString("directory", null);
+    Config cfg = cfgFactory.getGlobalPluginConfig(pluginName);
+    String dataDir = cfg.getString(
+        LfsBackend.FS.name(), null, "directory");
     if (Strings.isNullOrEmpty(dataDir)) {
       return defaultDataDir;
     }
