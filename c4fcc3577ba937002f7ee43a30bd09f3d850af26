@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ac9eb46_4b50a563",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-07-20T13:19:13Z",
+      "side": 1,
+      "message": "In the code it\u0027s \"storage\"",
+      "range": {
+        "startLine": 10,
+        "startChar": 2,
+        "endLine": 10,
+        "endChar": 6
+      },
+      "revId": "c4fcc3577ba937002f7ee43a30bd09f3d850af26",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ac9eb46_6b556152",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/s3/S3LargeFileRepository.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-07-20T13:19:13Z",
+      "side": 1,
+      "message": "config",
+      "range": {
+        "startLine": 38,
+        "startChar": 11,
+        "endLine": 38,
+        "endChar": 20
+      },
+      "revId": "c4fcc3577ba937002f7ee43a30bd09f3d850af26",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aaa5cf83_a4638242",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/s3/S3LargeFileRepository.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-07-20T13:19:13Z",
+      "side": 1,
+      "message": "pluginCfg or pluginConfig",
+      "range": {
+        "startLine": 51,
+        "startChar": 17,
+        "endLine": 51,
+        "endChar": 20
+      },
+      "revId": "c4fcc3577ba937002f7ee43a30bd09f3d850af26",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ac9eb46_0b4a9db1",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-07-20T13:19:13Z",
+      "side": 1,
+      "message": "Mention that these are only used by S3?",
+      "revId": "c4fcc3577ba937002f7ee43a30bd09f3d850af26",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
