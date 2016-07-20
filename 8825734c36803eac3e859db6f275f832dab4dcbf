@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ad3d7eb_72555852",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-07-20T07:30:14Z",
+      "side": 1,
+      "message": "Now that we merged the two plugins into one, we need to reconsider the configuration. For the configuration options descried below it is not clear for which LFS backend they apply. For example:\n\n  [plugin \"lfs\"]\n    directory \u003d /some/directory\n    expiration \u003d 10s\n\nHere it is not immediately clear that the first option applies to the FS backed and the second one to the S3 backend.\n\nHow about plugin specific config file etc/lfs.config\n\n  [fs]\n    directory \u003d /some/diretory\n\n  [s3]\n    expiration \u003d 10s",
+      "revId": "8825734c36803eac3e859db6f275f832dab4dcbf",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
