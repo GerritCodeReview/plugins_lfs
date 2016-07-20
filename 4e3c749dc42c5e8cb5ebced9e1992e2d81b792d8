@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6ad3d7eb_52537448",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-07-20T12:52:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aaa5cf83_44696e29",
+      "range": {
+        "startLine": 2,
+        "startChar": 12,
+        "endLine": 2,
+        "endChar": 62
+      },
+      "revId": "4e3c749dc42c5e8cb5ebced9e1992e2d81b792d8",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ad3d7eb_32dd90da",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LocalLargeFileRepository.java",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2016-07-20T12:03:05Z",
       "side": 1,
       "message": "put that into a private static method:\n\n  private static contentPath(url) ...\n\nto keep the constructor easier to read:\n\n  suepr(contentPath(url), ...)",
+      "range": {
+        "startLine": 40,
+        "startChar": 10,
+        "endLine": 40,
+        "endChar": 77
+      },
+      "revId": "4e3c749dc42c5e8cb5ebced9e1992e2d81b792d8",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "caacc370_0534d200",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LocalLargeFileRepository.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-07-20T12:52:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ad3d7eb_32dd90da",
       "range": {
         "startLine": 40,
         "startChar": 10,
