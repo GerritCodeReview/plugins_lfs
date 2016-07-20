@@ -15,6 +15,7 @@
 package com.googlesource.gerrit.plugins.lfs;
 
 import static com.google.gerrit.httpd.plugins.LfsPluginServlet.URL_REGEX;
+import static com.googlesource.gerrit.plugins.lfs.fs.LocalLargeFileRepository.DATA_URL;
 
 import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.httpd.plugins.HttpPluginModule;
@@ -43,7 +44,7 @@ public class HttpModule extends HttpPluginModule {
       case FS:
         serveRegex(URL_REGEX).with(LfsFsApiServlet.class);
         bind(LocalLargeFileRepository.class);
-        serve("/*").with(LfsFsContentServlet.class);
+        serve("/" + DATA_URL + "*").with(LfsFsContentServlet.class);
         break;
       case S3:
         serveRegex(URL_REGEX).with(LfsS3ApiServlet.class);

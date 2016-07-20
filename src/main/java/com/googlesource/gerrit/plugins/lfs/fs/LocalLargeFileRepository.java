@@ -30,12 +30,14 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class LocalLargeFileRepository extends FileLfsRepository {
+  public static final String DATA_URL = "data/";
+
   @Inject
   LocalLargeFileRepository(PluginConfigFactory cfg,
       @PluginName String pluginName,
       @PluginCanonicalWebUrl String url,
       @PluginData Path defaultDataDir) throws IOException {
-    super(url, getOrCreateDataDir(cfg, pluginName, defaultDataDir));
+    super(url + DATA_URL, getOrCreateDataDir(cfg, pluginName, defaultDataDir));
   }
 
   private static Path getOrCreateDataDir(PluginConfigFactory cfgFactory,
