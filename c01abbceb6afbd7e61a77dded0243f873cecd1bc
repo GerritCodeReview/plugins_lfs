@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6ad3d7eb_72e318a2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-07-20T11:56:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "caacc370_45de4adb",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 80
+      },
+      "revId": "c01abbceb6afbd7e61a77dded0243f873cecd1bc",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ad3d7eb_92d47cbb",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/HttpModule.java",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2016-07-20T11:22:01Z",
       "side": 1,
       "message": "Would be nicer to read as:\n\n  CONTENT_PATH  + \"/*\"",
+      "range": {
+        "startLine": 47,
+        "startChar": 20,
+        "endLine": 47,
+        "endChar": 38
+      },
+      "revId": "c01abbceb6afbd7e61a77dded0243f873cecd1bc",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ad3d7eb_52de14db",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/HttpModule.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-07-20T11:56:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ad3d7eb_92d47cbb",
       "range": {
         "startLine": 47,
         "startChar": 20,
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "caacc370_25dd4eda",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LocalLargeFileRepository.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-07-20T11:56:39Z",
+      "side": 1,
+      "message": "tried to find sth reasonable but it is either not reliable or falling back to string operations that I have just used..",
+      "parentUuid": "caacc370_65e346a2",
+      "revId": "c01abbceb6afbd7e61a77dded0243f873cecd1bc",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aaa5cf83_a40ce290",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LocalLargeFileRepository.java",
         "patchSetId": 2
@@ -76,6 +142,30 @@
       "writtenOn": "2016-07-20T10:56:41Z",
       "side": 1,
       "message": "will url always include a trailing slash?\n\nit might be better to use utility methods for url joining.  not sure what exists in Java; I\u0027m thinking of something equivalent to python\u0027s urljoin.",
+      "range": {
+        "startLine": 40,
+        "startChar": 10,
+        "endLine": 40,
+        "endChar": 13
+      },
+      "revId": "c01abbceb6afbd7e61a77dded0243f873cecd1bc",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ad3d7eb_b2d180ca",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LocalLargeFileRepository.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-07-20T11:56:39Z",
+      "side": 1,
+      "message": "After spending too much time on googling it - have come with \"/\" check at the end :)",
+      "parentUuid": "aaa5cf83_a40ce290",
       "range": {
         "startLine": 40,
         "startChar": 10,
