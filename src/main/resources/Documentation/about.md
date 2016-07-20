@@ -1,0 +1,1 @@
+This plugin provides local file system and Amazon S3 storage for the LFS service.
