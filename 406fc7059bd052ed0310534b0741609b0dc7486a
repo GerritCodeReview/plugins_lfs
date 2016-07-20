@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "caacc370_e54ad67d",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/s3/S3LargeFileRepository.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-07-20T13:02:44Z",
+      "side": 1,
+      "message": "used LfsBackend enum constants - totally makes sense ;)",
+      "parentUuid": "caacc370_c578fad6",
+      "revId": "406fc7059bd052ed0310534b0741609b0dc7486a",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "caacc370_25946ee4",
         "filename": "src/main/resources/Documentation/config.md",
         "patchSetId": 1
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "caacc370_85476274",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-07-20T13:02:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "caacc370_25946ee4",
+      "range": {
+        "startLine": 10,
+        "startChar": 6,
+        "endLine": 10,
+        "endChar": 21
+      },
+      "revId": "406fc7059bd052ed0310534b0741609b0dc7486a",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ad3d7eb_f2ee2886",
         "filename": "src/main/resources/Documentation/config.md",
         "patchSetId": 1
@@ -53,6 +95,30 @@
       "writtenOn": "2016-07-20T12:07:51Z",
       "side": 1,
       "message": "Are JGit Config instance case insensitive?\nIf not then this has to be lowercase fs.",
+      "range": {
+        "startLine": 13,
+        "startChar": 8,
+        "endLine": 13,
+        "endChar": 12
+      },
+      "revId": "406fc7059bd052ed0310534b0741609b0dc7486a",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ad3d7eb_125dec52",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-07-20T13:02:44Z",
+      "side": 1,
+      "message": "section names are not case sensitive - changed to lower case",
+      "parentUuid": "6ad3d7eb_f2ee2886",
       "range": {
         "startLine": 13,
         "startChar": 8,
