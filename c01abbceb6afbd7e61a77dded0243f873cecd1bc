@@ -2,6 +2,69 @@
   "comments": [
     {
       "key": {
+        "uuid": "caacc370_45de4adb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-07-20T11:22:01Z",
+      "side": 1,
+      "message": "join this two lines into one?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 80
+      },
+      "revId": "c01abbceb6afbd7e61a77dded0243f873cecd1bc",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ad3d7eb_92d47cbb",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/HttpModule.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-07-20T11:22:01Z",
+      "side": 1,
+      "message": "Would be nicer to read as:\n\n  CONTENT_PATH  + \"/*\"",
+      "range": {
+        "startLine": 47,
+        "startChar": 20,
+        "endLine": 47,
+        "endChar": 38
+      },
+      "revId": "c01abbceb6afbd7e61a77dded0243f873cecd1bc",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "caacc370_65e346a2",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LocalLargeFileRepository.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-07-20T11:22:01Z",
+      "side": 1,
+      "message": "Since David already asked about the (trailing) slashes I will also have a question: why not remove leading/trailing slashes from this path and use path joining utility methods to make sure leading/trailing slash are present?",
+      "revId": "c01abbceb6afbd7e61a77dded0243f873cecd1bc",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aaa5cf83_a40ce290",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LocalLargeFileRepository.java",
         "patchSetId": 2
