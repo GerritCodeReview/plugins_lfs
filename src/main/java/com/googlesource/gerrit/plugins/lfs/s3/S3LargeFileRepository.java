@@ -14,13 +14,17 @@
 
 package com.googlesource.gerrit.plugins.lfs.s3;
 
+import com.google.common.base.MoreObjects;
 import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.server.config.PluginConfig;
 import com.google.gerrit.server.config.PluginConfigFactory;
 import com.google.inject.Inject;
 
+import com.googlesource.gerrit.plugins.lfs.LfsBackend;
+
 import org.eclipse.jgit.lfs.server.s3.S3Config;
 import org.eclipse.jgit.lfs.server.s3.S3Repository;
+import org.eclipse.jgit.lib.Config;
 
 public class S3LargeFileRepository extends S3Repository {
 
@@ -31,14 +35,22 @@ public class S3LargeFileRepository extends S3Repository {
 
   private static S3Config getS3Config(PluginConfigFactory configFactory,
       String pluginName) {
-    PluginConfig cfg = configFactory.getFromGerritConfig(pluginName);
-    String region = cfg.getString("region", null);
-    String bucket = cfg.getString("bucket", null);
-    String storageClass = cfg.getString("storageClass", "REDUCED_REDUNDANCY");
-    String accessKey = cfg.getString("accessKey", null);
-    String secretKey = cfg.getString("secretKey", null);
-    int expirationSeconds = cfg.getInt("expirationSeconds", 60);
-    boolean disableSslVerify = cfg.getBoolean("disableSslVerify", false);
+    Config config = configFactory.getGlobalPluginConfig(pluginName);
+    String section = LfsBackend.S3.name();
+    String region = config.getString(section, null, "region");
+    String bucket = config.getString(section, null, "bucket");
+    String storageClass =
+        MoreObjects.firstNonNull(
+            config.getString(section, null, "storageClass"),
+            "REDUCED_REDUNDANCY");
+    int expirationSeconds =
+        config.getInt(section, null, "expirationSeconds", 60);
+    boolean disableSslVerify =
+        config.getBoolean(section, null, "disableSslVerify", false);
+
+    PluginConfig pluginCfg = configFactory.getFromGerritConfig(pluginName);
+    String accessKey = pluginCfg.getString("s3AccessKey", null);
+    String secretKey = pluginCfg.getString("s3SecretKey", null);
 
     return new S3Config(region, bucket, storageClass, accessKey, secretKey,
         expirationSeconds, disableSslVerify);
