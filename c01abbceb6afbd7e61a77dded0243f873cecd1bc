@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aaa5cf83_a40ce290",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LocalLargeFileRepository.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-07-20T10:56:41Z",
+      "side": 1,
+      "message": "will url always include a trailing slash?\n\nit might be better to use utility methods for url joining.  not sure what exists in Java; I\u0027m thinking of something equivalent to python\u0027s urljoin.",
+      "range": {
+        "startLine": 40,
+        "startChar": 10,
+        "endLine": 40,
+        "endChar": 13
+      },
+      "revId": "c01abbceb6afbd7e61a77dded0243f873cecd1bc",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
