@@ -22,6 +22,30 @@
       "revId": "07ead5ebb9322e108d072921c9a41ab6604cd2a6",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a1533be_299dcd56",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-07-21T09:57:42Z",
+      "side": 1,
+      "message": "True.  But given that people will need to move the settings anyway, I don\u0027t think it\u0027s too much to ask them to also change the names.",
+      "parentUuid": "4a1533be_4990013f",
+      "range": {
+        "startLine": 58,
+        "startChar": 16,
+        "endLine": 58,
+        "endChar": 18
+      },
+      "revId": "07ead5ebb9322e108d072921c9a41ab6604cd2a6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
