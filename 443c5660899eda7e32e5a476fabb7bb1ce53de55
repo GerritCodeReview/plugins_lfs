@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aaa5cf83_44b72ea1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-07-21T03:15:13Z",
+      "side": 1,
+      "message": "nit: unnecessary new line",
+      "revId": "443c5660899eda7e32e5a476fabb7bb1ce53de55",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aaa5cf83_64bcaa84",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-07-21T03:15:13Z",
+      "side": 1,
+      "message": "Unrelated to this change, but maybe we should introduce support for @PLUGIN@.secure.config in addition to @PLUGIN@.config",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 59
+      },
+      "revId": "443c5660899eda7e32e5a476fabb7bb1ce53de55",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aaa5cf83_a43aa218",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-07-21T03:15:13Z",
+      "side": 1,
+      "message": "storage",
+      "range": {
+        "startLine": 6,
+        "startChar": 14,
+        "endLine": 6,
+        "endChar": 18
+      },
+      "revId": "443c5660899eda7e32e5a476fabb7bb1ce53de55",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aaa5cf83_04c136fb",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-07-21T03:15:13Z",
+      "side": 1,
+      "message": "It\u0027s unfortunate that by putting these in secure.config we can\u0027t distinguish that they are only for s3.",
+      "revId": "443c5660899eda7e32e5a476fabb7bb1ce53de55",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
