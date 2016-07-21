@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8add6b60_6b93c14d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-07-21T06:19:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aaa5cf83_44b72ea1",
+      "revId": "443c5660899eda7e32e5a476fabb7bb1ce53de55",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aaa5cf83_64bcaa84",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -30,6 +48,30 @@
       "writtenOn": "2016-07-21T03:15:13Z",
       "side": 1,
       "message": "Unrelated to this change, but maybe we should introduce support for @PLUGIN@.secure.config in addition to @PLUGIN@.config",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 59
+      },
+      "revId": "443c5660899eda7e32e5a476fabb7bb1ce53de55",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8add6b60_cb83d5fc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-07-21T06:19:52Z",
+      "side": 1,
+      "message": "+1 - that shouldn\u0027t be that hard ;)",
+      "parentUuid": "aaa5cf83_64bcaa84",
       "range": {
         "startLine": 16,
         "startChar": 0,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "8add6b60_ab888919",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-07-21T06:19:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aaa5cf83_a43aa218",
+      "range": {
+        "startLine": 6,
+        "startChar": 14,
+        "endLine": 6,
+        "endChar": 18
+      },
+      "revId": "443c5660899eda7e32e5a476fabb7bb1ce53de55",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aaa5cf83_04c136fb",
         "filename": "src/main/resources/Documentation/config.md",
         "patchSetId": 3
@@ -76,6 +142,24 @@
       "writtenOn": "2016-07-21T03:15:13Z",
       "side": 1,
       "message": "It\u0027s unfortunate that by putting these in secure.config we can\u0027t distinguish that they are only for s3.",
+      "revId": "443c5660899eda7e32e5a476fabb7bb1ce53de55",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8add6b60_8b8dcd29",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-07-21T06:19:52Z",
+      "side": 1,
+      "message": "we can by adding s3 prefix to the name",
+      "parentUuid": "aaa5cf83_04c136fb",
       "revId": "443c5660899eda7e32e5a476fabb7bb1ce53de55",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
