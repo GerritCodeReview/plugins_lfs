@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a1533be_4990013f",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-07-21T09:44:56Z",
+      "side": 1,
+      "message": "Looks ok. However, once we provide support for @PLUGIN@.secure.config and this goes into lfs.secure.config it will (again) become just \"accessKey\"",
+      "range": {
+        "startLine": 58,
+        "startChar": 16,
+        "endLine": 58,
+        "endChar": 18
+      },
+      "revId": "07ead5ebb9322e108d072921c9a41ab6604cd2a6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
