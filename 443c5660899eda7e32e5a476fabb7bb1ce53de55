@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "4a1533be_6993c54d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-07-21T09:44:56Z",
+      "side": 1,
+      "message": "Makes sense",
+      "parentUuid": "aaa5cf83_64bcaa84",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 59
+      },
+      "revId": "443c5660899eda7e32e5a476fabb7bb1ce53de55",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aaa5cf83_a43aa218",
         "filename": "src/main/resources/Documentation/config.md",
         "patchSetId": 3
