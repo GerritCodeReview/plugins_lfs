@@ -16,7 +16,6 @@ package com.googlesource.gerrit.plugins.lfs.s3;
 
 import com.google.common.base.MoreObjects;
 import com.google.gerrit.extensions.annotations.PluginName;
-import com.google.gerrit.server.config.PluginConfig;
 import com.google.gerrit.server.config.PluginConfigFactory;
 import com.google.inject.Inject;
 
@@ -48,9 +47,8 @@ public class S3LargeFileRepository extends S3Repository {
     boolean disableSslVerify =
         config.getBoolean(section, null, "disableSslVerify", false);
 
-    PluginConfig pluginCfg = configFactory.getFromGerritConfig(pluginName);
-    String accessKey = pluginCfg.getString("s3AccessKey", null);
-    String secretKey = pluginCfg.getString("s3SecretKey", null);
+    String accessKey = config.getString(section, null, "accessKey");
+    String secretKey = config.getString(section, null, "secretKey");
 
     return new S3Config(region, bucket, storageClass, accessKey, secretKey,
         expirationSeconds, disableSslVerify);

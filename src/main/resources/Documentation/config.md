@@ -1,7 +1,8 @@
 Plugin @PLUGIN@ configuration
-======================
+=============================
 
-**The following options can be configured in `$GERRIT_SITE/etc/@PLUGIN@.config`.**
+**The following options can be configured in `$GERRIT_SITE/etc/@PLUGIN@.config`
+and `$GERRIT_SITE/etc/@PLUGIN@.secure.config.**
 
 #### Section `storage`
 
@@ -53,12 +54,12 @@ s3.disableSslVerify
 : `false`: SSL verification is enabled
 : Default is `false`.
 
-#### Amazon S3 backend configuration in `$GERRIT_SITE/etc/secure.config`
-
-plugin.@PLUGIN@.s3AccessKey
+s3.accessKey
 : The link:http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html
-[Amazon IAM accessKey] for authenticating to S3.
+[Amazon IAM accessKey] for authenticating to S3. It is recommended to place this
+setting in `$GERRIT_SITE/etc/@PLUGIN@.secure.config`.
 
-plugin.@PLUGIN@.s3SecretKey
+s3.secretKey
 : The link:http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html
-[Amazon IAM secretKey] for authenticating to S3.
+[Amazon IAM secretKey] for authenticating to S3. It is recommended to place this
+setting in `$GERRIT_SITE/etc/@PLUGIN@.secure.config`.
