@@ -14,10 +14,10 @@
 
 package com.googlesource.gerrit.plugins.lfs.fs;
 
-import org.eclipse.jgit.lfs.server.fs.FileLfsServlet;
-
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+
+import org.eclipse.jgit.lfs.server.fs.FileLfsServlet;
 
 @Singleton
 public class LfsFsContentServlet extends FileLfsServlet {
