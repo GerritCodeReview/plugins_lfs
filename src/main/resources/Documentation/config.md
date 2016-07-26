@@ -1,6 +1,16 @@
 Plugin @PLUGIN@ configuration
 =============================
 
+**The following options can be configured in `@PLUGIN@.config` on the
+`refs/meta/config` branch per project. Configuration values are inherited by
+child projects.**
+
+#### Section `lfs`
+
+lfs.enable
+: Whether to enable LFS for this project. If not set, defaults to `false`.
+
+
 **The following options can be configured in `$GERRIT_SITE/etc/@PLUGIN@.config`
 and `$GERRIT_SITE/etc/@PLUGIN@.secure.config.**
 
