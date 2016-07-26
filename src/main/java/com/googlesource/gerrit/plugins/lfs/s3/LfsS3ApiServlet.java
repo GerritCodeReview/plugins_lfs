@@ -14,20 +14,24 @@
 
 package com.googlesource.gerrit.plugins.lfs.s3;
 
+import com.google.gerrit.server.project.ProjectCache;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
+import com.googlesource.gerrit.plugins.lfs.LfsApiServlet;
+
 import org.eclipse.jgit.lfs.server.LargeFileRepository;
-import org.eclipse.jgit.lfs.server.LfsProtocolServlet;
 
 @Singleton
-public class LfsS3ApiServlet extends LfsProtocolServlet {
+public class LfsS3ApiServlet extends LfsApiServlet {
   private static final long serialVersionUID = 1L;
 
   private final S3LargeFileRepository repository;
 
   @Inject
-  LfsS3ApiServlet(S3LargeFileRepository repository) {
+  LfsS3ApiServlet(ProjectCache projectCache,
+      S3LargeFileRepository repository) {
+    super(projectCache);
     this.repository = repository;
   }
 

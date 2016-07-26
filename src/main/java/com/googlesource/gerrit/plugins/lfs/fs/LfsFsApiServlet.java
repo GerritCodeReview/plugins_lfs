@@ -14,20 +14,24 @@
 
 package com.googlesource.gerrit.plugins.lfs.fs;
 
+import com.google.gerrit.server.project.ProjectCache;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
+import com.googlesource.gerrit.plugins.lfs.LfsApiServlet;
+
 import org.eclipse.jgit.lfs.server.LargeFileRepository;
-import org.eclipse.jgit.lfs.server.LfsProtocolServlet;
 
 @Singleton
-public class LfsFsApiServlet extends LfsProtocolServlet {
+public class LfsFsApiServlet extends LfsApiServlet {
   private static final long serialVersionUID = 1L;
 
   private final LocalLargeFileRepository repository;
 
   @Inject
-  LfsFsApiServlet(LocalLargeFileRepository repository) {
+  LfsFsApiServlet(ProjectCache projectCache,
+      LocalLargeFileRepository repository) {
+    super(projectCache);
     this.repository = repository;
   }
 
