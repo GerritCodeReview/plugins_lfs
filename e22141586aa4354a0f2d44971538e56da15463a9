@@ -52,6 +52,24 @@
       "revId": "e22141586aa4354a0f2d44971538e56da15463a9",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2f06519f_e8a693aa",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsApiServlet.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-07-28T08:59:35Z",
+      "side": 1,
+      "message": "\u003e Do you foresee two (per-project) parameters: lfs.backend and lfs.enabled?\n\nYes, that\u0027s exactly what I was thinking.",
+      "parentUuid": "0f0b4daa_c7abbe70",
+      "revId": "e22141586aa4354a0f2d44971538e56da15463a9",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
