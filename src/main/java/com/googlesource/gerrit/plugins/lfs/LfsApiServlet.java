@@ -25,6 +25,9 @@ import com.google.gerrit.server.config.PluginConfigFactory;
 import com.google.gerrit.server.project.ProjectCache;
 import com.google.gerrit.server.project.ProjectState;
 
+import org.eclipse.jgit.lfs.errors.LfsException;
+import org.eclipse.jgit.lfs.errors.LfsRepositoryNotFound;
+import org.eclipse.jgit.lfs.errors.LfsRepositoryReadOnly;
 import org.eclipse.jgit.lfs.server.LargeFileRepository;
 import org.eclipse.jgit.lfs.server.LfsProtocolServlet;
 import org.eclipse.jgit.lib.Config;
@@ -52,7 +55,7 @@ public abstract class LfsApiServlet extends LfsProtocolServlet {
 
   @Override
   protected LargeFileRepository getLargeFileRepository(
-      LfsRequest request, String path) {
+      LfsRequest request, String path) throws LfsException {
     String pathInfo = path.startsWith("/") ? path : "/" + path;
     Matcher matcher = URL_PATTERN.matcher(pathInfo);
     if (!matcher.matches()) {
@@ -62,18 +65,16 @@ public abstract class LfsApiServlet extends LfsProtocolServlet {
         ProjectUtil.stripGitSuffix(matcher.group(1)));
     ProjectState state = projectCache.get(project);
 
-    // Reject:
-    // - projects with unknown state
-    // - all requests for hidden projects
-    // - upload requests for read-only projects
-    if (state == null
-        || state.getProject().getState() == HIDDEN
-        || (request.getOperation().equals("upload")
-            && state.getProject().getState() == READ_ONLY)) {
-      return null;
+    if (state == null || state.getProject().getState() == HIDDEN) {
+      throw new LfsRepositoryNotFound(project.get());
     }
 
-    // Accept requests for projects where LFS is enabled
+    if (request.getOperation().equals("upload")
+        && state.getProject().getState() == READ_ONLY) {
+      throw new LfsRepositoryReadOnly(project.get());
+    }
+
+    // Only accept requests for projects where LFS is enabled
     Config config = pluginConfigFactory.getProjectPluginConfigWithInheritance(
         state, pluginName);
     return config.getBoolean("lfs", "enabled", false)
