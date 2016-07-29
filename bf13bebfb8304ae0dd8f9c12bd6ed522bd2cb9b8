@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7412e248_da8d6529",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsApiServlet.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-07-29T02:48:29Z",
+      "side": 1,
+      "message": "In LfsProtocolServlet, which calls this, a null repository will result in the server returning HTTP 503 Service Unavailable.\n\nFor the cases where the project is hidden or read-only, I think this behaviour might be contrary to the LFS specification for error responses [1], which states the responses should be:\n\n 403 - The user has read, but not write access. \n 404 - The repository does not exist for the user.\n\nAlso, a couple of of cases where the current implementation may be lacking:\n\n- We do not have any way to determine whether or not a project is actually visible to or writable by the calling user. I think we should confirm whether the LFS calls are done before or after project visibility checks.\n\n- If we implement a restriction on size of uploaded objects, the server should return HTTP 422 (validation error) according to the spec.\n\n[1] https://github.com/github/git-lfs/blob/master/docs/api/v1/http-v1-batch.md#response-errors",
+      "range": {
+        "startLine": 65,
+        "startChar": 4,
+        "endLine": 74,
+        "endChar": 5
+      },
+      "revId": "bf13bebfb8304ae0dd8f9c12bd6ed522bd2cb9b8",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
