@@ -28,7 +28,9 @@ import com.google.gerrit.server.project.ProjectState;
 import org.eclipse.jgit.lfs.errors.LfsException;
 import org.eclipse.jgit.lfs.errors.LfsRepositoryNotFound;
 import org.eclipse.jgit.lfs.errors.LfsRepositoryReadOnly;
+import org.eclipse.jgit.lfs.errors.LfsValidationError;
 import org.eclipse.jgit.lfs.server.LargeFileRepository;
+import org.eclipse.jgit.lfs.server.LfsObject;
 import org.eclipse.jgit.lfs.server.LfsProtocolServlet;
 import org.eclipse.jgit.lib.Config;
 
@@ -74,11 +76,28 @@ public abstract class LfsApiServlet extends LfsProtocolServlet {
       throw new LfsRepositoryReadOnly(project.get());
     }
 
-    // Only accept requests for projects where LFS is enabled
     Config config = pluginConfigFactory.getProjectPluginConfigWithInheritance(
         state, pluginName);
-    return config.getBoolean("lfs", "enabled", false)
-        ? getRepository()
-        : null;
+
+    // Only accept requests for projects where LFS is enabled
+    if (!config.getBoolean("lfs", "enabled", false)) {
+      return null;
+    }
+
+    if (request.getOperation().equals("upload")) {
+      // Check object sizes against limit, if configured
+      long maxObjectSize = config.getLong("lfs", "maxObjectSize", 0);
+      if (maxObjectSize > 0) {
+        for (LfsObject object : request.getObjects()) {
+          if (object.getSize() > maxObjectSize) {
+            throw new LfsValidationError(String.format(
+                "size of object %s (%d bytes) exceeds limit (%d bytes)",
+                object.getOid(), object.getSize(), maxObjectSize));
+          }
+        }
+      }
+    }
+
+    return getRepository();
   }
 }
