@@ -17,6 +17,11 @@ child projects.**
 lfs.enabled
 : Whether to enable LFS for this project. If not set, defaults to `false`.
 
+lfs.maxObjectSize
+: Maximum allowed object size (per object) in bytes for this project, or 0 for
+no limit. If not set, defaults to 0. Common unit suffixes of `k`, `m`, and `g`
+are supported.
+
 **The following options can be configured in `$GERRIT_SITE/etc/@PLUGIN@.config`
 and `$GERRIT_SITE/etc/@PLUGIN@.secure.config.**
 
