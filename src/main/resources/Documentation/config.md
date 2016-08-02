@@ -63,3 +63,12 @@ s3.secretKey
 : The link:http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html
 [Amazon IAM secretKey] for authenticating to S3. It is recommended to place this
 setting in `$GERRIT_SITE/etc/@PLUGIN@.secure.config`.
+
+**The following options must be set in the local project's .git/config file.**
+
+#### Section `lfs`
+
+lfs.url
+: `http://<username>@<gerrit-host>:<port>/<project-name>/info/lfs`
+
+When the Gerrit repo is cloned via ssh, the git lfs url must be set to use http.
