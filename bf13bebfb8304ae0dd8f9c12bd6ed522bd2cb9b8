@@ -22,6 +22,30 @@
       "revId": "bf13bebfb8304ae0dd8f9c12bd6ed522bd2cb9b8",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "140526c3_f786400d",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsApiServlet.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-08-04T00:52:48Z",
+      "side": 1,
+      "message": "As it is, it works with the API that is available. It can be improved in follow-up changes when the necessary changes are merged upstream on jgit.",
+      "parentUuid": "7412e248_da8d6529",
+      "range": {
+        "startLine": 65,
+        "startChar": 4,
+        "endLine": 74,
+        "endChar": 5
+      },
+      "revId": "bf13bebfb8304ae0dd8f9c12bd6ed522bd2cb9b8",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
