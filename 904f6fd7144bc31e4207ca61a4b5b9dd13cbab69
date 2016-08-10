@@ -16,6 +16,24 @@
       "revId": "904f6fd7144bc31e4207ca61a4b5b9dd13cbab69",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "19babf37_afa459a5",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsApiServlet.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-08-10T03:02:59Z",
+      "side": 1,
+      "message": "Done, although note that the lfs client doesn\u0027t seem to use the error message anywhere.  It only reports failure with the status code.",
+      "parentUuid": "79357b61_e27b4621",
+      "revId": "904f6fd7144bc31e4207ca61a4b5b9dd13cbab69",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
