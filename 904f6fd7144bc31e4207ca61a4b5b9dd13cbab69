@@ -34,6 +34,24 @@
       "revId": "904f6fd7144bc31e4207ca61a4b5b9dd13cbab69",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1b2397ed_4706ee79",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsApiServlet.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-08-17T14:53:24Z",
+      "side": 1,
+      "message": "My client shows nice error e.g.:\nsize of object 7f7f152123fb446a93b496deb56349084438d1bb81d004c9732264b56e996e65 (139297 bytes) exceeds limit (102400 bytes)",
+      "parentUuid": "19babf37_afa459a5",
+      "revId": "904f6fd7144bc31e4207ca61a4b5b9dd13cbab69",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
