@@ -22,6 +22,30 @@
       "revId": "77b7eaa11ab5add447210e54ab0a01252a0869f7",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fbac03b7_9eef5daf",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsApiServlet.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-08-17T16:26:39Z",
+      "side": 1,
+      "message": "Fixed with https://git.eclipse.org/r/#/c/79214/",
+      "parentUuid": "5b9eef7d_21c38e36",
+      "range": {
+        "startLine": 81,
+        "startChar": 4,
+        "endLine": 84,
+        "endChar": 5
+      },
+      "revId": "77b7eaa11ab5add447210e54ab0a01252a0869f7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
