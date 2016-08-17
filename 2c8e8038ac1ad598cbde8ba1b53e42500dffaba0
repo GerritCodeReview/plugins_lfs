@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b2397ed_a731aa56",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsApiServlet.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-08-17T14:12:53Z",
+      "side": 1,
+      "message": "We should throw LfsException exception when lfs is not enabled so that user doesn\u0027t receive error like that:\nUnable to parse HTTP response for POST http://product_developer@ctf-centos72-dev-box.collab.net/gerrit/test_repo.git/info/lfs/objects/batch\n\nWhen LfsException is thrown the following information is shown to the user:\nLFS is not enabled for test_repo repository",
+      "range": {
+        "startLine": 80,
+        "startChar": 4,
+        "endLine": 82,
+        "endChar": 15
+      },
+      "revId": "2c8e8038ac1ad598cbde8ba1b53e42500dffaba0",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
