@@ -1,26 +1,30 @@
 Plugin @PLUGIN@ configuration
 =============================
 
+**The following option must be set in `$GERRIT_SITE/etc/gerrit.config` file.**
+
+#### Section `lfs`
+
+lfs.plugin = @PLUGIN@
+: With this option set LFS requests are forwarded to the @PLUGIN@ plugin.
+
 **The following options can be configured in `@PLUGIN@.config` on the
 `refs/meta/config` branch per project. Configuration values are inherited by
 child projects.**
 
 #### Section `lfs`
 
-lfs.enable
+lfs.enabled
 : Whether to enable LFS for this project. If not set, defaults to `false`.
-
 
 **The following options can be configured in `$GERRIT_SITE/etc/@PLUGIN@.config`
 and `$GERRIT_SITE/etc/@PLUGIN@.secure.config.**
 
 #### Section `storage`
 
-
 storage.backend
 : The storage backend to use. Valid values are `fs` for local file system,
 and `s3` for Amazon S3. If not set, defaults to `fs`.
-
 
 **Local filesystem configuration**
 
