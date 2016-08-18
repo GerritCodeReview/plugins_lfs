@@ -94,6 +94,30 @@
       "revId": "77b7eaa11ab5add447210e54ab0a01252a0869f7",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b106707_33b728d3",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsApiServlet.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-08-18T06:36:11Z",
+      "side": 1,
+      "message": "True.  Maybe upstream needs a specific exception for this?",
+      "parentUuid": "db9f3fcb_ad79fd29",
+      "range": {
+        "startLine": 81,
+        "startChar": 4,
+        "endLine": 84,
+        "endChar": 5
+      },
+      "revId": "77b7eaa11ab5add447210e54ab0a01252a0869f7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
