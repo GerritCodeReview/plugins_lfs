@@ -46,6 +46,30 @@
       "revId": "77b7eaa11ab5add447210e54ab0a01252a0869f7",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db9f3fcb_ad79fd29",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsApiServlet.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-08-18T06:01:18Z",
+      "side": 1,
+      "message": "Fix in upstream handles perfectly the case when plugin is not enabled. How about being more specific in case plugin is enabled but LFS is not enabled for given repository? I see value in being more precise here...",
+      "parentUuid": "fbac03b7_9eef5daf",
+      "range": {
+        "startLine": 81,
+        "startChar": 4,
+        "endLine": 84,
+        "endChar": 5
+      },
+      "revId": "77b7eaa11ab5add447210e54ab0a01252a0869f7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
