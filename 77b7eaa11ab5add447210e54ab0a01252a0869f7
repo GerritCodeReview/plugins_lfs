@@ -70,6 +70,30 @@
       "revId": "77b7eaa11ab5add447210e54ab0a01252a0869f7",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db9f3fcb_0d8bf116",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsApiServlet.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-08-18T06:35:27Z",
+      "side": 1,
+      "message": "Take it back, fix in upstream handles the case when plugin is enabled but not on repository level and we are in the repository scope anyway (push happens from repo) so it is really redundant here. I guess that we should rather reconsider response here com.google.gerrit.httpd.plugins.LfsPluginServlet.service(HttpServletRequest, HttpServletResponse) so that it is more verbose when none plugin is configured...",
+      "parentUuid": "db9f3fcb_ad79fd29",
+      "range": {
+        "startLine": 81,
+        "startChar": 4,
+        "endLine": 84,
+        "endChar": 5
+      },
+      "revId": "77b7eaa11ab5add447210e54ab0a01252a0869f7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
