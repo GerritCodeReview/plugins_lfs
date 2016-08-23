@@ -22,6 +22,30 @@
       "revId": "0f2960b45b4ecc73a537fd0e290a54d97cdbc6d8",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e8d27743_b5eb60a7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-08-23T11:05:18Z",
+      "side": 1,
+      "message": "This sounds reasonable.\n\nDo you mean to introduce another setting, something like globalMaxObjectSize, and have that only configurable on the All-Projects git?\n\nOr replace this setting with one that\u0027s set globally on the All-Projects and can\u0027t be set per project?",
+      "parentUuid": "081c2bae_e66c3e35",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 24
+      },
+      "revId": "0f2960b45b4ecc73a537fd0e290a54d97cdbc6d8",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
