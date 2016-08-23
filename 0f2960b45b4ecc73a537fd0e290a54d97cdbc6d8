@@ -94,6 +94,30 @@
       "revId": "0f2960b45b4ecc73a537fd0e290a54d97cdbc6d8",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "081c2bae_c6cb021d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-08-23T17:51:17Z",
+      "side": 1,
+      "message": "Another idea is to mimic ProjectConfigEntry in PluginConfigEntry and have it visible @project configuration but stored in plugin specific file in refs/meta/config as it it right now but t his requires more work...",
+      "parentUuid": "081c2bae_e6cefe2e",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 24
+      },
+      "revId": "0f2960b45b4ecc73a537fd0e290a54d97cdbc6d8",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
