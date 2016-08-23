@@ -46,6 +46,30 @@
       "revId": "0f2960b45b4ecc73a537fd0e290a54d97cdbc6d8",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "682da7d5_49556152",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-08-23T12:06:34Z",
+      "side": 1,
+      "message": "Ideally, I would like to keep the flexibility of setting the limit on per-project basis. Just it should only be possible by an admin to increase the limit for a project.\n\nAt the moment I am undecided on how to implement that but will try to propose something.",
+      "parentUuid": "e8d27743_b5eb60a7",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 24
+      },
+      "revId": "0f2960b45b4ecc73a537fd0e290a54d97cdbc6d8",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
