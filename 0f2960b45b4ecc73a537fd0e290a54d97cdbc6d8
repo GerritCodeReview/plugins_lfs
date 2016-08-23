@@ -70,6 +70,30 @@
       "revId": "0f2960b45b4ecc73a537fd0e290a54d97cdbc6d8",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "081c2bae_e6cefe2e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-08-23T17:43:09Z",
+      "side": 1,
+      "message": "We have internally discussed it and agreed that lfs.config should stay but if it was part of project.config one could easily configure it through ProjectConfigEntry and had GUI generated for it @ particular project level with inheritance",
+      "parentUuid": "682da7d5_49556152",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 24
+      },
+      "revId": "0f2960b45b4ecc73a537fd0e290a54d97cdbc6d8",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
