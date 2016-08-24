@@ -142,6 +142,24 @@
       "revId": "0f2960b45b4ecc73a537fd0e290a54d97cdbc6d8",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4862a390_c8f16f97",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-08-24T12:08:42Z",
+      "side": 1,
+      "message": "Sorry for waiting on my input... it has been very busy here yesterday and today.\n\nLet\u0027s first agree about goals/requirements:\n* admins must be able to set a global lfs.maxObjectSize that is valid for all projects using LFS\n* admins must be able to change lfs.maxObjectSize for a single project. It must be possible to increase the maxObjectSize over the inherited maxObjectSize for a single project.\n* project owners should be able to change lfs.maxObjectSize for their project (Notice the \"should\" instead of \"must\").\n* assuming project owners are allowed to set lfs.maxObjectSize for their project(s), admins must be able to set an upper limit for lfs.maxObjectSize which project owners cannot exceed\n\nDo you agree?",
+      "parentUuid": "68712757_49e6e1dd",
+      "revId": "0f2960b45b4ecc73a537fd0e290a54d97cdbc6d8",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
