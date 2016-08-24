@@ -178,6 +178,24 @@
       "revId": "0f2960b45b4ecc73a537fd0e290a54d97cdbc6d8",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4862a390_e8f6b38c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-08-24T13:42:14Z",
+      "side": 1,
+      "message": "\u003e The requirements seem reasonable from a usage point of view.\n \u003e \n \u003e One idea I had for the global max size is to put that in the\n \u003e gerrit.config section under [lfs], and implement logic to make sure\n \u003e the value defined in the project doesn\u0027t exceed it.\n\nBut only for project owners, admins should be able to set a value which exceeds the limit.\n\n \u003e I\u0027m just not sure how in the implementation we can distinguish who\n \u003e is doing the setting in the project config.  Perhaps possible by\n \u003e implementing a validation listener that intercepts the commit and\n \u003e checks the lfs.config before it\u0027s accepted?\n\nSomething like that could work I think, but would likely be ugly. Not only would we have to check the content of lfs.config against the current user we would also likely have to compute the diff of the commit and check if it contains lfs.maxObjectSize in it. Why? Assume an admin changes the lfs.maxObjectSize over the global limit for a project. After that a project owner wouldn\u0027t be able to push a new version of the config file if the validation would check the whole content. Instead the validation has to only validate the diff. So, this approach is not easy IMO.\n\nTherefore, I would like to question the decision of keeping the lfs.maxObjectSize in the project\u0027s refs/meta/config branch.\nWhile it simplifies the implementation (of the UI) a bit, it also makes it hard to ensure\nprotection of Gerrit server and LFS server resources from careless project owners.\n\nIn the quota plugin we took a different approach for configuration [1]. There, all limits are specified in the $GERRIT/etc/quota.config file. Given a project name we scan the \"quota\" sections top-down and the first one that matches the project name applies to this project. This way, we can handle the default for all project by [quota \"*\"] and we can define different quota for a project by placing another more specific section above. Using the same approach for the lfs plugin, if we want a default limit of 50m and an increased limit of 100m for a project \"A\" we could have:\n\n  [limit \"A\"]\n    maxObjectSize \u003d 100m\n  [limit \"*\"]\n    maxObjectSize \u003d 50m\n\nin plugin\u0027s specific $GERRIT/etc/lfs.config file.\n\nImplementing this approach would be significantly simpler than implementing commit validation listeners, computing diffs, etc...\n\nI am curious about your opinions.\n\n[1] https://gerrit.googlesource.com/plugins/quota/+/refs/heads/master/src/main/resources/Documentation/config.md",
+      "parentUuid": "886c9b82_ea21c707",
+      "revId": "0f2960b45b4ecc73a537fd0e290a54d97cdbc6d8",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
