@@ -160,6 +160,24 @@
       "revId": "0f2960b45b4ecc73a537fd0e290a54d97cdbc6d8",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "886c9b82_ea21c707",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-08-24T12:21:07Z",
+      "side": 1,
+      "message": "The requirements seem reasonable from a usage point of view.\n\nOne idea I had for the global max size is to put that in the gerrit.config section under [lfs], and implement logic to make sure the value defined in the project doesn\u0027t exceed it.\n\nI\u0027m just not sure how in the implementation we can distinguish who is doing the setting in the project config.  Perhaps possible by implementing a validation listener that intercepts the commit and checks the lfs.config before it\u0027s accepted?",
+      "parentUuid": "4862a390_c8f16f97",
+      "revId": "0f2960b45b4ecc73a537fd0e290a54d97cdbc6d8",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
