@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "2861efbb_97f1a498",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-08-25T11:52:45Z",
+      "side": 1,
+      "message": "\u003e Does the same applies to lfs.enabled? What I mean is that if we get\n \u003e rid off overridden functionality we are loosing flexibility of\n \u003e setting for instance which repository supports LFS.\n\nThis is done in the All-Projects\u0027 lfs.config as shown in the example above (line 19).\n\n\u003e I can imagine\n \u003e that one enables it for whole site but would like to exclude it\n \u003e from particular repositories in the site.\n\nThis is possible. To switch off LFS for project X and enable for all other projects admins would write:\n\n  [lfs \"X\"]\n    enabled \u003d false\n  [lfs \"*\"]\n    enabled \u003d true\n\n\u003e What is actually wrong\n \u003e leaving it as it is derived and possible to setup on project level?\n\nIt is possible to setup LFS per-project, just that it is done by admins in All-Projects:lfs.config instead by project owners.\n\n \u003e Similar functionality is for Maximum Object size limit and user is\n \u003e entitled to change it on project level and it works fine...\n\nIt is only possible to decrease it on project level and I don\u0027t know anyone actually decreasing it.\n\n\u003e yet\n \u003e without derrive which is nice improvement in my opinion ;)",
+      "parentUuid": "c59e7e21_fcba89ac",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 46
+      },
+      "revId": "aad3d317f949af4d67c7f7155f4ac3b99b89fd44",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c59e7e21_9caee579",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsApiServlet.java",
         "patchSetId": 1
