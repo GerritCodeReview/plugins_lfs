@@ -14,13 +14,13 @@
 
 package com.googlesource.gerrit.plugins.lfs.s3;
 
-import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.server.config.PluginConfigFactory;
 import com.google.gerrit.server.project.ProjectCache;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
 import com.googlesource.gerrit.plugins.lfs.LfsApiServlet;
+import com.googlesource.gerrit.plugins.lfs.LfsConfig;
 
 import org.eclipse.jgit.lfs.server.LargeFileRepository;
 
@@ -31,11 +31,11 @@ public class LfsS3ApiServlet extends LfsApiServlet {
   private final S3LargeFileRepository repository;
 
   @Inject
-  LfsS3ApiServlet(@PluginName String pluginName,
-      PluginConfigFactory pluginConfigFactory,
+  LfsS3ApiServlet(PluginConfigFactory pluginConfigFactory,
       ProjectCache projectCache,
+      LfsConfig lfsConfig,
       S3LargeFileRepository repository) {
-    super(pluginName, pluginConfigFactory, projectCache);
+    super(pluginConfigFactory, projectCache, lfsConfig);
     this.repository = repository;
   }
 
