@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "c59e7e21_3cf23199",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-08-25T13:27:37Z",
+      "side": 1,
+      "message": "I agree that further restriction happens rarely or never in terms of file size ;) but LFS enabled should be decision that is taken on project level too which leads to situation that given parameter could be set up in two different places and will have to investigate what is where... isn\u0027t it going to be to complicated?",
+      "parentUuid": "2861efbb_77ddf006",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 46
+      },
+      "revId": "aad3d317f949af4d67c7f7155f4ac3b99b89fd44",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c59e7e21_9caee579",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsApiServlet.java",
         "patchSetId": 1
