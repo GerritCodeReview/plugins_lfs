@@ -12,18 +12,69 @@ lfs.plugin = @PLUGIN@
 ## Per Project Settings
 
 The following options can be configured in `@PLUGIN@.config` on the
-`refs/meta/config` branch per project. Configuration values are inherited by
-child projects.
+`refs/meta/config` branch of the `All-Projects` project.
+
+``
+  [@PLUGIN@ "sandbox/*"]
+    enabled = true
+    maxObjectSize = 10m
+  [@PLUGIN@ "public/*"]
+    enabled = true
+    maxObjectSize = 200m
+  [@PLUGIN@ "customerX/*"]
+    enabled = true
+    maxObjectSize = 500m
+  [@PLUGIN@ "customerY/*"]
+    enabled = false
+```
+
+A namespace can be specified as
+
+- exact project name (`plugins/myPlugin`): Defines LFS settings for one project.
+
+- pattern (`sandbox/*`): Defines LFS settings for one project namespace.
+
+- regular expression (`^test-.*/.*`): Defines LFS settings for the namespace
+matching the regular expression.
+
+- for-each-pattern (`?/*`): Defines the same LFS settings for each subfolder.
+`?` is a placeholder for any name and `?/*` with `maxObjectSize = 100m` means
+that for every subfolder the maximum object size is 100 mb. Hence `?/*` is a
+shortcut for having n explicit namespaces.
+
+If a project name matches several @PLUGIN@ namespaces, the one the that is defined
+first in the @PLUGIN@.config will be applied.
+
+Example: Enable LFS for all projects, allowing unlimited object size for
+projected under `/test` and limiting to 500 mb for projects under other
+folders:
+
+```
+  [@PLUGIN@ "test/*]
+    enabled = true
+  [@PLUGIN@ "?/*"]
+    enabled = true
+    maxObjectSize = 500m
+```
+
+Example: Only enable LFS for projects under `customer-A`:
+
+```
+  [@PLUGIN@ "customer-A/*]
+    enabled = true
+```
+
 
 ### Section `lfs`
 
 lfs.enabled
-: Whether to enable LFS for this project. If not set, defaults to `false`.
+: Whether to enable LFS for projects in this namespace. If not set, defaults
+to `false`.
 
 lfs.maxObjectSize
-: Maximum allowed object size (per object) in bytes for this project, or 0 for
-no limit. If not set, defaults to 0. Common unit suffixes of `k`, `m`, and `g`
-are supported.
+: Maximum allowed object size (per object) in bytes for projects in this
+namespace, or 0 for no limit. If not set, defaults to 0. Common unit suffixes
+of `k`, `m`, and `g` are supported.
 
 ## Global Plugin Settings
 
