@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c59e7e21_1cedf5b9",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsConfig.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-08-25T13:21:58Z",
+      "side": 1,
+      "message": "wouldn\u0027t that make sense to check exact match first? In this way precise rule would take precedence over less precise...",
+      "range": {
+        "startLine": 54,
+        "startChar": 6,
+        "endLine": 56,
+        "endChar": 7
+      },
+      "revId": "9e43b8163715e3139a207f46df0c67e97b78b5e6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
