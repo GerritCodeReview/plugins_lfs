@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "2861efbb_77ddf006",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-08-25T13:16:39Z",
+      "side": 1,
+      "message": "But looking into LfsConfig if I am not mistaken ;) I can see that order in config file matters lfs.\"project\" has to be configured before lfs.\"*\" is it intentional?",
+      "parentUuid": "2861efbb_97f1a498",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 46
+      },
+      "revId": "aad3d317f949af4d67c7f7155f4ac3b99b89fd44",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c59e7e21_9caee579",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsApiServlet.java",
         "patchSetId": 1
