@@ -145,6 +145,42 @@
     },
     {
       "key": {
+        "uuid": "2861efbb_17311452",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-08-25T14:07:12Z",
+      "side": 1,
+      "message": "\u003e I agree that further restriction happens rarely or never in terms of file size ;) but LFS enabled should be decision that is taken on project level too which leads to situation that given parameter could be set up in two different places and will have to investigate what is where... isn\u0027t it going to be to complicated?\n\nI think that it should only be set in one place at All-Project:lfs.config",
+      "parentUuid": "c59e7e21_3cf23199",
+      "revId": "aad3d317f949af4d67c7f7155f4ac3b99b89fd44",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c59e7e21_dce6addd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-08-25T14:07:12Z",
+      "side": 1,
+      "message": "\u003e But looking into LfsConfig if I am not mistaken ;) I can see that order in config file matters lfs.\"project\" has to be configured before lfs.\"*\" is it intentional?\n\nYes it is very intentional. The first section which matches project\u0027s name is relevant for this project. This style is easy to follow and understand. It is much easier than something like \"most specific section wins...\"",
+      "parentUuid": "2861efbb_77ddf006",
+      "revId": "aad3d317f949af4d67c7f7155f4ac3b99b89fd44",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c59e7e21_9caee579",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsApiServlet.java",
         "patchSetId": 1
