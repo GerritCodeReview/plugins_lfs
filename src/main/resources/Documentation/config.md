@@ -12,18 +12,32 @@ lfs.plugin = @PLUGIN@
 ## Per Project Settings
 
 The following options can be configured in `@PLUGIN@.config` on the
-`refs/meta/config` branch per project. Configuration values are inherited by
-child projects.
+`refs/meta/config` branch of the `All-Projects` project.
+
+```
+  [@PLUGIN@ "sandbox/*"]
+    enabled = true
+    maxObjectSize = 10 m
+  [@PLUGIN@ "public/*"]
+    enabled = true
+    maxObjectSize = 200 m
+  [@PLUGIN@ "customerX/*"]
+    enabled = true
+    maxObjectSize = 500 m
+  [@PLUGIN@ "customerY/*"]
+    enabled = false
+```
 
 ### Section `lfs`
 
 lfs.enabled
-: Whether to enable LFS for this project. If not set, defaults to `false`.
+: Whether to enable LFS for projects in this namespace. If not set, defaults
+to `false`.
 
 lfs.maxObjectSize
-: Maximum allowed object size (per object) in bytes for this project, or 0 for
-no limit. If not set, defaults to 0. Common unit suffixes of `k`, `m`, and `g`
-are supported.
+: Maximum allowed object size (per object) in bytes for projects in this
+namespace, or 0 for no limit. If not set, defaults to 0. Common unit suffixes
+of `k`, `m`, and `g` are supported.
 
 ## Global Plugin Settings
 
