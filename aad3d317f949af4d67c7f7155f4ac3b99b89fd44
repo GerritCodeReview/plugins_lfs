@@ -222,6 +222,53 @@
       "revId": "aad3d317f949af4d67c7f7155f4ac3b99b89fd44",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "683927b8_a921dd08",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/Namespace.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-08-25T12:49:02Z",
+      "side": 1,
+      "message": "The date is intentional.  This file is copied verbatim from the quota plugin.",
+      "parentUuid": "2861efbb_37bc58a9",
+      "range": {
+        "startLine": 1,
+        "startChar": 17,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "aad3d317f949af4d67c7f7155f4ac3b99b89fd44",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "683927b8_c926111e",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/Namespace.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-08-25T12:49:02Z",
+      "side": 1,
+      "message": "This should give a warning about unnecessary nesting of else statement...",
+      "range": {
+        "startLine": 38,
+        "startChar": 6,
+        "endLine": 40,
+        "endChar": 5
+      },
+      "revId": "aad3d317f949af4d67c7f7155f4ac3b99b89fd44",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
