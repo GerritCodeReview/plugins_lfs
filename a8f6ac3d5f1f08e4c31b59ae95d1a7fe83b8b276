@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2861efbb_57c9cc55",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsConfigSection.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-08-25T10:56:17Z",
+      "side": 1,
+      "message": "Will you change this to boolean?",
+      "range": {
+        "startLine": 52,
+        "startChar": 9,
+        "endLine": 52,
+        "endChar": 16
+      },
+      "revId": "a8f6ac3d5f1f08e4c31b59ae95d1a7fe83b8b276",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
