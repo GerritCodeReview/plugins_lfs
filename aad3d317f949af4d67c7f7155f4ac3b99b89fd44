@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "c59e7e21_fcba89ac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-08-25T11:33:34Z",
+      "side": 1,
+      "message": "Does the same applies to lfs.enabled? What I mean is that if we get rid off overridden functionality we are loosing flexibility of setting for instance which repository supports LFS. I can imagine that one enables it for whole site but would like to exclude it from particular repositories in the site. What is actually wrong leaving it as it is derived and possible to setup on project level? Similar functionality is for Maximum Object size limit and user is entitled to change it on project level and it works fine... yet without derrive which is nice improvement in my opinion ;)",
+      "parentUuid": "683927b8_69c60547",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 46
+      },
+      "revId": "aad3d317f949af4d67c7f7155f4ac3b99b89fd44",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c59e7e21_9caee579",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsApiServlet.java",
         "patchSetId": 1
@@ -147,6 +171,29 @@
         "startChar": 9,
         "endLine": 52,
         "endChar": 16
+      },
+      "revId": "aad3d317f949af4d67c7f7155f4ac3b99b89fd44",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2861efbb_37bc58a9",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/Namespace.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-08-25T11:33:34Z",
+      "side": 1,
+      "message": "nit:2014",
+      "range": {
+        "startLine": 1,
+        "startChar": 17,
+        "endLine": 1,
+        "endChar": 21
       },
       "revId": "aad3d317f949af4d67c7f7155f4ac3b99b89fd44",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
