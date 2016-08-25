@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "683927b8_69c60547",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-08-25T08:41:08Z",
+      "side": 1,
+      "message": "I\u0027d be OK with dropping it.",
+      "parentUuid": "c59e7e21_5ca13d8f",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 46
+      },
+      "revId": "aad3d317f949af4d67c7f7155f4ac3b99b89fd44",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c59e7e21_9caee579",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsApiServlet.java",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2016-08-25T08:33:29Z",
       "side": 1,
       "message": "When config \u003d\u003d null this will jump directly to the line 109 and return a (non-null) repository instance. Instead we must return null in such a case.",
+      "revId": "aad3d317f949af4d67c7f7155f4ac3b99b89fd44",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "683927b8_89f17998",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsApiServlet.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-08-25T08:41:08Z",
+      "side": 1,
+      "message": "Right.  I was forgetting that the default for enabled is false.\n\nI\u0027ll fix this.",
+      "parentUuid": "c59e7e21_9caee579",
       "revId": "aad3d317f949af4d67c7f7155f4ac3b99b89fd44",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
@@ -81,6 +123,30 @@
         "startChar": 17,
         "endLine": 52,
         "endChar": 27
+      },
+      "revId": "aad3d317f949af4d67c7f7155f4ac3b99b89fd44",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05997637_feb121da",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsConfigSection.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-08-25T08:41:08Z",
+      "side": 1,
+      "message": "\u003e Why does it need to be Boolean (object)?\n\nActually it doesn\u0027t need to return a boxed type, and nor does getMaxObjectSize, since both always return an actual value.\n\nThe use of boxed types is copied over from the implementations in the quota plugin, which can return null.  I removed the \"nullness\" here, but didn\u0027t change the types.",
+      "parentUuid": "2861efbb_37b1b8d9",
+      "range": {
+        "startLine": 52,
+        "startChar": 9,
+        "endLine": 52,
+        "endChar": 16
       },
       "revId": "aad3d317f949af4d67c7f7155f4ac3b99b89fd44",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
