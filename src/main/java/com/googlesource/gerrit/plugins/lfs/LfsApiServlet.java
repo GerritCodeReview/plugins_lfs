@@ -19,9 +19,7 @@ import static com.google.gerrit.extensions.client.ProjectState.READ_ONLY;
 import static com.google.gerrit.httpd.plugins.LfsPluginServlet.URL_REGEX;
 
 import com.google.gerrit.common.ProjectUtil;
-import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.reviewdb.client.Project;
-import com.google.gerrit.server.config.PluginConfigFactory;
 import com.google.gerrit.server.project.ProjectCache;
 import com.google.gerrit.server.project.ProjectState;
 
@@ -32,7 +30,6 @@ import org.eclipse.jgit.lfs.errors.LfsValidationError;
 import org.eclipse.jgit.lfs.server.LargeFileRepository;
 import org.eclipse.jgit.lfs.server.LfsObject;
 import org.eclipse.jgit.lfs.server.LfsProtocolServlet;
-import org.eclipse.jgit.lib.Config;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -41,16 +38,13 @@ public abstract class LfsApiServlet extends LfsProtocolServlet {
   private static final long serialVersionUID = 1L;
   private static final Pattern URL_PATTERN = Pattern.compile(URL_REGEX);
 
-  private final String pluginName;
-  private final PluginConfigFactory pluginConfigFactory;
   private final ProjectCache projectCache;
+  private final LfsConfig lfsConfig;
 
-  protected LfsApiServlet(@PluginName String pluginName,
-      PluginConfigFactory pluginConfigFactory,
-      ProjectCache projectCache) {
-    this.pluginName = pluginName;
-    this.pluginConfigFactory = pluginConfigFactory;
+  protected LfsApiServlet(ProjectCache projectCache,
+      LfsConfig lfsConfig) {
     this.projectCache = projectCache;
+    this.lfsConfig = lfsConfig;
   }
 
   protected abstract LargeFileRepository getRepository();
@@ -76,28 +70,26 @@ public abstract class LfsApiServlet extends LfsProtocolServlet {
       throw new LfsRepositoryReadOnly(project.get());
     }
 
-    Config config = pluginConfigFactory.getProjectPluginConfigWithInheritance(
-        state, pluginName);
-
-    // Only accept requests for projects where LFS is enabled
-    if (!config.getBoolean("lfs", "enabled", false)) {
-      return null;
-    }
-
-    if (request.getOperation().equals("upload")) {
-      // Check object sizes against limit, if configured
-      long maxObjectSize = config.getLong("lfs", "maxObjectSize", 0);
-      if (maxObjectSize > 0) {
-        for (LfsObject object : request.getObjects()) {
-          if (object.getSize() > maxObjectSize) {
-            throw new LfsValidationError(String.format(
-                "size of object %s (%d bytes) exceeds limit (%d bytes)",
-                object.getOid(), object.getSize(), maxObjectSize));
+    LfsConfigSection config = lfsConfig.getForProject(project);
+    // Only accept requests for projects where LFS is enabled.
+    // No config means we default to "not enabled".
+    if (config != null && config.getEnabled()) {
+      // For uploads, check object sizes against limit if configured
+      if (request.getOperation().equals("upload")) {
+        long maxObjectSize = config.getMaxObjectSize();
+        if (maxObjectSize > 0) {
+          for (LfsObject object : request.getObjects()) {
+            if (object.getSize() > maxObjectSize) {
+              throw new LfsValidationError(String.format(
+                  "size of object %s (%d bytes) exceeds limit (%d bytes)",
+                  object.getOid(), object.getSize(), maxObjectSize));
+            }
           }
         }
       }
+      return getRepository();
     }
 
-    return getRepository();
+    return null;
   }
 }
