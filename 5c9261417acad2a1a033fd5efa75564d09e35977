@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "65c1521d_a936fd46",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-08-26T11:32:27Z",
+      "side": 1,
+      "message": "invalid ending",
+      "range": {
+        "startLine": 31,
+        "startChar": 45,
+        "endLine": 31,
+        "endChar": 47
+      },
+      "revId": "5c9261417acad2a1a033fd5efa75564d09e35977",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05b096bd_06261a20",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-08-26T11:32:27Z",
+      "side": 1,
+      "message": "this is not fully correct link it should be:\nhttp://\u003cusername\u003e@\u003cgerrit-host\u003e:port/gerrit/\u003cproject-name\u003e/info/lfs",
+      "range": {
+        "startLine": 94,
+        "startChar": 3,
+        "endLine": 94,
+        "endChar": 65
+      },
+      "revId": "5c9261417acad2a1a033fd5efa75564d09e35977",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
