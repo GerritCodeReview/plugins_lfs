@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6504f24d_b118c0d2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-08-26T12:48:42Z",
+      "side": 1,
+      "message": "No, there is still some configuration in etc/gerrit.config and etc/$PLUGIN.config",
+      "parentUuid": "05b096bd_4605f26f",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 6
+      },
+      "revId": "5cdbb0fa3cd5ca77132aeacafcfac60a366e91d9",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05b096bd_a6362647",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsConfig.java",
         "patchSetId": 8
@@ -36,6 +60,30 @@
       "writtenOn": "2016-08-26T12:05:53Z",
       "side": 1,
       "message": "Since the config.md doesn\u0027t mention the for-each pattern \"?/*\" (see the quota plugin documentation [1] for more details), I assume that we don\u0027t need that feature for the lfs plugin. Remove this code.\n\n[1] https://gerrit.googlesource.com/plugins/quota/+/refs/heads/master/src/main/resources/Documentation/config.md",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 9
+      },
+      "revId": "5cdbb0fa3cd5ca77132aeacafcfac60a366e91d9",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6504f24d_5104f471",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsConfig.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-08-26T12:48:42Z",
+      "side": 1,
+      "message": "The code is copied from quota plugin with minimal changes.  This might actually be used somewhere - in that case I guess it would be more appropriate to update the documentation.",
+      "parentUuid": "05b096bd_a6362647",
       "range": {
         "startLine": 45,
         "startChar": 0,
