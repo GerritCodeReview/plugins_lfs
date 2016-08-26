@@ -1,18 +1,21 @@
-Plugin @PLUGIN@ configuration
-=============================
+# Plugin @PLUGIN@ configuration
 
-**The following option must be set in `$GERRIT_SITE/etc/gerrit.config` file.**
+## Core Gerrit Settings
 
-#### Section `lfs`
+The following option must be set in `$GERRIT_SITE/etc/gerrit.config`.
+
+### Section `lfs`
 
 lfs.plugin = @PLUGIN@
 : With this option set LFS requests are forwarded to the @PLUGIN@ plugin.
 
-**The following options can be configured in `@PLUGIN@.config` on the
-`refs/meta/config` branch per project. Configuration values are inherited by
-child projects.**
+## Plugin Settings
 
-#### Section `lfs`
+The following options can be configured in `@PLUGIN@.config` on the
+`refs/meta/config` branch per project. Configuration values are inherited by
+child projects.
+
+### Section `lfs`
 
 lfs.enabled
 : Whether to enable LFS for this project. If not set, defaults to `false`.
@@ -22,16 +25,14 @@ lfs.maxObjectSize
 no limit. If not set, defaults to 0. Common unit suffixes of `k`, `m`, and `g`
 are supported.
 
-**The following options can be configured in `$GERRIT_SITE/etc/@PLUGIN@.config`
+The following options can be configured in `$GERRIT_SITE/etc/@PLUGIN@.config`
 and `$GERRIT_SITE/etc/@PLUGIN@.secure.config.**
 
-#### Section `storage`
+### Section `storage`
 
 storage.backend
 : The storage backend to use. Valid values are `fs` for local file system,
 and `s3` for Amazon S3. If not set, defaults to `fs`.
-
-**Local filesystem configuration**
 
 #### Section `fs`
 
@@ -40,8 +41,6 @@ The following configuration options are only used when the backend is `fs`.
 fs.directory
 : The directory in which to store data files. If not specified, defaults to
 the plugin's data folder: `$GERRIT_SITE/data/@PLUGIN@`.
-
-**Amazon S3 configuration**
 
 #### Section `s3`
 
@@ -83,9 +82,11 @@ s3.secretKey
 [Amazon IAM secretKey] for authenticating to S3. It is recommended to place this
 setting in `$GERRIT_SITE/etc/@PLUGIN@.secure.config`.
 
-**The following options must be set in the local project's .git/config file.**
+## Local Project Configuration
 
-#### Section `lfs`
+The following options must be set in the local project's `.git/config` file.
+
+### Section `lfs`
 
 lfs.url
 : `http://<username>@<gerrit-host>:<port>/<project-name>/info/lfs`
