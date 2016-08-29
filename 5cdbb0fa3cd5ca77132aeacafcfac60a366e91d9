@@ -96,6 +96,53 @@
     },
     {
       "key": {
+        "uuid": "05609687_26acf67f",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsConfig.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-08-29T02:44:31Z",
+      "side": 1,
+      "message": "Documentation is updated in the next PS.",
+      "parentUuid": "6504f24d_5104f471",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 9
+      },
+      "revId": "5cdbb0fa3cd5ca77132aeacafcfac60a366e91d9",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "65715257_c9a0918f",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsConfigSection.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-08-29T02:44:31Z",
+      "side": 1,
+      "message": "After removing the two methods below, this (and the Namespace) class is not not used and can be removed too.",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 28,
+        "endChar": 44
+      },
+      "revId": "5cdbb0fa3cd5ca77132aeacafcfac60a366e91d9",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05b096bd_660a6e81",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsConfigSection.java",
         "patchSetId": 8
@@ -113,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "65715257_29936d4e",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsConfigSection.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-08-29T02:44:31Z",
+      "side": 1,
+      "message": "Done. This was copied from the quota plugin, but there it\u0027s used in one of the REST endpoints.",
+      "parentUuid": "05b096bd_660a6e81",
+      "revId": "5cdbb0fa3cd5ca77132aeacafcfac60a366e91d9",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "65c1521d_097869ee",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsConfigSection.java",
         "patchSetId": 8
@@ -124,6 +189,24 @@
       "writtenOn": "2016-08-26T12:05:53Z",
       "side": 1,
       "message": "This one is also not used.",
+      "revId": "5cdbb0fa3cd5ca77132aeacafcfac60a366e91d9",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05609687_66b2eee0",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsConfigSection.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-08-29T02:44:31Z",
+      "side": 1,
+      "message": "Done. In the quota plugin this was used when calculating the total number of allowed projects per namespace. We don\u0027t need it here.",
+      "parentUuid": "65c1521d_097869ee",
       "revId": "5cdbb0fa3cd5ca77132aeacafcfac60a366e91d9",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
