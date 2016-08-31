@@ -26,6 +26,7 @@ import com.google.gerrit.server.project.ProjectState;
 import org.eclipse.jgit.lfs.errors.LfsException;
 import org.eclipse.jgit.lfs.errors.LfsRepositoryNotFound;
 import org.eclipse.jgit.lfs.errors.LfsRepositoryReadOnly;
+import org.eclipse.jgit.lfs.errors.LfsUnavailable;
 import org.eclipse.jgit.lfs.errors.LfsValidationError;
 import org.eclipse.jgit.lfs.server.LargeFileRepository;
 import org.eclipse.jgit.lfs.server.LfsObject;
@@ -55,7 +56,7 @@ public abstract class LfsApiServlet extends LfsProtocolServlet {
     String pathInfo = path.startsWith("/") ? path : "/" + path;
     Matcher matcher = URL_PATTERN.matcher(pathInfo);
     if (!matcher.matches()) {
-      return null;
+      throw new LfsException("no repository at " + pathInfo);
     }
     Project.NameKey project = Project.NameKey.parse(
         ProjectUtil.stripGitSuffix(matcher.group(1)));
@@ -90,6 +91,6 @@ public abstract class LfsApiServlet extends LfsProtocolServlet {
       return getRepository();
     }
 
-    return null;
+    throw new LfsUnavailable(project.get());
   }
 }
