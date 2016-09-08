@@ -14,6 +14,7 @@
 
 package com.googlesource.gerrit.plugins.lfs;
 
+import com.google.common.collect.ImmutableList;
 import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.reviewdb.client.Project;
 import com.google.gerrit.server.config.PluginConfigFactory;
@@ -22,6 +23,8 @@ import com.google.inject.Inject;
 
 import org.eclipse.jgit.lib.Config;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -46,6 +49,20 @@ public class LfsConfig {
 
   public Config getConfig() {
     return config;
+  }
+
+  public List<LfsConfigSection> getConfigSections() {
+    Config cfg =
+        projectCache.getAllProjects().getConfig(pluginName + ".config").get();
+    Set<String> namespaces = cfg.getSubsections(LfsConfigSection.LFS);
+    if (!namespaces.isEmpty()) {
+      ArrayList<LfsConfigSection> result = new ArrayList<>(namespaces.size());
+      for (String n : namespaces) {
+        result.add(new LfsConfigSection(cfg, n));
+      }
+      return result;
+    }
+    return ImmutableList.of();
   }
 
   public LfsConfigSection getForProject(Project.NameKey project) {
