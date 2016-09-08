@@ -49,6 +49,24 @@
     },
     {
       "key": {
+        "uuid": "0b2b4a7f_4ecc1360",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-09-08T12:21:49Z",
+      "side": 1,
+      "message": "\u003e What should the call look like if we want to get the global config?\n \u003e \n \u003e Initially I did make them with separate endpoints, lfs:config would return the project config, and lfs:settings would return the global config when called on All-Projects.\n\n+2\n:-)",
+      "parentUuid": "4b3d42bc_908fb426",
+      "revId": "47148a92defd8cb9d98b9d69fd40a136afe3dcd6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b2b4a7f_4ea1b399",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -90,6 +108,24 @@
         "endLine": 18,
         "endChar": 47
       },
+      "revId": "47148a92defd8cb9d98b9d69fd40a136afe3dcd6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b2b4a7f_8ea67bac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-09-08T12:21:49Z",
+      "side": 1,
+      "message": "\u003e I was assuming that one wouldn\u0027t want to upload large objects to All-Projects.\n\nThis wasn\u0027t the reason for my comments... probably no one will even upload\na large object the All-Projects project.\n\n \u003e \n \u003e If doing that is a valid use case, then I will rework it.\n\nWhat I didn\u0027t like was to return different response *type* depending on the current users\u0027s capabilities.",
+      "parentUuid": "ab187e6f_13d62cec",
       "revId": "47148a92defd8cb9d98b9d69fd40a136afe3dcd6",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
