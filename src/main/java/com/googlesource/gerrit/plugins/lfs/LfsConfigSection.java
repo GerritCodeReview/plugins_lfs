@@ -29,6 +29,10 @@ public class LfsConfigSection {
     this.namespace = namespace;
   }
 
+  public String getNamespace() {
+    return namespace;
+  }
+
   public long getMaxObjectSize() {
     return cfg.getLong(LFS, namespace, KEY_MAX_OBJECT_SIZE, 0);
   }
