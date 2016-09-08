@@ -17,9 +17,7 @@ package com.googlesource.gerrit.plugins.lfs;
 import static com.google.gerrit.httpd.plugins.LfsPluginServlet.URL_REGEX;
 import static com.googlesource.gerrit.plugins.lfs.fs.LocalLargeFileRepository.CONTENT_PATH;
 
-import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.httpd.plugins.HttpPluginModule;
-import com.google.gerrit.server.config.PluginConfigFactory;
 import com.google.inject.Inject;
 
 import com.googlesource.gerrit.plugins.lfs.fs.LfsFsApiServlet;
@@ -28,19 +26,16 @@ import com.googlesource.gerrit.plugins.lfs.fs.LocalLargeFileRepository;
 import com.googlesource.gerrit.plugins.lfs.s3.LfsS3ApiServlet;
 import com.googlesource.gerrit.plugins.lfs.s3.S3LargeFileRepository;
 
-import org.eclipse.jgit.lib.Config;
-
 public class HttpModule extends HttpPluginModule {
-  private final Config config;
+  private final LfsBackend backend;
 
   @Inject
-  HttpModule(PluginConfigFactory config, @PluginName String pluginName) {
-    this.config = config.getGlobalPluginConfig(pluginName);
+  HttpModule(LfsConfig config) {
+    this.backend = config.getBackend();
   }
 
   @Override
   protected void configureServlets() {
-    LfsBackend backend = config.getEnum("storage", null, "backend", LfsBackend.FS);
     switch (backend) {
       case FS:
         serveRegex(URL_REGEX).with(LfsFsApiServlet.class);

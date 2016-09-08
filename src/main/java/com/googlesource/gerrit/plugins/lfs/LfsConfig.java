@@ -16,6 +16,7 @@ package com.googlesource.gerrit.plugins.lfs;
 
 import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.reviewdb.client.Project;
+import com.google.gerrit.server.config.PluginConfigFactory;
 import com.google.gerrit.server.project.ProjectCache;
 import com.google.inject.Inject;
 
@@ -28,12 +29,23 @@ import java.util.regex.Pattern;
 public class LfsConfig {
   private final String pluginName;
   private final ProjectCache projectCache;
+  private final Config config;
 
   @Inject
   LfsConfig(@PluginName String pluginName,
-      ProjectCache projectCache) {
+      ProjectCache projectCache,
+      PluginConfigFactory configFactory) {
     this.pluginName = pluginName;
     this.projectCache = projectCache;
+    this.config = configFactory.getGlobalPluginConfig(pluginName);
+  }
+
+  public LfsBackend getBackend() {
+    return config.getEnum("storage", null, "backend", LfsBackend.FS);
+  }
+
+  public Config getConfig() {
+    return config;
   }
 
   public LfsConfigSection getForProject(Project.NameKey project) {

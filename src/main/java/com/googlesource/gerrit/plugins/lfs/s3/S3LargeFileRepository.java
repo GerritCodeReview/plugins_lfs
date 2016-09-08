@@ -15,11 +15,10 @@
 package com.googlesource.gerrit.plugins.lfs.s3;
 
 import com.google.common.base.MoreObjects;
-import com.google.gerrit.extensions.annotations.PluginName;
-import com.google.gerrit.server.config.PluginConfigFactory;
 import com.google.inject.Inject;
 
 import com.googlesource.gerrit.plugins.lfs.LfsBackend;
+import com.googlesource.gerrit.plugins.lfs.LfsConfig;
 
 import org.eclipse.jgit.lfs.server.s3.S3Config;
 import org.eclipse.jgit.lfs.server.s3.S3Repository;
@@ -28,13 +27,11 @@ import org.eclipse.jgit.lib.Config;
 public class S3LargeFileRepository extends S3Repository {
 
   @Inject
-  S3LargeFileRepository(PluginConfigFactory cfg, @PluginName String pluginName) {
-    super(getS3Config(cfg, pluginName));
+  S3LargeFileRepository(LfsConfig config) {
+    super(getS3Config(config.getConfig()));
   }
 
-  private static S3Config getS3Config(PluginConfigFactory configFactory,
-      String pluginName) {
-    Config config = configFactory.getGlobalPluginConfig(pluginName);
+  private static S3Config getS3Config(Config config) {
     String section = LfsBackend.S3.name();
     String region = config.getString(section, null, "region");
     String bucket = config.getString(section, null, "bucket");

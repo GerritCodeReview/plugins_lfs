@@ -17,14 +17,12 @@ package com.googlesource.gerrit.plugins.lfs.fs;
 import com.google.common.base.Strings;
 import com.google.gerrit.extensions.annotations.PluginCanonicalWebUrl;
 import com.google.gerrit.extensions.annotations.PluginData;
-import com.google.gerrit.extensions.annotations.PluginName;
-import com.google.gerrit.server.config.PluginConfigFactory;
 import com.google.inject.Inject;
 
 import com.googlesource.gerrit.plugins.lfs.LfsBackend;
+import com.googlesource.gerrit.plugins.lfs.LfsConfig;
 
 import org.eclipse.jgit.lfs.server.fs.FileLfsRepository;
-import org.eclipse.jgit.lib.Config;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -35,22 +33,19 @@ public class LocalLargeFileRepository extends FileLfsRepository {
   public static final String CONTENT_PATH = "content";
 
   @Inject
-  LocalLargeFileRepository(PluginConfigFactory cfg,
-      @PluginName String pluginName,
+  LocalLargeFileRepository(LfsConfig config,
       @PluginCanonicalWebUrl String url,
       @PluginData Path defaultDataDir) throws IOException {
-    super(getContentPath(url),
-        getOrCreateDataDir(cfg, pluginName, defaultDataDir));
+    super(getContentPath(url), getOrCreateDataDir(config, defaultDataDir));
   }
 
   private static String getContentPath(String url) {
     return url + (url.endsWith("/") ? CONTENT_PATH : "/" + CONTENT_PATH) + "/";
   }
 
-  private static Path getOrCreateDataDir(PluginConfigFactory cfgFactory,
-      String pluginName, Path defaultDataDir) throws IOException {
-    Config cfg = cfgFactory.getGlobalPluginConfig(pluginName);
-    String dataDir = cfg.getString(
+  private static Path getOrCreateDataDir(LfsConfig config, Path defaultDataDir)
+      throws IOException {
+    String dataDir = config.getConfig().getString(
         LfsBackend.FS.name(), null, "directory");
     if (Strings.isNullOrEmpty(dataDir)) {
       return defaultDataDir;
