@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "4b3d42bc_908fb426",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-09-08T11:34:57Z",
+      "side": 1,
+      "message": "What should the call look like if we want to get the global config?\n\nInitially I did make them with separate endpoints, lfs:config would return the project config, and lfs:settings would return the global config when called on All-Projects.",
+      "range": {
+        "startLine": 11,
+        "startChar": 2,
+        "endLine": 11,
+        "endChar": 41
+      },
+      "revId": "47148a92defd8cb9d98b9d69fd40a136afe3dcd6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b2b4a7f_4ea1b399",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
