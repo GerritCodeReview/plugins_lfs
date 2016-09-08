@@ -12,6 +12,7 @@ gerrit_plugin(
   ],
   manifest_entries = [
     'Gerrit-PluginName: lfs',
+    'Gerrit-Module: com.googlesource.gerrit.plugins.lfs.Module',
     'Gerrit-HttpModule: com.googlesource.gerrit.plugins.lfs.HttpModule',
   ],
 )
