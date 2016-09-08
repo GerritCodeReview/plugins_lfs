@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b2b4a7f_4ea1b399",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-09-08T11:09:52Z",
+      "side": 1,
+      "message": "How to get lfs config for All-Projects when the caller has the Administrate Server capability? Shouldn\u0027t we better have a dedicated end-point for getting the global lfs config?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 47
+      },
+      "revId": "47148a92defd8cb9d98b9d69fd40a136afe3dcd6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb27d6af_0dedf1b5",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsConfig.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-09-08T11:09:52Z",
+      "side": 1,
+      "message": "I think that we now prefer the standard syntax:\n\n  new ArrayList\u003c\u003e(capacity)",
+      "revId": "47148a92defd8cb9d98b9d69fd40a136afe3dcd6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b2b4a7f_2e96673d",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsConfigInfo.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-09-08T11:09:52Z",
+      "side": 1,
+      "message": "Looks like this empty interface is only necessary because the return type depends on the capabilities of the calling user. If we would have dedicated end-point for the global lfs config then this interface wouldn\u0027t be needed.",
+      "revId": "47148a92defd8cb9d98b9d69fd40a136afe3dcd6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
