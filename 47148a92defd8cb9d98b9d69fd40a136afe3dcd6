@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ab187e6f_13d62cec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-09-08T11:33:28Z",
+      "side": 1,
+      "message": "I was assuming that one wouldn\u0027t want to upload large objects to All-Projects.\n\nIf doing that is a valid use case, then I will rework it.",
+      "parentUuid": "0b2b4a7f_4ea1b399",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 47
+      },
+      "revId": "47148a92defd8cb9d98b9d69fd40a136afe3dcd6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb27d6af_0dedf1b5",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsConfig.java",
         "patchSetId": 1
