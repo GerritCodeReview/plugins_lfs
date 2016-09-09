@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0b450a84_beba59b9",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/GetLfsSettings.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-09-09T10:35:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b5f6659_599b6364",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 7
+      },
+      "revId": "547a5e46e94476322f990157ad2692247e162098",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b5f6659_b9af1f85",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/GetLfsSettings.java",
         "patchSetId": 4
@@ -53,6 +77,24 @@
       "writtenOn": "2016-09-09T09:12:00Z",
       "side": 1,
       "message": "Missing trailing _",
+      "revId": "547a5e46e94476322f990157ad2692247e162098",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb41967a_dda64bad",
+        "filename": "src/main/resources/Documentation/rest-api.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-09-09T10:35:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b0ace5d_cf8f9d25",
       "revId": "547a5e46e94476322f990157ad2692247e162098",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
