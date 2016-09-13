@@ -31,9 +31,9 @@ public class LfsFsApiServlet extends LfsApiServlet {
 
   @Inject
   LfsFsApiServlet(ProjectCache projectCache,
-      LfsConfig lfsConfig,
+      LfsConfig.Factory lfsConfigFactory,
       LocalLargeFileRepository repository) {
-    super(projectCache, lfsConfig);
+    super(projectCache, lfsConfigFactory);
     this.repository = repository;
   }
 
