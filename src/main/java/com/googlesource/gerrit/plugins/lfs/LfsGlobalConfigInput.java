@@ -14,22 +14,8 @@
 
 package com.googlesource.gerrit.plugins.lfs;
 
-import static com.google.gerrit.server.project.ProjectResource.PROJECT_KIND;
+import java.util.Map;
 
-import com.google.gerrit.extensions.config.FactoryModule;
-import com.google.gerrit.extensions.restapi.RestApiModule;
-
-public class Module extends FactoryModule {
-
-  @Override
-  protected void configure() {
-    install(new RestApiModule() {
-      @Override
-      protected void configure() {
-        get(PROJECT_KIND, "lfs:config-project").to(GetLfsProjectConfig.class);
-        get(PROJECT_KIND, "lfs:config-global").to(GetLfsGlobalConfig.class);
-        put(PROJECT_KIND, "lfs:config-global").to(PutLfsGlobalConfig.class);
-      }
-    });
-  }
+public class LfsGlobalConfigInput {
+  Map<String, LfsProjectConfigInfo> namespaces;
 }

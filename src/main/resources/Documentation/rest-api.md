@@ -60,6 +60,31 @@ that describes the global LFS configuration.
   }
 ```
 
+## Set global configuration
+
+_PUT /projects/All-Projects/@PLUGIN@:config-global_
+
+Sets the global LFS project configuration. The configuration must be provided in
+the request body in an [LfsGlobalConfigInput](#lfs-global-config-input) entity.
+If an empty body is sent, all current project settings are removed. May only be
+called on `All-Projects` by users having the 'Administrate Server' capability.
+
+```
+  PUT /projects/All-Projects/@PLUGIN@:settings HTTP/1.0
+  Content-Type: application/json;charset=UTF-8
+  {
+    "namespaces": {
+      "test-project": {
+        "enabled": false
+      }
+    }
+  }
+```
+
+As response an [LfsSettingsInfo](#lfs-settings-info) entity is returned that
+describes the updated global LFS settings.
+
+
 ## JSON Entities
 
 ### <a id="lfs-project-config-info"></a>LfsProjectConfigInfo
@@ -75,5 +100,12 @@ _enabled_ is true. 0 means no limit is set.
 The `LfsGlobalConfigInfo` entity describes the global configuration for LFS.
 
 * _backend_: The LFS backend in use. Can be `FS` or `S3`.
+* _namespaces_: Configured namespaces as a map of [LfsProjectConfigInfo]
+(#lfs-project-config-info) entities.
+
+### <a id="lfs-global-config-input"></a>LfsGlobalConfigInput
+
+The `LfsGlobalConfigInput` entity describes the global settings for LFS.
+
 * _namespaces_: Configured namespaces as a map of [LfsProjectConfigInfo]
 (#lfs-project-config-info) entities.
