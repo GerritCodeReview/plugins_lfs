@@ -1,16 +1,16 @@
-//Copyright (C) 2016 The Android Open Source Project
+// Copyright (C) 2016 The Android Open Source Project
 //
-//Licensed under the Apache License, Version 2.0 (the "License");
-//you may not use this file except in compliance with the License.
-//You may obtain a copy of the License at
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-//http://www.apache.org/licenses/LICENSE-2.0
+// http://www.apache.org/licenses/LICENSE-2.0
 //
-//Unless required by applicable law or agreed to in writing, software
-//distributed under the License is distributed on an "AS IS" BASIS,
-//WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-//See the License for the specific language governing permissions and
-//limitations under the License.
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 package com.googlesource.gerrit.plugins.lfs;
 
@@ -40,12 +40,12 @@ public abstract class LfsApiServlet extends LfsProtocolServlet {
   private static final Pattern URL_PATTERN = Pattern.compile(URL_REGEX);
 
   private final ProjectCache projectCache;
-  private final LfsConfig lfsConfig;
+  private final LfsConfigurationFactory lfsConfigFactory;
 
   protected LfsApiServlet(ProjectCache projectCache,
-      LfsConfig lfsConfig) {
+      LfsConfigurationFactory lfsConfigFactory) {
     this.projectCache = projectCache;
-    this.lfsConfig = lfsConfig;
+    this.lfsConfigFactory = lfsConfigFactory;
   }
 
   protected abstract LargeFileRepository getRepository();
@@ -71,7 +71,8 @@ public abstract class LfsApiServlet extends LfsProtocolServlet {
       throw new LfsRepositoryReadOnly(project.get());
     }
 
-    LfsConfigSection config = lfsConfig.getForProject(project);
+    LfsConfigSection config =
+        lfsConfigFactory.getProjectsConfig().getForProject(project);
     // Only accept requests for projects where LFS is enabled.
     // No config means we default to "not enabled".
     if (config != null && config.isEnabled()) {
