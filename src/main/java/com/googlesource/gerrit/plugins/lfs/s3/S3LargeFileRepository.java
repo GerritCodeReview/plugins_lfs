@@ -18,20 +18,20 @@ import com.google.common.base.MoreObjects;
 import com.google.inject.Inject;
 
 import com.googlesource.gerrit.plugins.lfs.LfsBackend;
-import com.googlesource.gerrit.plugins.lfs.LfsConfig;
+import com.googlesource.gerrit.plugins.lfs.LfsConfigurationFactory;
+import com.googlesource.gerrit.plugins.lfs.LfsGlobalConfig;
 
 import org.eclipse.jgit.lfs.server.s3.S3Config;
 import org.eclipse.jgit.lfs.server.s3.S3Repository;
-import org.eclipse.jgit.lib.Config;
 
 public class S3LargeFileRepository extends S3Repository {
 
   @Inject
-  S3LargeFileRepository(LfsConfig config) {
-    super(getS3Config(config.getConfig()));
+  S3LargeFileRepository(LfsConfigurationFactory configFactory) {
+    super(getS3Config(configFactory.getGlobalConfig()));
   }
 
-  private static S3Config getS3Config(Config config) {
+  private static S3Config getS3Config(LfsGlobalConfig config) {
     String section = LfsBackend.S3.name();
     String region = config.getString(section, null, "region");
     String bucket = config.getString(section, null, "bucket");

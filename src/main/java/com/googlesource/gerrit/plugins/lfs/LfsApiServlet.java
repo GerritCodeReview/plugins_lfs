@@ -40,12 +40,12 @@ public abstract class LfsApiServlet extends LfsProtocolServlet {
   private static final Pattern URL_PATTERN = Pattern.compile(URL_REGEX);
 
   private final ProjectCache projectCache;
-  private final LfsConfig lfsConfig;
+  private final LfsConfigurationFactory lfsConfigFactory;
 
   protected LfsApiServlet(ProjectCache projectCache,
-      LfsConfig lfsConfig) {
+      LfsConfigurationFactory lfsConfigFactory) {
     this.projectCache = projectCache;
-    this.lfsConfig = lfsConfig;
+    this.lfsConfigFactory = lfsConfigFactory;
   }
 
   protected abstract LargeFileRepository getRepository();
@@ -71,7 +71,8 @@ public abstract class LfsApiServlet extends LfsProtocolServlet {
       throw new LfsRepositoryReadOnly(project.get());
     }
 
-    LfsConfigSection config = lfsConfig.getForProject(project);
+    LfsProjectConfigSection config =
+        lfsConfigFactory.getProjectsConfig().getForProject(project);
     // Only accept requests for projects where LFS is enabled.
     // No config means we default to "not enabled".
     if (config != null && config.isEnabled()) {

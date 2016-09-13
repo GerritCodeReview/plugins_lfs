@@ -29,35 +29,36 @@ import java.util.HashMap;
 import java.util.List;
 
 @Singleton
-class GetLfsSettings implements RestReadView<ProjectResource> {
+class GetLfsGlobalConfig implements RestReadView<ProjectResource> {
 
-  private final LfsConfig lfsConfig;
+  private final LfsConfigurationFactory lfsConfigFactory;
   private final AllProjectsName allProjectsName;
   private final Provider<CurrentUser> self;
 
   @Inject
-  GetLfsSettings(LfsConfig lfsConfig,
+  GetLfsGlobalConfig(LfsConfigurationFactory lfsConfigFactory,
       AllProjectsName allProjectsName,
       Provider<CurrentUser> self) {
-    this.lfsConfig = lfsConfig;
+    this.lfsConfigFactory = lfsConfigFactory;
     this.allProjectsName = allProjectsName;
     this.self = self;
   }
 
   @Override
-  public LfsSettingsInfo apply(ProjectResource resource) throws RestApiException {
+  public LfsGlobalConfigInfo apply(ProjectResource resource) throws RestApiException {
     IdentifiedUser user = self.get().asIdentifiedUser();
     if (!(resource.getNameKey().equals(allProjectsName)
         && user.getCapabilities().canAdministrateServer())) {
       throw new ResourceNotFoundException();
     }
-    LfsSettingsInfo info = new LfsSettingsInfo();
-    info.backend = lfsConfig.getBackend();
-    List<LfsConfigSection> configSections = lfsConfig.getConfigSections();
+    LfsGlobalConfigInfo info = new LfsGlobalConfigInfo();
+    info.backend = lfsConfigFactory.getGlobalConfig().getBackend();
+    List<LfsProjectConfigSection> configSections =
+        lfsConfigFactory.getProjectsConfig().getConfigSections();
     if (!configSections.isEmpty()) {
       info.namespaces = new HashMap<>(configSections.size());
-      for (LfsConfigSection section : configSections) {
-        LfsConfigInfo sectionInfo = new LfsConfigInfo();
+      for (LfsProjectConfigSection section : configSections) {
+        LfsProjectConfigInfo sectionInfo = new LfsProjectConfigInfo();
         sectionInfo.enabled = section.isEnabled();
         sectionInfo.maxObjectSize = section.getMaxObjectSize();
         info.namespaces.put(section.getNamespace(), sectionInfo);

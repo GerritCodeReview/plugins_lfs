@@ -16,7 +16,7 @@ package com.googlesource.gerrit.plugins.lfs;
 
 import org.eclipse.jgit.lib.Config;
 
-public class LfsConfigSection {
+public class LfsProjectConfigSection {
   public static final String LFS = "lfs";
   public static final String KEY_MAX_OBJECT_SIZE = "maxObjectSize";
   public static final String KEY_ENABLED = "enabled";
@@ -24,7 +24,7 @@ public class LfsConfigSection {
   private final Config cfg;
   private final String namespace;
 
-  LfsConfigSection(Config cfg, String namespace) {
+  LfsProjectConfigSection(Config cfg, String namespace) {
     this.cfg = cfg;
     this.namespace = namespace;
   }

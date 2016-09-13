@@ -26,8 +26,8 @@ public class Module extends FactoryModule {
     install(new RestApiModule() {
       @Override
       protected void configure() {
-        get(PROJECT_KIND, "lfs:config").to(GetLfsConfig.class);
-        get(PROJECT_KIND, "lfs:settings").to(GetLfsSettings.class);
+        get(PROJECT_KIND, "lfs:config-project").to(GetLfsProjectConfig.class);
+        get(PROJECT_KIND, "lfs:config-global").to(GetLfsGlobalConfig.class);
       }
     });
   }
