@@ -14,21 +14,16 @@
 
 package com.googlesource.gerrit.plugins.lfs;
 
-import static com.google.gerrit.server.project.ProjectResource.PROJECT_KIND;
+import org.eclipse.jgit.lib.Config;
 
-import com.google.gerrit.extensions.config.FactoryModule;
-import com.google.gerrit.extensions.restapi.RestApiModule;
-
-public class Module extends FactoryModule {
-
-  @Override
-  protected void configure() {
-    install(new RestApiModule() {
-      @Override
-      protected void configure() {
-        get(PROJECT_KIND, "lfs:config-projects").to(GetLfsProjectsConfig.class);
-        get(PROJECT_KIND, "lfs:config-global").to(GetLfsGlobalConfig.class);
-      }
-    });
+/**
+ * Represents the global LFS configuration stored in $SITE/etc/lfs.config.
+ */
+public class LfsGlobalConfig extends Config {
+  /**
+   * @return the configured LFS backend.
+   */
+  public LfsBackend getBackend() {
+    return getEnum("storage", null, "backend", LfsBackend.FS);
   }
 }

@@ -29,17 +29,17 @@ import java.util.HashMap;
 import java.util.List;
 
 @Singleton
-class GetLfsSettings implements RestReadView<ProjectResource> {
+class GetLfsGlobalConfig implements RestReadView<ProjectResource> {
 
-  private final LfsConfig lfsConfig;
+  private final LfsConfigurationFactory lfsConfigFactory;
   private final AllProjectsName allProjectsName;
   private final Provider<CurrentUser> self;
 
   @Inject
-  GetLfsSettings(LfsConfig lfsConfig,
+  GetLfsGlobalConfig(LfsConfigurationFactory lfsConfigFactory,
       AllProjectsName allProjectsName,
       Provider<CurrentUser> self) {
-    this.lfsConfig = lfsConfig;
+    this.lfsConfigFactory = lfsConfigFactory;
     this.allProjectsName = allProjectsName;
     this.self = self;
   }
@@ -52,8 +52,10 @@ class GetLfsSettings implements RestReadView<ProjectResource> {
       throw new ResourceNotFoundException();
     }
     LfsSettingsInfo info = new LfsSettingsInfo();
+    LfsGlobalConfig lfsConfig = lfsConfigFactory.getGlobalConfig();
     info.backend = lfsConfig.getBackend();
-    List<LfsConfigSection> configSections = lfsConfig.getConfigSections();
+    List<LfsConfigSection> configSections =
+        lfsConfigFactory.getProjectsConfig().getConfigSections();
     if (!configSections.isEmpty()) {
       info.namespaces = new HashMap<>(configSections.size());
       for (LfsConfigSection section : configSections) {
