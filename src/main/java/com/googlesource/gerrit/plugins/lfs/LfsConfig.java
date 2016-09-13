@@ -41,6 +41,7 @@ public class LfsConfig extends VersionedMetaData {
   private final String configFilename;
   private final ProjectCache projectCache;
   private final Config globalConfig;
+  private final Project.NameKey projectName;
   private Config projectConfig;
 
   @Singleton
@@ -48,28 +49,43 @@ public class LfsConfig extends VersionedMetaData {
     final String pluginName;
     final ProjectCache projectCache;
     final PluginConfigFactory configFactory;
+    final Project.NameKey projectName;
 
     @Inject
     public Factory(@PluginName String pluginName,
         ProjectCache projectCache,
-        PluginConfigFactory configFactory) {
+        PluginConfigFactory configFactory,
+        Project.NameKey projectName) {
       this.pluginName = pluginName;
       this.projectCache = projectCache;
       this.configFactory = configFactory;
+      this.projectName = projectName;
     }
 
     public LfsConfig create() {
       return new LfsConfig(pluginName, projectCache, configFactory);
     }
+
+    public LfsConfig create(Project.NameKey projectName) {
+      return new LfsConfig(pluginName, projectCache, configFactory, projectName);
+    }
+  }
+
+  private LfsConfig(@PluginName String pluginName,
+      ProjectCache projectCache,
+      PluginConfigFactory configFactory,
+      Project.NameKey projectName) {
+    this.configFilename = pluginName + ".config";
+    this.projectCache = projectCache;
+    this.globalConfig = configFactory.getGlobalPluginConfig(pluginName);
+    this.projectConfig = loadProjectConfig();
+    this.projectName = projectName;
   }
 
   private LfsConfig(@PluginName String pluginName,
       ProjectCache projectCache,
       PluginConfigFactory configFactory) {
-    this.configFilename = pluginName + ".config";
-    this.projectCache = projectCache;
-    this.globalConfig = configFactory.getGlobalPluginConfig(pluginName);
-    this.projectConfig = loadProjectConfig();
+    this(pluginName, projectCache, configFactory, null);
   }
 
   public LfsBackend getBackend() {
@@ -144,6 +160,9 @@ public class LfsConfig extends VersionedMetaData {
       commit.setMessage("Update LFS configuration\n");
     }
     saveConfig(configFilename, projectConfig);
+    if (projectName != null) {
+      projectCache.evict(projectName);
+    }
     return true;
   }
 }
