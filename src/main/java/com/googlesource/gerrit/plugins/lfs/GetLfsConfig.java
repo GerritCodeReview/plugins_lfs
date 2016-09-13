@@ -23,17 +23,18 @@ import com.google.inject.Singleton;
 @Singleton
 class GetLfsConfig implements RestReadView<ProjectResource> {
 
-  private final LfsConfig lfsConfig;
+  private final LfsConfig.Factory lfsConfigFactory;
 
   @Inject
-  GetLfsConfig(LfsConfig lfsConfig) {
-    this.lfsConfig = lfsConfig;
+  GetLfsConfig(LfsConfig.Factory lfsConfigFactory) {
+    this.lfsConfigFactory = lfsConfigFactory;
   }
 
   @Override
   public LfsConfigInfo apply(ProjectResource resource) throws RestApiException {
     LfsConfigInfo info = new LfsConfigInfo();
-    LfsConfigSection config = lfsConfig.getForProject(resource.getNameKey());
+    LfsConfigSection config =
+        lfsConfigFactory.create().getForProject(resource.getNameKey());
     if (config != null) {
       info.enabled = config.isEnabled();
       info.maxObjectSize = config.getMaxObjectSize();
