@@ -30,8 +30,8 @@ public class HttpModule extends HttpPluginModule {
   private final LfsBackend backend;
 
   @Inject
-  HttpModule(LfsConfig config) {
-    this.backend = config.getBackend();
+  HttpModule(LfsConfigurationFactory configFactory) {
+    this.backend = configFactory.getGlobalConfig().getBackend();
   }
 
   @Override

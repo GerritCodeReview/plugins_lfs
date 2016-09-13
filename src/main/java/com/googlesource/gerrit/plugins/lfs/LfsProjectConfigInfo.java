@@ -14,7 +14,7 @@
 
 package com.googlesource.gerrit.plugins.lfs;
 
-public class LfsConfigInfo {
+public class LfsProjectConfigInfo {
   public Boolean enabled;
   public Long maxObjectSize;
 }

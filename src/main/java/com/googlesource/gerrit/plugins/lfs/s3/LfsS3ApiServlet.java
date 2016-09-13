@@ -19,7 +19,7 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
 import com.googlesource.gerrit.plugins.lfs.LfsApiServlet;
-import com.googlesource.gerrit.plugins.lfs.LfsConfig;
+import com.googlesource.gerrit.plugins.lfs.LfsConfigurationFactory;
 
 import org.eclipse.jgit.lfs.server.LargeFileRepository;
 
@@ -31,9 +31,9 @@ public class LfsS3ApiServlet extends LfsApiServlet {
 
   @Inject
   LfsS3ApiServlet(ProjectCache projectCache,
-      LfsConfig lfsConfig,
+      LfsConfigurationFactory lfsConfigFactory,
       S3LargeFileRepository repository) {
-    super(projectCache, lfsConfig);
+    super(projectCache, lfsConfigFactory);
     this.repository = repository;
   }
 

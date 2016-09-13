@@ -7,16 +7,16 @@ Please also take note of the general information on the
 
 ## Get project configuration
 
-_GET /projects/project_name/@PLUGIN@:config_
+_GET /projects/project_name/@PLUGIN@:config-project_
 
-Gets the LFS configuration for the specified project.
+Gets the LFS configuration for a specified project.
 
 ```
-  GET /projects/myproject/@PLUGIN@:config HTTP/1.0
+  GET /projects/myproject/@PLUGIN@:config-project HTTP/1.0
 ```
 
-As response an [LfsConfigInfo](#lfs-config-info) entity is returned that
-describes the LFS configuration for the project.
+As response an [LfsProjectConfigInfo](#lfs-project-config-info) entity is
+returned that describes the LFS configuration for the project.
 
 ```
   HTTP/1.1 200 OK
@@ -30,19 +30,19 @@ describes the LFS configuration for the project.
 ```
 
 
-## Get global settings
+## Get global configuration
 
-_GET /projects/All-Projects/@PLUGIN@:settings_
+_GET /projects/All-Projects/@PLUGIN@:config-global_
 
-Gets the global LFS settings. May only be called on `All-Projects` by users
+Gets the global LFS configuration. May only be called on `All-Projects` by users
 having the 'Administrate Server' capability.
 
 ```
-  GET /projects/All-Projects/@PLUGIN@:settings HTTP/1.0
+  GET /projects/All-Projects/@PLUGIN@:config-global HTTP/1.0
 ```
 
-As response an [LfsSettingsInfo](#lfs-settings-info) entity is returned that
-describes the global LFS settings.
+As response an [LfsGlobalConfigInfo](#lfs-global-config-info) entity is returned
+that describes the global LFS configuration.
 
 ```
   HTTP/1.1 200 OK
@@ -62,18 +62,18 @@ describes the global LFS settings.
 
 ## JSON Entities
 
-### <a id="lfs-config-info"></a>LfsConfigInfo
+### <a id="lfs-project-config-info"></a>LfsProjectConfigInfo
 
-The `LfsConfigInfo` describes the LFS configuration for a project.
+The `LfsProjectConfigInfo` describes the LFS configuration for a project.
 
 * _enabled_: Whether LFS is enabled for this project. Not set if false.
 * _max_object_size_: Maximum LFS object size for this project. Only set when
 _enabled_ is true. 0 means no limit is set.
 
-### <a id="lfs-settings-info"></a>LfsSettingsInfo
+### <a id="lfs-global-config-info"></a>LfsGlobalConfigInfo
 
-The `LfsSettingsInfo` entity describes the global settings for LFS.
+The `LfsGlobalConfigInfo` entity describes the global configuration for LFS.
 
 * _backend_: The LFS backend in use. Can be `FS` or `S3`.
-* _namespaces_: Configured namespaces as a map of [LfsConfigInfo](#lfs-config-info)
-entities.
+* _namespaces_: Configured namespaces as a map of [LfsProjectConfigInfo]
+(#lfs-project-config-info) entities.
