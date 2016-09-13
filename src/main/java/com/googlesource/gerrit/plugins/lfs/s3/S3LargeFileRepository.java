@@ -27,8 +27,8 @@ import org.eclipse.jgit.lib.Config;
 public class S3LargeFileRepository extends S3Repository {
 
   @Inject
-  S3LargeFileRepository(LfsConfig config) {
-    super(getS3Config(config.getConfig()));
+  S3LargeFileRepository(LfsConfig.Factory configFactory) {
+    super(getS3Config(configFactory.create().getGlobalConfig()));
   }
 
   private static S3Config getS3Config(Config config) {

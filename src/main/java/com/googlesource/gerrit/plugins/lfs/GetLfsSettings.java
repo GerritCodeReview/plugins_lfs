@@ -31,15 +31,15 @@ import java.util.List;
 @Singleton
 class GetLfsSettings implements RestReadView<ProjectResource> {
 
-  private final LfsConfig lfsConfig;
+  private final LfsConfig.Factory lfsConfigFactory;
   private final AllProjectsName allProjectsName;
   private final Provider<CurrentUser> self;
 
   @Inject
-  GetLfsSettings(LfsConfig lfsConfig,
+  GetLfsSettings(LfsConfig.Factory lfsConfigFactory,
       AllProjectsName allProjectsName,
       Provider<CurrentUser> self) {
-    this.lfsConfig = lfsConfig;
+    this.lfsConfigFactory = lfsConfigFactory;
     this.allProjectsName = allProjectsName;
     this.self = self;
   }
@@ -52,6 +52,7 @@ class GetLfsSettings implements RestReadView<ProjectResource> {
       throw new ResourceNotFoundException();
     }
     LfsSettingsInfo info = new LfsSettingsInfo();
+    LfsConfig lfsConfig = lfsConfigFactory.create();
     info.backend = lfsConfig.getBackend();
     List<LfsConfigSection> configSections = lfsConfig.getConfigSections();
     if (!configSections.isEmpty()) {

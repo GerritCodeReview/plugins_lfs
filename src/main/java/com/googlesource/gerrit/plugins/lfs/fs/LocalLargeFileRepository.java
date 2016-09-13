@@ -33,10 +33,11 @@ public class LocalLargeFileRepository extends FileLfsRepository {
   public static final String CONTENT_PATH = "content";
 
   @Inject
-  LocalLargeFileRepository(LfsConfig config,
+  LocalLargeFileRepository(LfsConfig.Factory configFactory,
       @PluginCanonicalWebUrl String url,
       @PluginData Path defaultDataDir) throws IOException {
-    super(getContentPath(url), getOrCreateDataDir(config, defaultDataDir));
+    super(getContentPath(url),
+        getOrCreateDataDir(configFactory.create(), defaultDataDir));
   }
 
   private static String getContentPath(String url) {
@@ -45,7 +46,7 @@ public class LocalLargeFileRepository extends FileLfsRepository {
 
   private static Path getOrCreateDataDir(LfsConfig config, Path defaultDataDir)
       throws IOException {
-    String dataDir = config.getConfig().getString(
+    String dataDir = config.getGlobalConfig().getString(
         LfsBackend.FS.name(), null, "directory");
     if (Strings.isNullOrEmpty(dataDir)) {
       return defaultDataDir;

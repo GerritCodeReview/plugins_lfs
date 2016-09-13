@@ -14,51 +14,78 @@
 
 package com.googlesource.gerrit.plugins.lfs;
 
+import static com.google.gerrit.reviewdb.client.RefNames.REFS_CONFIG;
+
+import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableList;
 import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.reviewdb.client.Project;
 import com.google.gerrit.server.config.PluginConfigFactory;
+import com.google.gerrit.server.git.VersionedMetaData;
 import com.google.gerrit.server.project.ProjectCache;
 import com.google.inject.Inject;
+import com.google.inject.Singleton;
 
+import org.eclipse.jgit.errors.ConfigInvalidException;
+import org.eclipse.jgit.lib.CommitBuilder;
 import org.eclipse.jgit.lib.Config;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class LfsConfig {
-  private final String pluginName;
+public class LfsConfig extends VersionedMetaData {
+  private final String configFilename;
   private final ProjectCache projectCache;
-  private final Config config;
+  private final Config globalConfig;
+  private Config projectConfig;
 
-  @Inject
-  LfsConfig(@PluginName String pluginName,
+  @Singleton
+  public static class Factory {
+    final String pluginName;
+    final ProjectCache projectCache;
+    final PluginConfigFactory configFactory;
+
+    @Inject
+    public Factory(@PluginName String pluginName,
+        ProjectCache projectCache,
+        PluginConfigFactory configFactory) {
+      this.pluginName = pluginName;
+      this.projectCache = projectCache;
+      this.configFactory = configFactory;
+    }
+
+    public LfsConfig create() {
+      return new LfsConfig(pluginName, projectCache, configFactory);
+    }
+  }
+
+  private LfsConfig(@PluginName String pluginName,
       ProjectCache projectCache,
       PluginConfigFactory configFactory) {
-    this.pluginName = pluginName;
+    this.configFilename = pluginName + ".config";
     this.projectCache = projectCache;
-    this.config = configFactory.getGlobalPluginConfig(pluginName);
+    this.globalConfig = configFactory.getGlobalPluginConfig(pluginName);
+    this.projectConfig = loadProjectConfig();
   }
 
   public LfsBackend getBackend() {
-    return config.getEnum("storage", null, "backend", LfsBackend.FS);
+    return globalConfig.getEnum("storage", null, "backend", LfsBackend.FS);
   }
 
-  public Config getConfig() {
-    return config;
+  public Config getGlobalConfig() {
+    return globalConfig;
   }
 
   public List<LfsConfigSection> getConfigSections() {
-    Config cfg =
-        projectCache.getAllProjects().getConfig(pluginName + ".config").get();
-    Set<String> namespaces = cfg.getSubsections(LfsConfigSection.LFS);
+    Set<String> namespaces = projectConfig.getSubsections(LfsConfigSection.LFS);
     if (!namespaces.isEmpty()) {
       ArrayList<LfsConfigSection> result = new ArrayList<>(namespaces.size());
       for (String n : namespaces) {
-        result.add(new LfsConfigSection(cfg, n));
+        result.add(new LfsConfigSection(projectConfig, n));
       }
       return result;
     }
@@ -66,29 +93,57 @@ public class LfsConfig {
   }
 
   public LfsConfigSection getForProject(Project.NameKey project) {
-    Config cfg =
-        projectCache.getAllProjects().getConfig(pluginName + ".config").get();
-    Set<String> namespaces = cfg.getSubsections(LfsConfigSection.LFS);
+    Set<String> namespaces = projectConfig.getSubsections(LfsConfigSection.LFS);
     String p = project.get();
     for (String n : namespaces) {
       if ("?/*".equals(n) || n.endsWith("/?/*")) {
         String prefix = n.substring(0, n.length() - 3);
         Matcher m = Pattern.compile("^" + prefix + "([^/]+)/.*$").matcher(p);
         if (m.matches()) {
-          return new LfsConfigSection(cfg, n);
+          return new LfsConfigSection(projectConfig, n);
         }
       } else if (n.endsWith("/*")) {
         if (p.startsWith(n.substring(0, n.length() - 1))) {
-          return new LfsConfigSection(cfg, n);
+          return new LfsConfigSection(projectConfig, n);
         }
       } else if (n.startsWith("^")) {
         if (p.matches(n.substring(1))) {
-          return new LfsConfigSection(cfg, n);
+          return new LfsConfigSection(projectConfig, n);
         }
       } else if (p.equals(n)) {
-        return new LfsConfigSection(cfg, n);
+        return new LfsConfigSection(projectConfig, n);
       }
     }
     return null;
+  }
+
+  public void setProjectConfig(Config cfg) {
+    this.projectConfig = cfg;
+  }
+
+  private Config loadProjectConfig() {
+    return projectCache.getAllProjects().getConfig(configFilename).get();
+  }
+
+  @Override
+  protected String getRefName() {
+    return REFS_CONFIG;
+  }
+
+  @Override
+  protected void onLoad() throws IOException, ConfigInvalidException {
+    // Do nothing. We don't need to load the project config because the
+    // only call site that opens the config via VersionedMetaData is
+    // going to overwrite it anyway by calling #setProjectConfig.
+  }
+
+  @Override
+  protected boolean onSave(CommitBuilder commit)
+      throws IOException, ConfigInvalidException {
+    if (Strings.isNullOrEmpty(commit.getMessage())) {
+      commit.setMessage("Update LFS configuration\n");
+    }
+    saveConfig(configFilename, projectConfig);
+    return true;
   }
 }
