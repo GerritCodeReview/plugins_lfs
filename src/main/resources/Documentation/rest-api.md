@@ -34,15 +34,15 @@ describes the LFS configuration for the project.
 
 _GET /projects/All-Projects/@PLUGIN@:settings_
 
-Gets the global LFS settings.
+Gets the global LFS settings. May only be called on `All-Projects` by users
+having the 'Administrate Server' capability.
 
 ```
   GET /projects/All-Projects/@PLUGIN@:settings HTTP/1.0
 ```
 
 As response an [LfsSettingsInfo](#lfs-settings-info) entity is returned that
-describes the global LFS settings. May only be called on `All-Projects` by
-users having the 'Administrate Server' capability.
+describes the global LFS settings.
 
 ```
   HTTP/1.1 200 OK
