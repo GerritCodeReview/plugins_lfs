@@ -192,6 +192,24 @@
       "revId": "b5dbb5d652bade4eac9a925eeaee67e0beb8b059",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2bec8e3b_1f03031d",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsConfig.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-09-15T14:09:00Z",
+      "side": 1,
+      "message": "At the time of [1] it wasn\u0027t a VersionedMetadata ;-)",
+      "parentUuid": "4be70257_6026f2d6",
+      "revId": "b5dbb5d652bade4eac9a925eeaee67e0beb8b059",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
