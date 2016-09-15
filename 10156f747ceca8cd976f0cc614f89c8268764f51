@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4be70257_206a2ae5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-09-15T11:15:32Z",
+      "side": 1,
+      "message": "Would a delete request:\n\n  DELETE /a/projects/All-Projects/lfs:settings\n\nbe a better choice for that operation?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 25
+      },
+      "revId": "10156f747ceca8cd976f0cc614f89c8268764f51",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2bec8e3b_1f514329",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsConfig.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-09-15T11:15:32Z",
+      "side": 1,
+      "message": "Which project name is this field holding?\n\nIf this is the name of the project where lfs.config is stored then it can only the the All-Projects project?\n\nIf this is the name of the project for which LfsConfig is accessed then how does this relate to the getForProject(project) method? What is puzzling for me is that now we can do something like:\n\n  LfsConfig.Factory factory \u003d ...\n  LfsConfig lfsConfig \u003d factory.create(Project_A)\n  lfsConfig.getForProject(Project_B)\n\nWhat does the last command mean?",
+      "revId": "10156f747ceca8cd976f0cc614f89c8268764f51",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
