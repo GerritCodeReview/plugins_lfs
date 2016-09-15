@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "2bec8e3b_7f296fa6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-09-15T13:47:33Z",
+      "side": 1,
+      "message": "Probably the difference would be empty (but existing) lfs.config vs deleted lfs.config. Don\u0027t know if this distinction is useful at all.",
+      "parentUuid": "2bec8e3b_bf2ad79f",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 25
+      },
+      "revId": "10156f747ceca8cd976f0cc614f89c8268764f51",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2bec8e3b_1f514329",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsConfig.java",
         "patchSetId": 2
@@ -78,6 +102,24 @@
       "side": 1,
       "message": "getForProject is getting the effective configuration for that project.\n\ncreating the config with the factory is for the case that we\u0027re going to write the global settings. We need the project name so that we can evict the project cache on update.",
       "parentUuid": "2bec8e3b_1f514329",
+      "revId": "10156f747ceca8cd976f0cc614f89c8268764f51",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4be70257_201cea80",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsConfig.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-09-15T13:47:33Z",
+      "side": 1,
+      "message": "1. Global settings are only stored in the All-Projects project. Do we need to evict any other project form the project cache?\n\n2. Wouldn\u0027t it be cleaner if this class doesn\u0027t care about the cache eviction but leaves that responsibility to the PufLfsSettings?",
+      "parentUuid": "4be70257_003a86f5",
       "revId": "10156f747ceca8cd976f0cc614f89c8268764f51",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
