@@ -246,6 +246,24 @@
       "revId": "b5dbb5d652bade4eac9a925eeaee67e0beb8b059",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2bec8e3b_ff0e1f3e",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsConfig.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-09-15T14:53:45Z",
+      "side": 1,
+      "message": "Removing it would undo the benefits of putting it here in the first place, namely that classes that need the global config can get it by only injecting LfsConfig rather than having to inject both pluginConfigFactory and pluginName and instantiating the config themselves.\n\nI\u0027ll try to refactor it in a way that satisfies both requirements.",
+      "parentUuid": "2bec8e3b_bf049720",
+      "revId": "b5dbb5d652bade4eac9a925eeaee67e0beb8b059",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
