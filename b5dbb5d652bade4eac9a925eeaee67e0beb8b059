@@ -228,6 +228,24 @@
       "revId": "b5dbb5d652bade4eac9a925eeaee67e0beb8b059",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2bec8e3b_bf049720",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsConfig.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-09-15T14:42:23Z",
+      "side": 1,
+      "message": "both :-)\nsorry for being imprecise with my comments...\n\nYes, I would propose to remove it because conceptually it is not a part\nof a VersionedMetadata. However, I didn\u0027t have any time to play with\nthis code and get an estimation on the impact of my proposal... if the effort is not too high and if you agree with my proposal then remove it.",
+      "parentUuid": "2bec8e3b_5ffd8bfe",
+      "revId": "b5dbb5d652bade4eac9a925eeaee67e0beb8b059",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
