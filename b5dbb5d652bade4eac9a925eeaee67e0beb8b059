@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4be70257_8077b6c7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-09-15T11:13:47Z",
+      "side": 1,
+      "message": "It\u0027s actually part of the sentence that was started in the subject, but it would have made the subject too long.\n\nAnd it\u0027s not good style to start a new sentence with \"And\" :)\n\nI\u0027ll reword it.",
+      "parentUuid": "4be70257_e067a21b",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 4
+      },
+      "revId": "b5dbb5d652bade4eac9a925eeaee67e0beb8b059",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b0622a0_c844ef70",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -65,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "4be70257_607432c3",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/GetLfsConfig.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-09-15T11:13:47Z",
+      "side": 1,
+      "message": "It is intended.  The problem is that if we have the config injected,  it\u0027s not updated as expected when the config changes by PUT.",
+      "parentUuid": "4be70257_406daefb",
+      "revId": "b5dbb5d652bade4eac9a925eeaee67e0beb8b059",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2bec8e3b_7f77afc8",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/GetLfsSettings.java",
         "patchSetId": 1
@@ -93,6 +135,24 @@
       "writtenOn": "2016-09-15T10:51:36Z",
       "side": 1,
       "message": "Although it shoudln\u0027t really be a part of this change I agree on this rename",
+      "revId": "b5dbb5d652bade4eac9a925eeaee67e0beb8b059",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2bec8e3b_df3ebbe7",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsConfig.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-09-15T11:13:47Z",
+      "side": 1,
+      "message": "It needs to be part of this change because we now have both globalConfig and projectConfig members.",
+      "parentUuid": "2bec8e3b_3f6d27fd",
       "revId": "b5dbb5d652bade4eac9a925eeaee67e0beb8b059",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
