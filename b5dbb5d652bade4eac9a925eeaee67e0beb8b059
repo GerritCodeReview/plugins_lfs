@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "4be70257_e067a21b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-09-15T10:51:36Z",
+      "side": 1,
+      "message": "Start sentence with uppercase",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 4
+      },
+      "revId": "b5dbb5d652bade4eac9a925eeaee67e0beb8b059",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b0622a0_c844ef70",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -19,6 +42,57 @@
         "endLine": 12,
         "endChar": 17
       },
+      "revId": "b5dbb5d652bade4eac9a925eeaee67e0beb8b059",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4be70257_406daefb",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/GetLfsConfig.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-09-15T10:51:36Z",
+      "side": 1,
+      "message": "This creates a new instance of the lfsConfig every time the apply method is executed, which wasn\u0027t the case in the Base version. Is this necessary/intended?",
+      "revId": "b5dbb5d652bade4eac9a925eeaee67e0beb8b059",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2bec8e3b_7f77afc8",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/GetLfsSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-09-15T10:51:36Z",
+      "side": 1,
+      "message": "Same here... new LfsConfig instance every time the apply method is called.\n\nAlso few other places below...",
+      "revId": "b5dbb5d652bade4eac9a925eeaee67e0beb8b059",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2bec8e3b_3f6d27fd",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsConfig.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-09-15T10:51:36Z",
+      "side": 1,
+      "message": "Although it shoudln\u0027t really be a part of this change I agree on this rename",
       "revId": "b5dbb5d652bade4eac9a925eeaee67e0beb8b059",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
