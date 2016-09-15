@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4be70257_c0041e22",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-09-15T15:39:30Z",
+      "side": 1,
+      "message": "Commit message sounds good. FYI: I will not be able to do a review today and am not sure that I will make it tomorrow either... So, if not earlier then we will continue working on that together from Monday :-)",
+      "revId": "2ce29356e2444da52defc6f7e5dcf005753e225c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
