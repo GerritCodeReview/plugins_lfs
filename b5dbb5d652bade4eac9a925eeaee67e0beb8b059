@@ -210,6 +210,24 @@
       "revId": "b5dbb5d652bade4eac9a925eeaee67e0beb8b059",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2bec8e3b_5ffd8bfe",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsConfig.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-09-15T14:19:49Z",
+      "side": 1,
+      "message": "Are you saying it should now be removed?  Or was it just an observation.",
+      "parentUuid": "2bec8e3b_1f03031d",
+      "revId": "b5dbb5d652bade4eac9a925eeaee67e0beb8b059",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
