@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4be70257_c32a68a1",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsProjectsConfig.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-09-19T13:33:47Z",
+      "side": 1,
+      "message": "It does if we explicitly instantiate it as mentioned below.",
+      "parentUuid": "4be70257_63743cc3",
+      "range": {
+        "startLine": 48,
+        "startChar": 2,
+        "endLine": 48,
+        "endChar": 9
+      },
+      "revId": "b4d5a53d35d073bfad06edf8c898c1e741d11d8d",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4be70257_a344846f",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsProjectsConfig.java",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2016-09-19T13:29:15Z",
       "side": 1,
       "message": "Looks like all these objects could be injected?",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 34
+      },
+      "revId": "b4d5a53d35d073bfad06edf8c898c1e741d11d8d",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4be70257_634b9c7b",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsProjectsConfig.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-09-19T13:33:47Z",
+      "side": 1,
+      "message": "Is it possible to inject them if we\u0027re explicitly creating the instances of this class with new?",
+      "parentUuid": "4be70257_a344846f",
       "range": {
         "startLine": 48,
         "startChar": 0,
