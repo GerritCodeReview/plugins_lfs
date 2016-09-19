@@ -93,6 +93,24 @@
       "revId": "b4d5a53d35d073bfad06edf8c898c1e741d11d8d",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2bec8e3b_e27cc879",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsProjectsConfig.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-09-19T14:40:39Z",
+      "side": 1,
+      "message": "Yes, by using a factory.\n\nSince currently there is only one place which instantiates this class let\u0027s keep it as-is for now.",
+      "parentUuid": "4be70257_634b9c7b",
+      "revId": "b4d5a53d35d073bfad06edf8c898c1e741d11d8d",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
