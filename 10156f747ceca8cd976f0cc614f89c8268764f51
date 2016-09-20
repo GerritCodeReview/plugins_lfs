@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "2bec8e3b_48aaf326",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-09-20T14:26:11Z",
+      "side": 1,
+      "message": "I thought we agreed it was OK to implement like this (when I demoed it yesterday).",
+      "parentUuid": "2bec8e3b_7f296fa6",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 25
+      },
+      "revId": "10156f747ceca8cd976f0cc614f89c8268764f51",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2bec8e3b_1f514329",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsConfig.java",
         "patchSetId": 2
@@ -120,6 +144,24 @@
       "side": 1,
       "message": "1. Global settings are only stored in the All-Projects project. Do we need to evict any other project form the project cache?\n\n2. Wouldn\u0027t it be cleaner if this class doesn\u0027t care about the cache eviction but leaves that responsibility to the PufLfsSettings?",
       "parentUuid": "4be70257_003a86f5",
+      "revId": "10156f747ceca8cd976f0cc614f89c8268764f51",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4be70257_49e2f9c5",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsConfig.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-09-20T14:26:11Z",
+      "side": 1,
+      "message": "This was addressed in the previous change that was already merged [1].\n\nThe cache eviction is done in the LfsProjectsConfig class on writing the new config.  It\u0027s hard-coded to evict for the All-Projects project.\n\n[1] https://gerrit-review.googlesource.com/#/c/86057/7/src/main/java/com/googlesource/gerrit/plugins/lfs/LfsProjectsConfig.java",
+      "parentUuid": "4be70257_201cea80",
       "revId": "10156f747ceca8cd976f0cc614f89c8268764f51",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
