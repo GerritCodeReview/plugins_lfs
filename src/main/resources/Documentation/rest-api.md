@@ -81,15 +81,29 @@ called on `All-Projects` by users having the 'Administrate Server' capability.
   }
 ```
 
-As response an [LfsSettingsInfo](#lfs-settings-info) entity is returned that
-describes the updated global LFS settings.
+As response an [LfsGlobalConfigInfo](#lfs-global-config-info) entity
+is returned that describes the updated global LFS configuration.
 
+```
+  HTTP/1.1 200 OK
+  Content-Disposition: attachment
+  Content-Type: application/json;charset=UTF-8
+  )]}'
+  {
+    "backend": "FS",
+    "namespaces": {
+      "test-project": {
+        "enabled": false,
+      }
+    }
+  }
+```
 
 ## JSON Entities
 
 ### <a id="lfs-project-config-info"></a>LfsProjectConfigInfo
 
-The `LfsProjectConfigInfo` describes the LFS configuration for a project.
+The `LfsProjectConfigInfo` entity describes the LFS configuration for a project.
 
 * _enabled_: Whether LFS is enabled for this project. Not set if false.
 * _max_object_size_: Maximum LFS object size for this project. Only set when
