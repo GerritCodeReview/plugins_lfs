@@ -14,9 +14,14 @@
 
 package com.googlesource.gerrit.plugins.lfs;
 
-public class LfsProjectConfigInfo {
-  public Boolean enabled;
-  public Long maxObjectSize;
-  public Boolean readOnly;
-  public String backend;
+public class LfsBackendConfig {
+  public static final String DEFAULT = "default";
+
+  public final String name;
+  public final LfsBackend type;
+
+  public LfsBackendConfig(String name, LfsBackend type) {
+    this.name = name;
+    this.type = type;
+  }
 }

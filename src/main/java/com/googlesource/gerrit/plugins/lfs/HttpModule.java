@@ -15,39 +15,45 @@
 package com.googlesource.gerrit.plugins.lfs;
 
 import static com.google.gerrit.httpd.plugins.LfsPluginServlet.URL_REGEX;
-import static com.googlesource.gerrit.plugins.lfs.fs.LocalLargeFileRepository.CONTENT_PATH;
+import static com.googlesource.gerrit.plugins.lfs.LfsBackend.FS;
 
 import com.google.gerrit.httpd.plugins.HttpPluginModule;
 import com.google.inject.Inject;
 
-import com.googlesource.gerrit.plugins.lfs.fs.LfsFsApiServlet;
 import com.googlesource.gerrit.plugins.lfs.fs.LfsFsContentServlet;
 import com.googlesource.gerrit.plugins.lfs.fs.LocalLargeFileRepository;
-import com.googlesource.gerrit.plugins.lfs.s3.LfsS3ApiServlet;
-import com.googlesource.gerrit.plugins.lfs.s3.S3LargeFileRepository;
+
+import java.util.Map;
 
 public class HttpModule extends HttpPluginModule {
-  private final LfsBackend backend;
+  private final LocalLargeFileRepository.Factory fsRepoFactory;
+  private final LfsBackendConfig defBackendCfg;
+  private final Map<String, LfsBackendConfig> backends;
 
   @Inject
-  HttpModule(LfsConfigurationFactory configFactory) {
-    this.backend = configFactory.getGlobalConfig().getBackend();
+  HttpModule(LocalLargeFileRepository.Factory fsRepoFactory,
+      LfsConfigurationFactory configFactory) {
+    this.fsRepoFactory = fsRepoFactory;
+
+    LfsGlobalConfig config = configFactory.getGlobalConfig();
+    this.defBackendCfg = config.getDefaultBackend();
+    this.backends = config.getBackends();
   }
 
   @Override
   protected void configureServlets() {
-    switch (backend) {
-      case FS:
-        serveRegex(URL_REGEX).with(LfsFsApiServlet.class);
-        bind(LocalLargeFileRepository.class);
-        serve("/" + CONTENT_PATH + "/*").with(LfsFsContentServlet.class);
-        break;
-      case S3:
-        serveRegex(URL_REGEX).with(LfsS3ApiServlet.class);
-        bind(S3LargeFileRepository.class);
-        break;
-      default:
-        throw new RuntimeException("Unsupported backend: " + backend);
+    serveRegex(URL_REGEX).with(LfsApiServlet.class);
+
+    if (FS.equals(defBackendCfg.type)) {
+      LocalLargeFileRepository defBackend = fsRepoFactory.create(defBackendCfg);
+      serve(defBackend.getServletRegexp()).with(new LfsFsContentServlet(defBackend));
+    }
+
+    for (LfsBackendConfig backendCfg : backends.values()) {
+      if (FS.equals(backendCfg.type)) {
+        LocalLargeFileRepository backend = fsRepoFactory.create(backendCfg);
+        serve(backend.getServletRegexp()).with(new LfsFsContentServlet(backend));
+      }
     }
   }
 }

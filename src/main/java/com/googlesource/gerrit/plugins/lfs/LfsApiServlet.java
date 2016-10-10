@@ -22,6 +22,8 @@ import com.google.gerrit.common.ProjectUtil;
 import com.google.gerrit.reviewdb.client.Project;
 import com.google.gerrit.server.project.ProjectCache;
 import com.google.gerrit.server.project.ProjectState;
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
 
 import org.eclipse.jgit.lfs.errors.LfsException;
 import org.eclipse.jgit.lfs.errors.LfsRepositoryNotFound;
@@ -35,20 +37,23 @@ import org.eclipse.jgit.lfs.server.LfsProtocolServlet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public abstract class LfsApiServlet extends LfsProtocolServlet {
+@Singleton
+public class LfsApiServlet extends LfsProtocolServlet {
   private static final long serialVersionUID = 1L;
   private static final Pattern URL_PATTERN = Pattern.compile(URL_REGEX);
 
   private final ProjectCache projectCache;
   private final LfsConfigurationFactory lfsConfigFactory;
+  private final LfsRepositoryResolver repoResolver;
 
-  protected LfsApiServlet(ProjectCache projectCache,
-      LfsConfigurationFactory lfsConfigFactory) {
+  @Inject
+  LfsApiServlet(ProjectCache projectCache,
+      LfsConfigurationFactory lfsConfigFactory,
+      LfsRepositoryResolver repoResolver) {
     this.projectCache = projectCache;
     this.lfsConfigFactory = lfsConfigFactory;
+    this.repoResolver = repoResolver;
   }
-
-  protected abstract LargeFileRepository getRepository();
 
   @Override
   protected LargeFileRepository getLargeFileRepository(
@@ -93,7 +98,8 @@ public abstract class LfsApiServlet extends LfsProtocolServlet {
           }
         }
       }
-      return getRepository();
+
+      return repoResolver.get(project, config.getBackend());
     }
 
     throw new LfsUnavailable(project.get());
