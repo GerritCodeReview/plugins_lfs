@@ -18,8 +18,9 @@ import com.google.common.base.Strings;
 import com.google.gerrit.extensions.annotations.PluginCanonicalWebUrl;
 import com.google.gerrit.extensions.annotations.PluginData;
 import com.google.inject.Inject;
+import com.google.inject.assistedinject.Assisted;
 
-import com.googlesource.gerrit.plugins.lfs.LfsBackend;
+import com.googlesource.gerrit.plugins.lfs.LfsBackendConfig;
 import com.googlesource.gerrit.plugins.lfs.LfsConfigurationFactory;
 import com.googlesource.gerrit.plugins.lfs.LfsGlobalConfig;
 
@@ -31,24 +32,32 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class LocalLargeFileRepository extends FileLfsRepository {
-  public static final String CONTENT_PATH = "content";
+  public interface Factory {
+    LocalLargeFileRepository create(LfsBackendConfig backendConfig);
+  }
 
+  public static final String CONTENT_PATH = "content";
   @Inject
   LocalLargeFileRepository(LfsConfigurationFactory configFactory,
       @PluginCanonicalWebUrl String url,
-      @PluginData Path defaultDataDir) throws IOException {
-    super(getContentPath(url),
-        getOrCreateDataDir(configFactory.getGlobalConfig(), defaultDataDir));
+      @PluginData Path defaultDataDir,
+      @Assisted LfsBackendConfig backendConfig) throws IOException {
+    super(getContentPath(url, backendConfig),
+        getOrCreateDataDir(configFactory.getGlobalConfig(),
+            backendConfig, defaultDataDir));
   }
 
-  private static String getContentPath(String url) {
-    return url + (url.endsWith("/") ? CONTENT_PATH : "/" + CONTENT_PATH) + "/";
+  private static String getContentPath(String url,
+      LfsBackendConfig backendConfig) {
+    return url + (url.endsWith("/") ? CONTENT_PATH : "/" + CONTENT_PATH) + "/"
+      + (Strings.isNullOrEmpty(backendConfig.name) ? "" : backendConfig.name + "/");
   }
 
-  private static Path getOrCreateDataDir(LfsGlobalConfig config, Path defaultDataDir)
+  private static Path getOrCreateDataDir(LfsGlobalConfig config,
+      LfsBackendConfig backendConfig, Path defaultDataDir)
       throws IOException {
     String dataDir = config.getString(
-        LfsBackend.FS.name(), null, "directory");
+        backendConfig.type.name(), backendConfig.name, "directory");
     if (Strings.isNullOrEmpty(dataDir)) {
       return defaultDataDir;
     }
