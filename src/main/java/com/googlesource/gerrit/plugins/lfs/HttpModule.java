@@ -18,36 +18,15 @@ import static com.google.gerrit.httpd.plugins.LfsPluginServlet.URL_REGEX;
 import static com.googlesource.gerrit.plugins.lfs.fs.LocalLargeFileRepository.CONTENT_PATH;
 
 import com.google.gerrit.httpd.plugins.HttpPluginModule;
-import com.google.inject.Inject;
 
-import com.googlesource.gerrit.plugins.lfs.fs.LfsFsApiServlet;
 import com.googlesource.gerrit.plugins.lfs.fs.LfsFsContentServlet;
-import com.googlesource.gerrit.plugins.lfs.fs.LocalLargeFileRepository;
-import com.googlesource.gerrit.plugins.lfs.s3.LfsS3ApiServlet;
-import com.googlesource.gerrit.plugins.lfs.s3.S3LargeFileRepository;
+import com.googlesource.gerrit.plugins.lfs.fs.LocalLfsTransferDescriptor;
 
 public class HttpModule extends HttpPluginModule {
-  private final LfsBackend backend;
-
-  @Inject
-  HttpModule(LfsConfigurationFactory configFactory) {
-    this.backend = configFactory.getGlobalConfig().getBackend();
-  }
-
   @Override
   protected void configureServlets() {
-    switch (backend) {
-      case FS:
-        serveRegex(URL_REGEX).with(LfsFsApiServlet.class);
-        bind(LocalLargeFileRepository.class);
-        serve("/" + CONTENT_PATH + "/*").with(LfsFsContentServlet.class);
-        break;
-      case S3:
-        serveRegex(URL_REGEX).with(LfsS3ApiServlet.class);
-        bind(S3LargeFileRepository.class);
-        break;
-      default:
-        throw new RuntimeException("Unsupported backend: " + backend);
-    }
+    serveRegex(URL_REGEX).with(LfsApiServlet.class);
+    bind(LocalLfsTransferDescriptor.class);
+    serve("/" + CONTENT_PATH + "/*").with(LfsFsContentServlet.class);
   }
 }

@@ -16,7 +16,9 @@ package com.googlesource.gerrit.plugins.lfs;
 
 import static com.googlesource.gerrit.plugins.lfs.LfsProjectConfigSection.KEY_ENABLED;
 import static com.googlesource.gerrit.plugins.lfs.LfsProjectConfigSection.KEY_MAX_OBJECT_SIZE;
+import static com.googlesource.gerrit.plugins.lfs.LfsProjectConfigSection.KEY_BACKEND;
 
+import com.google.common.base.Strings;
 import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.extensions.restapi.ResourceConflictException;
 import com.google.gerrit.extensions.restapi.ResourceNotFoundException;
@@ -83,6 +85,7 @@ class PutLfsGlobalConfig
     }
 
     LfsProjectsConfig config = lfsConfigFactory.getProjectsConfig();
+    Set<String> backends = lfsConfigFactory.getGlobalConfig().getBackends().keySet();
     Config cfg = new Config();
     try (MetaDataUpdate md = metaDataUpdateFactory.get().create(projectName)) {
       try {
@@ -104,6 +107,13 @@ class PutLfsGlobalConfig
             cfg.setLong(
                 pluginName, namespace.getKey(),
                 KEY_MAX_OBJECT_SIZE, info.maxObjectSize);
+          }
+          if (!Strings.isNullOrEmpty(info.backend)) {
+            if (!backends.contains(info.backend)) {
+              throw new ResourceConflictException(
+                  "Not existing backend " + info.backend + " was configured in " + namespace);
+            }
+            cfg.setString(pluginName, namespace.getKey(), KEY_BACKEND, info.backend);
           }
         }
       }
