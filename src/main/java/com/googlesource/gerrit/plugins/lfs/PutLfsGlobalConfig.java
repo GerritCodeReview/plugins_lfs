@@ -14,9 +14,11 @@
 
 package com.googlesource.gerrit.plugins.lfs;
 
+import static com.googlesource.gerrit.plugins.lfs.LfsProjectConfigSection.KEY_BACKEND;
 import static com.googlesource.gerrit.plugins.lfs.LfsProjectConfigSection.KEY_ENABLED;
 import static com.googlesource.gerrit.plugins.lfs.LfsProjectConfigSection.KEY_MAX_OBJECT_SIZE;
 
+import com.google.common.base.Strings;
 import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.extensions.restapi.ResourceConflictException;
 import com.google.gerrit.extensions.restapi.ResourceNotFoundException;
@@ -83,7 +85,6 @@ class PutLfsGlobalConfig
     }
 
     LfsProjectsConfig config = lfsConfigFactory.getProjectsConfig();
-    Config cfg = new Config();
     try (MetaDataUpdate md = metaDataUpdateFactory.get().create(projectName)) {
       try {
         config.load(md);
@@ -91,7 +92,10 @@ class PutLfsGlobalConfig
         throw new ResourceConflictException(
             "Cannot read LFS config in " + projectName);
       }
+      Config cfg = new Config();
       if (input.namespaces != null) {
+        Set<String> backends =
+            lfsConfigFactory.getGlobalConfig().getBackends().keySet();
         Set<Entry<String, LfsProjectConfigInfo>> namespaces =
             input.namespaces.entrySet();
         for (Map.Entry<String, LfsProjectConfigInfo> namespace : namespaces) {
@@ -104,6 +108,14 @@ class PutLfsGlobalConfig
             cfg.setLong(
                 pluginName, namespace.getKey(),
                 KEY_MAX_OBJECT_SIZE, info.maxObjectSize);
+          }
+          if (!Strings.isNullOrEmpty(info.backend)) {
+            if (!backends.contains(info.backend)) {
+              throw new ResourceConflictException(
+                  String.format("Namespace %s: backend %s does not exist",
+                      namespace, info.backend));
+            }
+            cfg.setString(pluginName, namespace.getKey(), KEY_BACKEND, info.backend);
           }
         }
       }
