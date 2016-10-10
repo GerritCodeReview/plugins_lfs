@@ -18,4 +18,5 @@ public class LfsProjectConfigInfo {
   public Boolean enabled;
   public Long maxObjectSize;
   public Boolean readOnly;
+  public String backend;
 }
