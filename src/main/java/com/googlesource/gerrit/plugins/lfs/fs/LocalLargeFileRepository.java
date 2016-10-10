@@ -14,12 +14,15 @@
 
 package com.googlesource.gerrit.plugins.lfs.fs;
 
+import static com.googlesource.gerrit.plugins.lfs.LfsBackend.DEFAULT;
+
 import com.google.common.base.Strings;
 import com.google.gerrit.extensions.annotations.PluginCanonicalWebUrl;
 import com.google.gerrit.extensions.annotations.PluginData;
 import com.google.inject.Inject;
+import com.google.inject.assistedinject.Assisted;
 
-import com.googlesource.gerrit.plugins.lfs.LfsBackendType;
+import com.googlesource.gerrit.plugins.lfs.LfsBackend;
 import com.googlesource.gerrit.plugins.lfs.LfsConfigurationFactory;
 import com.googlesource.gerrit.plugins.lfs.LfsGlobalConfig;
 
@@ -31,24 +34,45 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class LocalLargeFileRepository extends FileLfsRepository {
+  public interface Factory {
+    LocalLargeFileRepository create(LfsBackend backendConfig);
+  }
+
   public static final String CONTENT_PATH = "content";
+
+  private final String servletRegexp;
 
   @Inject
   LocalLargeFileRepository(LfsConfigurationFactory configFactory,
       @PluginCanonicalWebUrl String url,
-      @PluginData Path defaultDataDir) throws IOException {
-    super(getContentPath(url),
-        getOrCreateDataDir(configFactory.getGlobalConfig(), defaultDataDir));
+      @PluginData Path defaultDataDir,
+      @Assisted LfsBackend backend) throws IOException {
+    super(getContentUrl(url, backend),
+        getOrCreateDataDir(configFactory.getGlobalConfig(),
+            backend, defaultDataDir));
+    this.servletRegexp = "/" + getContentPath(backend) + "*";
   }
 
-  private static String getContentPath(String url) {
-    return url + (url.endsWith("/") ? CONTENT_PATH : "/" + CONTENT_PATH) + "/";
+  public String getServletRegexp() {
+    return servletRegexp;
   }
 
-  private static Path getOrCreateDataDir(LfsGlobalConfig config, Path defaultDataDir)
+  private static String getContentUrl(String url, LfsBackend backend) {
+    // for default FS we still need to define namespace as otherwise it would
+    // interfere with rest of FS backends
+    return url + (url.endsWith("/") ? "" : "/") + getContentPath(backend);
+  }
+
+  private static String getContentPath(LfsBackend backend) {
+    return CONTENT_PATH + "/"
+        + (Strings.isNullOrEmpty(backend.name) ? DEFAULT : backend.name) + "/";
+  }
+
+  private static Path getOrCreateDataDir(LfsGlobalConfig config,
+      LfsBackend backendConfig, Path defaultDataDir)
       throws IOException {
     String dataDir = config.getString(
-        LfsBackendType.FS.name(), null, "directory");
+        backendConfig.type.name(), backendConfig.name, "directory");
     if (Strings.isNullOrEmpty(dataDir)) {
       return defaultDataDir;
     }
