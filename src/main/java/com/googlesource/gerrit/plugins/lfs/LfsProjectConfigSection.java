@@ -21,6 +21,7 @@ public class LfsProjectConfigSection {
   public static final String KEY_MAX_OBJECT_SIZE = "maxObjectSize";
   public static final String KEY_ENABLED = "enabled";
   public static final String KEY_READ_ONLY = "readOnly";
+  public static final String KEY_BACKEND = "backend";
 
   private final Config cfg;
   private final String namespace;
@@ -44,5 +45,9 @@ public class LfsProjectConfigSection {
 
   public boolean isReadOnly() {
     return cfg.getBoolean(LFS, namespace, KEY_READ_ONLY, false);
+  }
+
+  public String getBackend() {
+    return cfg.getString(LFS, namespace, KEY_BACKEND);
   }
 }

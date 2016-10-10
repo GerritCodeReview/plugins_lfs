@@ -14,10 +14,14 @@
 
 package com.googlesource.gerrit.plugins.lfs;
 
-import java.util.Map;
+public class LfsBackend {
+  public static final String DEFAULT = "default";
 
-public class LfsGlobalConfigInfo {
-  LfsBackendType defaultBackendType;
-  Map<String, LfsBackendType> backends;
-  Map<String, LfsProjectConfigInfo> namespaces;
+  public final String name;
+  public final LfsBackendType type;
+
+  public LfsBackend(String name, LfsBackendType type) {
+    this.name = name;
+    this.type = type;
+  }
 }
