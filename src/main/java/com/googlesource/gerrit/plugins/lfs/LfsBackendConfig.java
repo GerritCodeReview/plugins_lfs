@@ -1,4 +1,4 @@
-// Copyright (C) 2015 The Android Open Source Project
+// Copyright (C) 2016 The Android Open Source Project
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,19 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.googlesource.gerrit.plugins.lfs.fs;
+package com.googlesource.gerrit.plugins.lfs;
 
 import com.google.inject.Inject;
-import com.google.inject.Singleton;
 
-import org.eclipse.jgit.lfs.server.fs.FileLfsServlet;
-
-@Singleton
-public class LfsFsContentServlet extends FileLfsServlet {
-  private static final long serialVersionUID = 1L;
+public class LfsBackendConfig {
+  public final String name;
+  public final LfsBackend type;
 
   @Inject
-  LfsFsContentServlet(LocalLfsTransferDescriptor descriptor) {
-    super(descriptor, 0);
+  LfsBackendConfig(String name, LfsBackend type) {
+    this.name = name;
+    this.type = type;
   }
 }

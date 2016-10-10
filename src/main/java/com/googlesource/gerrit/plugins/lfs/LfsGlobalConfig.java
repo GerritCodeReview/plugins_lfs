@@ -14,7 +14,14 @@
 
 package com.googlesource.gerrit.plugins.lfs;
 
+import com.google.common.base.Function;
+import com.google.common.collect.FluentIterable;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+
 import org.eclipse.jgit.lib.Config;
+
+import java.util.Map;
 
 /**
  * Represents the global LFS configuration stored in $SITE/etc/lfs.config.
@@ -27,11 +34,26 @@ public class LfsGlobalConfig {
     this.cfg = cfg;
   }
 
-  /**
-   * @return the configured LFS backend.
-   */
-  public LfsBackend getBackend() {
-    return cfg.getEnum("storage", null, "backend", LfsBackend.FS);
+  public LfsBackendConfig getDefaultBackend() {
+    LfsBackend type = cfg.getEnum("storage", null, "backend", LfsBackend.FS);
+    return new LfsBackendConfig(null, type);
+  }
+
+  public Map<String, LfsBackendConfig> getBackends() {
+    Builder<String, LfsBackendConfig> builder = ImmutableMap.builder();
+    for (final LfsBackend type : LfsBackend.values()) {
+      Map<String, LfsBackendConfig> backendsOfType =
+          FluentIterable.from(cfg.getSubsections(type.name()))
+              .toMap(new Function<String, LfsBackendConfig>() {
+                @Override
+                public LfsBackendConfig apply(String input) {
+                  return new LfsBackendConfig(input, type);
+                }
+              });
+      builder.putAll(backendsOfType);
+    }
+
+    return builder.build();
   }
 
   public String getString(String section, String subsection, String name) {
@@ -47,5 +69,4 @@ public class LfsGlobalConfig {
       boolean defaultValue) {
     return cfg.getBoolean(section, subsection, name, defaultValue);
   }
-
 }

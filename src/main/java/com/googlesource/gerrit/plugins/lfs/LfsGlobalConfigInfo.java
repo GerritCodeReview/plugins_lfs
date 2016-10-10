@@ -17,6 +17,7 @@ package com.googlesource.gerrit.plugins.lfs;
 import java.util.Map;
 
 public class LfsGlobalConfigInfo {
-  LfsBackend backend;
+  LfsBackend defaultBackend;
+  Map<String, LfsBackend> backends;
   Map<String, LfsProjectConfigInfo> namespaces;
 }
