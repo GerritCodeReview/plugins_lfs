@@ -15,6 +15,8 @@
 package com.googlesource.gerrit.plugins.lfs;
 
 public class LfsBackendConfig {
+  public static final String DEFAULT = "";
+
   public final String name;
   public final LfsBackend type;
 

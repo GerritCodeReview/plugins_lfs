@@ -14,34 +14,20 @@
 
 package com.googlesource.gerrit.plugins.lfs.fs;
 
-import com.google.common.base.Strings;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-
-import com.googlesource.gerrit.plugins.lfs.LfsBackendConfig;
-import com.googlesource.gerrit.plugins.lfs.LfsConfigurationFactory;
-import com.googlesource.gerrit.plugins.lfs.LfsGlobalConfig;
 
 import org.eclipse.jgit.lfs.lib.AnyLongObjectId;
 import org.eclipse.jgit.lfs.server.fs.FileLfsRepository;
 import org.eclipse.jgit.lfs.server.fs.FileLfsTransferDescriptor;
 
-import java.util.Map;
-
 @Singleton
 public class LocalLfsTransferDescriptor extends FileLfsTransferDescriptor {
-  private final LocalLargeFileRepository.Factory fsRepoFactory;
-  private final LfsBackendConfig defaultBackend;
-  private final Map<String, LfsBackendConfig> backends;
+  private final LocalFsRepositoriesCache cache;
 
   @Inject
-  LocalLfsTransferDescriptor(LocalLargeFileRepository.Factory fsRepoFactory,
-      LfsConfigurationFactory configFactory) {
-    this.fsRepoFactory = fsRepoFactory;
-
-    LfsGlobalConfig config = configFactory.getGlobalConfig();
-    this.defaultBackend = config.getDefaultBackend();
-    this.backends = config.getBackends();
+  LocalLfsTransferDescriptor(LocalFsRepositoriesCache cache) {
+    this.cache = cache;
   }
 
   @Override
@@ -56,15 +42,12 @@ public class LocalLfsTransferDescriptor extends FileLfsTransferDescriptor {
       throws IllegalArgumentException {
     int specDivider = path.lastIndexOf('/');
     String backend = path.substring(0, specDivider);
-    LfsBackendConfig config = defaultBackend;
-    if (!Strings.isNullOrEmpty(backend)) {
-      config = backends.get(backend);
-      if (config == null) {
-        throw new IllegalArgumentException(
-            "There is no FileLfsRepository [" + backend + "] configured");
-      }
+    LocalLargeFileRepository repository = cache.getRepository(backend);
+    if (repository == null) {
+      throw new IllegalArgumentException(
+          "There is no FileLfsRepository [" + backend + "] configured");
     }
 
-    return fsRepoFactory.create(config);
+    return repository;
   }
 }
