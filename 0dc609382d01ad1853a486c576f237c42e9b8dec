@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f28ec68_8697aa3d",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsGlobalConfigInfo.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-10-11T07:06:47Z",
+      "side": 1,
+      "message": "One of the intentions was to keep backward compatibility with the previous implementation, which will not be completely possible if the name of the field changes.\n\nOn the other hand I doubt anyone is using this in such a way that a field name change will break anything.\n\nHowever we should be careful about making changes like this in future.",
+      "range": {
+        "startLine": 20,
+        "startChar": 13,
+        "endLine": 20,
+        "endChar": 27
+      },
+      "revId": "0dc609382d01ad1853a486c576f237c42e9b8dec",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f28ec68_a69ca662",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/PutLfsGlobalConfig.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-10-11T07:06:47Z",
+      "side": 1,
+      "message": "nit: move before KEY_ENABLED",
+      "revId": "0dc609382d01ad1853a486c576f237c42e9b8dec",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f2f7072_8797a63d",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/PutLfsGlobalConfig.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-10-11T07:06:47Z",
+      "side": 1,
+      "message": "move this inside the if-block at line 97?",
+      "revId": "0dc609382d01ad1853a486c576f237c42e9b8dec",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f2f7072_a79caa62",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/PutLfsGlobalConfig.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-10-11T07:06:47Z",
+      "side": 1,
+      "message": "\"Non-existing\", or change the message to something like:\n\n  namespace %s: backend %s does not exist",
+      "range": {
+        "startLine": 114,
+        "startChar": 19,
+        "endLine": 114,
+        "endChar": 31
+      },
+      "revId": "0dc609382d01ad1853a486c576f237c42e9b8dec",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f28ec68_e6969e3e",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LocalLargeFileRepository.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-10-11T07:06:47Z",
+      "side": 1,
+      "message": "nit: wrap long lines",
+      "revId": "0dc609382d01ad1853a486c576f237c42e9b8dec",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
