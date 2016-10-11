@@ -34,6 +34,24 @@
       "revId": "4f6159be54d136014ef983977a08d00a2a31517c",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f2f7072_a752ea63",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-10-11T13:41:47Z",
+      "side": 1,
+      "message": "Coding complexity wouldn\u0027t increase. It is only about writing the documentation for the new parameter once. However, for admins it is\nlikely more intuitive to understand readOnly \u003d true than maxObjectSize \u003d -1.\nSo I would vote for the new parameter.",
+      "parentUuid": "1f28ec68_c647e2a4",
+      "revId": "4f6159be54d136014ef983977a08d00a2a31517c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
