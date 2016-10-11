@@ -22,6 +22,30 @@
       "revId": "c14dd9811006cebc7c9e35413a5fae825151eae6",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f28ec68_065bba88",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-10-11T12:43:34Z",
+      "side": 1,
+      "message": "I have no strong opinion on that so it may be \u0027-1\u0027 for read only too :)",
+      "parentUuid": "3f2f7072_e7230214",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 51
+      },
+      "revId": "c14dd9811006cebc7c9e35413a5fae825151eae6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
