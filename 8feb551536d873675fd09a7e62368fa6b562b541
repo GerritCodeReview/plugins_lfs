@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f2f7072_470a0e85",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-10-11T11:23:06Z",
+      "side": 1,
+      "message": "empty line above\n\nindent the configuration snippets one level (2-spaces)\n\nuse spaces (instead of tabs) in the commit message?\n\nSame for other configuration snippets",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 23
+      },
+      "revId": "8feb551536d873675fd09a7e62368fa6b562b541",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f2f7072_8766c64e",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/HttpModule.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-10-11T11:23:06Z",
+      "side": 1,
+      "message": "Can we also explore the possibility of running multiple LfsFsContentServlet instances each serving one concrete FS backend?",
+      "revId": "8feb551536d873675fd09a7e62368fa6b562b541",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f28ec68_c670c202",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LfsFsContentServlet.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-10-11T11:23:06Z",
+      "side": 1,
+      "message": "This class is still \"suspiciously\" empty. It could try to provide the\ndelegation logic for delegating lfs content request to the appropriate\ninstance of the FileLfsRepository?",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 1
+      },
+      "revId": "8feb551536d873675fd09a7e62368fa6b562b541",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f28ec68_e675beef",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LocalFsRepositoriesCache.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-10-11T11:23:06Z",
+      "side": 1,
+      "message": "Could caching be done in a follow-up change to keep the scope and review of this one smaller/simpler?",
+      "range": {
+        "startLine": 30,
+        "startChar": 13,
+        "endLine": 30,
+        "endChar": 37
+      },
+      "revId": "8feb551536d873675fd09a7e62368fa6b562b541",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f2f7072_6707127a",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/s3/S3RepositoriesCache.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-10-11T11:23:06Z",
+      "side": 1,
+      "message": "Postpone caching for to a follow-up change",
+      "range": {
+        "startLine": 30,
+        "startChar": 13,
+        "endLine": 30,
+        "endChar": 32
+      },
+      "revId": "8feb551536d873675fd09a7e62368fa6b562b541",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
