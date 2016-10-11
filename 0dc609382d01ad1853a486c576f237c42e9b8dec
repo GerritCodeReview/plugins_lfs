@@ -25,6 +25,53 @@
     },
     {
       "key": {
+        "uuid": "3f2f7072_0729f6f4",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsGlobalConfigInfo.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-10-11T09:26:08Z",
+      "side": 1,
+      "message": "thanks for heads up :) my assumption was that LFS config is pretty fresh therefore there is little risk of changing it now... I could be wrong ;)",
+      "parentUuid": "1f28ec68_8697aa3d",
+      "range": {
+        "startLine": 20,
+        "startChar": 13,
+        "endLine": 20,
+        "endChar": 27
+      },
+      "revId": "0dc609382d01ad1853a486c576f237c42e9b8dec",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f2f7072_4733ee60",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsRepositoryResolver.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-10-11T09:26:08Z",
+      "side": 1,
+      "message": "introduce cache for s3 repositories too - it really doesn\u0027t make sense to create repository for each call... it has to be loading cache for both cases to prevent concurrency issues",
+      "range": {
+        "startLine": 71,
+        "startChar": 8,
+        "endLine": 71,
+        "endChar": 44
+      },
+      "revId": "0dc609382d01ad1853a486c576f237c42e9b8dec",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1f28ec68_a69ca662",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/PutLfsGlobalConfig.java",
         "patchSetId": 2
@@ -42,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "1f28ec68_e623fe13",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/PutLfsGlobalConfig.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-10-11T09:26:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f28ec68_a69ca662",
+      "revId": "0dc609382d01ad1853a486c576f237c42e9b8dec",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f2f7072_8797a63d",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/PutLfsGlobalConfig.java",
         "patchSetId": 2
@@ -53,6 +118,24 @@
       "writtenOn": "2016-10-11T07:06:47Z",
       "side": 1,
       "message": "move this inside the if-block at line 97?",
+      "revId": "0dc609382d01ad1853a486c576f237c42e9b8dec",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f28ec68_2626f623",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/PutLfsGlobalConfig.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-10-11T09:26:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f2f7072_8797a63d",
       "revId": "0dc609382d01ad1853a486c576f237c42e9b8dec",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
@@ -82,6 +165,30 @@
     },
     {
       "key": {
+        "uuid": "1f28ec68_6630ee53",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/PutLfsGlobalConfig.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-10-11T09:26:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f2f7072_a79caa62",
+      "range": {
+        "startLine": 114,
+        "startChar": 19,
+        "endLine": 114,
+        "endChar": 31
+      },
+      "revId": "0dc609382d01ad1853a486c576f237c42e9b8dec",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1f28ec68_e6969e3e",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LocalLargeFileRepository.java",
         "patchSetId": 2
@@ -93,6 +200,24 @@
       "writtenOn": "2016-10-11T07:06:47Z",
       "side": 1,
       "message": "nit: wrap long lines",
+      "revId": "0dc609382d01ad1853a486c576f237c42e9b8dec",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f28ec68_a6002668",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LocalLargeFileRepository.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-10-11T09:26:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f28ec68_e6969e3e",
       "revId": "0dc609382d01ad1853a486c576f237c42e9b8dec",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
