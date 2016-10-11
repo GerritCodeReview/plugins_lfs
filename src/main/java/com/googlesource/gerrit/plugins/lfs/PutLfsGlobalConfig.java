@@ -16,6 +16,7 @@ package com.googlesource.gerrit.plugins.lfs;
 
 import static com.googlesource.gerrit.plugins.lfs.LfsProjectConfigSection.KEY_ENABLED;
 import static com.googlesource.gerrit.plugins.lfs.LfsProjectConfigSection.KEY_MAX_OBJECT_SIZE;
+import static com.googlesource.gerrit.plugins.lfs.LfsProjectConfigSection.KEY_READ_ONLY;
 
 import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.extensions.restapi.ResourceConflictException;
@@ -104,6 +105,10 @@ class PutLfsGlobalConfig
             cfg.setLong(
                 pluginName, namespace.getKey(),
                 KEY_MAX_OBJECT_SIZE, info.maxObjectSize);
+          }
+          if (info.readOnly != null) {
+            cfg.setBoolean(
+                pluginName, namespace.getKey(), KEY_READ_ONLY, info.readOnly);
           }
         }
       }

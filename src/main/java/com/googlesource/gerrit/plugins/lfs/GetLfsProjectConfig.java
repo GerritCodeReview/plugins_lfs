@@ -38,6 +38,7 @@ class GetLfsProjectConfig implements RestReadView<ProjectResource> {
     if (config != null) {
       info.enabled = config.isEnabled();
       info.maxObjectSize = config.getMaxObjectSize();
+      info.readOnly = config.isReadOnly();
     }
     return info;
   }

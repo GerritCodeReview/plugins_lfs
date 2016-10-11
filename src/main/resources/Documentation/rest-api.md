@@ -54,7 +54,8 @@ that describes the global LFS configuration.
     "namespaces": {
       "test-project": {
         "enabled": true,
-        "max_object_size": 102400
+        "max_object_size": 102400,
+        "read_only": false
       }
     }
   }
@@ -108,6 +109,8 @@ The `LfsProjectConfigInfo` entity describes the LFS configuration for a project.
 * _enabled_: Whether LFS is enabled for this project. Not set if false.
 * _max_object_size_: Maximum LFS object size for this project. Only set when
 _enabled_ is true. 0 means no limit is set.
+* _read_only_: Whether LFS is in read-only mode for this project. Only set when
+_enabled_ is true.
 
 ### <a id="lfs-global-config-info"></a>LfsGlobalConfigInfo
 
