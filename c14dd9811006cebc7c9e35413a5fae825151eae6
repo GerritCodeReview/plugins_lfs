@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f2f7072_e7230214",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-10-11T09:22:33Z",
+      "side": 1,
+      "message": "I would prefer to keep the existing meaning of zero (unlimited) as this\nis more compatible with some Gerrit\u0027s config options where zero means no-limit (receive.maxObjectSizeLimit) or no-timeout (transfer.timeout).\n\n-1 can be used for read-only.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 51
+      },
+      "revId": "c14dd9811006cebc7c9e35413a5fae825151eae6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
