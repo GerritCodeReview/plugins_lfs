@@ -61,6 +61,7 @@ class GetLfsGlobalConfig implements RestReadView<ProjectResource> {
         LfsProjectConfigInfo sectionInfo = new LfsProjectConfigInfo();
         sectionInfo.enabled = section.isEnabled();
         sectionInfo.maxObjectSize = section.getMaxObjectSize();
+        sectionInfo.readOnly = section.isReadOnly();
         info.namespaces.put(section.getNamespace(), sectionInfo);
       }
     }

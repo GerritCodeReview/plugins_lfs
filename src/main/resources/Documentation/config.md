@@ -76,6 +76,12 @@ lfs.maxObjectSize
 namespace, or 0 for no limit. If not set, defaults to 0. Common unit suffixes
 of `k`, `m`, and `g` are supported.
 
+lfs.readOnly
+: Whether to switch LFS for projects in this namespace into read-only mode.
+In this mode reading LFS objects is still possible but pushing is forbidden.
+Note that regular git operations are not affected.
+If not set, defaults to `false`.
+
 ## Global Plugin Settings
 
 The following options can be configured in `$GERRIT_SITE/etc/@PLUGIN@.config`

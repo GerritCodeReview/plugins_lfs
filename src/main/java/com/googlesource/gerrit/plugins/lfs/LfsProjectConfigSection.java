@@ -20,6 +20,7 @@ public class LfsProjectConfigSection {
   public static final String LFS = "lfs";
   public static final String KEY_MAX_OBJECT_SIZE = "maxObjectSize";
   public static final String KEY_ENABLED = "enabled";
+  public static final String KEY_READ_ONLY = "readOnly";
 
   private final Config cfg;
   private final String namespace;
@@ -39,5 +40,9 @@ public class LfsProjectConfigSection {
 
   public boolean isEnabled() {
     return cfg.getBoolean(LFS, namespace, KEY_ENABLED, false);
+  }
+
+  public boolean isReadOnly() {
+    return cfg.getBoolean(LFS, namespace, KEY_READ_ONLY, false);
   }
 }
