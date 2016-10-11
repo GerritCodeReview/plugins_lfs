@@ -79,7 +79,9 @@ public abstract class LfsApiServlet extends LfsProtocolServlet {
       // For uploads, check object sizes against limit if configured
       if (request.getOperation().equals("upload")) {
         long maxObjectSize = config.getMaxObjectSize();
-        if (maxObjectSize > 0) {
+        if (maxObjectSize < 0) {
+          throw new LfsRepositoryReadOnly(project.get());
+        } else if (maxObjectSize > 0) {
           for (LfsObject object : request.getObjects()) {
             if (object.getSize() > maxObjectSize) {
               throw new LfsValidationError(String.format(
