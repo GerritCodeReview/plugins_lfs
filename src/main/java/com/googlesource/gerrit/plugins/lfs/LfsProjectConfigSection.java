@@ -34,7 +34,7 @@ public class LfsProjectConfigSection {
   }
 
   public long getMaxObjectSize() {
-    return cfg.getLong(LFS, namespace, KEY_MAX_OBJECT_SIZE, 0);
+    return cfg.getLong(LFS, namespace, KEY_MAX_OBJECT_SIZE, -1);
   }
 
   public boolean isEnabled() {

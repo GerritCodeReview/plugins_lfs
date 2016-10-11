@@ -73,8 +73,8 @@ to `false`.
 
 lfs.maxObjectSize
 : Maximum allowed object size (per object) in bytes for projects in this
-namespace, or 0 for no limit. If not set, defaults to 0. Common unit suffixes
-of `k`, `m`, and `g` are supported.
+namespace, or 0 when LFS should be in read only mode, or -1 for no limit.
+If not set, defaults to -1. Common unit suffixes of `k`, `m`, and `g` are supported.
 
 ## Global Plugin Settings
 
