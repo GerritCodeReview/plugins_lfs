@@ -14,34 +14,25 @@
 
 package com.googlesource.gerrit.plugins.lfs;
 
-import com.google.common.base.Strings;
+import com.google.common.cache.Cache;
+import com.google.common.cache.CacheBuilder;
+import com.google.inject.Singleton;
 
-import java.util.Objects;
+import org.eclipse.jgit.lfs.server.LargeFileRepository;
 
-public class LfsBackend {
-  public static final String DEFAULT = "default";
+@Singleton
+public class LfsRepositoriesCache {
+  private final Cache<LfsBackend, LargeFileRepository> cache;
 
-  public final String name;
-  public final LfsBackendType type;
-
-  public LfsBackend(String name, LfsBackendType type) {
-    this.name = name;
-    this.type = type;
+  LfsRepositoriesCache() {
+    this.cache = CacheBuilder.newBuilder().build();
   }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(Strings.isNullOrEmpty(name) ? DEFAULT : name, type);
+  public LargeFileRepository get(LfsBackend backend) {
+    return cache.getIfPresent(backend);
   }
 
-  @Override
-  public boolean equals(Object obj) {
-    if (obj instanceof LfsBackend) {
-      LfsBackend other = (LfsBackend) obj;
-      return Objects.equals(name, other.name)
-          && type == other.type;
-    }
-
-    return false;
+  public void put(LfsBackend cfg, LargeFileRepository repo) {
+    cache.put(cfg, repo);
   }
 }

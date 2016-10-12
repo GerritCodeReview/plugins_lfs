@@ -15,25 +15,31 @@
 package com.googlesource.gerrit.plugins.lfs;
 
 import static com.google.gerrit.httpd.plugins.LfsPluginServlet.URL_REGEX;
-import static com.googlesource.gerrit.plugins.lfs.LfsBackendType.FS;
 
 import com.google.gerrit.httpd.plugins.HttpPluginModule;
 import com.google.inject.Inject;
 
 import com.googlesource.gerrit.plugins.lfs.fs.LfsFsContentServlet;
 import com.googlesource.gerrit.plugins.lfs.fs.LocalLargeFileRepository;
+import com.googlesource.gerrit.plugins.lfs.s3.S3LargeFileRepository;
 
 import java.util.Map;
 
 public class HttpModule extends HttpPluginModule {
   private final LocalLargeFileRepository.Factory fsRepoFactory;
+  private final S3LargeFileRepository.Factory s3RepoFactory;
+  private final LfsRepositoriesCache cache;
   private final LfsBackend defaultBackend;
   private final Map<String, LfsBackend> backends;
 
   @Inject
   HttpModule(LocalLargeFileRepository.Factory fsRepoFactory,
+      S3LargeFileRepository.Factory s3RepoFactory,
+      LfsRepositoriesCache cache,
       LfsConfigurationFactory configFactory) {
     this.fsRepoFactory = fsRepoFactory;
+    this.s3RepoFactory = s3RepoFactory;
+    this.cache = cache;
 
     LfsGlobalConfig config = configFactory.getGlobalConfig();
     this.defaultBackend = config.getDefaultBackend();
@@ -43,20 +49,39 @@ public class HttpModule extends HttpPluginModule {
   @Override
   protected void configureServlets() {
     serveRegex(URL_REGEX).with(LfsApiServlet.class);
-
-    if (FS.equals(defaultBackend.type)) {
-      LocalLargeFileRepository defRepository =
-          fsRepoFactory.create(defaultBackend);
-      serve(defRepository.getServletUrlPattern())
-          .with(new LfsFsContentServlet(defRepository));
+    populateRepository(defaultBackend);
+    for (LfsBackend backend : backends.values()) {
+      populateRepository(backend);
     }
+  }
 
-    for (LfsBackend backendCfg : backends.values()) {
-      if (FS.equals(backendCfg.type)) {
-        LocalLargeFileRepository repository = fsRepoFactory.create(backendCfg);
-        serve(repository.getServletUrlPattern())
-            .with(new LfsFsContentServlet(repository));
-      }
+  private void populateRepository(LfsBackend backend) {
+    switch (backend.type) {
+      case FS:
+        populateAndServeFsRepository(backend);
+        break;
+
+      case S3:
+        populateS3Repository(backend);
+        break;
+
+      default:
+        throw new IllegalArgumentException(
+            String.format("Uknown repository type: %s", backend.type));
     }
+  }
+
+  private void populateS3Repository(LfsBackend backend) {
+    S3LargeFileRepository repository =
+        s3RepoFactory.create(backend);
+    cache.put(backend, repository);
+  }
+
+  private void populateAndServeFsRepository(LfsBackend backend) {
+    LocalLargeFileRepository repository =
+        fsRepoFactory.create(backend);
+    cache.put(backend, repository);
+    serve(repository.getServletUrlPattern())
+        .with(new LfsFsContentServlet(repository));
   }
 }
