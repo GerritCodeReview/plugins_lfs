@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c455a84_9e803dfd",
+        "filename": "src/main/resources/Documentation/rest-api.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-10-12T02:17:49Z",
+      "side": 1,
+      "message": "I think this bit is redundant.",
+      "range": {
+        "startLine": 113,
+        "startChar": 19,
+        "endLine": 113,
+        "endChar": 62
+      },
+      "revId": "c30e18224cf77e52efbd61eee5ad17a5294c4c77",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
