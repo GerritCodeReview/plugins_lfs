@@ -14,30 +14,31 @@
 
 package com.googlesource.gerrit.plugins.lfs;
 
+import static com.googlesource.gerrit.plugins.lfs.LfsBackend.DEFAULT;
+
 import com.google.common.base.Strings;
 import com.google.gerrit.reviewdb.client.Project;
 import com.google.inject.Inject;
 
-import com.googlesource.gerrit.plugins.lfs.fs.LocalLargeFileRepository;
-import com.googlesource.gerrit.plugins.lfs.s3.S3LargeFileRepository;
-
 import org.eclipse.jgit.lfs.errors.LfsRepositoryNotFound;
 import org.eclipse.jgit.lfs.server.LargeFileRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 
 public class LfsRepositoryResolver {
-  private final LocalLargeFileRepository.Factory fsRepoFactory;
-  private final S3LargeFileRepository.Factory s3RepoFactory;
+  private static final Logger log =
+      LoggerFactory.getLogger(LfsRepositoryResolver.class);
+
+  private final LfsRepositoriesCache cache;
   private final LfsBackend defaultBackend;
   private final Map<String, LfsBackend> backends;
 
   @Inject
-  LfsRepositoryResolver(LocalLargeFileRepository.Factory fsRepoFactory,
-      S3LargeFileRepository.Factory s3RepoFactory,
+  LfsRepositoryResolver(LfsRepositoriesCache fsRepositories,
       LfsConfigurationFactory configFactory) {
-    this.fsRepoFactory = fsRepoFactory;
-    this.s3RepoFactory = s3RepoFactory;
+    this.cache = fsRepositories;
 
     LfsGlobalConfig config = configFactory.getGlobalConfig();
     this.defaultBackend = config.getDefaultBackend();
@@ -46,25 +47,29 @@ public class LfsRepositoryResolver {
 
   public LargeFileRepository get(Project.NameKey project, String backendName)
       throws LfsRepositoryNotFound {
-    LfsBackend config;
+    LfsBackend backend;
     if (Strings.isNullOrEmpty(backendName)) {
-      config = defaultBackend;
+      backend = defaultBackend;
     } else {
-      config = backends.get(backendName);
-      if (config == null) {
+      backend = backends.get(backendName);
+      if (backend == null) {
+        log.error(String.format("Project %s is configured with not existing"
+            + " backend %s", project,
+            Strings.isNullOrEmpty(backendName) ? DEFAULT : backendName));
         throw new LfsRepositoryNotFound(project.get());
       }
     }
 
-    switch (config.type) {
-      case FS:
-        return fsRepoFactory.create(config);
-
-      case S3:
-        return s3RepoFactory.create(config);
-
-      default:
-          throw new LfsRepositoryNotFound(project.get());
+    LargeFileRepository repository = cache.get(backend);
+    if (repository != null) {
+      return repository;
     }
+
+    //this is unlikely situation as cache is pre-populated from config but...
+    log.error(String.format("Project %s is configured with not existing"
+        + " backend %s of type %s", project,
+        Strings.isNullOrEmpty(backendName) ? DEFAULT : backendName,
+        backend.type));
+    throw new LfsRepositoryNotFound(project.get());
   }
 }
