@@ -14,6 +14,10 @@
 
 package com.googlesource.gerrit.plugins.lfs;
 
+import com.google.common.base.Strings;
+
+import java.util.Objects;
+
 public class LfsBackend {
   public static final String DEFAULT = "default";
 
@@ -23,5 +27,21 @@ public class LfsBackend {
   public LfsBackend(String name, LfsBackendType type) {
     this.name = name;
     this.type = type;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(Strings.isNullOrEmpty(name) ? DEFAULT : name, type);
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (obj instanceof LfsBackend) {
+      LfsBackend other = (LfsBackend) obj;
+      return Objects.equals(name, other.name)
+          && type == other.type;
+    }
+
+    return false;
   }
 }

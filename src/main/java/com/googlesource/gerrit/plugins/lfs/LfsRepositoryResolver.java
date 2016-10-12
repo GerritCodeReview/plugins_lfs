@@ -27,17 +27,14 @@ import org.eclipse.jgit.lfs.server.LargeFileRepository;
 import java.util.Map;
 
 public class LfsRepositoryResolver {
-  private final LocalLargeFileRepository.Factory fsRepoFactory;
-  private final S3LargeFileRepository.Factory s3RepoFactory;
+  private final LfsRepositoriesCache cache;
   private final LfsBackend defaultBackend;
   private final Map<String, LfsBackend> backends;
 
   @Inject
-  LfsRepositoryResolver(LocalLargeFileRepository.Factory fsRepoFactory,
-      S3LargeFileRepository.Factory s3RepoFactory,
+  LfsRepositoryResolver(LfsRepositoriesCache fsRepositories,
       LfsConfigurationFactory configFactory) {
-    this.fsRepoFactory = fsRepoFactory;
-    this.s3RepoFactory = s3RepoFactory;
+    this.cache = fsRepositories;
 
     LfsGlobalConfig config = configFactory.getGlobalConfig();
     this.defaultBackend = config.getDefaultBackend();
@@ -56,15 +53,29 @@ public class LfsRepositoryResolver {
       }
     }
 
+    LargeFileRepository repository;
     switch (config.type) {
       case FS:
-        return fsRepoFactory.create(config);
+        repository = cache.get(config);
+        if (repository instanceof LocalLargeFileRepository) {
+          return repository;
+        }
+        break;
 
       case S3:
-        return s3RepoFactory.create(config);
+        repository = cache.get(config);
+        if (repository instanceof S3LargeFileRepository) {
+          return repository;
+        }
+        break;
 
       default:
           throw new LfsRepositoryNotFound(project.get());
     }
+
+    throw new LfsRepositoryNotFound(
+        String.format("LFS repository for project %s was reconfigured from"
+            + " %s to %s type", project, repository.getClass().getName(),
+            config.type));
   }
 }

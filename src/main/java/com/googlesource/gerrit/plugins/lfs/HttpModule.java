@@ -27,13 +27,16 @@ import java.util.Map;
 
 public class HttpModule extends HttpPluginModule {
   private final LocalLargeFileRepository.Factory fsRepoFactory;
+  private final LfsRepositoriesCache cache;
   private final LfsBackend defaultBackend;
   private final Map<String, LfsBackend> backends;
 
   @Inject
   HttpModule(LocalLargeFileRepository.Factory fsRepoFactory,
+      LfsRepositoriesCache cache,
       LfsConfigurationFactory configFactory) {
     this.fsRepoFactory = fsRepoFactory;
+    this.cache = cache;
 
     LfsGlobalConfig config = configFactory.getGlobalConfig();
     this.defaultBackend = config.getDefaultBackend();
@@ -47,13 +50,16 @@ public class HttpModule extends HttpPluginModule {
     if (FS.equals(defaultBackend.type)) {
       LocalLargeFileRepository defRepository =
           fsRepoFactory.create(defaultBackend);
+      cache.put(defaultBackend, defRepository);
       serve(defRepository.getServletRegexp())
         .with(new LfsFsContentServlet(defRepository));
     }
 
     for (LfsBackend backendCfg : backends.values()) {
       if (FS.equals(backendCfg.type)) {
-        LocalLargeFileRepository repository = fsRepoFactory.create(backendCfg);
+        LocalLargeFileRepository repository =
+            fsRepoFactory.create(backendCfg);
+        cache.put(backendCfg, repository);
         serve(repository.getServletRegexp())
           .with(new LfsFsContentServlet(repository));
       }
