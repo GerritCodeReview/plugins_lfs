@@ -18,8 +18,8 @@ import com.google.common.base.Strings;
 import com.google.gerrit.reviewdb.client.Project;
 import com.google.inject.Inject;
 
-import com.googlesource.gerrit.plugins.lfs.fs.LocalLargeFileRepository;
-import com.googlesource.gerrit.plugins.lfs.s3.S3LargeFileRepository;
+import com.googlesource.gerrit.plugins.lfs.fs.LocalFsRepositoriesCache;
+import com.googlesource.gerrit.plugins.lfs.s3.S3RepositoriesCache;
 
 import org.eclipse.jgit.lfs.errors.LfsRepositoryNotFound;
 import org.eclipse.jgit.lfs.server.LargeFileRepository;
@@ -27,17 +27,17 @@ import org.eclipse.jgit.lfs.server.LargeFileRepository;
 import java.util.Map;
 
 public class LfsRepositoryResolver {
-  private final LocalLargeFileRepository.Factory fsRepoFactory;
-  private final S3LargeFileRepository.Factory s3RepoFactory;
+  private final LocalFsRepositoriesCache fsRepositories;
+  private final S3RepositoriesCache s3Repositories;
   private final LfsBackendConfig defaultBackend;
   private final Map<String, LfsBackendConfig> backends;
 
   @Inject
-  LfsRepositoryResolver(LocalLargeFileRepository.Factory fsRepoFactory,
-      S3LargeFileRepository.Factory s3RepoFactory,
+  LfsRepositoryResolver(LocalFsRepositoriesCache fsRepositories,
+      S3RepositoriesCache s3Repositories,
       LfsConfigurationFactory configFactory) {
-    this.fsRepoFactory = fsRepoFactory;
-    this.s3RepoFactory = s3RepoFactory;
+    this.fsRepositories = fsRepositories;
+    this.s3Repositories = s3Repositories;
 
     LfsGlobalConfig config = configFactory.getGlobalConfig();
     this.defaultBackend = config.getDefaultBackend();
@@ -56,10 +56,10 @@ public class LfsRepositoryResolver {
 
     switch (config.type) {
       case FS:
-        return fsRepoFactory.create(config);
+        return fsRepositories.getRepository(config);
 
       case S3:
-        return s3RepoFactory.create(config);
+        return s3Repositories.getRepository(config);
 
       default:
           throw new LfsRepositoryNotFound(project.get());

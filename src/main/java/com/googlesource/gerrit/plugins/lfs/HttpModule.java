@@ -21,19 +21,20 @@ import com.google.gerrit.httpd.plugins.HttpPluginModule;
 import com.google.inject.Inject;
 
 import com.googlesource.gerrit.plugins.lfs.fs.LfsFsContentServlet;
+import com.googlesource.gerrit.plugins.lfs.fs.LocalFsRepositoriesCache;
 import com.googlesource.gerrit.plugins.lfs.fs.LocalLargeFileRepository;
 
 import java.util.Map;
 
 public class HttpModule extends HttpPluginModule {
-  private final LocalLargeFileRepository.Factory fsRepoFactory;
+  private final LocalFsRepositoriesCache fsRepositories;
   private final LfsBackendConfig defaultBackend;
   private final Map<String, LfsBackendConfig> backends;
 
   @Inject
-  HttpModule(LocalLargeFileRepository.Factory fsRepoFactory,
+  HttpModule(LocalFsRepositoriesCache fsRepositories,
       LfsConfigurationFactory configFactory) {
-    this.fsRepoFactory = fsRepoFactory;
+    this.fsRepositories = fsRepositories;
 
     LfsGlobalConfig config = configFactory.getGlobalConfig();
     this.defaultBackend = config.getDefaultBackend();
@@ -46,14 +47,15 @@ public class HttpModule extends HttpPluginModule {
 
     if (FS.equals(defaultBackend.type)) {
       LocalLargeFileRepository defRepository =
-          fsRepoFactory.create(defaultBackend);
+          fsRepositories.getRepository(defaultBackend);
       serve(defRepository.getServletRegexp())
         .with(new LfsFsContentServlet(defRepository));
     }
 
     for (LfsBackendConfig backendCfg : backends.values()) {
       if (FS.equals(backendCfg.type)) {
-        LocalLargeFileRepository repository = fsRepoFactory.create(backendCfg);
+        LocalLargeFileRepository repository =
+            fsRepositories.getRepository(backendCfg);
         serve(repository.getServletRegexp())
           .with(new LfsFsContentServlet(repository));
       }
