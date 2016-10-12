@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1c455a84_ded5a5d9",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/HttpModule.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-10-12T09:01:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c3cdef1_5fea2b9a",
+      "range": {
+        "startLine": 30,
+        "startChar": 33,
+        "endLine": 30,
+        "endChar": 46
+      },
+      "revId": "4032755ad5fd48b73e0546780e79a128b086cd92",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1c455a84_7ee571ca",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsGlobalConfig.java",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "1c455a84_3e1489b2",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsGlobalConfig.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-10-12T09:01:08Z",
+      "side": 1,
+      "message": "can\u0027t as it uses type that is taken from outer loop :/",
+      "parentUuid": "1c455a84_7ee571ca",
+      "range": {
+        "startLine": 47,
+        "startChar": 21,
+        "endLine": 52,
+        "endChar": 17
+      },
+      "revId": "4032755ad5fd48b73e0546780e79a128b086cd92",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1c455a84_5eea359a",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LfsFsContentServlet.java",
         "patchSetId": 2
@@ -59,6 +107,24 @@
       "writtenOn": "2016-10-12T08:43:54Z",
       "side": 1,
       "message": "Unnecessary change?",
+      "revId": "4032755ad5fd48b73e0546780e79a128b086cd92",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c3cdef1_5f234b16",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LfsFsContentServlet.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-10-12T09:01:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c455a84_5eea359a",
       "revId": "4032755ad5fd48b73e0546780e79a128b086cd92",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
@@ -104,6 +170,54 @@
         "startChar": 4,
         "endLine": 61,
         "endChar": 6
+      },
+      "revId": "4032755ad5fd48b73e0546780e79a128b086cd92",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c455a84_1e19cde8",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LocalLargeFileRepository.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-10-12T09:01:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c3cdef1_9fdb130d",
+      "range": {
+        "startLine": 61,
+        "startChar": 4,
+        "endLine": 61,
+        "endChar": 6
+      },
+      "revId": "4032755ad5fd48b73e0546780e79a128b086cd92",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c455a84_7e1e11d2",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LocalLargeFileRepository.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-10-12T09:01:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c3cdef1_ffd85f11",
+      "range": {
+        "startLine": 61,
+        "startChar": 58,
+        "endLine": 61,
+        "endChar": 66
       },
       "revId": "4032755ad5fd48b73e0546780e79a128b086cd92",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
