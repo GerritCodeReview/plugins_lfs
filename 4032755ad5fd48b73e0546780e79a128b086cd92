@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c3cdef1_5fea2b9a",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/HttpModule.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-10-12T08:43:54Z",
+      "side": 1,
+      "message": "\"defaultBackend\"?",
+      "range": {
+        "startLine": 30,
+        "startChar": 33,
+        "endLine": 30,
+        "endChar": 46
+      },
+      "revId": "4032755ad5fd48b73e0546780e79a128b086cd92",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c455a84_7ee571ca",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsGlobalConfig.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-10-12T08:43:54Z",
+      "side": 1,
+      "message": "Make this a static final like in GetLfsGlobalConfig.java?",
+      "range": {
+        "startLine": 47,
+        "startChar": 21,
+        "endLine": 52,
+        "endChar": 17
+      },
+      "revId": "4032755ad5fd48b73e0546780e79a128b086cd92",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c455a84_5eea359a",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LfsFsContentServlet.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-10-12T08:43:54Z",
+      "side": 1,
+      "message": "Unnecessary change?",
+      "revId": "4032755ad5fd48b73e0546780e79a128b086cd92",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c3cdef1_ffd85f11",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LocalLargeFileRepository.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-10-12T08:43:54Z",
+      "side": 1,
+      "message": "otherwise",
+      "range": {
+        "startLine": 61,
+        "startChar": 58,
+        "endLine": 61,
+        "endChar": 66
+      },
+      "revId": "4032755ad5fd48b73e0546780e79a128b086cd92",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c3cdef1_9fdb130d",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LocalLargeFileRepository.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-10-12T08:43:54Z",
+      "side": 1,
+      "message": "nit: add a space after //",
+      "range": {
+        "startLine": 61,
+        "startChar": 4,
+        "endLine": 61,
+        "endChar": 6
+      },
+      "revId": "4032755ad5fd48b73e0546780e79a128b086cd92",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
