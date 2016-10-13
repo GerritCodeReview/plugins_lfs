@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7cc73682_5981e3fe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-10-13T18:02:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c455a84_3e1ac92e",
+      "revId": "88791ebb69b0f67be48cccb48bffece0996daf82",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c3cdef1_9f81533a",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/HttpModule.java",
         "patchSetId": 5
@@ -30,6 +48,30 @@
       "writtenOn": "2016-10-13T15:25:02Z",
       "side": 1,
       "message": "If this would really be a regex then we would have to use:\n\n  serveRegex(...)\n\nBut it is not a regex it is just a regular urlPattern.",
+      "range": {
+        "startLine": 50,
+        "startChar": 26,
+        "endLine": 50,
+        "endChar": 42
+      },
+      "revId": "88791ebb69b0f67be48cccb48bffece0996daf82",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5cb8b2f5_d874cd27",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/HttpModule.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-10-13T18:02:14Z",
+      "side": 1,
+      "message": "renamed to getServletUrlPattern",
+      "parentUuid": "3c3cdef1_9f81533a",
       "range": {
         "startLine": 50,
         "startChar": 26,
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "7cc73682_b9791f1e",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/HttpModule.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-10-13T18:02:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c3cdef1_5f706b67",
+      "revId": "88791ebb69b0f67be48cccb48bffece0996daf82",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c3cdef1_ff7e9f37",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/HttpModule.java",
         "patchSetId": 5
@@ -70,6 +130,24 @@
       "writtenOn": "2016-10-13T15:25:02Z",
       "side": 1,
       "message": "same here...",
+      "revId": "88791ebb69b0f67be48cccb48bffece0996daf82",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7cc73682_997e5b02",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/HttpModule.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-10-13T18:02:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c3cdef1_ff7e9f37",
       "revId": "88791ebb69b0f67be48cccb48bffece0996daf82",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
@@ -93,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "5cb8b2f5_b879191e",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/HttpModule.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-10-13T18:02:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c455a84_9e815d3a",
+      "revId": "88791ebb69b0f67be48cccb48bffece0996daf82",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1c455a84_1e1f0d1f",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LocalLargeFileRepository.java",
         "patchSetId": 5
@@ -104,6 +200,24 @@
       "writtenOn": "2016-10-13T15:25:02Z",
       "side": 1,
       "message": "This doesn\u0027t seem to be a regex but a normal string with a wildcard \"*\" at the end.",
+      "revId": "88791ebb69b0f67be48cccb48bffece0996daf82",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7cc73682_7984a710",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LocalLargeFileRepository.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-10-13T18:02:14Z",
+      "side": 1,
+      "message": "changed to servletUrlPattern",
+      "parentUuid": "1c455a84_1e1f0d1f",
       "revId": "88791ebb69b0f67be48cccb48bffece0996daf82",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
