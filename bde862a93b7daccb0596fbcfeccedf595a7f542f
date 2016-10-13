@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5cb8b2f5_5881ddfe",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/HttpModule.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-10-13T18:02:03Z",
+      "side": 1,
+      "message": "My thinking was that I don\u0027t want to populate things that are not actively used, but after second thought it might be the way to detect mis configuration of backends in namespace done through push of lfs.config directly to refs/meta/config",
+      "parentUuid": "1c455a84_1e76ed66",
+      "revId": "bde862a93b7daccb0596fbcfeccedf595a7f542f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1c455a84_beb7f93e",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsBackendConfig.java",
         "patchSetId": 3
