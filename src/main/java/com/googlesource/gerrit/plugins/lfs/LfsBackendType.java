@@ -14,7 +14,7 @@
 
 package com.googlesource.gerrit.plugins.lfs;
 
-public enum LfsBackend {
+public enum LfsBackendType {
   /** Local filesystem. */
   FS,
 
