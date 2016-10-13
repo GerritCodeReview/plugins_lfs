@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "1c455a84_fe7ea137",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsGlobalConfig.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-10-13T15:16:24Z",
+      "side": 1,
+      "message": "getBackendType",
+      "range": {
+        "startLine": 33,
+        "startChar": 24,
+        "endLine": 33,
+        "endChar": 34
+      },
+      "revId": "0ab3cf3aede6c2f75fecda9a062bbd851a2579ff",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7c04964d_91dbfc0c",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsGlobalConfigInfo.java",
         "patchSetId": 1
