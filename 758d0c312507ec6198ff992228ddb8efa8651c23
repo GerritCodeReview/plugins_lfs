@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c455a84_be6ed9ba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-10-13T11:59:59Z",
+      "side": 1,
+      "message": "etc/lfs.config\n\njust to make it clearer",
+      "range": {
+        "startLine": 16,
+        "startChar": 36,
+        "endLine": 16,
+        "endChar": 46
+      },
+      "revId": "758d0c312507ec6198ff992228ddb8efa8651c23",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c455a84_9e6b1dab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-10-13T11:59:59Z",
+      "side": 1,
+      "message": "What are you trying to say here? Wasn\u0027t this already like that?",
+      "range": {
+        "startLine": 38,
+        "startChar": 30,
+        "endLine": 39,
+        "endChar": 41
+      },
+      "revId": "758d0c312507ec6198ff992228ddb8efa8651c23",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c455a84_de65a5d7",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsBackendConfig.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-10-13T11:59:59Z",
+      "side": 1,
+      "message": "The naming here could be better. This is not really a LfsBackendConfig as it only contains the name and type. Other config parameters are missing.\n\nI don\u0027t have a better proposal :-/",
+      "range": {
+        "startLine": 17,
+        "startChar": 13,
+        "endLine": 17,
+        "endChar": 29
+      },
+      "revId": "758d0c312507ec6198ff992228ddb8efa8651c23",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c3cdef1_3ff647f0",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsBackendConfig.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-10-13T11:59:59Z",
+      "side": 1,
+      "message": "Unrelated to this change: the LfsBackend enum name now also looks a bit wrong. It should rather be named LfsBackendType.",
+      "range": {
+        "startLine": 21,
+        "startChar": 15,
+        "endLine": 21,
+        "endChar": 25
+      },
+      "revId": "758d0c312507ec6198ff992228ddb8efa8651c23",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c3cdef1_df975b97",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LfsFsContentServlet.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-10-13T11:59:59Z",
+      "side": 1,
+      "message": "Is this annotation still needed now that we create instances of this class explicitly?",
+      "revId": "758d0c312507ec6198ff992228ddb8efa8651c23",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
