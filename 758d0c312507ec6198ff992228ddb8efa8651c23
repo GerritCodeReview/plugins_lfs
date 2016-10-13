@@ -136,6 +136,52 @@
     },
     {
       "key": {
+        "uuid": "3c3cdef1_7fd9ef76",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsGlobalConfig.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-10-13T13:08:20Z",
+      "side": 1,
+      "message": "I think this could be better expressed using Java 8 style.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 17
+      },
+      "revId": "758d0c312507ec6198ff992228ddb8efa8651c23",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c3cdef1_1fe4232f",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsRepositoryResolver.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-10-13T13:08:20Z",
+      "side": 1,
+      "message": "I would write this a bit differently:\n\n  LfsBackendConfig config;\n  if (Strings.isNullOrEmpty(backendName)) {\n    config \u003d defaultBackend;\n  } else {\n    config \u003d backends.get(backendName);\n    if (config \u003d\u003d null) {\n      throw new LfsRepositoryNotFound(project.get());\n    }\n  }",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 5
+      },
+      "revId": "758d0c312507ec6198ff992228ddb8efa8651c23",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c3cdef1_df975b97",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LfsFsContentServlet.java",
         "patchSetId": 4
