@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c455a84_beb7f93e",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsBackendConfig.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-10-13T13:03:13Z",
+      "side": 1,
+      "message": "Just adding two hash codes is not the best thing to do.\n\nWhy not use Objects.hash(name, type)?",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 26
+      },
+      "revId": "bde862a93b7daccb0596fbcfeccedf595a7f542f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c3cdef1_fff33ff7",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsBackendConfig.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-10-13T13:03:13Z",
+      "side": 1,
+      "message": "type \u003d\u003d other.type\n\nLfsBackend is an enum",
+      "revId": "bde862a93b7daccb0596fbcfeccedf595a7f542f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c3cdef1_dff0fbed",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsRepositoriesCache.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-10-13T13:03:13Z",
+      "side": 1,
+      "message": "Why do we need a loading cache if all possible instances are put into cache from the HttpModule?",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 29
+      },
+      "revId": "bde862a93b7daccb0596fbcfeccedf595a7f542f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
