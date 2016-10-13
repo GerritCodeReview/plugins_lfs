@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1c455a84_1efb8dd6",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsBackendConfig.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-10-13T14:50:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c455a84_beb7f93e",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 26
+      },
+      "revId": "bde862a93b7daccb0596fbcfeccedf595a7f542f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c3cdef1_fff33ff7",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsBackendConfig.java",
         "patchSetId": 3
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "3c3cdef1_bf5b77f5",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsBackendConfig.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-10-13T14:50:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c3cdef1_fff33ff7",
+      "revId": "bde862a93b7daccb0596fbcfeccedf595a7f542f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c3cdef1_dff0fbed",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsRepositoriesCache.java",
         "patchSetId": 3
@@ -53,6 +95,30 @@
       "writtenOn": "2016-10-13T13:03:13Z",
       "side": 1,
       "message": "Why do we need a loading cache if all possible instances are put into cache from the HttpModule?",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 29
+      },
+      "revId": "bde862a93b7daccb0596fbcfeccedf595a7f542f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c455a84_3ef649f0",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsRepositoriesCache.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-10-13T14:50:37Z",
+      "side": 1,
+      "message": "not all possible - S3 backends are loaded when request happens - they don\u0027t have servlet that is running when Gerrit runs so they are not part of HttpModule",
+      "parentUuid": "3c3cdef1_dff0fbed",
       "range": {
         "startLine": 45,
         "startChar": 0,
