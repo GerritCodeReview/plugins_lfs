@@ -52,7 +52,7 @@ class GetLfsGlobalConfig implements RestReadView<ProjectResource> {
       throw new ResourceNotFoundException();
     }
     LfsGlobalConfigInfo info = new LfsGlobalConfigInfo();
-    info.backend = lfsConfigFactory.getGlobalConfig().getBackend();
+    info.backendType = lfsConfigFactory.getGlobalConfig().getBackendType();
     List<LfsProjectConfigSection> configSections =
         lfsConfigFactory.getProjectsConfig().getConfigSections();
     if (!configSections.isEmpty()) {

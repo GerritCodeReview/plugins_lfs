@@ -19,7 +19,7 @@ import com.google.gerrit.extensions.annotations.PluginCanonicalWebUrl;
 import com.google.gerrit.extensions.annotations.PluginData;
 import com.google.inject.Inject;
 
-import com.googlesource.gerrit.plugins.lfs.LfsBackend;
+import com.googlesource.gerrit.plugins.lfs.LfsBackendType;
 import com.googlesource.gerrit.plugins.lfs.LfsConfigurationFactory;
 import com.googlesource.gerrit.plugins.lfs.LfsGlobalConfig;
 
@@ -48,7 +48,7 @@ public class LocalLargeFileRepository extends FileLfsRepository {
   private static Path getOrCreateDataDir(LfsGlobalConfig config, Path defaultDataDir)
       throws IOException {
     String dataDir = config.getString(
-        LfsBackend.FS.name(), null, "directory");
+        LfsBackendType.FS.name(), null, "directory");
     if (Strings.isNullOrEmpty(dataDir)) {
       return defaultDataDir;
     }

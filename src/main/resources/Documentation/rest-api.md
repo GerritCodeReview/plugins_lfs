@@ -50,7 +50,7 @@ that describes the global LFS configuration.
   Content-Type: application/json;charset=UTF-8
   )]}'
   {
-    "backend": "FS",
+    "backend_type": "FS",
     "namespaces": {
       "test-project": {
         "enabled": true,
@@ -91,7 +91,7 @@ is returned that describes the updated global LFS configuration.
   Content-Type: application/json;charset=UTF-8
   )]}'
   {
-    "backend": "FS",
+    "backend_type": "FS",
     "namespaces": {
       "test-project": {
         "enabled": false,
@@ -116,7 +116,7 @@ _enabled_ is true.
 
 The `LfsGlobalConfigInfo` entity describes the global configuration for LFS.
 
-* _backend_: The LFS backend in use. Can be `FS` or `S3`.
+* _backend_type_: The LFS backend in use. Can be `FS` or `S3`.
 * _namespaces_: Configured namespaces as a map of [LfsProjectConfigInfo]
 (#lfs-project-config-info) entities.
 

@@ -28,10 +28,10 @@ public class LfsGlobalConfig {
   }
 
   /**
-   * @return the configured LFS backend.
+   * @return the configured LFS backend type.
    */
-  public LfsBackend getBackend() {
-    return cfg.getEnum("storage", null, "backend", LfsBackend.FS);
+  public LfsBackendType getBackendType() {
+    return cfg.getEnum("storage", null, "backend", LfsBackendType.FS);
   }
 
   public String getString(String section, String subsection, String name) {

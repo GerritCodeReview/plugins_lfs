@@ -17,7 +17,7 @@ package com.googlesource.gerrit.plugins.lfs.s3;
 import com.google.common.base.MoreObjects;
 import com.google.inject.Inject;
 
-import com.googlesource.gerrit.plugins.lfs.LfsBackend;
+import com.googlesource.gerrit.plugins.lfs.LfsBackendType;
 import com.googlesource.gerrit.plugins.lfs.LfsConfigurationFactory;
 import com.googlesource.gerrit.plugins.lfs.LfsGlobalConfig;
 
@@ -32,7 +32,7 @@ public class S3LargeFileRepository extends S3Repository {
   }
 
   private static S3Config getS3Config(LfsGlobalConfig config) {
-    String section = LfsBackend.S3.name();
+    String section = LfsBackendType.S3.name();
     String region = config.getString(section, null, "region");
     String bucket = config.getString(section, null, "bucket");
     String storageClass =

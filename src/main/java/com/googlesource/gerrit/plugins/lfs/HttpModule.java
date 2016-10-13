@@ -27,11 +27,11 @@ import com.googlesource.gerrit.plugins.lfs.s3.LfsS3ApiServlet;
 import com.googlesource.gerrit.plugins.lfs.s3.S3LargeFileRepository;
 
 public class HttpModule extends HttpPluginModule {
-  private final LfsBackend backend;
+  private final LfsBackendType backend;
 
   @Inject
   HttpModule(LfsConfigurationFactory configFactory) {
-    this.backend = configFactory.getGlobalConfig().getBackend();
+    this.backend = configFactory.getGlobalConfig().getBackendType();
   }
 
   @Override
