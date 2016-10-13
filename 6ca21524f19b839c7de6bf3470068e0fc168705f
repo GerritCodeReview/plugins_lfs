@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c455a84_5e707567",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsRepositoryResolver.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-10-13T15:14:06Z",
+      "side": 1,
+      "message": "Since you have a dedicated cache class create two get methods:\n\n  getFsRepository\n  getS3Repository\n\nand check the instance type already in the cache class.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 9
+      },
+      "revId": "6ca21524f19b839c7de6bf3470068e0fc168705f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c455a84_7e6bb17e",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsRepositoryResolver.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-10-13T15:14:06Z",
+      "side": 1,
+      "message": "How do we know that it was REconfigured?\n\nFurther, the repository.getClass().getName() is a class name and the config.type is an enum instance... so this message may be confusing for an admin.",
+      "range": {
+        "startLine": 77,
+        "startChar": 57,
+        "endLine": 77,
+        "endChar": 69
+      },
+      "revId": "6ca21524f19b839c7de6bf3470068e0fc168705f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
