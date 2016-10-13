@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7cc73682_f96f9752",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsGlobalConfig.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-10-13T18:02:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c1c7aae_86b2aadc",
+      "range": {
+        "startLine": 31,
+        "startChar": 32,
+        "endLine": 31,
+        "endChar": 39
+      },
+      "revId": "0ab3cf3aede6c2f75fecda9a062bbd851a2579ff",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1c455a84_fe7ea137",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsGlobalConfig.java",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "5cb8b2f5_f86f9152",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsGlobalConfig.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-10-13T18:02:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c455a84_fe7ea137",
+      "range": {
+        "startLine": 33,
+        "startChar": 24,
+        "endLine": 33,
+        "endChar": 34
+      },
+      "revId": "0ab3cf3aede6c2f75fecda9a062bbd851a2579ff",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7c04964d_91dbfc0c",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsGlobalConfigInfo.java",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2016-10-13T15:07:30Z",
       "side": 1,
       "message": "Should this now be backendType?",
+      "range": {
+        "startLine": 20,
+        "startChar": 17,
+        "endLine": 20,
+        "endChar": 24
+      },
+      "revId": "0ab3cf3aede6c2f75fecda9a062bbd851a2579ff",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7cc73682_d974d327",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsGlobalConfigInfo.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-10-13T18:02:28Z",
+      "side": 1,
+      "message": "mixture feelings about it as in the next patch it is going to be change to defaultBackend - also type?",
+      "parentUuid": "7c04964d_91dbfc0c",
       "range": {
         "startLine": 20,
         "startChar": 17,
