@@ -95,6 +95,24 @@
     },
     {
       "key": {
+        "uuid": "1c455a84_3ea48910",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsBackendConfig.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-10-13T12:39:18Z",
+      "side": 1,
+      "message": "This would definitely be better than what we have now.",
+      "parentUuid": "7c04964d_71e5b8ca",
+      "revId": "758d0c312507ec6198ff992228ddb8efa8651c23",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c3cdef1_3ff647f0",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsBackendConfig.java",
         "patchSetId": 4
