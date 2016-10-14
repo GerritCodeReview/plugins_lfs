@@ -46,7 +46,7 @@ If a project name matches several @PLUGIN@ namespaces, the one the that is defin
 first in the @PLUGIN@.config will be applied.
 
 Example: Enable LFS for all projects, allowing unlimited object size for
-projected under `/test` and limiting to `500 mb` for projects under other
+projects under `/test` and limiting to `500 mb` for projects under other
 folders:
 
 ```
