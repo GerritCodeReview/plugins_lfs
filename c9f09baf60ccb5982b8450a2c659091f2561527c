@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dca822f6_8cc6c742",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/HttpModule.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-10-14T06:41:03Z",
+      "side": 1,
+      "message": "Unknown",
+      "range": {
+        "startLine": 70,
+        "startChar": 27,
+        "endLine": 70,
+        "endChar": 33
+      },
+      "revId": "c9f09baf60ccb5982b8450a2c659091f2561527c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
