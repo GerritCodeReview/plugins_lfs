@@ -32,7 +32,7 @@ import java.util.List;
 
 @Singleton
 class GetLfsGlobalConfig implements RestReadView<ProjectResource> {
-  private final static Function<LfsBackend, LfsBackendType> TO_BACKEND_CFG =
+  private static final Function<LfsBackend, LfsBackendType> TO_BACKEND_CFG =
       new Function<LfsBackend, LfsBackendType>() {
         @Override
         public LfsBackendType apply(LfsBackend input) {
