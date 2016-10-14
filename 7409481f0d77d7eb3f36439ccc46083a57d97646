@@ -22,6 +22,30 @@
       "revId": "7409481f0d77d7eb3f36439ccc46083a57d97646",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc9fa6ca_ed1dc5d4",
+        "filename": ".buckconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-10-14T08:06:09Z",
+      "side": 1,
+      "message": "Because I copy-pasted it from the reviewers plugin. Done.",
+      "parentUuid": "fc9fa6ca_4dd699e5",
+      "range": {
+        "startLine": 2,
+        "startChar": 2,
+        "endLine": 2,
+        "endChar": 11
+      },
+      "revId": "7409481f0d77d7eb3f36439ccc46083a57d97646",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
