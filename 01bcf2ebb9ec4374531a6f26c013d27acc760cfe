@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc9fa6ca_ede4a5d0",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/GetLfsGlobalConfig.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-10-14T07:36:16Z",
+      "side": 0,
+      "message": "I keep forgetting the order :)",
+      "range": {
+        "startLine": 35,
+        "startChar": 10,
+        "endLine": 35,
+        "endChar": 22
+      },
+      "revId": "01bcf2ebb9ec4374531a6f26c013d27acc760cfe",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
