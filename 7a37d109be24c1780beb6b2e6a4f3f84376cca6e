@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fc9fa6ca_cd97293b",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/HttpModule.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-10-14T06:23:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc9fa6ca_0d813100",
+      "revId": "7a37d109be24c1780beb6b2e6a4f3f84376cca6e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc9fa6ca_6d8ef52f",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsRepositoriesCache.java",
         "patchSetId": 5
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "dca822f6_cc972f3b",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsRepositoriesCache.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-10-14T06:23:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc9fa6ca_6d8ef52f",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 28,
+        "endChar": 9
+      },
+      "revId": "7a37d109be24c1780beb6b2e6a4f3f84376cca6e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dca822f6_ac98e36e",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsRepositoryResolver.java",
         "patchSetId": 5
@@ -53,6 +95,30 @@
       "writtenOn": "2016-10-14T05:29:28Z",
       "side": 1,
       "message": "\"cache\"?",
+      "range": {
+        "startLine": 39,
+        "startChar": 45,
+        "endLine": 39,
+        "endChar": 59
+      },
+      "revId": "7a37d109be24c1780beb6b2e6a4f3f84376cca6e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc9fa6ca_2dad0d88",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsRepositoryResolver.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-10-14T06:23:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dca822f6_ac98e36e",
       "range": {
         "startLine": 39,
         "startChar": 45,
