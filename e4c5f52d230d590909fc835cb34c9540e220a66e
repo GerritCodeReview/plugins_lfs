@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dca822f6_0c813700",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsGlobalConfig.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-10-14T05:25:41Z",
+      "side": 1,
+      "message": "nit: long line",
+      "revId": "e4c5f52d230d590909fc835cb34c9540e220a66e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
