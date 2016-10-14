@@ -39,6 +39,29 @@
       "revId": "7a37d109be24c1780beb6b2e6a4f3f84376cca6e",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dca822f6_ac98e36e",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsRepositoryResolver.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-10-14T05:29:28Z",
+      "side": 1,
+      "message": "\"cache\"?",
+      "range": {
+        "startLine": 39,
+        "startChar": 45,
+        "endLine": 39,
+        "endChar": 59
+      },
+      "revId": "7a37d109be24c1780beb6b2e6a4f3f84376cca6e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
