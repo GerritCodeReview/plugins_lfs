@@ -16,6 +16,24 @@
       "revId": "e4c5f52d230d590909fc835cb34c9540e220a66e",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc9fa6ca_ad98dd6e",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsGlobalConfig.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-10-14T06:14:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dca822f6_0c813700",
+      "revId": "e4c5f52d230d590909fc835cb34c9540e220a66e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
