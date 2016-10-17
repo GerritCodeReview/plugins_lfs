@@ -14,7 +14,6 @@
 
 package com.googlesource.gerrit.plugins.lfs;
 
-import com.google.common.base.Function;
 import com.google.common.collect.FluentIterable;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableMap.Builder;
@@ -42,15 +41,10 @@ public class LfsGlobalConfig {
 
   public Map<String, LfsBackend> getBackends() {
     Builder<String, LfsBackend> builder = ImmutableMap.builder();
-    for (final LfsBackendType type : LfsBackendType.values()) {
+    for (LfsBackendType type : LfsBackendType.values()) {
       Map<String, LfsBackend> backendsOfType =
           FluentIterable.from(cfg.getSubsections(type.name()))
-              .toMap(new Function<String, LfsBackend>() {
-                @Override
-                public LfsBackend apply(String input) {
-                  return new LfsBackend(input, type);
-                }
-              });
+              .toMap(s -> new LfsBackend(s, type));
       builder.putAll(backendsOfType);
     }
 

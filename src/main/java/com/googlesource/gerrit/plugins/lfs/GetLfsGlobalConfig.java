@@ -14,7 +14,6 @@
 
 package com.googlesource.gerrit.plugins.lfs;
 
-import com.google.common.base.Function;
 import com.google.common.collect.Maps;
 import com.google.gerrit.extensions.restapi.ResourceNotFoundException;
 import com.google.gerrit.extensions.restapi.RestApiException;
@@ -32,14 +31,6 @@ import java.util.List;
 
 @Singleton
 class GetLfsGlobalConfig implements RestReadView<ProjectResource> {
-  private static final Function<LfsBackend, LfsBackendType> TO_BACKEND_CFG =
-      new Function<LfsBackend, LfsBackendType>() {
-        @Override
-        public LfsBackendType apply(LfsBackend input) {
-          return input.type;
-        }
-      };
-
   private final LfsConfigurationFactory lfsConfigFactory;
   private final AllProjectsName allProjectsName;
   private final Provider<CurrentUser> self;
@@ -65,7 +56,7 @@ class GetLfsGlobalConfig implements RestReadView<ProjectResource> {
     LfsGlobalConfig globalConfig = lfsConfigFactory.getGlobalConfig();
     info.defaultBackendType = globalConfig.getDefaultBackend().type;
     info.backends = Maps.transformValues(globalConfig.getBackends(),
-        TO_BACKEND_CFG);
+        b -> b.type);
 
     List<LfsProjectConfigSection> configSections =
         lfsConfigFactory.getProjectsConfig().getConfigSections();
