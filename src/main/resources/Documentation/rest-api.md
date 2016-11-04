@@ -71,7 +71,7 @@ If an empty body is sent, all current project settings are removed. May only be
 called on `All-Projects` by users having the 'Administrate Server' capability.
 
 ```
-  PUT /projects/All-Projects/@PLUGIN@:settings HTTP/1.0
+  PUT /projects/All-Projects/@PLUGIN@:config-global HTTP/1.0
   Content-Type: application/json;charset=UTF-8
   {
     "namespaces": {
@@ -122,7 +122,8 @@ The `LfsGlobalConfigInfo` entity describes the global configuration for LFS.
 
 ### <a id="lfs-global-config-input"></a>LfsGlobalConfigInput
 
-The `LfsGlobalConfigInput` entity describes the global settings for LFS.
+The `LfsGlobalConfigInput` entity describes the global configuration to set
+for LFS.
 
 * _namespaces_: Configured namespaces as a map of [LfsProjectConfigInfo]
 (#lfs-project-config-info) entities.
