@@ -39,8 +39,12 @@ Gerrit.install(function(self) {
       + 'lfs:config-project';
 
     Gerrit.get(url, function(lfs) {
+      // Don't show LFS Header if nothing is configured
+      if (Object.getOwnPropertyNames(lfs).length < 1) {
+        return;
+      }
+ 
       var doc = document;
-
       // create header
       var td = doc.createElement('td');
       td.appendChild(Gerrit.html(
