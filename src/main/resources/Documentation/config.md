@@ -82,6 +82,11 @@ In this mode reading LFS objects is still possible but pushing is forbidden.
 Note that regular git operations are not affected.
 If not set, defaults to `false`.
 
+lfs.backend
+: Backend that should be used for storing binaries. It has to be one of
+backends specified as `fs` or `s3`subsection of Global Plugin Settings.
+If not set, defaults to value of `storage.backend` from Global Plugin Settings.
+
 ## Global Plugin Settings
 
 The following options can be configured in `$GERRIT_SITE/etc/@PLUGIN@.config`
@@ -90,10 +95,10 @@ and `$GERRIT_SITE/etc/@PLUGIN@.secure.config.`
 ### Section `storage`
 
 storage.backend
-: The storage backend to use. Valid values are `fs` for local file system,
+: The default storage backend to use. Valid values are `fs` for local file system,
 and `s3` for Amazon S3. If not set, defaults to `fs`.
 
-### Section `fs`
+### Section `fs` - default file system bakend
 
 The following configuration options are only used when the backend is `fs`.
 
@@ -101,7 +106,7 @@ fs.directory
 : The directory in which to store data files. If not specified, defaults to
 the plugin's data folder: `$GERRIT_SITE/data/@PLUGIN@`.
 
-### Section `s3`
+### Section `s3` - default S3 backend
 
 The following configuration options are only used when the backend is `s3`.
 
@@ -140,6 +145,29 @@ s3.secretKey
 : The link:http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html
 [Amazon IAM secretKey] for authenticating to S3. It is recommended to place this
 setting in `$GERRIT_SITE/etc/@PLUGIN@.secure.config`.
+
+### Multiple LFS backends
+
+One can specify multiple LFS backends for both FS and S3 storage by introducing
+backend subsections:
+
+```
+  [fs "foo"]
+    directory = /foo_dir
+  [s3 "bar"]
+    ...
+```
+
+and use them for namespace configuration by adding backend namespace parameter:
+
+```
+  [@PLUGIN@ "sandbox/*"]
+    backend = foo
+    ...
+  [@PLUGIN@ "release/*"]
+    backend = bar
+    ...
+```
 
 ## Local Project Configuration
 
