@@ -26,6 +26,8 @@ returned that describes the LFS configuration for the project.
   {
     "enabled": true,
     "max_object_size": 102400
+    "read_only": true,
+    "backend": "foo"
   }
 ```
 
@@ -50,12 +52,16 @@ that describes the global LFS configuration.
   Content-Type: application/json;charset=UTF-8
   )]}'
   {
-    "backend_type": "FS",
+    "default_backend_type": "FS",
+    "backends": {
+      "foo": "FS"
+    },
     "namespaces": {
       "test-project": {
         "enabled": true,
         "max_object_size": 102400,
-        "read_only": false
+        "read_only": false,
+        "backend": "foo"
       }
     }
   }
@@ -91,7 +97,10 @@ is returned that describes the updated global LFS configuration.
   Content-Type: application/json;charset=UTF-8
   )]}'
   {
-    "backend_type": "FS",
+    "default_backend_type": "FS",
+    "backends": {
+      "foo": "FS"
+    },
     "namespaces": {
       "test-project": {
         "enabled": false,
@@ -111,12 +120,16 @@ The `LfsProjectConfigInfo` entity describes the LFS configuration for a project.
 _enabled_ is true. 0 means no limit is set.
 * _read_only_: Whether LFS is in read-only mode for this project. Only set when
 _enabled_ is true.
+* _backend_: LFS storage backend that is used by this project. Only set when
+_enabled_ is true.
 
 ### <a id="lfs-global-config-info"></a>LfsGlobalConfigInfo
 
 The `LfsGlobalConfigInfo` entity describes the global configuration for LFS.
 
-* _backend_type_: The LFS backend in use. Can be `FS` or `S3`.
+* _default_backend_type_: The default LFS backend in use. Can be `FS` or `S3`.
+* _backends_: List of storage backends that might be used in namespaces;
+map of backend name to storage type (either `FS` or `S3`).
 * _namespaces_: Configured namespaces as a map of [LfsProjectConfigInfo]
 (#lfs-project-config-info) entities.
 
