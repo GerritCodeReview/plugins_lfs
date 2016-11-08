@@ -22,9 +22,10 @@ import com.google.gerrit.extensions.webui.WebUiPlugin;
 import com.google.gerrit.httpd.plugins.HttpPluginModule;
 import com.google.inject.Inject;
 
-import com.googlesource.gerrit.plugins.lfs.fs.LfsFsContentServlet;
 import com.googlesource.gerrit.plugins.lfs.fs.LocalLargeFileRepository;
 import com.googlesource.gerrit.plugins.lfs.s3.S3LargeFileRepository;
+
+import org.eclipse.jgit.lfs.server.fs.LfsFsReferencingContentServlet;
 
 import java.util.Map;
 
@@ -88,6 +89,6 @@ public class HttpModule extends HttpPluginModule {
         fsRepoFactory.create(backend);
     cache.put(backend, repository);
     serve(repository.getServletUrlPattern())
-        .with(new LfsFsContentServlet(repository));
+        .with(new LfsFsReferencingContentServlet(repository));
   }
 }

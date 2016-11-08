@@ -8,10 +8,14 @@ gerrit_plugin(
   name = 'lfs',
   srcs = glob(['src/main/java/**/*.java']),
   resources = glob(['src/main/resources/**/*']),
-  deps = [
+  deps = GERRIT_PLUGIN_API + [
     ':jgit-http-apache',
     ':jgit-lfs',
     ':jgit-lfs-server',
+    '//lib/httpcomponents:httpcore',
+  ],
+  provided_deps = [
+    '//lib:servlet-api-3_1',
   ],
   manifest_entries = [
     'Gerrit-PluginName: lfs',
