@@ -14,11 +14,16 @@
 
 package com.googlesource.gerrit.plugins.lfs.fs;
 
+import static com.google.gerrit.extensions.restapi.Url.encode;
 import static com.googlesource.gerrit.plugins.lfs.LfsBackend.DEFAULT;
 
 import com.google.common.base.Strings;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
 import com.google.gerrit.extensions.annotations.PluginCanonicalWebUrl;
 import com.google.gerrit.extensions.annotations.PluginData;
+import com.google.gerrit.reviewdb.client.Project;
 import com.google.inject.Inject;
 import com.google.inject.assistedinject.Assisted;
 
@@ -26,35 +31,82 @@ import com.googlesource.gerrit.plugins.lfs.LfsBackend;
 import com.googlesource.gerrit.plugins.lfs.LfsConfigurationFactory;
 import com.googlesource.gerrit.plugins.lfs.LfsGlobalConfig;
 
-import org.eclipse.jgit.lfs.server.fs.FileLfsRepository;
+import org.eclipse.jgit.lfs.lib.AnyLongObjectId;
+import org.eclipse.jgit.lfs.server.LargeFileRepository;
+import org.eclipse.jgit.lfs.server.Response.Action;
+import org.eclipse.jgit.lfs.server.fs.LinkingFileLfsRepository;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.concurrent.TimeUnit;
 
-public class LocalLargeFileRepository extends FileLfsRepository {
+public class LocalLargeFileRepository implements LargeFileRepository {
   public interface Factory {
     LocalLargeFileRepository create(LfsBackend backendConfig);
   }
 
   public static final String CONTENT_PATH = "content";
 
+  private final String url;
+  private final Path dir;
   private final String servletUrlPattern;
+  private final LoadingCache<String, LinkingFileLfsRepository> repositories;
 
   @Inject
   LocalLargeFileRepository(LfsConfigurationFactory configFactory,
       @PluginCanonicalWebUrl String url,
       @PluginData Path defaultDataDir,
       @Assisted LfsBackend backend) throws IOException {
-    super(getContentUrl(url, backend),
-        getOrCreateDataDir(configFactory.getGlobalConfig(),
-            backend, defaultDataDir));
+    this.url = getContentUrl(url, backend);
+    this.dir = getOrCreateDataDir(configFactory.getGlobalConfig(),
+        backend, defaultDataDir);
     this.servletUrlPattern = "/" + getContentPath(backend) + "*";
+    this.repositories = CacheBuilder
+        .newBuilder()
+        .expireAfterAccess(15L, TimeUnit.MINUTES)
+        .build(new CacheLoader<String, LinkingFileLfsRepository>() {
+          @Override
+          public LinkingFileLfsRepository load(String project)
+              throws Exception {
+            return new LinkingFileLfsRepository(
+                LocalLargeFileRepository.this.url + encode(project) + "/",
+                dir, project);
+          }
+        });
   }
 
   public String getServletUrlPattern() {
     return servletUrlPattern;
+  }
+
+  public LinkingFileLfsRepository getProjectRepository(Project.NameKey project) {
+    return getProjectRepository(project.get());
+  }
+
+  public LinkingFileLfsRepository getProjectRepository(String project) {
+    return repositories.getUnchecked(project);
+  }
+
+  @Override
+  public Action getDownloadAction(AnyLongObjectId id) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public Action getUploadAction(AnyLongObjectId id, long size) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public Action getVerifyAction(AnyLongObjectId id) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public long getSize(AnyLongObjectId id) throws IOException {
+    throw new UnsupportedOperationException();
   }
 
   private static String getContentUrl(String url, LfsBackend backend) {

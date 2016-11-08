@@ -13,6 +13,9 @@ gerrit_plugin(
     ':jgit-lfs',
     ':jgit-lfs-server',
   ],
+  provided_deps = [
+    '//lib/httpcomponents:httpcore',
+  ],
   manifest_entries = [
     'Gerrit-PluginName: lfs',
     'Gerrit-Module: com.googlesource.gerrit.plugins.lfs.Module',
