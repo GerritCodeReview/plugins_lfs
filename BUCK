@@ -12,6 +12,7 @@ gerrit_plugin(
     ':jgit-http-apache',
     ':jgit-lfs',
     ':jgit-lfs-server',
+    '//lib/httpcomponents:httpcore',
   ],
   manifest_entries = [
     'Gerrit-PluginName: lfs',
