@@ -22,9 +22,10 @@ import com.google.gerrit.extensions.webui.WebUiPlugin;
 import com.google.gerrit.httpd.plugins.HttpPluginModule;
 import com.google.inject.Inject;
 
-import com.googlesource.gerrit.plugins.lfs.fs.LfsFsContentServlet;
 import com.googlesource.gerrit.plugins.lfs.fs.LocalLargeFileRepository;
 import com.googlesource.gerrit.plugins.lfs.s3.S3LargeFileRepository;
+
+import org.eclipse.jgit.lfs.server.fs.LfsFsContentServlet;
 
 import java.util.Map;
 
