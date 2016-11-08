@@ -20,6 +20,8 @@ import com.google.common.base.Strings;
 import com.google.gerrit.reviewdb.client.Project;
 import com.google.inject.Inject;
 
+import com.googlesource.gerrit.plugins.lfs.fs.LocalLargeFileRepository;
+
 import org.eclipse.jgit.lfs.errors.LfsRepositoryNotFound;
 import org.eclipse.jgit.lfs.server.LargeFileRepository;
 import org.slf4j.Logger;
@@ -62,6 +64,11 @@ public class LfsRepositoryResolver {
 
     LargeFileRepository repository = cache.get(backend);
     if (repository != null) {
+      if (repository instanceof LocalLargeFileRepository) {
+        return ((LocalLargeFileRepository) repository)
+            .getProjectRepository(project);
+      }
+
       return repository;
     }
 
