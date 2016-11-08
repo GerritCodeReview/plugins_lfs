@@ -12,12 +12,22 @@ gerrit_plugin(
     ':jgit-http-apache',
     ':jgit-lfs',
     ':jgit-lfs-server',
+    ':httpcore',
   ],
   manifest_entries = [
     'Gerrit-PluginName: lfs',
     'Gerrit-Module: com.googlesource.gerrit.plugins.lfs.Module',
     'Gerrit-HttpModule: com.googlesource.gerrit.plugins.lfs.HttpModule',
   ],
+)
+
+# httpcore version should match version used in Gerrit
+maven_jar(
+  name = 'httpcore',
+  id = 'org.apache.httpcomponents:httpcore:4.4.1',
+  bin_sha1 = 'f5aa318bda4c6c8d688c9d00b90681dcd82ce636',
+  src_sha1 = '9700be0d0a331691654a8e901943c9a74e33c5fc',
+  license = 'Apache2.0',
 )
 
 maven_jar(
