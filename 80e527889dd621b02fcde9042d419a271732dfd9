@@ -19,6 +19,52 @@
     },
     {
       "key": {
+        "uuid": "4b78ebff_66694e38",
+        "filename": "BUCK",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-11-09T02:47:40Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem to be necessary.",
+      "range": {
+        "startLine": 11,
+        "startChar": 9,
+        "endLine": 11,
+        "endChar": 26
+      },
+      "revId": "80e527889dd621b02fcde9042d419a271732dfd9",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b78ebff_46645263",
+        "filename": "BUCK",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-11-09T02:47:40Z",
+      "side": 1,
+      "message": "This doesn\u0027t work in standalone mode because httpcore is not exported.",
+      "range": {
+        "startLine": 15,
+        "startChar": 4,
+        "endLine": 15,
+        "endChar": 36
+      },
+      "revId": "80e527889dd621b02fcde9042d419a271732dfd9",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b78ebff_065a5a9a",
         "filename": "BUCK",
         "patchSetId": 1
