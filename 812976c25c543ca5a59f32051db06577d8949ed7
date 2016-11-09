@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb9bfb7a_b250e046",
+        "filename": "BUCK",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2016-11-09T05:59:00Z",
+      "side": 1,
+      "message": "This dependency must go in provided_deps. The easies way to verify it, build headless.war with `buck build headless`, and issue:\n\n  $ unzip -t buck-out/gen/headless/headless.war | grep -i httpcore\n    testing: WEB-INF/lib/httpcore-niossl-4.0-alpha6.jar   OK\n    testing: WEB-INF/lib/httpcore-nio-4.4.1.jar   OK\n    testing: WEB-INF/lib/httpcore-4.4.1.jar   OK\n\nIf you see the match, you know, that this dependency is already packaged in gerrit.war by gerrit core.",
+      "range": {
+        "startLine": 15,
+        "startChar": 4,
+        "endLine": 15,
+        "endChar": 36
+      },
+      "revId": "812976c25c543ca5a59f32051db06577d8949ed7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
