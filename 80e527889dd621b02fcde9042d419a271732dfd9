@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b757707_e5229619",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-11-09T02:18:01Z",
+      "side": 1,
+      "message": "Add some context?",
+      "revId": "80e527889dd621b02fcde9042d419a271732dfd9",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b78ebff_065a5a9a",
+        "filename": "BUCK",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-11-09T02:18:01Z",
+      "side": 1,
+      "message": "I\u0027m not sure if it\u0027s necessary to do this. Guava is also used in the plugin, is exposed in the API, and we don\u0027t need to explicitly add a dependency on it.",
+      "range": {
+        "startLine": 17,
+        "startChar": 2,
+        "endLine": 19,
+        "endChar": 4
+      },
+      "revId": "80e527889dd621b02fcde9042d419a271732dfd9",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b78ebff_86048a7e",
+        "filename": "src/main/java/org/eclipse/jgit/lfs/server/fs/LfsFsReferencingContentServlet.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-11-09T02:18:01Z",
+      "side": 1,
+      "message": "2016",
+      "range": {
+        "startLine": 1,
+        "startChar": 17,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "80e527889dd621b02fcde9042d419a271732dfd9",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b78ebff_e6fb7e51",
+        "filename": "src/main/java/org/eclipse/jgit/lfs/server/fs/LfsFsReferencingContentServlet.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-11-09T02:18:01Z",
+      "side": 1,
+      "message": "This should be in the com.googlesource.gerrit.plugins.lfs.fs package.\n\nBut I see the reason for this is to be able to access ObjectUploadListener which is package private.\n\nUploaded a change to make that public:\n\nhttps://git.eclipse.org/r/#/c/84707/",
+      "range": {
+        "startLine": 15,
+        "startChar": 8,
+        "endLine": 15,
+        "endChar": 39
+      },
+      "revId": "80e527889dd621b02fcde9042d419a271732dfd9",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
