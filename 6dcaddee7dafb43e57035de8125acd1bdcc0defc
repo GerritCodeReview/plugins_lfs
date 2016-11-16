@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "905f7458_9934db3c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-11-16T16:23:07Z",
+      "side": 1,
+      "message": "The same applies for S3 storage backend, right?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 69
+      },
+      "revId": "6dcaddee7dafb43e57035de8125acd1bdcc0defc",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "905f7458_793e2721",
         "filename": "/COMMIT_MSG",
         "patchSetId": 5
@@ -16,6 +39,29 @@
       "range": {
         "startLine": 17,
         "startChar": 0,
+        "endLine": 21,
+        "endChar": 13
+      },
+      "revId": "6dcaddee7dafb43e57035de8125acd1bdcc0defc",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "905f7458_b9371f40",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-11-16T16:23:07Z",
+      "side": 1,
+      "message": "I don\u0027t understand how does this help. If 2 repositories share the same LFS storage and if they both link from the repository to the LFS storage dir, how can we then find out which of the LFS objects belong to which repository?",
+      "range": {
+        "startLine": 19,
+        "startChar": 13,
         "endLine": 21,
         "endChar": 13
       },
