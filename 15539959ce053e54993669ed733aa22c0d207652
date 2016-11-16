@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "905f7458_39caef07",
+        "filename": "src/main/java/org/eclipse/jgit/lfs/server/fs/LinkingFileLfsRepository.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-11-16T19:53:15Z",
+      "side": 1,
+      "message": "should\u0027ve tested before push :) - it should relativize path from linkDir as in current state creates to many `../` entries",
+      "range": {
+        "startLine": 45,
+        "startChar": 37,
+        "endLine": 45,
+        "endChar": 58
+      },
+      "revId": "15539959ce053e54993669ed733aa22c0d207652",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
