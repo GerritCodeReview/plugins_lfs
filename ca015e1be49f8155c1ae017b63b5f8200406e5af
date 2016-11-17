@@ -46,6 +46,24 @@
       "revId": "ca015e1be49f8155c1ae017b63b5f8200406e5af",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b05ab866_5ab2359a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-11-17T12:44:10Z",
+      "side": 1,
+      "message": "\u003e Limitations bother me too so I was thinking about solution:\n\u003e create two indexes: project -\u003e LFS-OID and LFS-OID -\u003e project, backend might be:\n\u003e \n\u003e 1. Lucene - but I am not too familiar with it yet, however the main concern is that one cannot use it out of the box when gerrit is down and can\u0027t really see how it is going to help during migration of repository from server to another, as I said I am not too familiar so maybe it is possible to write some script that connects to index and uses it to copy/move data around - that would be great :)\n\nIndexing documents in Lucene is relatively simple operation. Lucene document\nis basically a Map(Key \u003e Value). So if an object \"05acd9588bf\" is pushed to the project \"foo\" then you just create a Document:\n\n  document \u003d {oid: \"05acd9588bf\", project: \"foo\"}\n\nand then tell Lucene to index it: luceneIndex.index(document);\n\nScripting something that reads that index offline should be easy.\n\nAn important question in this case is: would such an index be a primary\nor secondary source of the truth? In other words: can we (re)generate\nsuch an index (if it gets corrupt or for some other reason).\n(Re)generating it for a given project shouldn\u0027t be too hard: just RevWalk\nall branches/tags, look at each commit and if an LFS pointer file is found\ncreate Lucene document and index it.\n\n\u003e \n\u003e 2. plain old git and maintain:\n\u003e - `project -\u003e LFS-OID` index as files under project\u0027s refs/meta/lfs ref. One can group entries in files that has a name starting with X letters of SHA-256 (to balance number of files vs number of file entries)\n\u003e - `LFS-OID -\u003e project` index as files under All-Projects (or create All-Lfs meta project...) refs/meta/lfs/backend ref with structure similar to previous\n\u003e Having these two indexes one can script project\u0027s delete/move with reasonable amount of time\n\nI would try to avoid that as we can already find that information by\nRevWalking project\u0027s commit graph. Having one single source of truth\nis simpler to understand.\n\n\n\u003e Both these solution would work regardless of backend with small exception in case of S3: in terms of FS we know exactly when file storage was finished and if it was successful or not as it happens in AtomicObjectOutputStream. Knowing that we can update indexes in 2 cases: when file was successfully uploaded or when getSize !\u003d -1 (the later case happens when another repository pushes the same file or file is pushed to different branch). In terms of S3 we can rely only on results of getSize operation so realistically only in case when object is requested after it was stored as we don\u0027t want to update indexes in the moment when user aborted operation... but this seems to be reasonable compromise... what is your opinion?\n\nMy opinion is that it depends on the definition of the index.\nIf we say that we index LFS pointers, which are stored in Git, then\nwe don\u0027t care at all if and when client uploaded the LFS object.\nWe can hook into ReceiveCommit\u0027s, watch for LFS pointer files and update\nthe index.\nIf an LFS object is missing in the store then, anyway, the Git repository\nis kind of corrupt. The missing LFS object has to be uploaded to the LFS\nbackend in order to fix the issue.\n\nIndexing on successful object upload only is more tricky. Still, an\nobject could be manually deleted from the LFS store and we have to be\nprepared to handle this scenario.\n\nI prefer the first definition of the index: it only looks at LFS pointer\nfiles in Git and creates index based exclusively on the information\navailable in the Git repository. This approach will also scale better for the upcoming multi-master\nGerrit.\n\n\u003e \n\u003e I am also thinking about gathering some basic statistics including project\u0027s LFS size (which will be rather project\u0027s exclusive LFS size and project\u0027s shared LFS size), backend LFS size (again backend as whole + backend shared LFS size) and maybe couple of more. But can imagine that these can be collected when LFS objects are being uploaded or referenced from repositories...",
+      "parentUuid": "b05ab866_7aad7938",
+      "revId": "ca015e1be49f8155c1ae017b63b5f8200406e5af",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
