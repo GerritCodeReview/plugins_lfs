@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b05ab866_1aa8bd28",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2016-11-17T09:22:14Z",
+      "side": 1,
+      "message": "Now I understand the approach. There are some issues with this approach:\n\n1. We can easily find a set of LFS objects referenced from a project. However, to find all projects which reference particular LFS object is not going to be very efficient.\n\n2. This approach works for FS storage only, it doesn\u0027t work for S3. It is not even clear how we will approach the issue with S3. We may not need\nto implement a solution for S3 immediately but we have to be reasonable\nsure that we will be able to do that.\n\n3. (minor) the target part of the symlink is redundant i.e. X symlinks to X (in a different folder).\n\nFor me this looks like this change is trying to address the issue of a missing index on (project, LFS-OID) but it does it only for the FS case\nand efficiently only in one direction (project \u003e\u003e LFS-OID).\n\nCan we think of a solution which is independent of the LFS storage type?",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 72
+      },
+      "revId": "ca015e1be49f8155c1ae017b63b5f8200406e5af",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
