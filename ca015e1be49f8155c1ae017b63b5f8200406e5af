@@ -22,6 +22,30 @@
       "revId": "ca015e1be49f8155c1ae017b63b5f8200406e5af",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b05ab866_7aad7938",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-11-17T11:30:44Z",
+      "side": 1,
+      "message": "Limitations bother me too so I was thinking about solution:\ncreate two indexes: project -\u003e LFS-OID and LFS-OID -\u003e project, backend might be:\n\n1. Lucene - but I am not too familiar with it yet, however the main concern is that one cannot use it out of the box when gerrit is down and can\u0027t really see how it is going to help during migration of repository from server to another, as I said I am not too familiar so maybe it is possible to write some script that connects to index and uses it to copy/move data around - that would be great :)\n\n2. plain old git and maintain:\n- `project -\u003e LFS-OID` index as files under project\u0027s refs/meta/lfs ref. One can group entries in files that has a name starting with X letters of SHA-256 (to balance number of files vs number of file entries)\n- `LFS-OID -\u003e project` index as files under All-Projects (or create All-Lfs meta project...) refs/meta/lfs/backend ref with structure similar to previous\nHaving these two indexes one can script project\u0027s delete/move with reasonable amount of time\n\nBoth these solution would work regardless of backend with small exception in case of S3: in terms of FS we know exactly when file storage was finished and if it was successful or not as it happens in AtomicObjectOutputStream. Knowing that we can update indexes in 2 cases: when file was successfully uploaded or when getSize !\u003d -1 (the later case happens when another repository pushes the same file or file is pushed to different branch). In terms of S3 we can rely only on results of getSize operation so realistically only in case when object is requested after it was stored as we don\u0027t want to update indexes in the moment when user aborted operation... but this seems to be reasonable compromise... what is your opinion?\n\nI am also thinking about gathering some basic statistics including project\u0027s LFS size (which will be rather project\u0027s exclusive LFS size and project\u0027s shared LFS size), backend LFS size (again backend as whole + backend shared LFS size) and maybe couple of more. But can imagine that these can be collected when LFS objects are being uploaded or referenced from repositories...",
+      "parentUuid": "b05ab866_1aa8bd28",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 72
+      },
+      "revId": "ca015e1be49f8155c1ae017b63b5f8200406e5af",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
