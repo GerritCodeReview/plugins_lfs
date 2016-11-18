@@ -50,13 +50,13 @@ public class LfsFsRequestAuthorizerTest {
 
   @Test
   public void testVerifyAgainstToken() throws Exception {
-    String token = auth.generateToken("o", zeroId());
+    String token = auth.generateToken("o", zeroId(), 1);
     assertThat(auth.verifyAgainstToken(token, "o", zeroId())).isTrue();
   }
 
   @Test
   public void testVerifyAgainstInvalidToken() throws Exception {
-    String token = auth.generateToken("o", zeroId());
+    String token = auth.generateToken("o", zeroId(), 1);
     // replace 1st and 2nd token letters with each other
     assertThat(auth.verifyAgainstToken(
         token.substring(1, 2) + token.substring(0, 1) + token.substring(2), "o",
@@ -65,17 +65,24 @@ public class LfsFsRequestAuthorizerTest {
 
   @Test
   public void testVerifyAgainstDifferentOperation() throws Exception {
-    String token = auth.generateToken("o", zeroId());
+    String token = auth.generateToken("o", zeroId(), 1);
     assertThat(auth.verifyAgainstToken(token, "p", zeroId())).isFalse();
   }
 
   @Test
   public void testVerifyAgainstDifferentObjectId() throws Exception {
-    String token = auth.generateToken("o", zeroId());
+    String token = auth.generateToken("o", zeroId(), 1);
     assertThat(auth.verifyAgainstToken(token, "o",
         LongObjectId.fromString(
             "123456789012345678901234567890"
             + "123456789012345678901234567890"
             + "1234"))).isFalse();
+  }
+
+  @Test
+  public void testVerifyAgainstExpiredToken() throws Exception {
+    // generate already expired token
+    String token = auth.generateToken("o", zeroId(), -1);
+    assertThat(auth.verifyAgainstToken(token, "o", zeroId())).isFalse();
   }
 }
