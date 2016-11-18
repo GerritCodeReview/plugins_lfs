@@ -42,16 +42,15 @@ public class LfsFsRequestAuthorizer {
 
   private final SecureRandom rndm;
   private final Optional<SecretKey> key;
-  private final int timeout;
 
   @Inject
   LfsFsRequestAuthorizer() {
     this.rndm = new SecureRandom();
     this.key = generateKey();
-    this.timeout = 10;
   }
 
-  public String generateToken(String operation, AnyLongObjectId id) {
+  public String generateToken(
+      String operation, AnyLongObjectId id, int expirationSeconds) {
     if (key.isPresent()) {
       try {
         byte [] initVector = new byte[IV_LENGTH];
@@ -59,7 +58,8 @@ public class LfsFsRequestAuthorizer {
         Cipher cipher = cipher(initVector, Cipher.ENCRYPT_MODE);
         return Base64.encodeBytes(Bytes.concat(initVector,
             cipher.doFinal(String.format("%s-%s-%s", operation,
-                id.name(), timeout()).getBytes(StandardCharsets.UTF_8))));
+                id.name(), timeout(expirationSeconds))
+                .getBytes(StandardCharsets.UTF_8))));
       } catch (GeneralSecurityException e) {
         log.error("Token generation failed with error", e);
       }
@@ -107,9 +107,10 @@ public class LfsFsRequestAuthorizer {
     return true;
   }
 
-  private String timeout() {
+  private String timeout(int expirationSeconds) {
     DateTime now = now();
-    return ISODateTimeFormat.dateTime().print(now.plusSeconds(timeout));
+    return ISODateTimeFormat.dateTime()
+        .print(now.plusSeconds(expirationSeconds));
   }
 
   private DateTime now() {
