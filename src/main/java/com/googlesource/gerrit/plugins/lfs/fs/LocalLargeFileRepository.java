@@ -45,9 +45,11 @@ public class LocalLargeFileRepository extends FileLfsRepository {
   public static final String CONTENT_PATH = "content";
   public static final String UPLOAD = "upload";
   public static final String DOWNLOAD = "download";
+  private static final int DEFAULT_TIMEOUT = 10; //in seconds
 
   private final String servletUrlPattern;
   private final LfsFsRequestAuthorizer authorizer;
+  private final int expirationSeconds;
 
   @Inject
   LocalLargeFileRepository(LfsConfigurationFactory configFactory,
@@ -60,6 +62,8 @@ public class LocalLargeFileRepository extends FileLfsRepository {
             backend, defaultDataDir));
     this.authorizer = authorizer;
     this.servletUrlPattern = "/" + getContentPath(backend) + "*";
+    this.expirationSeconds = configFactory.getGlobalConfig()
+        .getInt(backend.type.name(), backend.name, "expirationSeconds", DEFAULT_TIMEOUT);
   }
 
   public String getServletUrlPattern() {
@@ -70,7 +74,7 @@ public class LocalLargeFileRepository extends FileLfsRepository {
   public Response.Action getDownloadAction(AnyLongObjectId id) {
     Response.Action action = super.getDownloadAction(id);
     action.header = Collections.singletonMap(HDR_AUTHORIZATION,
-        authorizer.generateToken(DOWNLOAD, id));
+        authorizer.generateToken(DOWNLOAD, id, expirationSeconds));
     return action;
   }
 
@@ -78,7 +82,7 @@ public class LocalLargeFileRepository extends FileLfsRepository {
   public Response.Action getUploadAction(AnyLongObjectId id, long size) {
     Response.Action action = super.getUploadAction(id, size);
     action.header = Collections.singletonMap(HDR_AUTHORIZATION,
-        authorizer.generateToken(UPLOAD, id));
+        authorizer.generateToken(UPLOAD, id, expirationSeconds));
     return action;
   }
 

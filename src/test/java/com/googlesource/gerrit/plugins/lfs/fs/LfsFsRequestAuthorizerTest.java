@@ -16,7 +16,6 @@ package com.googlesource.gerrit.plugins.lfs.fs;
 
 import static com.google.common.truth.Truth.assertThat;
 import static com.googlesource.gerrit.plugins.lfs.fs.LfsFsRequestAuthorizer.DATE_TIME;
-import static com.googlesource.gerrit.plugins.lfs.fs.LfsFsRequestAuthorizer.TOKEN_TIMEOUT;
 import static org.eclipse.jgit.lfs.lib.LongObjectId.zeroId;
 
 import org.eclipse.jgit.lfs.lib.LongObjectId;
@@ -55,9 +54,11 @@ public class LfsFsRequestAuthorizerTest {
         .isFalse();
 
     // test with token
-    String token = objectUnderTest.generateToken("o", zeroId());
+    int expireAfter = 1; //second
+    String token = objectUnderTest.generateToken("o", zeroId(), expireAfter);
     assertThat(objectUnderTest.verifyAgainstToken(token, "o", zeroId()))
         .isTrue();
+
     // replace 1st and 2nd token letters with each other
     assertThat(objectUnderTest.verifyAgainstToken(
         token.substring(1, 2) + token.substring(0, 1) + token.substring(2), "o",
@@ -73,7 +74,7 @@ public class LfsFsRequestAuthorizerTest {
             + "1234"))).isFalse();
 
     // test token timeout
-    Thread.sleep((TOKEN_TIMEOUT + 1) * 1000);
+    Thread.sleep((expireAfter + 1) * 1000);
     assertThat(objectUnderTest.verifyAgainstToken(token, "o", zeroId()))
         .isFalse();
   }
