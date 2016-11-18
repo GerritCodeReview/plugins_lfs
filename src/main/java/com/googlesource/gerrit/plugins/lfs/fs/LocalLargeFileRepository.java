@@ -15,6 +15,7 @@
 package com.googlesource.gerrit.plugins.lfs.fs;
 
 import static com.googlesource.gerrit.plugins.lfs.LfsBackend.DEFAULT;
+import static org.eclipse.jgit.util.HttpSupport.HDR_AUTHORIZATION;
 
 import com.google.common.base.Strings;
 import com.google.gerrit.extensions.annotations.PluginCanonicalWebUrl;
@@ -26,12 +27,15 @@ import com.googlesource.gerrit.plugins.lfs.LfsBackend;
 import com.googlesource.gerrit.plugins.lfs.LfsConfigurationFactory;
 import com.googlesource.gerrit.plugins.lfs.LfsGlobalConfig;
 
+import org.eclipse.jgit.lfs.lib.AnyLongObjectId;
+import org.eclipse.jgit.lfs.server.Response;
 import org.eclipse.jgit.lfs.server.fs.FileLfsRepository;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Collections;
 
 public class LocalLargeFileRepository extends FileLfsRepository {
   public interface Factory {
@@ -39,22 +43,43 @@ public class LocalLargeFileRepository extends FileLfsRepository {
   }
 
   public static final String CONTENT_PATH = "content";
+  public static final String UPLOAD = "upload";
+  public static final String DOWNLOAD = "download";
 
   private final String servletUrlPattern;
+  private final LfsFsRequestAuthorizer authorizer;
 
   @Inject
   LocalLargeFileRepository(LfsConfigurationFactory configFactory,
+      LfsFsRequestAuthorizer authorizer,
       @PluginCanonicalWebUrl String url,
       @PluginData Path defaultDataDir,
       @Assisted LfsBackend backend) throws IOException {
     super(getContentUrl(url, backend),
         getOrCreateDataDir(configFactory.getGlobalConfig(),
             backend, defaultDataDir));
+    this.authorizer = authorizer;
     this.servletUrlPattern = "/" + getContentPath(backend) + "*";
   }
 
   public String getServletUrlPattern() {
     return servletUrlPattern;
+  }
+
+  @Override
+  public Response.Action getDownloadAction(AnyLongObjectId id) {
+    Response.Action action = super.getDownloadAction(id);
+    action.header = Collections.singletonMap(HDR_AUTHORIZATION,
+        authorizer.generateToken(DOWNLOAD, id));
+    return action;
+  }
+
+  @Override
+  public Response.Action getUploadAction(AnyLongObjectId id, long size) {
+    Response.Action action = super.getUploadAction(id, size);
+    action.header = Collections.singletonMap(HDR_AUTHORIZATION,
+        authorizer.generateToken(UPLOAD, id));
+    return action;
   }
 
   private static String getContentUrl(String url, LfsBackend backend) {
