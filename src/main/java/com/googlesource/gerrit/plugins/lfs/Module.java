@@ -22,6 +22,8 @@ import com.google.gerrit.extensions.restapi.RestApiModule;
 import com.googlesource.gerrit.plugins.lfs.fs.LocalLargeFileRepository;
 import com.googlesource.gerrit.plugins.lfs.s3.S3LargeFileRepository;
 
+import org.eclipse.jgit.lfs.server.fs.LfsFsContentServlet;
+
 public class Module extends FactoryModule {
 
   @Override
@@ -37,5 +39,6 @@ public class Module extends FactoryModule {
 
     factory(S3LargeFileRepository.Factory.class);
     factory(LocalLargeFileRepository.Factory.class);
+    factory(LfsFsContentServlet.Factory.class);
   }
 }

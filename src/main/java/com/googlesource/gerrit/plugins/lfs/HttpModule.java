@@ -22,9 +22,10 @@ import com.google.gerrit.extensions.webui.WebUiPlugin;
 import com.google.gerrit.httpd.plugins.HttpPluginModule;
 import com.google.inject.Inject;
 
-import com.googlesource.gerrit.plugins.lfs.fs.LfsFsContentServlet;
 import com.googlesource.gerrit.plugins.lfs.fs.LocalLargeFileRepository;
 import com.googlesource.gerrit.plugins.lfs.s3.S3LargeFileRepository;
+
+import org.eclipse.jgit.lfs.server.fs.LfsFsContentServlet;
 
 import java.util.Map;
 
@@ -32,6 +33,7 @@ public class HttpModule extends HttpPluginModule {
   private final LocalLargeFileRepository.Factory fsRepoFactory;
   private final S3LargeFileRepository.Factory s3RepoFactory;
   private final LfsRepositoriesCache cache;
+  private final LfsFsContentServlet.Factory fsServletFactory;
   private final LfsBackend defaultBackend;
   private final Map<String, LfsBackend> backends;
 
@@ -39,10 +41,12 @@ public class HttpModule extends HttpPluginModule {
   HttpModule(LocalLargeFileRepository.Factory fsRepoFactory,
       S3LargeFileRepository.Factory s3RepoFactory,
       LfsRepositoriesCache cache,
+      LfsFsContentServlet.Factory fsServletFactory,
       LfsConfigurationFactory configFactory) {
     this.fsRepoFactory = fsRepoFactory;
     this.s3RepoFactory = s3RepoFactory;
     this.cache = cache;
+    this.fsServletFactory = fsServletFactory;
 
     LfsGlobalConfig config = configFactory.getGlobalConfig();
     this.defaultBackend = config.getDefaultBackend();
@@ -88,6 +92,6 @@ public class HttpModule extends HttpPluginModule {
         fsRepoFactory.create(backend);
     cache.put(backend, repository);
     serve(repository.getServletUrlPattern())
-        .with(new LfsFsContentServlet(repository));
+        .with(fsServletFactory.create(repository));
   }
 }
