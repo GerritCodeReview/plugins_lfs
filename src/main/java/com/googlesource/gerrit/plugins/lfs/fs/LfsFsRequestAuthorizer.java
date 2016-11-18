@@ -53,24 +53,28 @@ public class LfsFsRequestAuthorizer {
       DateTimeFormat.forPattern("YYYYMMDDHHmmSS");
 
   private final SecureRandom rndm;
+<<<<<<< Upstream, based on dfdf1ffa52f25d8deddea91cf3f0968db72bde4d
   private final SecretKey key;
   private final int timeout;
+=======
+  private final Optional<SecretKey> key;
+>>>>>>> 895643d Introduce FS backend expirationSeconds configuration parameter
 
   @Inject
   LfsFsRequestAuthorizer() {
     this.rndm = new SecureRandom();
     this.key = generateKey();
-    this.timeout = 10;
   }
 
-  public String generateToken(String operation, AnyLongObjectId id) {
+  public String generateToken(String operation, AnyLongObjectId id,
+      int expirationSeconds) {
     try {
-      byte [] initVector = new byte[IV_LENGTH];
+      byte[] initVector = new byte[IV_LENGTH];
       rndm.nextBytes(initVector);
       Cipher cipher = cipher(initVector, Cipher.ENCRYPT_MODE);
       return Base64.encodeBytes(Bytes.concat(initVector,
-          cipher.doFinal(String.format("%s-%s-%s", operation,
-              id.name(), timeout()).getBytes(StandardCharsets.UTF_8))));
+          cipher.doFinal(String.format("%s-%s-%s", operation, id.name(),
+              timeout(expirationSeconds)).getBytes(StandardCharsets.UTF_8))));
     } catch (GeneralSecurityException e) {
       log.error("Token generation failed with error", e);
       throw new RuntimeException(e);
@@ -111,8 +115,8 @@ public class LfsFsRequestAuthorizer {
     return true;
   }
 
-  private String timeout() {
-    return DATE_TIME.print(now().plusSeconds(timeout));
+  private String timeout(int expirationSeconds) {
+    return DATE_TIME.print(now().plusSeconds(expirationSeconds));
   }
 
   private DateTime now() {
