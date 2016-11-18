@@ -124,7 +124,7 @@ s3.storageClass
 [Amazon S3 storage class] used for storing large objects.
 : Default is `REDUCED_REDUNDANCY`
 
-s3.expiration
+s3.expirationSeconds
 : Expiration in seconds of validity of signed requests. Gerrit's LFS protocol
 handler signs requests to be issued by the git-lfs extension with the configured
 `accessKey` and `secretKey`. This way the git-lfs extension doesn't need
