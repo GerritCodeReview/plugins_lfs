@@ -107,6 +107,14 @@ fs.directory
 : The directory in which to store data files. If not specified, defaults to
 the plugin's data folder: `$GERRIT_SITE/data/@PLUGIN@`.
 
+fs.expirationSeconds
+: Expiration in seconds of validity of authentication token for signed requests.
+Gerrit's LFS protocol handler signs requests to be issued by the git-lfs
+extension. This way the git-lfs extension doesn't need any credentials to
+access objects in the FS bucket. Validity of these request signatures expires
+after this period.
+: Default is `10` seconds.
+
 ### <a id="lfs-s3-backend"></a>Section `s3` - default S3 backend
 
 The following configuration options are only used when the backend is `s3`.
