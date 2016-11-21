@@ -22,16 +22,19 @@ public class LfsBackend {
   public static final String DEFAULT = "default";
 
   public final String name;
+  public final String displayName;
   public final LfsBackendType type;
 
   public LfsBackend(String name, LfsBackendType type) {
     this.name = name;
+    this.displayName = Strings.isNullOrEmpty(name)
+        ? DEFAULT : name;
     this.type = type;
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(Strings.isNullOrEmpty(name) ? DEFAULT : name, type);
+    return Objects.hash(displayName, type);
   }
 
   @Override
