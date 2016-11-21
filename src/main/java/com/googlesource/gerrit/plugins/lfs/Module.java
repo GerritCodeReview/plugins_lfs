@@ -19,6 +19,7 @@ import static com.google.gerrit.server.project.ProjectResource.PROJECT_KIND;
 import com.google.gerrit.extensions.config.FactoryModule;
 import com.google.gerrit.extensions.restapi.RestApiModule;
 
+import com.googlesource.gerrit.plugins.lfs.events.EventsModule;
 import com.googlesource.gerrit.plugins.lfs.fs.LocalLargeFileRepository;
 import com.googlesource.gerrit.plugins.lfs.s3.S3LargeFileRepository;
 
@@ -37,5 +38,7 @@ public class Module extends FactoryModule {
 
     factory(S3LargeFileRepository.Factory.class);
     factory(LocalLargeFileRepository.Factory.class);
+
+    install(new EventsModule());
   }
 }
