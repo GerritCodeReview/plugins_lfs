@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "101b842a_d51dfcde",
+        "filename": "lib/httpcomponents/BUCK",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-11-24T08:06:02Z",
+      "side": 1,
+      "message": "We should probably expose this through the plugin API. I\u0027d rather do that on Gerrit\u0027s master branch though.  In that case we can rework this later.",
+      "revId": "40feacaa0fc5b8d1e3dfdc8c84fedf1932cd8ba6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "101b842a_3523901c",
+        "filename": "src/main/java/org/eclipse/jgit/lfs/server/fs/LfsFsContentServlet.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-11-24T08:06:02Z",
+      "side": 1,
+      "message": "Can you add a TODO here to move this to the plugin\u0027s own package after moving to master branch?  The only reason we need to use this package here is to get access to non-public classes/methods; that won\u0027t be necessary since they are made public in JGit.",
+      "revId": "40feacaa0fc5b8d1e3dfdc8c84fedf1932cd8ba6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
