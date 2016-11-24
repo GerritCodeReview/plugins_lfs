@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "50ec1c3c_7fb4cf19",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-11-24T11:12:52Z",
+      "side": 1,
+      "message": "will add",
+      "parentUuid": "50ec1c3c_3fd3676a",
+      "revId": "40feacaa0fc5b8d1e3dfdc8c84fedf1932cd8ba6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50ec1c3c_1fd0235a",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2016-11-24T10:38:43Z",
       "side": 1,
       "message": "Which Key? Does it have a better name like \"private key\" or something like that..",
+      "range": {
+        "startLine": 18,
+        "startChar": 50,
+        "endLine": 18,
+        "endChar": 53
+      },
+      "revId": "40feacaa0fc5b8d1e3dfdc8c84fedf1932cd8ba6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70e76057_205a2a3d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-11-24T11:12:52Z",
+      "side": 1,
+      "message": "there is only one key as AES is symmetric-key algorithm - will rephrase the sentence",
+      "parentUuid": "50ec1c3c_1fd0235a",
       "range": {
         "startLine": 18,
         "startChar": 50,
@@ -88,6 +130,54 @@
     },
     {
       "key": {
+        "uuid": "50ec1c3c_bf0c9723",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-11-24T11:12:52Z",
+      "side": 1,
+      "message": "right, will rephrase it",
+      "parentUuid": "70e76057_40564e21",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 17
+      },
+      "revId": "40feacaa0fc5b8d1e3dfdc8c84fedf1932cd8ba6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70e76057_8067b6fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-11-24T11:12:52Z",
+      "side": 1,
+      "message": "IV stands for initialisation vector and is required to ensure that different cipher-texts are retrieved on the same data for different operations; https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation",
+      "parentUuid": "70e76057_20534a31",
+      "range": {
+        "startLine": 19,
+        "startChar": 68,
+        "endLine": 19,
+        "endChar": 70
+      },
+      "revId": "40feacaa0fc5b8d1e3dfdc8c84fedf1932cd8ba6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50ec1c3c_dfcd1bc5",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -99,6 +189,24 @@
       "writtenOn": "2016-11-24T10:38:43Z",
       "side": 1,
       "message": "nit: unused empty line :-)",
+      "revId": "40feacaa0fc5b8d1e3dfdc8c84fedf1932cd8ba6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70e76057_405dae33",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-11-24T11:12:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50ec1c3c_dfcd1bc5",
       "revId": "40feacaa0fc5b8d1e3dfdc8c84fedf1932cd8ba6",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
@@ -163,6 +271,30 @@
     },
     {
       "key": {
+        "uuid": "50ec1c3c_dfa4fbec",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LfsFsRequestAuthorizer.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-11-24T11:12:52Z",
+      "side": 1,
+      "message": "Have comments auto-generation for collabnet enabled, sorry for that and good catch :)",
+      "parentUuid": "70e76057_80505623",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 3
+      },
+      "revId": "40feacaa0fc5b8d1e3dfdc8c84fedf1932cd8ba6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50ec1c3c_bfa5b7eb",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LfsFsRequestAuthorizer.java",
         "patchSetId": 1
@@ -174,6 +306,24 @@
       "writtenOn": "2016-11-24T10:38:43Z",
       "side": 1,
       "message": "Why should the SecretKey be optional in this class?\nIf request signing is not used then I suggest that this whole class is not used.",
+      "revId": "40feacaa0fc5b8d1e3dfdc8c84fedf1932cd8ba6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70e76057_c0689ed5",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LfsFsRequestAuthorizer.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-11-24T11:12:52Z",
+      "side": 1,
+      "message": "it gets optional only in case when error happens during key generation upon plugin start",
+      "parentUuid": "50ec1c3c_bfa5b7eb",
       "revId": "40feacaa0fc5b8d1e3dfdc8c84fedf1932cd8ba6",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
@@ -197,6 +347,24 @@
     },
     {
       "key": {
+        "uuid": "70e76057_604d5287",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LfsFsRequestAuthorizer.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-11-24T11:12:52Z",
+      "side": 1,
+      "message": "prior this patch \"not:required\" was returned for \"authorization\" token (see here org.eclipse.jgit.lfs.server.fs.FileLfsRepository.getAction(AnyLongObjectId)); I was wondering what should be returned in case error (that actually shouldn\u0027t happen) happens and decided to return what was before. Better ideas are welcomed :)?",
+      "parentUuid": "50ec1c3c_7fddef71",
+      "revId": "40feacaa0fc5b8d1e3dfdc8c84fedf1932cd8ba6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50ec1c3c_5fdaab7b",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LfsFsRequestAuthorizer.java",
         "patchSetId": 1
@@ -208,6 +376,30 @@
       "writtenOn": "2016-11-24T10:38:43Z",
       "side": 1,
       "message": "Can we avoid dateTime parsing by using String format YYYYMMDDHHmmSS and then just compare strings?",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 67
+      },
+      "revId": "40feacaa0fc5b8d1e3dfdc8c84fedf1932cd8ba6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50ec1c3c_3fba470a",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LfsFsRequestAuthorizer.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-11-24T11:12:52Z",
+      "side": 1,
+      "message": "We can, but it was so nice to use it :)",
+      "parentUuid": "50ec1c3c_5fdaab7b",
       "range": {
         "startLine": 100,
         "startChar": 0,
