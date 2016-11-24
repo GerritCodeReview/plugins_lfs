@@ -46,6 +46,53 @@
       "revId": "e12313952e4da8a02caec4ac83928a371af838b2",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "101b842a_1520140c",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-11-24T09:11:38Z",
+      "side": 1,
+      "message": "OK, then let\u0027s keep it like this.",
+      "parentUuid": "50ec1c3c_df8ebb7f",
+      "range": {
+        "startLine": 110,
+        "startChar": 3,
+        "endLine": 110,
+        "endChar": 20
+      },
+      "revId": "e12313952e4da8a02caec4ac83928a371af838b2",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "101b842a_752d0804",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2016-11-24T09:11:38Z",
+      "side": 1,
+      "message": "\"of authentication token for signed requests\"?",
+      "range": {
+        "startLine": 111,
+        "startChar": 36,
+        "endLine": 111,
+        "endChar": 53
+      },
+      "revId": "e12313952e4da8a02caec4ac83928a371af838b2",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
