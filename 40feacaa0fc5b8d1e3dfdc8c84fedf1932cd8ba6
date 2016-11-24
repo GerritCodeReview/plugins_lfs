@@ -330,6 +330,24 @@
     },
     {
       "key": {
+        "uuid": "50ec1c3c_df1b5b59",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LfsFsRequestAuthorizer.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-11-24T12:35:13Z",
+      "side": 1,
+      "message": "throwing runtime exception when key generation fails",
+      "parentUuid": "70e76057_c0689ed5",
+      "revId": "40feacaa0fc5b8d1e3dfdc8c84fedf1932cd8ba6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50ec1c3c_7fddef71",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LfsFsRequestAuthorizer.java",
         "patchSetId": 1
@@ -359,6 +377,24 @@
       "side": 1,
       "message": "prior this patch \"not:required\" was returned for \"authorization\" token (see here org.eclipse.jgit.lfs.server.fs.FileLfsRepository.getAction(AnyLongObjectId)); I was wondering what should be returned in case error (that actually shouldn\u0027t happen) happens and decided to return what was before. Better ideas are welcomed :)?",
       "parentUuid": "50ec1c3c_7fddef71",
+      "revId": "40feacaa0fc5b8d1e3dfdc8c84fedf1932cd8ba6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50ec1c3c_3f01a7e6",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LfsFsRequestAuthorizer.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-11-24T12:35:13Z",
+      "side": 1,
+      "message": "throwing RuntimeException when token generation fails",
+      "parentUuid": "70e76057_604d5287",
       "revId": "40feacaa0fc5b8d1e3dfdc8c84fedf1932cd8ba6",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
