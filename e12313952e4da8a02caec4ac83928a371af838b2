@@ -22,6 +22,30 @@
       "revId": "e12313952e4da8a02caec4ac83928a371af838b2",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50ec1c3c_df8ebb7f",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-11-24T09:07:59Z",
+      "side": 1,
+      "message": "I wanted to keep it in line with corresponding s3 parameter which is called like that and suites the same purpose",
+      "parentUuid": "101b842a_951384d3",
+      "range": {
+        "startLine": 110,
+        "startChar": 3,
+        "endLine": 110,
+        "endChar": 20
+      },
+      "revId": "e12313952e4da8a02caec4ac83928a371af838b2",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
