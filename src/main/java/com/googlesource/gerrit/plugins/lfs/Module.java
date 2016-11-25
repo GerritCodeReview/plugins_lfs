@@ -21,6 +21,7 @@ import com.google.gerrit.extensions.restapi.RestApiModule;
 
 import com.googlesource.gerrit.plugins.lfs.events.EventsModule;
 import com.googlesource.gerrit.plugins.lfs.fs.LocalLargeFileRepository;
+import com.googlesource.gerrit.plugins.lfs.index.LuceneLfsModule;
 import com.googlesource.gerrit.plugins.lfs.s3.S3LargeFileRepository;
 
 public class Module extends FactoryModule {
@@ -40,5 +41,6 @@ public class Module extends FactoryModule {
     factory(LocalLargeFileRepository.Factory.class);
 
     install(new EventsModule());
+    install(new LuceneLfsModule());
   }
 }
