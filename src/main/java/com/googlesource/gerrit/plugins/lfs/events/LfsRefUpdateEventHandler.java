@@ -23,6 +23,7 @@ import com.google.inject.Inject;
 
 import com.googlesource.gerrit.plugins.lfs.LfsConfigurationFactory;
 import com.googlesource.gerrit.plugins.lfs.LfsProjectConfigSection;
+import com.googlesource.gerrit.plugins.lfs.index.LfsObjectsIndexer;
 
 import org.eclipse.jgit.lib.Repository;
 import org.slf4j.Logger;
@@ -38,14 +39,17 @@ class LfsRefUpdateEventHandler implements GitReferenceUpdatedListener {
   private final LfsConfigurationFactory lfsConfigFactory;
   private final GitRepositoryManager repoyMgr;
   private final LfsDataProvider.Factory toLfsData;
+  private final LfsObjectsIndexer indexer;
 
   @Inject
   public LfsRefUpdateEventHandler(LfsConfigurationFactory lfsConfigFactory,
       GitRepositoryManager repoyMgr,
-      LfsDataProvider.Factory toLfsData) {
+      LfsDataProvider.Factory toLfsData,
+      LfsObjectsIndexer indexer) {
     this.lfsConfigFactory = lfsConfigFactory;
     this.repoyMgr = repoyMgr;
     this.toLfsData = toLfsData;
+    this.indexer = indexer;
   }
 
   @Override
@@ -67,6 +71,7 @@ class LfsRefUpdateEventHandler implements GitReferenceUpdatedListener {
         //handle create/update
         List<LfsData> lfs = toLfsData.create(event.getProjectName(), repo)
             .apply(event.getOldObjectId(), event.getNewObjectId());
+        indexer.index(lfs);
         log.debug("Size of LFS objects list {}", lfs.size());
       }
     } catch (IOException e) {

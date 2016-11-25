@@ -1,0 +1,75 @@
+include_defs('//lib/maven.defs')
+
+VERSION = '5.5.0'
+
+# core and backward-codecs both provide
+# META-INF/services/org.apache.lucene.codecs.Codec, so they must be merged.
+merge_maven_jars(
+  name = 'lucene-core-and-backward-codecs',
+  srcs = [
+    ':backward-codecs_jar',
+    ':lucene-core',
+  ],
+  visibility = ['PUBLIC'],
+)
+
+maven_jar(
+  name = 'lucene-core',
+  id = 'org.apache.lucene:lucene-core:' + VERSION,
+  sha1 = 'a74fd869bb5ad7fe6b4cd29df9543a34aea81164',
+  license = 'Apache2.0',
+  exclude = [
+    'META-INF/LICENSE.txt',
+    'META-INF/NOTICE.txt',
+  ],
+  visibility = [],
+)
+
+maven_jar(
+  name = 'lucene-analyzers-common',
+  id = 'org.apache.lucene:lucene-analyzers-common:' + VERSION,
+  sha1 = '1e0e8243a4410be20c34683034fafa7bb52e55cc',
+  license = 'Apache2.0',
+  deps = [':lucene-core-and-backward-codecs'],
+  exclude = [
+    'META-INF/LICENSE.txt',
+    'META-INF/NOTICE.txt',
+  ],
+)
+
+maven_jar(
+  name = 'backward-codecs_jar',
+  id = 'org.apache.lucene:lucene-backward-codecs:' + VERSION,
+  sha1 = '68480974b2f54f519763632a7c1c5d51cbff3805',
+  license = 'Apache2.0',
+  deps = [':lucene-core'],
+  exclude = [
+    'META-INF/LICENSE.txt',
+    'META-INF/NOTICE.txt',
+  ],
+  visibility = [],
+)
+
+maven_jar(
+  name = 'lucene-misc',
+  id = 'org.apache.lucene:lucene-misc:' + VERSION,
+  sha1 = '504d855a1a38190622fdf990b2298c067e7d60ca',
+  license = 'Apache2.0',
+  deps = [':lucene-core-and-backward-codecs'],
+  exclude = [
+    'META-INF/LICENSE.txt',
+    'META-INF/NOTICE.txt',
+  ],
+)
+
+maven_jar(
+  name = 'lucene-queryparser',
+  id = 'org.apache.lucene:lucene-queryparser:' + VERSION,
+  sha1 = '0fddc49725b562fd48dff0cff004336ad2a090a4',
+  license = 'Apache2.0',
+  deps = [':lucene-core-and-backward-codecs'],
+  exclude = [
+    'META-INF/LICENSE.txt',
+    'META-INF/NOTICE.txt',
+  ],
+)

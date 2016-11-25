@@ -14,29 +14,48 @@
 
 package com.googlesource.gerrit.plugins.lfs.events;
 
+import com.google.common.base.Strings;
+import com.google.common.collect.ImmutableList;
+
 public class LfsData {
-  static class Builder {
+  public static class Builder {
     private String backend;
-    private String project;
+    private Iterable<String> projects;
     private String commit;
     private String oid;
     private Long size;
 
-    LfsData build() {
-      return new LfsData(backend, project, commit, oid, size);
+    public LfsData build() {
+      return new LfsData(backend, projects, commit, oid, size);
     }
 
-    boolean isValid() {
-      return oid != null && size != null;
+    public Builder withKey(String key) {
+      int divider = -1;
+      if (Strings.isNullOrEmpty(key)
+          || (divider = key.lastIndexOf('_')) == -1) {
+        return this;
+      }
+      return withOid(key.substring(divider + 1))
+          .withBackend(key.substring(0, divider));
     }
 
-    Builder withBackend(String backend) {
+    public Builder withBackend(String backend) {
       this.backend = backend;
       return this;
     }
 
-    Builder withProject(String project) {
-      this.project = project;
+    public Builder withProjects(Iterable<String> projects) {
+      this.projects = projects;
+      return this;
+    }
+
+    public Builder withProject(String project) {
+      this.projects = ImmutableList.of(project);
+      return this;
+    }
+
+    public Builder withSize(Long size) {
+      this.size = size;
       return this;
     }
 
@@ -45,31 +64,28 @@ public class LfsData {
       return this;
     }
 
-    Builder withOid(String oid) {
-      this.oid = oid;
-      return this;
+    boolean isValid() {
+      return oid != null && size != null;
     }
 
-    Builder withSize(Long size) {
-      this.size = size;
+    Builder withOid(String oid) {
+      this.oid = oid;
       return this;
     }
   }
 
   public final String key;
   public final String backend;
-  public final String project;
+  public final Iterable<String> projects;
   public final String commit;
-  public final String oid;
   public final Long size;
 
-  private LfsData(String backend, String project,
+  private LfsData(String backend, Iterable<String> projects,
       String commit, String oid, Long size) {
     this.key = String.format("%s_%s", backend, oid);
     this.backend = backend;
-    this.project = project;
+    this.projects = projects;
     this.commit = commit;
-    this.oid = oid;
     this.size = size;
   }
 }
