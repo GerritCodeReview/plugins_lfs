@@ -13,6 +13,11 @@ gerrit_plugin(
     ':jgit-lfs',
     ':jgit-lfs-server',
   ],
+  provided_deps = [
+    '//lib/lucene:lucene-analyzers-common',
+    '//lib/lucene:lucene-core-and-backward-codecs',
+    '//gerrit-lucene:lucene',
+  ],
   manifest_entries = [
     'Gerrit-PluginName: lfs',
     'Gerrit-Module: com.googlesource.gerrit.plugins.lfs.Module',
