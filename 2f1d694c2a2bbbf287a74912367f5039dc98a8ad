@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "70e76057_43de58ca",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/events/EventsModule.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-11-28T09:21:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d8b07e1_20dbea0b",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 3
+      },
+      "revId": "2f1d694c2a2bbbf287a74912367f5039dc98a8ad",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d8b07e1_40e06eaf",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/events/LfsData.java",
         "patchSetId": 1
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "50ec1c3c_6236f8fa",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/events/LfsData.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-11-28T09:21:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d8b07e1_40e06eaf",
+      "revId": "2f1d694c2a2bbbf287a74912367f5039dc98a8ad",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d8b07e1_e0d422db",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/events/LfsEventListener.java",
         "patchSetId": 1
@@ -53,6 +95,30 @@
       "writtenOn": "2016-11-28T05:57:05Z",
       "side": 1,
       "message": "GitReferenceUpdatedListener",
+      "range": {
+        "startLine": 24,
+        "startChar": 41,
+        "endLine": 24,
+        "endChar": 54
+      },
+      "revId": "2f1d694c2a2bbbf287a74912367f5039dc98a8ad",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70e76057_4365b834",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/events/LfsEventListener.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-11-28T09:21:57Z",
+      "side": 1,
+      "message": "sure, but how about mentioning this event here https://gerrit-review.googlesource.com/Documentation/dev-plugins.html#events\nI am always checking events list there and this is the second time when I have missed this event because it is not there :/",
+      "parentUuid": "6d8b07e1_e0d422db",
       "range": {
         "startLine": 24,
         "startChar": 41,
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "70e76057_2362342e",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/events/LfsEventListener.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-11-28T09:21:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "301ec818_5662941c",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 43
+      },
+      "revId": "2f1d694c2a2bbbf287a74912367f5039dc98a8ad",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d8b07e1_00d266ec",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/events/LfsEventListener.java",
         "patchSetId": 1
@@ -99,6 +189,30 @@
       "writtenOn": "2016-11-28T05:57:05Z",
       "side": 1,
       "message": "If this is all the class does, why not make LfsRefUpdateEventHandler implement the listener interface instead?",
+      "range": {
+        "startLine": 35,
+        "startChar": 6,
+        "endLine": 35,
+        "endChar": 46
+      },
+      "revId": "2f1d694c2a2bbbf287a74912367f5039dc98a8ad",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70e76057_836fc014",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/events/LfsEventListener.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-11-28T09:21:57Z",
+      "side": 1,
+      "message": "we can do it for now and reconsider later when we decide how to handle them asynchronously ;)",
+      "parentUuid": "6d8b07e1_00d266ec",
       "range": {
         "startLine": 35,
         "startChar": 6,
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "50ec1c3c_22535031",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/events/LfsRefUpdateEventHandler.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-11-28T09:21:57Z",
+      "side": 1,
+      "message": "cherry-picked the change to stable-2.13 https://gerrit-review.googlesource.com/#/c/92232/, once it is merged I will upgrade it here",
+      "parentUuid": "301ec818_b62de8c4",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 57
+      },
+      "revId": "2f1d694c2a2bbbf287a74912367f5039dc98a8ad",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "301ec818_96326c22",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/events/LfsRefUpdateEventHandler.java",
         "patchSetId": 1
@@ -157,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "70e76057_8386a0a2",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/events/LfsRefUpdateEventHandler.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-11-28T09:21:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "301ec818_96326c22",
+      "range": {
+        "startLine": 81,
+        "startChar": 14,
+        "endLine": 81,
+        "endChar": 18
+      },
+      "revId": "2f1d694c2a2bbbf287a74912367f5039dc98a8ad",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "301ec818_f62760de",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/events/RefUpdateToOperationConverter.java",
         "patchSetId": 1
@@ -168,6 +330,24 @@
       "writtenOn": "2016-11-28T05:57:05Z",
       "side": 1,
       "message": "nit: long line",
+      "revId": "2f1d694c2a2bbbf287a74912367f5039dc98a8ad",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50ec1c3c_42565421",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/events/RefUpdateToOperationConverter.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-11-28T09:21:57Z",
+      "side": 1,
+      "message": "removed the file",
+      "parentUuid": "301ec818_f62760de",
       "revId": "2f1d694c2a2bbbf287a74912367f5039dc98a8ad",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
