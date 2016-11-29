@@ -17,6 +17,7 @@ gerrit_plugin(
     '//lib/lucene:lucene-analyzers-common',
     '//lib/lucene:lucene-core-and-backward-codecs',
     '//gerrit-lucene:lucene',
+    '//gerrit-lucene:query_builder',
   ],
   manifest_entries = [
     'Gerrit-PluginName: lfs',

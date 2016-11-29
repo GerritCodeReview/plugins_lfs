@@ -29,6 +29,13 @@ public class LfsData {
       return new LfsData(backend, projects, commit, oid, size);
     }
 
+    public Builder withData(LfsData data) {
+      return withKey(data.key)
+          .withCommit(data.commit)
+          .withSize(data.size)
+          .withProjects(data.projects);
+    }
+
     public Builder withKey(String key) {
       int divider = -1;
       if (Strings.isNullOrEmpty(key)
