@@ -38,7 +38,15 @@ public class InternalLfsQuery extends InternalQuery<LfsData> {
     return query(key(key));
   }
 
+  public List<LfsData> byProject(String project) throws OrmException {
+    return query(project(project));
+  }
+
   private Predicate<LfsData> key(String key) {
     return new KeyPredicate(key);
+  }
+
+  private Predicate<LfsData> project(String project) {
+    return new ProjectPredicate(project);
   }
 }

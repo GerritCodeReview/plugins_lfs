@@ -33,6 +33,7 @@ public class Module extends FactoryModule {
       protected void configure() {
         get(PROJECT_KIND, "lfs:config-project").to(GetLfsProjectConfig.class);
         get(PROJECT_KIND, "lfs:config-global").to(GetLfsGlobalConfig.class);
+        get(PROJECT_KIND, "lfs:size-project").to(GetLfsProjectSize.class);
         put(PROJECT_KIND, "lfs:config-global").to(PutLfsGlobalConfig.class);
       }
     });
