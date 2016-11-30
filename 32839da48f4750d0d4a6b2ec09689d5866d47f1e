@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "70e76057_067bbee0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-11-30T11:38:40Z",
+      "side": 1,
+      "message": "LfsData is the structure that is retrieved from LFS pointer upon ref update and as such contains what is easily retrievable. Having said that I agree that some of the fields are either not needed (I have identified both backend and key field in [1] as kind of a redundant for index) or might be used in pre-indexing phase to support indexing. KEY field is indeed not needed when we assume that we will create sub-index per backend (otherwise only one index document will be created for given LFS id and all projects will be part of it and create entity that spans between backends which is wrong). However backend field could be used  for sub-index pre-selection so it should be part of this object. Especially considering the fact that we are getting it for free :)\n\n[1] https://gerrit-review.googlesource.com/#/c/92296/1//COMMIT_MSG",
+      "parentUuid": "50ec1c3c_0573b6c7",
+      "revId": "32839da48f4750d0d4a6b2ec09689d5866d47f1e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50ec1c3c_e577b2af",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "50ec1c3c_e5cdf2c4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-11-30T11:38:40Z",
+      "side": 1,
+      "message": "Generally good point and I agree that it shouldn\u0027t be part of index - have already described that in previous issue",
+      "parentUuid": "50ec1c3c_e577b2af",
+      "revId": "32839da48f4750d0d4a6b2ec09689d5866d47f1e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70e76057_a6a77258",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -47,6 +83,24 @@
       "writtenOn": "2016-11-30T09:41:47Z",
       "side": 1,
       "message": "What is the meaning of the commit field? Given the following commit history where all paths\nare actually LFS pointers:\n\n  c3 \u003c master\n  |\n  c2 (update A.mp3 \u003e oid2, create B.avi \u003e oid3)\n  |\n  c1 (create A.mp3 \u003e oid1)\n\nWhich exactly document will we have in the index when master is updated to point to c3?\nSpecifically, I am interested if (commit, oid) means that the oid is reachable from that commit\nor only that the oid was introduced in that commit.",
+      "revId": "32839da48f4750d0d4a6b2ec09689d5866d47f1e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70e76057_e67fbac8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-11-30T11:38:40Z",
+      "side": 1,
+      "message": "Idea was to use commit in order to determine when LFS object can be safely deleted from backend - sort of reference counting. It could be implemented by relation between project, LFS ID and commit as a separate index (commit reference index).\nAssuming that we can safely identify when commit gets deleted (which I am not aware of yet :D) I can imagine the following scenario:\n1. commit reference gets deleted from project, LFS id commit document\n2. when there is no more commit references document gets deleted from commit reference index\n3. when entry is deleted from commit reference index it means that project no longer references given LFS id hence its reference might be removed from main index and in case it was the last project referencing given LFS ID corresponding object might be removed from backend\n\nCommit is pretty cheap to retrieve hence I wanted to have LfsData - currently it is not used for indexing but it is meant to form reference counting index. Again I am open for ideas regarding that concept too :D",
+      "parentUuid": "70e76057_a6a77258",
       "revId": "32839da48f4750d0d4a6b2ec09689d5866d47f1e",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
@@ -76,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "70e76057_4665c634",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-11-30T11:38:40Z",
+      "side": 1,
+      "message": "if index would contain only oid and size it would be impractical to use for other cases, namely:\n- delete repository\n- move repository between servers\n- count LFS space that is occupied by repository\nIMHO multi-value project field is necessary to support that cases",
+      "parentUuid": "70e76057_86322e4d",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 6
+      },
+      "revId": "32839da48f4750d0d4a6b2ec09689d5866d47f1e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70e76057_662f2ae5",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -87,6 +165,24 @@
       "writtenOn": "2016-11-30T09:41:47Z",
       "side": 1,
       "message": "IMO, you don\u0027t need to differentiate between fast-forward and non-fast-forward update.\nAll that matters for processing an ref-update is the oldId and newId. You just need to compute the diff between the two trees (old and new) and search for LFS pointer files inside the diff.",
+      "revId": "32839da48f4750d0d4a6b2ec09689d5866d47f1e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50ec1c3c_45d3fe68",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2016-11-30T11:38:40Z",
+      "side": 1,
+      "message": "sounds like reasonable solution :) however I would like to tackle that once we agree on basics. Do you know about similar solutions for delete operation? The main problem for me is to have tree to check the content for LFS pointers so current ideas how to handle it are:\n- capture data on pre-delete event (could be costly and cannot happen asynchronously :/)\n- use reflog to get the data - have no idea if it is even possible\n- perform periodical repo re-index (again slow and time consuming :/)\n- ideas on that are welcomed too :)\n\nBasically I was thinking about commit reference index to handle relation between LFS id and project\u0027s commit.",
+      "parentUuid": "70e76057_662f2ae5",
       "revId": "32839da48f4750d0d4a6b2ec09689d5866d47f1e",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
