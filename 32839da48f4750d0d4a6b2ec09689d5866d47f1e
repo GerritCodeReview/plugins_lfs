@@ -186,6 +186,23 @@
       "revId": "32839da48f4750d0d4a6b2ec09689d5866d47f1e",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a1ba32a_d8537156",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/events/LfsDataProvider.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1004034
+      },
+      "writtenOn": "2016-12-22T09:56:55Z",
+      "side": 1,
+      "message": "use JGit\u0027s LfsPointer.parseLfsPointer(InputStream) ?",
+      "revId": "32839da48f4750d0d4a6b2ec09689d5866d47f1e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
