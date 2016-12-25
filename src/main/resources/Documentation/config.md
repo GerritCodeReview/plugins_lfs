@@ -179,4 +179,20 @@ The following options must be set in the local project's `.git/config` file.
 lfs.url
 : `http://<username>@<gerrit-host>:<port>/<project-name>/info/lfs`
 
+lfs.batch
+: `true`
+
 When the Gerrit repo is cloned via ssh, the git lfs url must be set to use http.
+
+This plugin offers the git-lfs-authenticate API to the git-lfs client to
+provide the HTTP-URL. This eliminates the need to configure this lfs.url on the
+client side, but it requires more server configuration.
+
+This plugin offers this API as:
+$ ssh -p @SSH_PORT@ @SSH_HOST@ @PLUGIN@ git-lfs-authenticate
+
+The git-lfs client expects it to be at:
+$ ssh -p @SSH_PORT@ @SSH_HOST@ git-lfs-authenticate
+
+To make it work, an alias need to be configured on the server side that maps
+this git-lfs-authenticate --> @PLUGIN@ git-lfs-authenticate
