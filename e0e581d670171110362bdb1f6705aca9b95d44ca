@@ -1,0 +1,303 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17f0de9e_90b5ba18",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsSshGitAuthenticateCommand.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-01-04T09:23:13Z",
+      "side": 1,
+      "message": "import not needed",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 58
+      },
+      "revId": "e0e581d670171110362bdb1f6705aca9b95d44ca",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a1ba32a_de5fd9fa",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsSshGitAuthenticateCommand.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-01-04T09:23:13Z",
+      "side": 1,
+      "message": "this is not needed",
+      "range": {
+        "startLine": 42,
+        "startChar": 31,
+        "endLine": 42,
+        "endChar": 37
+      },
+      "revId": "e0e581d670171110362bdb1f6705aca9b95d44ca",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17f0de9e_d0af42c4",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsSshGitAuthenticateCommand.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-01-04T09:23:13Z",
+      "side": 1,
+      "message": "this is not needed",
+      "range": {
+        "startLine": 43,
+        "startChar": 31,
+        "endLine": 43,
+        "endChar": 37
+      },
+      "revId": "e0e581d670171110362bdb1f6705aca9b95d44ca",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17f0de9e_f0b23e2c",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsSshGitAuthenticateCommand.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-01-04T09:23:13Z",
+      "side": 1,
+      "message": "s/authention/authentication/",
+      "range": {
+        "startLine": 57,
+        "startChar": 65,
+        "endLine": 57,
+        "endChar": 75
+      },
+      "revId": "e0e581d670171110362bdb1f6705aca9b95d44ca",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b176f0_77e2d0bb",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsSshGitAuthenticateCommand.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-01-04T09:23:13Z",
+      "side": 1,
+      "message": "there is org.eclipse.jgit.lfs.server.Response.Action that serves the need :)",
+      "range": {
+        "startLine": 60,
+        "startChar": 2,
+        "endLine": 74,
+        "endChar": 3
+      },
+      "revId": "e0e581d670171110362bdb1f6705aca9b95d44ca",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7847225_2abf1f93",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsSshGitAuthenticateCommand.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-01-04T09:23:13Z",
+      "side": 1,
+      "message": "com.google.gerrit.sshd.BaseCommand.Failure",
+      "range": {
+        "startLine": 89,
+        "startChar": 16,
+        "endLine": 89,
+        "endChar": 31
+      },
+      "revId": "e0e581d670171110362bdb1f6705aca9b95d44ca",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7847225_ea9b4749",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsSshGitAuthenticateCommand.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-01-04T09:23:13Z",
+      "side": 1,
+      "message": "URL needs to take port and path (we have Gerrit behind the proxy) consideration.",
+      "range": {
+        "startLine": 96,
+        "startChar": 6,
+        "endLine": 97,
+        "endChar": 65
+      },
+      "revId": "e0e581d670171110362bdb1f6705aca9b95d44ca",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7847225_aaaa2f4d",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsSshGitAuthenticateCommand.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-01-04T09:23:13Z",
+      "side": 1,
+      "message": "would rather created Gson() statically so that it is not being recreated over and over again",
+      "range": {
+        "startLine": 99,
+        "startChar": 19,
+        "endLine": 99,
+        "endChar": 29
+      },
+      "revId": "e0e581d670171110362bdb1f6705aca9b95d44ca",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7847225_0aba5ba2",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsSshGitAuthenticateCommand.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-01-04T09:23:13Z",
+      "side": 1,
+      "message": "would rather throw com.google.gerrit.sshd.BaseCommand.Failure here",
+      "range": {
+        "startLine": 102,
+        "startChar": 16,
+        "endLine": 102,
+        "endChar": 32
+      },
+      "revId": "e0e581d670171110362bdb1f6705aca9b95d44ca",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a1ba32a_5ee10910",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-01-04T09:23:13Z",
+      "side": 1,
+      "message": "Purpose of this patch is to make this section go away :D",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 66
+      },
+      "revId": "e0e581d670171110362bdb1f6705aca9b95d44ca",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a1ba32a_7ee4c521",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-01-04T09:23:13Z",
+      "side": 1,
+      "message": "this change is not relevant to the patch itself and AFAIR this is default now",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 8
+      },
+      "revId": "e0e581d670171110362bdb1f6705aca9b95d44ca",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17f0de9e_709f6e9d",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-01-04T09:23:13Z",
+      "side": 1,
+      "message": "Would remove it when section gets removed",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 80
+      },
+      "revId": "e0e581d670171110362bdb1f6705aca9b95d44ca",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a1ba32a_be501def",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-01-04T09:23:13Z",
+      "side": 1,
+      "message": "this will be not needed when [1] or [2] (preferably ;)) get merged.\n\n[1] https://gerrit-review.googlesource.com/#/c/93373/\n[2] https://gerrit-review.googlesource.com/#/c/93496/",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 59
+      },
+      "revId": "e0e581d670171110362bdb1f6705aca9b95d44ca",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
