@@ -163,6 +163,30 @@
     },
     {
       "key": {
+        "uuid": "57b176f0_b73d48ef",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsSshGitAuthenticateCommand.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1010522
+      },
+      "writtenOn": "2017-01-04T17:48:15Z",
+      "side": 1,
+      "message": "port is in getAuthority as well.",
+      "parentUuid": "b7847225_ea9b4749",
+      "range": {
+        "startLine": 96,
+        "startChar": 6,
+        "endLine": 97,
+        "endChar": 65
+      },
+      "revId": "e0e581d670171110362bdb1f6705aca9b95d44ca",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b7847225_aaaa2f4d",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsSshGitAuthenticateCommand.java",
         "patchSetId": 1
@@ -243,6 +267,30 @@
       "writtenOn": "2017-01-04T09:23:13Z",
       "side": 1,
       "message": "this change is not relevant to the patch itself and AFAIR this is default now",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 8
+      },
+      "revId": "e0e581d670171110362bdb1f6705aca9b95d44ca",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57b176f0_d73abcf3",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1010522
+      },
+      "writtenOn": "2017-01-04T17:48:15Z",
+      "side": 1,
+      "message": "This one is needed, without this one being set, it simply does not work in our case.",
+      "parentUuid": "1a1ba32a_7ee4c521",
       "range": {
         "startLine": 182,
         "startChar": 0,
