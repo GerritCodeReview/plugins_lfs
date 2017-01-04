@@ -327,6 +327,30 @@
     },
     {
       "key": {
+        "uuid": "b7847225_8a400b76",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-01-04T21:44:20Z",
+      "side": 1,
+      "message": "never mind was thinking about server configuration :)\nit shouldn\u0027t be the part of this change as that indicates that it doesn\u0027t work through HTTP/S either, right? Would rather consider checking client version and/or repository config as by default in modern clients\ngit lfs env\nindicates that this is enabled by default...",
+      "parentUuid": "57b176f0_b706283f",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 8
+      },
+      "revId": "e0e581d670171110362bdb1f6705aca9b95d44ca",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "17f0de9e_709f6e9d",
         "filename": "src/main/resources/Documentation/config.md",
         "patchSetId": 1
