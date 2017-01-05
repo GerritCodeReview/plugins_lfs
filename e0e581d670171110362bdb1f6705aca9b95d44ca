@@ -351,6 +351,30 @@
     },
     {
       "key": {
+        "uuid": "17d8de6b_6d207511",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1010522
+      },
+      "writtenOn": "2017-01-05T12:35:22Z",
+      "side": 1,
+      "message": "It was indeed an issue in my environment. This is no longer valid and can be removed.",
+      "parentUuid": "b7847225_8a400b76",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 8
+      },
+      "revId": "e0e581d670171110362bdb1f6705aca9b95d44ca",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "17f0de9e_709f6e9d",
         "filename": "src/main/resources/Documentation/config.md",
         "patchSetId": 1
