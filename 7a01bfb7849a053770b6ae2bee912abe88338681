@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "373fa299_ae6c7777",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/lfs/fs/LfsFsRequestAuthorizerTest.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-01-09T21:12:51Z",
+      "side": 1,
+      "message": "remove @Before method as it is not needed",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 33,
+        "endChar": 3
+      },
+      "revId": "7a01bfb7849a053770b6ae2bee912abe88338681",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
