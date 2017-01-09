@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17d8de6b_0db0d122",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/lfs/fs/LfsFsRequestAuthorizerTest.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-01-09T17:01:53Z",
+      "side": 1,
+      "message": "authorizer or auth?",
+      "range": {
+        "startLine": 29,
+        "startChar": 33,
+        "endLine": 29,
+        "endChar": 48
+      },
+      "revId": "c39216a772b5623dda1864588f17df55edc338bb",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77b83af6_983f75c7",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/lfs/fs/LfsFsRequestAuthorizerTest.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-01-09T17:01:53Z",
+      "side": 1,
+      "message": "Is your machine too slow for 1 second? ;-)",
+      "range": {
+        "startLine": 46,
+        "startChar": 63,
+        "endLine": 46,
+        "endChar": 64
+      },
+      "revId": "c39216a772b5623dda1864588f17df55edc338bb",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17d8de6b_ed0d8520",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/lfs/fs/LfsFsRequestAuthorizerTest.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-01-09T17:01:53Z",
+      "side": 1,
+      "message": "Replace comments like this with own @Test methods?",
+      "revId": "c39216a772b5623dda1864588f17df55edc338bb",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77b83af6_7855c111",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/lfs/fs/LfsFsRequestAuthorizerTest.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-01-09T17:01:53Z",
+      "side": 1,
+      "message": "Sleeping for 10 seconds in a test? What if we have 20 such tests?",
+      "revId": "c39216a772b5623dda1864588f17df55edc338bb",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
