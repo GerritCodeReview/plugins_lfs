@@ -12,6 +12,7 @@ gerrit_plugin(
     ':jgit-http-apache',
     ':jgit-lfs',
     ':jgit-lfs-server',
+    '//lib/commons:codec',
   ],
   provided_deps = [
     '//lib/httpcomponents:httpcore',
