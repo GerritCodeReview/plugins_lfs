@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "239f651f_5c67fd8e",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsApiServlet.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-01-10T22:32:05Z",
+      "side": 1,
+      "message": "anonymous user has no name - detect it",
+      "range": {
+        "startLine": 139,
+        "startChar": 12,
+        "endLine": 139,
+        "endChar": 30
+      },
+      "revId": "90094300debeb2d2c8ea77b8864bc3e726229901",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
