@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "239f651f_1c717549",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsAuthUserProvider.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-01-10T22:50:52Z",
+      "side": 1,
+      "message": "should really check the password before letting in as otherwise it is a matter of username that exists and has sufficient credentials ;)\n\non the other hand it seems though Git LFS client doesn\u0027t send pass in plain HTTP - have to investigate that more...",
+      "range": {
+        "startLine": 58,
+        "startChar": 6,
+        "endLine": 64,
+        "endChar": 7
+      },
+      "revId": "f229d26a88fabe95e9fd0d916c348bf36949a11e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
