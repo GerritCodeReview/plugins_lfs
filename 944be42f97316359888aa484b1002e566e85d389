@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c373e9ce_d9a1d386",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsSshAuth.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2017-01-11T07:38:18Z",
+      "side": 1,
+      "message": "Can\u0027t this be done by using a String with the @CanonicalWebUrl annotation?",
+      "range": {
+        "startLine": 43,
+        "startChar": 4,
+        "endLine": 43,
+        "endChar": 79
+      },
+      "revId": "944be42f97316359888aa484b1002e566e85d389",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e36e2de9_7a93d93f",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsSshAuth.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2017-01-11T07:38:18Z",
+      "side": 1,
+      "message": "Aren\u0027t these subclasses of Exception anyway?",
+      "range": {
+        "startLine": 52,
+        "startChar": 13,
+        "endLine": 52,
+        "endChar": 37
+      },
+      "revId": "944be42f97316359888aa484b1002e566e85d389",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
