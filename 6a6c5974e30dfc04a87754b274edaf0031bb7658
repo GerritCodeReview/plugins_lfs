@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "239f651f_3cdb1100",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/lfs/fs/LfsFsRequestAuthorizerTest.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-01-11T10:40:11Z",
+      "side": 1,
+      "message": "Wouldn\u0027t it be enough to do the same approach like in the textExpiredTime i.e. use a one second in the past time when creating the token? Then we wouldn\u0027t need to sleep here.",
+      "revId": "6a6c5974e30dfc04a87754b274edaf0031bb7658",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
