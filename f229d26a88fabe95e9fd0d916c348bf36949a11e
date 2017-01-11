@@ -71,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "039c2129_1bb97b8a",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsApiServlet.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-01-11T12:49:37Z",
+      "side": 1,
+      "message": "No... because we don\u0027t yet have an efficient way to check if an OID is reachable from a branch or, at least, used in a project. This is probably a first very concrete use-case which shows need for an index which can efficiently check if an OID is reachable from a commit.",
+      "parentUuid": "039c2129_bb22c705",
+      "revId": "f229d26a88fabe95e9fd0d916c348bf36949a11e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "239f651f_1c717549",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsAuthUserProvider.java",
         "patchSetId": 3
