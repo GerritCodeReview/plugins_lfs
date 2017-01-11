@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "039c2129_dbe9d367",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsApiServlet.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-01-11T13:57:47Z",
+      "side": 1,
+      "message": "Why should GitOverHttpServlet play any role here? Performing a git-over-http operation is served by the GitOverHttpServlet and if it needs a large object then it will send a (new) LFS protocol request to this servlet\nand we should be able to get the CurrentUser.\n\nWhat exactly doesn\u0027t work?\n\nI see that many plugins inject Provider\u003cCurrentUser\u003e and it works. Although, no one injects it in a Servlet... so maybe there is something weird in our Guice bindings which prevents that.\n\nHave you tried injecting the Provider\u003cCurrentUser\u003e into the LfsAuthUserProvider?",
+      "parentUuid": "039c2129_1bd09ba8",
+      "revId": "f229d26a88fabe95e9fd0d916c348bf36949a11e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "239f651f_bcc96109",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsApiServlet.java",
         "patchSetId": 3
