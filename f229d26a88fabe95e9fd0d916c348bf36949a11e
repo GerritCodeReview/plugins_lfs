@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "039c2129_bb22c705",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsApiServlet.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-01-11T12:36:08Z",
+      "side": 1,
+      "message": "I will work on the other issues but have no quick solution to check if OID belongs to the repository - do you have sth specific in mind?",
+      "parentUuid": "239f651f_bcc96109",
+      "revId": "f229d26a88fabe95e9fd0d916c348bf36949a11e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "239f651f_1c717549",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsAuthUserProvider.java",
         "patchSetId": 3
