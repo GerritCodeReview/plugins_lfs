@@ -91,6 +91,29 @@
       "revId": "944be42f97316359888aa484b1002e566e85d389",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2364c52d_94fae44a",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsSshAuth.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2017-01-12T09:26:58Z",
+      "side": 1,
+      "message": "OK, let\u0027s keep it like this for consistency with the other one, although generally I think we\u0027ve been trying to reduce the number of declared exceptions.  It can be cleaned up separately if necessary.",
+      "range": {
+        "startLine": 52,
+        "startChar": 13,
+        "endLine": 52,
+        "endChar": 37
+      },
+      "revId": "944be42f97316359888aa484b1002e566e85d389",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
