@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "43de192a_5d889b08",
+        "filename": "src/main/java/org/eclipse/jgit/lfs/server/LfsGerritProtocolServlet.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2017-01-13T05:23:15Z",
+      "side": 1,
+      "message": "This throws an IllegalAccessError.\n\nhttp://paste.openstack.org/show/594796/",
+      "range": {
+        "startLine": 214,
+        "startChar": 3,
+        "endLine": 215,
+        "endChar": 61
+      },
+      "revId": "93652d4cc753e53fa922dce581dcf76f341cdd0c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
