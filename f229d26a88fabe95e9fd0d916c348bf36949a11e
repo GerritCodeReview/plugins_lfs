@@ -136,6 +136,29 @@
     },
     {
       "key": {
+        "uuid": "23e765fc_1c8e1518",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsApiServlet.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2017-01-13T02:20:41Z",
+      "side": 1,
+      "message": "Done",
+      "range": {
+        "startLine": 124,
+        "startChar": 4,
+        "endLine": 124,
+        "endChar": 10
+      },
+      "revId": "f229d26a88fabe95e9fd0d916c348bf36949a11e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43de192a_7d763743",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsApiServlet.java",
         "patchSetId": 3
@@ -147,6 +170,29 @@
       "writtenOn": "2017-01-13T00:01:16Z",
       "side": 1,
       "message": "make this a constant too; it\u0027ll make migration a bit easier once we expose these constants from JGit.",
+      "range": {
+        "startLine": 125,
+        "startChar": 12,
+        "endLine": 125,
+        "endChar": 20
+      },
+      "revId": "f229d26a88fabe95e9fd0d916c348bf36949a11e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23e765fc_fc8169e7",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsApiServlet.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2017-01-13T02:20:41Z",
+      "side": 1,
+      "message": "Done.  See also: https://git.eclipse.org/r/#/c/88606/",
       "range": {
         "startLine": 125,
         "startChar": 12,
@@ -223,6 +269,29 @@
       "writtenOn": "2017-01-13T00:01:16Z",
       "side": 1,
       "message": "Note: Although we have a specific exception class here, this will be interpreted as the base LfsException in JGit\u0027s LfsProtocolServlet, which will then be returned to the client as HTTP 500 internal server error.\n\nI don\u0027t think there\u0027s much we can do about it now, though.  We probably can\u0027t add it upstream on the stable branch.",
+      "range": {
+        "startLine": 138,
+        "startChar": 14,
+        "endLine": 138,
+        "endChar": 29
+      },
+      "revId": "f229d26a88fabe95e9fd0d916c348bf36949a11e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "43de192a_fd8167e7",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsApiServlet.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2017-01-13T02:20:41Z",
+      "side": 1,
+      "message": "Added a new class upstream:\n\nhttps://git.eclipse.org/r/#/c/88603/\n\nwhich we can use once we\u0027re on master with a newer JGit.",
       "range": {
         "startLine": 138,
         "startChar": 14,
