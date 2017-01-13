@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "83d8113c_5f324b5f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-01-13T09:13:21Z",
+      "side": 1,
+      "message": "See my comment in the previous PS about the commit message subject",
+      "revId": "93652d4cc753e53fa922dce581dcf76f341cdd0c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43de192a_5d889b08",
         "filename": "src/main/java/org/eclipse/jgit/lfs/server/LfsGerritProtocolServlet.java",
         "patchSetId": 4
