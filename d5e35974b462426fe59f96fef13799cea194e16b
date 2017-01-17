@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "037a6133_4b7b452a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2017-01-17T23:48:45Z",
+      "side": 1,
+      "message": "Just to clarify: does this mean that we can leave this disabled and LFS will still work but without authorization?  Or is it now necessary to set this to make LFS work at all?\n\nIn the latter case this might not be ideal for users that don\u0027t use HTTP auth on their site.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 33
+      },
+      "revId": "d5e35974b462426fe59f96fef13799cea194e16b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "037a6133_8b704d47",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsApiServlet.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2017-01-17T23:48:45Z",
+      "side": 1,
+      "message": "Shouldn\u0027t the user authorization be before the project state check like it was in the previous patch sets?",
+      "range": {
+        "startLine": 80,
+        "startChar": 4,
+        "endLine": 83,
+        "endChar": 77
+      },
+      "revId": "d5e35974b462426fe59f96fef13799cea194e16b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "034c2113_bb756736",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsAuthUserProvider.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2017-01-17T23:48:45Z",
+      "side": 1,
+      "message": "This could be combined into a single condition:\n\n if (!Strings.isNullOrEmpty(auth))\n     \u0026\u0026 auth.startsWith(BASIC_AUTH_PREFIX)\n     \u0026\u0026 authCfg.isGitBasicAuth()) {\n   return user.get();\n }\n return anonymous.get();",
+      "range": {
+        "startLine": 43,
+        "startChar": 4,
+        "endLine": 48,
+        "endChar": 38
+      },
+      "revId": "d5e35974b462426fe59f96fef13799cea194e16b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
