@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3c2ad70_bae351a8",
+        "filename": "src/main/java/org/eclipse/jgit/lfs/server/LfsGerritProtocolServlet.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2017-01-17T03:14:54Z",
+      "side": 1,
+      "message": "When pushing over ssh the AuthInfo.auth is set to \"not:required\" and this throws LfsUnauthorized.",
+      "range": {
+        "startLine": 204,
+        "startChar": 3,
+        "endLine": 209,
+        "endChar": 40
+      },
+      "revId": "7b4ec16d5e16907d20c1e979adb1f35ac398c974",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03c9819c_531424ba",
+        "filename": "src/main/java/org/eclipse/jgit/lfs/server/LfsGerritProtocolServlet.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2017-01-17T03:14:54Z",
+      "side": 1,
+      "message": "Still getting the java.lang.IllegalAccessError here when pushing over HTTP.",
+      "range": {
+        "startLine": 214,
+        "startChar": 4,
+        "endLine": 216,
+        "endChar": 3
+      },
+      "revId": "7b4ec16d5e16907d20c1e979adb1f35ac398c974",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
