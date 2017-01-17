@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3c2ad70_7afed942",
+        "filename": "src/main/java/org/eclipse/jgit/lfs/server/fs/LfsFsContentServlet.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2017-01-17T05:02:35Z",
+      "side": 1,
+      "message": "This is failing with:\n\n java.lang.IllegalAccessError: tried to access class org.eclipse.jgit.lfs.server.fs.ObjectUploadListener from class org.eclipse.jgit.lfs.server.fs.LfsFsContentServlet",
+      "range": {
+        "startLine": 110,
+        "startChar": 8,
+        "endLine": 110,
+        "endChar": 69
+      },
+      "revId": "7a697e0fb0436802387c1578bf5ccd6b89df5f5a",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
