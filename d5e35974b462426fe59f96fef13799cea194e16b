@@ -71,6 +71,29 @@
     },
     {
       "key": {
+        "uuid": "e3346dc0_4a85b3f2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-01-18T07:45:16Z",
+      "side": 1,
+      "message": "currently we have:\nWhen this option\nis not enabled (not set or equals to `false`) Git LFS HTTP requests are treated as anonymous requests.\n\nDo you think that I should be more verbose? and statement like:\nTherefore only projects with anonymous access are accessible.\n?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 33
+      },
+      "revId": "d5e35974b462426fe59f96fef13799cea194e16b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "034c2113_dbb4f3c5",
         "filename": "/COMMIT_MSG",
         "patchSetId": 8
@@ -82,6 +105,29 @@
       "writtenOn": "2017-01-18T07:33:44Z",
       "side": 1,
       "message": "s/ifx/fix\n\nwould it be better to fix it in this change?",
+      "range": {
+        "startLine": 17,
+        "startChar": 3,
+        "endLine": 18,
+        "endChar": 7
+      },
+      "revId": "d5e35974b462426fe59f96fef13799cea194e16b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3884975_91871cf8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-01-18T07:45:16Z",
+      "side": 1,
+      "message": "I will create the change and push and we can decide - probably if it is not too big we can squash them together ;)",
       "range": {
         "startLine": 17,
         "startChar": 3,
