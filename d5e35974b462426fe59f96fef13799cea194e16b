@@ -48,6 +48,52 @@
     },
     {
       "key": {
+        "uuid": "037a6133_abc3c91a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2017-01-18T07:33:44Z",
+      "side": 1,
+      "message": "Maybe better to make this documentation more explicit about what happens when auth.gitBasicAuth is not set.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 33
+      },
+      "revId": "d5e35974b462426fe59f96fef13799cea194e16b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "034c2113_dbb4f3c5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2017-01-18T07:33:44Z",
+      "side": 1,
+      "message": "s/ifx/fix\n\nwould it be better to fix it in this change?",
+      "range": {
+        "startLine": 17,
+        "startChar": 3,
+        "endLine": 18,
+        "endChar": 7
+      },
+      "revId": "d5e35974b462426fe59f96fef13799cea194e16b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "037a6133_8b704d47",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsApiServlet.java",
         "patchSetId": 8
@@ -82,6 +128,29 @@
       "writtenOn": "2017-01-18T07:29:14Z",
       "side": 1,
       "message": "considering the fact that state can be null (for not existing project) it would result in beautiful NPE :)",
+      "range": {
+        "startLine": 80,
+        "startChar": 4,
+        "endLine": 83,
+        "endChar": 77
+      },
+      "revId": "d5e35974b462426fe59f96fef13799cea194e16b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "037a6133_8bbe0da2",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsApiServlet.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2017-01-18T07:33:44Z",
+      "side": 1,
+      "message": "Ah, I missed that state is now being passed in.",
       "range": {
         "startLine": 80,
         "startChar": 4,
