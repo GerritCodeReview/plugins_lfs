@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "e3346dc0_aa6b8f59",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-01-18T07:29:14Z",
+      "side": 1,
+      "message": "That bothers me too, but I believe that by default we should not authorize such calls if auth is not enabled. Another option will be soon authorization over SSH. Again neither of them can be satisfactory for the user so options are:\n- use anonymous (as it is right now)\n- don\u0027t authorize at all (leave it open)\n- combine above with switch that lets one don\u0027t authorize if neither of methods is available\n\nOpinions welcomed ;)",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 33
+      },
+      "revId": "d5e35974b462426fe59f96fef13799cea194e16b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "037a6133_8b704d47",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsApiServlet.java",
         "patchSetId": 8
@@ -48,6 +71,29 @@
     },
     {
       "key": {
+        "uuid": "e3346dc0_ca70c348",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsApiServlet.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-01-18T07:29:14Z",
+      "side": 1,
+      "message": "considering the fact that state can be null (for not existing project) it would result in beautiful NPE :)",
+      "range": {
+        "startLine": 80,
+        "startChar": 4,
+        "endLine": 83,
+        "endChar": 77
+      },
+      "revId": "d5e35974b462426fe59f96fef13799cea194e16b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "034c2113_bb756736",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsAuthUserProvider.java",
         "patchSetId": 8
@@ -59,6 +105,29 @@
       "writtenOn": "2017-01-17T23:48:45Z",
       "side": 1,
       "message": "This could be combined into a single condition:\n\n if (!Strings.isNullOrEmpty(auth))\n     \u0026\u0026 auth.startsWith(BASIC_AUTH_PREFIX)\n     \u0026\u0026 authCfg.isGitBasicAuth()) {\n   return user.get();\n }\n return anonymous.get();",
+      "range": {
+        "startLine": 43,
+        "startChar": 4,
+        "endLine": 48,
+        "endChar": 38
+      },
+      "revId": "d5e35974b462426fe59f96fef13799cea194e16b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3346dc0_ea758735",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsAuthUserProvider.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-01-18T07:29:14Z",
+      "side": 1,
+      "message": "sure, have realised that later too :)",
       "range": {
         "startLine": 43,
         "startChar": 4,
