@@ -1,8 +1,8 @@
 include_defs('//bucklets/gerrit_plugin.bucklet')
 include_defs('//bucklets/maven_jar.bucklet')
 
-JGIT_VERSION = '4.6.0.201612231935-r'
-REPO = MAVEN_CENTRAL
+JGIT_VERSION = '4.6.0.201612231935-r.30-gd3148f300'
+REPO = GERRIT
 
 gerrit_plugin(
   name = 'lfs',
@@ -27,7 +27,7 @@ gerrit_plugin(
 maven_jar(
   name = 'jgit-http-apache',
   id = 'org.eclipse.jgit:org.eclipse.jgit.http.apache:' + JGIT_VERSION,
-  sha1 = '3afcb40dfeb37e59ac5ed3f6d3473026421c258b',
+  sha1 = 'b9806f94d6b548c85a9ef96ef647b0f15b64927a',
   license = 'jgit',
   repository = REPO,
   unsign = True,
@@ -40,8 +40,8 @@ maven_jar(
 maven_jar(
   name = 'jgit-lfs',
   id = 'org.eclipse.jgit:org.eclipse.jgit.lfs:' + JGIT_VERSION,
-  bin_sha1 = 'c23b0013d7adab496b1182fd6e98a6f6ea56a5d2',
-  src_sha1 = '4a05abc18f2f9389628d4aa8ab94db4788a0b827',
+  bin_sha1 = '55cf48dd41732ded00d66f2f833e3b7346eb5e37',
+  src_sha1 = '6929394ff0b9e150ff22120d264c64decb0e6ee6',
   license = 'jgit',
   repository = REPO,
   unsign = True,
@@ -54,8 +54,8 @@ maven_jar(
 maven_jar(
   name = 'jgit-lfs-server',
   id = 'org.eclipse.jgit:org.eclipse.jgit.lfs.server:' + JGIT_VERSION,
-  bin_sha1 = '5a5cbba2416aebf411d01f60c4dc3c49c417eb10',
-  src_sha1 = 'bb777a45f28f22f2595cd3c5b65d7165454f0186',
+  bin_sha1 = '4d917afafe7888bba07607bfa7fcb06bb60fe7f1',
+  src_sha1 = '7673d7e1c53adb230360aa112e3b7dd14fb68a0a',
   license = 'jgit',
   repository = REPO,
   unsign = True,

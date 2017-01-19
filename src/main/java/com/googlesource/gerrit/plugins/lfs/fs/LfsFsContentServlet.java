@@ -12,9 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package org.eclipse.jgit.lfs.server.fs;
-// TODO move file back to com.googlesource.gerrit.plugin.lfs.fs package when
-// https://git.eclipse.org/r/#/c/84933/ is picked up by gerrit
+package com.googlesource.gerrit.plugins.lfs.fs;
 
 import static com.googlesource.gerrit.plugins.lfs.fs.LocalLargeFileRepository.DOWNLOAD;
 import static com.googlesource.gerrit.plugins.lfs.fs.LocalLargeFileRepository.UPLOAD;
@@ -23,11 +21,11 @@ import static org.eclipse.jgit.util.HttpSupport.HDR_AUTHORIZATION;
 import com.google.inject.Inject;
 import com.google.inject.assistedinject.Assisted;
 
-import com.googlesource.gerrit.plugins.lfs.fs.LfsFsRequestAuthorizer;
-import com.googlesource.gerrit.plugins.lfs.fs.LocalLargeFileRepository;
-
 import org.apache.http.HttpStatus;
 import org.eclipse.jgit.lfs.lib.AnyLongObjectId;
+import org.eclipse.jgit.lfs.server.fs.FileLfsServlet;
+import org.eclipse.jgit.lfs.server.fs.ObjectDownloadListener;
+import org.eclipse.jgit.lfs.server.fs.ObjectUploadListener;
 import org.eclipse.jgit.lfs.server.internal.LfsServerText;
 
 import java.io.IOException;
