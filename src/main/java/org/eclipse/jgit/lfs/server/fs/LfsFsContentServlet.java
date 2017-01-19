@@ -27,10 +27,7 @@ import com.googlesource.gerrit.plugins.lfs.fs.LfsFsRequestAuthorizer;
 import com.googlesource.gerrit.plugins.lfs.fs.LocalLargeFileRepository;
 
 import org.apache.http.HttpStatus;
-import org.eclipse.jgit.lfs.errors.InvalidLongObjectIdException;
 import org.eclipse.jgit.lfs.lib.AnyLongObjectId;
-import org.eclipse.jgit.lfs.lib.Constants;
-import org.eclipse.jgit.lfs.lib.LongObjectId;
 import org.eclipse.jgit.lfs.server.internal.LfsServerText;
 
 import java.io.IOException;
@@ -108,21 +105,5 @@ public class LfsFsContentServlet extends FileLfsServlet {
     context.setTimeout(timeout);
     req.getInputStream().setReadListener(
         new ObjectUploadListener(repository, context, req, rsp, id));
-  }
-
-  private AnyLongObjectId getObjectToTransfer(HttpServletRequest req,
-      HttpServletResponse rsp) throws IOException {
-    String info = req.getPathInfo();
-    if (info.length() != 1 + Constants.LONG_OBJECT_ID_STRING_LENGTH) {
-      sendError(rsp, HttpStatus.SC_UNPROCESSABLE_ENTITY,
-          MessageFormat.format(LfsServerText.get().invalidPathInfo, info));
-      return null;
-    }
-    try {
-      return LongObjectId.fromString(info.substring(1, 65));
-    } catch (InvalidLongObjectIdException e) {
-      sendError(rsp, HttpStatus.SC_UNPROCESSABLE_ENTITY, e.getMessage());
-      return null;
-    }
   }
 }
