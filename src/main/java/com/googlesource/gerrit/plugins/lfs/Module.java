@@ -19,10 +19,9 @@ import static com.google.gerrit.server.project.ProjectResource.PROJECT_KIND;
 import com.google.gerrit.extensions.config.FactoryModule;
 import com.google.gerrit.extensions.restapi.RestApiModule;
 
+import com.googlesource.gerrit.plugins.lfs.fs.LfsFsContentServlet;
 import com.googlesource.gerrit.plugins.lfs.fs.LocalLargeFileRepository;
 import com.googlesource.gerrit.plugins.lfs.s3.S3LargeFileRepository;
-
-import org.eclipse.jgit.lfs.server.fs.LfsFsContentServlet;
 
 public class Module extends FactoryModule {
 
