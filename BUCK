@@ -69,7 +69,6 @@ java_test(
   name = 'lfs_tests',
   srcs = glob(['src/test/java/**/*.java']),
   labels = ['lfs'],
-  source_under_test = [':lfs__plugin'],
   deps = GERRIT_PLUGIN_API + GERRIT_TESTS + [
     ':lfs__plugin',
     '//plugins/lfs:jgit-lfs',
