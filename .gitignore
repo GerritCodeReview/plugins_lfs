@@ -5,3 +5,8 @@
 /.buckd
 /.watchmanconfig
 /buck-out
+/bazel-bin
+/bazel-genfiles
+/bazel-out
+/bazel-lfs
+/bazel-testlogs
