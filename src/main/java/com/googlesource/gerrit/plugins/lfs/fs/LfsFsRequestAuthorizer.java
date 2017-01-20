@@ -68,7 +68,7 @@ public class LfsFsRequestAuthorizer {
       rndm.nextBytes(initVector);
       Cipher cipher = cipher(initVector, Cipher.ENCRYPT_MODE);
       return Base64.encodeBytes(Bytes.concat(initVector,
-          cipher.doFinal(String.format("%s-%s-%s", operation,
+          cipher.doFinal(String.format("%s~%s~%s", operation,
               id.name(), timeout(expirationSeconds))
               .getBytes(StandardCharsets.UTF_8))));
     } catch (GeneralSecurityException e) {
@@ -91,7 +91,7 @@ public class LfsFsRequestAuthorizer {
           cipher.doFinal(Arrays.copyOfRange(bytes, IV_LENGTH, bytes.length)),
           StandardCharsets.UTF_8);
       String oid = id.name();
-      String prefix = String.format("%s-%s-", operation, oid);
+      String prefix = String.format("%s~%s~", operation, oid);
       return data.startsWith(prefix)
           && onTime(data.substring(prefix.length()), operation, oid);
     } catch (GeneralSecurityException e) {
