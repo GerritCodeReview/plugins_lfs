@@ -120,16 +120,16 @@ after this period.
 The following configuration options are only used when the backend is `s3`.
 
 s3.region
-: link:http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions
-[Amazon region] the S3 storage bucket is residing in.
+: [Amazon region](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions)
+the S3 storage bucket is residing in.
 
 s3.bucket
-: Name of the link:http://docs.aws.amazon.com/AmazonS3/latest/UG/CreatingaBucket.html
-[Amazon S3 storage bucket] which will store large objects.
+: Name of the [Amazon S3 storage bucket](http://docs.aws.amazon.com/AmazonS3/latest/UG/CreatingaBucket.html)
+ which will store large objects.
 
 s3.storageClass
-: link:http://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html
-[Amazon S3 storage class] used for storing large objects.
+: [Amazon S3 storage class](http://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html)
+ used for storing large objects.
 : Default is `REDUCED_REDUNDANCY`
 
 s3.expirationSeconds
@@ -146,13 +146,13 @@ s3.disableSslVerify
 : Default is `false`.
 
 s3.accessKey
-: The link:http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html
-[Amazon IAM accessKey] for authenticating to S3. It is recommended to place this
+: The [Amazon IAM accessKey](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html)
+for authenticating to S3. It is recommended to place this
 setting in `$GERRIT_SITE/etc/@PLUGIN@.secure.config`.
 
 s3.secretKey
-: The link:http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html
-[Amazon IAM secretKey] for authenticating to S3. It is recommended to place this
+: The [Amazon IAM secretKey](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html)
+ for authenticating to S3. It is recommended to place this
 setting in `$GERRIT_SITE/etc/@PLUGIN@.secure.config`.
 
 ### Multiple LFS backends
