@@ -15,18 +15,24 @@
 package com.googlesource.gerrit.plugins.lfs;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
+import static org.eclipse.jgit.util.HttpSupport.HDR_AUTHORIZATION;
 
 import com.google.common.base.Joiner;
+import com.google.common.base.Optional;
+import com.google.common.base.Splitter;
 import com.google.common.base.Strings;
+import com.google.common.collect.Lists;
 import com.google.common.primitives.Bytes;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
+import org.eclipse.jgit.lfs.server.Response;
 import org.eclipse.jgit.util.Base64;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
+import org.joda.time.format.ISODateTimeFormat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -38,6 +44,8 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.InvalidParameterSpecException;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
@@ -54,6 +62,23 @@ public class LfsAuthTokenHandler {
     Token(String auth, DateTime expiresAt) {
       this.value = auth;
       this.expiresAt = expiresAt;
+    }
+  }
+
+  public static class ExpiringAction extends Response.Action {
+    private static final DateTimeFormatter ISO = ISODateTimeFormat.dateTime();
+
+    public final String expiresAt;
+
+    public ExpiringAction(String href, Token token) {
+      this(href, token.value, token.expiresAt);
+    }
+
+    public ExpiringAction(String href, String value, DateTime expiresAt) {
+      this.href = href;
+      this.header = Collections.singletonMap(HDR_AUTHORIZATION,
+          value);
+      this.expiresAt = ExpiringAction.ISO.print(expiresAt);
     }
   }
 
@@ -91,27 +116,31 @@ public class LfsAuthTokenHandler {
     }
   }
 
-  public boolean verifyAgainstToken(String token, String...params) {
-    if (Strings.isNullOrEmpty(token)) {
+  public boolean verifyAgainstToken(String token, String... params) {
+    Optional<String> data = decrypt(token);
+    if (!data.isPresent()) {
       return false;
     }
 
-    byte[] bytes = Base64.decode(token);
-    byte[] initVector = Arrays.copyOf(bytes, IV_LENGTH);
-    try {
-      Cipher cipher = cipher(initVector, Cipher.DECRYPT_MODE);
-      String data = new String(
-          cipher.doFinal(Arrays.copyOfRange(bytes, IV_LENGTH, bytes.length)),
-          UTF_8);
-      String summary = Joiner.on('~').join(params);
-      String prefix = String.format("%s~", summary);
-      return data.startsWith(prefix)
-          && onTime(data.substring(prefix.length()), summary);
-    } catch (GeneralSecurityException e) {
-      log.error("Exception was thrown during token verification", e);
+    String summary = Joiner.on('~').join(params);
+    String prefix = String.format("%s~", summary);
+    return data.get().startsWith(prefix)
+        && onTime(data.get().substring(prefix.length()), summary);
+  }
+
+  public Optional<List<String>> verifyTokenOnTime(String token) {
+    Optional<String> data = decrypt(token);
+    if (!data.isPresent()) {
+      return Optional.absent();
     }
 
-    return false;
+    List<String> values =
+        Lists.newArrayList(Splitter.on('~').split(data.get()));
+    if (onTime(values.get(values.size() - 1), data.get())) {
+      return Optional.of(values);
+    }
+
+    return Optional.absent();
   }
 
   boolean onTime(String dateTime, String summary) {
@@ -122,6 +151,25 @@ public class LfsAuthTokenHandler {
     }
 
     return true;
+  }
+
+  private Optional<String> decrypt(String token) {
+    if (Strings.isNullOrEmpty(token)) {
+      return Optional.absent();
+    }
+
+    byte[] bytes = Base64.decode(token);
+    byte[] initVector = Arrays.copyOf(bytes, IV_LENGTH);
+    try {
+      Cipher cipher = cipher(initVector, Cipher.DECRYPT_MODE);
+      String data = new String(
+          cipher.doFinal(Arrays.copyOfRange(bytes, IV_LENGTH, bytes.length)),
+          UTF_8);
+      return Optional.of(data);
+    } catch (GeneralSecurityException e) {
+      log.error("Exception was thrown during token verification", e);
+      return Optional.absent();
+    }
   }
 
   private DateTime timeout(int expirationSeconds) {

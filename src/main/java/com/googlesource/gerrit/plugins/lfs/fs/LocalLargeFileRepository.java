@@ -15,7 +15,6 @@
 package com.googlesource.gerrit.plugins.lfs.fs;
 
 import static com.googlesource.gerrit.plugins.lfs.LfsBackend.DEFAULT;
-import static org.eclipse.jgit.util.HttpSupport.HDR_AUTHORIZATION;
 
 import com.google.common.base.Strings;
 import com.google.gerrit.extensions.annotations.PluginCanonicalWebUrl;
@@ -24,7 +23,6 @@ import com.google.inject.Inject;
 import com.google.inject.assistedinject.Assisted;
 
 import com.googlesource.gerrit.plugins.lfs.LfsAuthTokenHandler;
-import com.googlesource.gerrit.plugins.lfs.LfsAuthTokenHandler.Token;
 import com.googlesource.gerrit.plugins.lfs.LfsBackend;
 import com.googlesource.gerrit.plugins.lfs.LfsConfigurationFactory;
 import com.googlesource.gerrit.plugins.lfs.LfsGlobalConfig;
@@ -32,14 +30,11 @@ import com.googlesource.gerrit.plugins.lfs.LfsGlobalConfig;
 import org.eclipse.jgit.lfs.lib.AnyLongObjectId;
 import org.eclipse.jgit.lfs.server.Response;
 import org.eclipse.jgit.lfs.server.fs.FileLfsRepository;
-import org.joda.time.format.DateTimeFormatter;
-import org.joda.time.format.ISODateTimeFormat;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Collections;
 
 public class LocalLargeFileRepository extends FileLfsRepository {
   public interface Factory {
@@ -50,8 +45,6 @@ public class LocalLargeFileRepository extends FileLfsRepository {
   public static final String UPLOAD = "upload";
   public static final String DOWNLOAD = "download";
   private static final int DEFAULT_TIMEOUT = 10; //in seconds
-  private static final DateTimeFormatter ISO = ISODateTimeFormat.dateTime();
-
   private final String servletUrlPattern;
   private final LfsFsRequestAuthorizer authorizer;
   private final int expirationSeconds;
@@ -81,7 +74,7 @@ public class LocalLargeFileRepository extends FileLfsRepository {
     Response.Action action = super.getDownloadAction(id);
     LfsAuthTokenHandler.Token token =
         authorizer.generateToken(DOWNLOAD, id, expirationSeconds);
-    return new ExpiringAction(action.href, token);
+    return new LfsAuthTokenHandler.ExpiringAction(action.href, token);
   }
 
   @Override
@@ -89,7 +82,7 @@ public class LocalLargeFileRepository extends FileLfsRepository {
     Response.Action action = super.getUploadAction(id, size);
     LfsAuthTokenHandler.Token token =
         authorizer.generateToken(UPLOAD, id, expirationSeconds);
-    return new ExpiringAction(action.href, token);
+    return new LfsAuthTokenHandler.ExpiringAction(action.href, token);
   }
 
   private static String getContentUrl(String url, LfsBackend backend) {
@@ -124,16 +117,5 @@ public class LocalLargeFileRepository extends FileLfsRepository {
     }
 
     return ensured;
-  }
-
-  class ExpiringAction extends Response.Action {
-    public final String expiresAt;
-
-    ExpiringAction(String href, Token token) {
-      this.href = href;
-      this.header = Collections.singletonMap(HDR_AUTHORIZATION,
-          token.value);
-      this.expiresAt = ISO.print(token.expiresAt);
-    }
   }
 }
