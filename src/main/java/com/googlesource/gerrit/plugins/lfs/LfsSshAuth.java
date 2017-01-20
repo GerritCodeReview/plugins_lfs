@@ -54,10 +54,16 @@ public class LfsSshAuth implements LfsPluginAuthCommand.LfsSshPluginAuth {
       throws UnloggedFailure, Failure {
     try {
       URL url = new URL(canonicalWebUrl);
-      String href = url.getProtocol() + "://" + url.getAuthority()
-          + url.getPath() + "/" + args.get(0) + "/info/lfs";
+      String path = url.getPath();
+      StringBuilder href = new StringBuilder(url.getProtocol())
+          .append("://")
+          .append(url.getAuthority())
+          .append(path)
+          .append(path.endsWith("/") ? "" : "/")
+          .append(args.get(0))
+          .append("/info/lfs");
       Response.Action response = new Response.Action();
-      response.href = href;
+      response.href = href.toString();
       response.header =
           Collections.singletonMap(HDR_AUTHORIZATION, "not:required");
 
