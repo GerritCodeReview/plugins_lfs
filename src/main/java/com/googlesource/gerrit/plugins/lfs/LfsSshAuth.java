@@ -37,11 +37,14 @@ import java.util.List;
 
 @Singleton
 public class LfsSshAuth implements LfsPluginAuthCommand.LfsSshPluginAuth {
+  private final LfsSshRequestAuthorizer auth;
   private final String canonicalWebUrl;
   private final Gson gson;
 
   @Inject
-  LfsSshAuth(@CanonicalWebUrl Provider<String> canonicalWebUrl) {
+  LfsSshAuth(LfsSshRequestAuthorizer auth,
+      @CanonicalWebUrl Provider<String> canonicalWebUrl) {
+    this.auth = auth;
     this.canonicalWebUrl = canonicalWebUrl.get();
     this.gson = new GsonBuilder()
         .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
@@ -54,15 +57,21 @@ public class LfsSshAuth implements LfsPluginAuthCommand.LfsSshPluginAuth {
       throws UnloggedFailure, Failure {
     try {
       URL url = new URL(canonicalWebUrl);
-      String href = url.getProtocol() + "://" + url.getAuthority()
-          + url.getPath() + "/" + args.get(0) + "/info/lfs";
+      String path = url.getPath();
+      String project = args.get(0);
+      String operation = args.get(1);
+      StringBuilder href = new StringBuilder(url.getProtocol())
+          .append("://")
+          .append(url.getAuthority())
+          .append(path)
+          .append(path.endsWith("/") ? "" : "/")
+          .append(project)
+          .append("/info/lfs");
       Response.Action response = new Response.Action();
-      response.href = href;
-      response.header =
-          Collections.singletonMap(HDR_AUTHORIZATION, "not:required");
-
+      response.href = href.toString();
+      response.header = Collections.singletonMap(HDR_AUTHORIZATION,
+          auth.generateToken(user, project, operation));
       return gson.toJson(response);
-
     } catch (MalformedURLException e) {
       throw new Failure(1, "Server configuration error: "
           + "forming Git LFS endpoint URL from canonicalWebUrl ["

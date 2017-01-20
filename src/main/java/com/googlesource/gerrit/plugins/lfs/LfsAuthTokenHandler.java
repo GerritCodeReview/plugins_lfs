@@ -15,7 +15,10 @@
 package com.googlesource.gerrit.plugins.lfs;
 
 import com.google.common.base.Joiner;
+import com.google.common.base.Optional;
+import com.google.common.base.Splitter;
 import com.google.common.base.Strings;
+import com.google.common.collect.Lists;
 import com.google.common.primitives.Bytes;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -37,6 +40,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.InvalidParameterSpecException;
 import java.util.Arrays;
+import java.util.List;
 
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
@@ -78,27 +82,31 @@ public class LfsAuthTokenHandler {
     }
   }
 
-  public boolean verifyAgainstToken(String token, String...params) {
-    if (Strings.isNullOrEmpty(token)) {
+  public boolean verifyAgainstToken(String token, String... params) {
+    Optional<String> data = decrypt(token);
+    if (!data.isPresent()) {
       return false;
     }
 
-    byte[] bytes = Base64.decode(token);
-    byte[] initVector = Arrays.copyOf(bytes, IV_LENGTH);
-    try {
-      Cipher cipher = cipher(initVector, Cipher.DECRYPT_MODE);
-      String data = new String(
-          cipher.doFinal(Arrays.copyOfRange(bytes, IV_LENGTH, bytes.length)),
-          UTF_8);
-      String summary = Joiner.on('~').join(params);
-      String prefix = String.format("%s~", summary);
-      return data.startsWith(prefix)
-          && onTime(data.substring(prefix.length()), summary);
-    } catch (GeneralSecurityException e) {
-      log.error("Exception was thrown during token verification", e);
+    String summary = Joiner.on('~').join(params);
+    String prefix = String.format("%s~", summary);
+    return data.get().startsWith(prefix)
+        && onTime(data.get().substring(prefix.length()), summary);
+  }
+
+  public Optional<List<String>> verifyTokenOnTime(String token) {
+    Optional<String> data = decrypt(token);
+    if (!data.isPresent()) {
+      return Optional.absent();
     }
 
-    return false;
+    List<String> values =
+        Lists.newArrayList(Splitter.on('~').split(data.get()));
+    if (onTime(values.get(values.size() - 1), data.get())) {
+      return Optional.of(values);
+    }
+
+    return Optional.absent();
   }
 
   boolean onTime(String dateTime, String summary) {
@@ -109,6 +117,25 @@ public class LfsAuthTokenHandler {
     }
 
     return true;
+  }
+
+  private Optional<String> decrypt(String token) {
+    if (Strings.isNullOrEmpty(token)) {
+      return Optional.absent();
+    }
+
+    byte[] bytes = Base64.decode(token);
+    byte[] initVector = Arrays.copyOf(bytes, IV_LENGTH);
+    try {
+      Cipher cipher = cipher(initVector, Cipher.DECRYPT_MODE);
+      String data = new String(
+          cipher.doFinal(Arrays.copyOfRange(bytes, IV_LENGTH, bytes.length)),
+          UTF_8);
+      return Optional.of(data);
+    } catch (GeneralSecurityException e) {
+      log.error("Exception was thrown during token verification", e);
+      return Optional.absent();
+    }
   }
 
   private String timeout(int expirationSeconds) {
