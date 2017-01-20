@@ -101,6 +101,14 @@ from Global Plugin Settings.
 The following options can be configured in `$GERRIT_SITE/etc/@PLUGIN@.config`
 and `$GERRIT_SITE/etc/@PLUGIN@.secure.config.`
 
+### Section `auth`
+
+auth.sshExpirationSeconds
+: Validity, in seconds, of authentication token for SSH requests.
+[Git LFS Authentication](https://github.com/git-lfs/git-lfs/blob/master/docs/api/authentication.md)
+specifies that SSH might be used to authenticate the user. Successful authentication
+provides token that is later used for Git LFS requests.
+
 ### Section `storage`
 
 storage.backend
