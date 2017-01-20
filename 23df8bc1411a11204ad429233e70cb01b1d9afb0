@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "486b96ff_75546837",
+        "filename": "BUILD",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-01-20T08:48:10Z",
+      "side": 1,
+      "message": "Nit: not consequent indentation.",
+      "range": {
+        "startLine": 14,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 6
+      },
+      "revId": "23df8bc1411a11204ad429233e70cb01b1d9afb0",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "486b96ff_55596c6b",
+        "filename": "BUILD",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-01-20T08:48:10Z",
+      "side": 1,
+      "message": "Not needed. Gerrit core already has it and this dependency is even exported in the plugin API, see gerrit-plugin-api/BUILD:\n\n  EXPORTS \u003d [\n    \"//gerrit-antlr:query_exception\",\n    [...]\n    \"//lib/httpcomponents:httpclient\",\n    \"//lib/httpcomponents:httpcore\",",
+      "range": {
+        "startLine": 17,
+        "startChar": 6,
+        "endLine": 17,
+        "endChar": 37
+      },
+      "revId": "23df8bc1411a11204ad429233e70cb01b1d9afb0",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2864a22d_f49238e6",
+        "filename": "WORKSPACE",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-01-20T08:48:10Z",
+      "side": 1,
+      "message": "Not needed it\u0027s pulled in through the plugin API.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 1
+      },
+      "revId": "23df8bc1411a11204ad429233e70cb01b1d9afb0",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "486b96ff_b55d605a",
+        "filename": "lib/httpcomponents/BUILD",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-01-20T08:48:10Z",
+      "side": 1,
+      "message": "Not needed.",
+      "revId": "23df8bc1411a11204ad429233e70cb01b1d9afb0",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
