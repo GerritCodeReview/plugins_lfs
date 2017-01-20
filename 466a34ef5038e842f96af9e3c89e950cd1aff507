@@ -42,6 +42,40 @@
     },
     {
       "key": {
+        "uuid": "2864a22d_94d94465",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-01-20T18:09:12Z",
+      "side": 1,
+      "message": "Done",
+      "revId": "466a34ef5038e842f96af9e3c89e950cd1aff507",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "486b96ff_75e3c819",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-01-20T18:09:12Z",
+      "side": 1,
+      "message": "Done",
+      "revId": "466a34ef5038e842f96af9e3c89e950cd1aff507",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "486b96ff_d55e1c21",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -53,6 +87,29 @@
       "writtenOn": "2017-01-20T13:00:03Z",
       "side": 1,
       "message": "never asked: what is geminica.programs? :-)",
+      "range": {
+        "startLine": 16,
+        "startChar": 33,
+        "endLine": 16,
+        "endChar": 50
+      },
+      "revId": "466a34ef5038e842f96af9e3c89e950cd1aff507",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "486b96ff_55e84cf2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-01-20T18:09:12Z",
+      "side": 1,
+      "message": "I had own, small (self employed) company (Geminica) couple of years back - nothing spectacular but from tax perspective it made sense (who knows maybe I will open it again in the future ;)). I am using this email for all things related to my professional development.\nMore prosaic reason is that I had 2 accounts in gerrit and asked to merge it into collabnet one and that was unfortunate as collabnet moved out from gmail and since then I am not longer able to commit with collabnet account ;)",
       "range": {
         "startLine": 16,
         "startChar": 33,
@@ -82,6 +139,23 @@
     },
     {
       "key": {
+        "uuid": "486b96ff_b5dc4055",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsAuthTokenHandler.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-01-20T18:09:12Z",
+      "side": 1,
+      "message": "Done",
+      "revId": "466a34ef5038e842f96af9e3c89e950cd1aff507",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2864a22d_b480c04f",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsAuthTokenHandler.java",
         "patchSetId": 2
@@ -105,6 +179,29 @@
     },
     {
       "key": {
+        "uuid": "2864a22d_f4d6b832",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsAuthTokenHandler.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-01-20T18:09:12Z",
+      "side": 1,
+      "message": "I can see that it could potentially contain 2 fields:\nvalue\nexpiresAt\nthe later one according to [1] can be provided as part of the response\n\n[1] https://github.com/git-lfs/git-lfs/blob/master/docs/api/authentication.md",
+      "range": {
+        "startLine": 66,
+        "startChar": 9,
+        "endLine": 66,
+        "endChar": 15
+      },
+      "revId": "466a34ef5038e842f96af9e3c89e950cd1aff507",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "486b96ff_358dd08a",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsAuthTokenHandler.java",
         "patchSetId": 2
@@ -116,6 +213,23 @@
       "writtenOn": "2017-01-20T13:00:03Z",
       "side": 1,
       "message": "looks like this could still fit in the previous line and not exceed 80 chars?",
+      "revId": "466a34ef5038e842f96af9e3c89e950cd1aff507",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "486b96ff_95d94465",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsAuthTokenHandler.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-01-20T18:09:12Z",
+      "side": 1,
+      "message": "Done",
       "revId": "466a34ef5038e842f96af9e3c89e950cd1aff507",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
