@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2864a22d_149254ac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-01-20T13:00:03Z",
+      "side": 1,
+      "message": "If this is a new paragraph, then add an empty line above. If not, then start the sentence in the previous line.",
+      "revId": "466a34ef5038e842f96af9e3c89e950cd1aff507",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2864a22d_7487486a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-01-20T13:00:03Z",
+      "side": 1,
+      "message": "sound like this could be done in owne change, before this change",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 39
+      },
+      "revId": "466a34ef5038e842f96af9e3c89e950cd1aff507",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "486b96ff_d55e1c21",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-01-20T13:00:03Z",
+      "side": 1,
+      "message": "never asked: what is geminica.programs? :-)",
+      "range": {
+        "startLine": 16,
+        "startChar": 33,
+        "endLine": 16,
+        "endChar": 50
+      },
+      "revId": "466a34ef5038e842f96af9e3c89e950cd1aff507",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2864a22d_548ccc8a",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsAuthTokenHandler.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-01-20T13:00:03Z",
+      "side": 1,
+      "message": "nit: static imports before non-static imports",
+      "revId": "466a34ef5038e842f96af9e3c89e950cd1aff507",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2864a22d_b480c04f",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsAuthTokenHandler.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-01-20T13:00:03Z",
+      "side": 1,
+      "message": "Why not have a Token class representing a token? Looks like one of the central concepts (token) is still missing its proper definition?\n\nIf you are already at refactoring this code then you could consider this proposal. IMO, you are not making a general purpose token handling but something very specific to the needs of the LFS plugin... so figuring out Token structure shouldn\u0027t be hard.",
+      "range": {
+        "startLine": 66,
+        "startChar": 9,
+        "endLine": 66,
+        "endChar": 15
+      },
+      "revId": "466a34ef5038e842f96af9e3c89e950cd1aff507",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "486b96ff_358dd08a",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsAuthTokenHandler.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-01-20T13:00:03Z",
+      "side": 1,
+      "message": "looks like this could still fit in the previous line and not exceed 80 chars?",
+      "revId": "466a34ef5038e842f96af9e3c89e950cd1aff507",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
