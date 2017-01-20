@@ -22,6 +22,29 @@
       "revId": "22e3224f858b8b50be52b4b53522bfd21cc27de7",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2864a22d_34a5d047",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-01-20T08:00:17Z",
+      "side": 1,
+      "message": "mention default value",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 55
+      },
+      "revId": "22e3224f858b8b50be52b4b53522bfd21cc27de7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
