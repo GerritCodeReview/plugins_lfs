@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "08a35e81_83f8be52",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LfsFsRequestAuthorizer.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2017-01-22T23:18:28Z",
+      "side": 1,
+      "message": "optional: make the delimiter a String constant, and use Joiner.on(DELIMITER).join(...) to create the token here and at line 94 instead of String.format.",
+      "revId": "1d269ec7e7ba1fed57f5165b1cab76ce5b1ce958",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
