@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "28a6628f_e4297aed",
+        "filename": "BUILD",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2017-01-23T01:25:06Z",
+      "side": 1,
+      "message": "Done by running buildifier, which also fixed a couple of other formatting glitches.",
+      "range": {
+        "startLine": 14,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 6
+      },
+      "revId": "23df8bc1411a11204ad429233e70cb01b1d9afb0",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "486b96ff_55596c6b",
         "filename": "BUILD",
         "patchSetId": 2
@@ -36,6 +59,29 @@
       "writtenOn": "2017-01-20T08:48:10Z",
       "side": 1,
       "message": "Not needed. Gerrit core already has it and this dependency is even exported in the plugin API, see gerrit-plugin-api/BUILD:\n\n  EXPORTS \u003d [\n    \"//gerrit-antlr:query_exception\",\n    [...]\n    \"//lib/httpcomponents:httpclient\",\n    \"//lib/httpcomponents:httpcore\",",
+      "range": {
+        "startLine": 17,
+        "startChar": 6,
+        "endLine": 17,
+        "endChar": 37
+      },
+      "revId": "23df8bc1411a11204ad429233e70cb01b1d9afb0",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "08a35e81_035a8e92",
+        "filename": "BUILD",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2017-01-23T01:25:06Z",
+      "side": 1,
+      "message": "Done",
       "range": {
         "startLine": 17,
         "startChar": 6,
@@ -71,6 +117,29 @@
     },
     {
       "key": {
+        "uuid": "08a35e81_235f8a83",
+        "filename": "WORKSPACE",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2017-01-23T01:25:06Z",
+      "side": 1,
+      "message": "Done",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 1
+      },
+      "revId": "23df8bc1411a11204ad429233e70cb01b1d9afb0",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "486b96ff_b55d605a",
         "filename": "lib/httpcomponents/BUILD",
         "patchSetId": 2
@@ -82,6 +151,23 @@
       "writtenOn": "2017-01-20T08:48:10Z",
       "side": 1,
       "message": "Not needed.",
+      "revId": "23df8bc1411a11204ad429233e70cb01b1d9afb0",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "08a35e81_c34316aa",
+        "filename": "lib/httpcomponents/BUILD",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2017-01-23T01:25:06Z",
+      "side": 1,
+      "message": "Done",
       "revId": "23df8bc1411a11204ad429233e70cb01b1d9afb0",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
