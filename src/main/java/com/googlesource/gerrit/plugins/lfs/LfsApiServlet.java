@@ -81,8 +81,8 @@ public class LfsApiServlet extends LfsGerritProtocolServlet {
     if (state == null || state.getProject().getState() == HIDDEN) {
       throw new LfsRepositoryNotFound(project.get());
     }
-    authorizeUser(userProvider.getUser(auth, projName, request.getOperation()),
-        state, request.getOperation());
+    String op = request.getOperation();
+    authorizeUser(userProvider.getUser(auth, projName, op), state, op);
 
     if (request.getOperation().equals(UPLOAD)
         && state.getProject().getState() == READ_ONLY) {
