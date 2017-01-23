@@ -22,6 +22,29 @@
       "revId": "b9968d9a072945774508987c1c6f3db93114f382",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "46121bd1_1916ae0e",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsAuthTokenHandler.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-01-23T14:10:49Z",
+      "side": 1,
+      "message": "not really, SSH call to generate token provides also the username as there is no other way to pass username between calls (see [1]).\nApart from that I am not sure why one would need to have these parameters. I am not sure the intention here: do you want to have Token that is built from parameters and results in value (which is ciphered string built out of params) and as a second option created out of ciphered text (parameters would be read upon successful de-cipher)?\n\n[1] https://gerrit-review.googlesource.com/#/c/94912/",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 36
+      },
+      "revId": "b9968d9a072945774508987c1c6f3db93114f382",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
