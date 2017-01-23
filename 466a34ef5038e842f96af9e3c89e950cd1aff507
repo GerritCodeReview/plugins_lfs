@@ -145,6 +145,29 @@
     },
     {
       "key": {
+        "uuid": "1c0261c4_5c80c21f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-01-23T16:27:02Z",
+      "side": 1,
+      "message": "I have jcentkowski@collab.net registered, however I was not able to push with back in times. I will re-try when needed in the following days ;)",
+      "range": {
+        "startLine": 16,
+        "startChar": 33,
+        "endLine": 16,
+        "endChar": 50
+      },
+      "revId": "466a34ef5038e842f96af9e3c89e950cd1aff507",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2864a22d_548ccc8a",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsAuthTokenHandler.java",
         "patchSetId": 2
