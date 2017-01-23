@@ -16,6 +16,23 @@
       "revId": "1d269ec7e7ba1fed57f5165b1cab76ce5b1ce958",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "486b96ff_35b150ed",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LfsFsRequestAuthorizer.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2017-01-23T04:36:12Z",
+      "side": 1,
+      "message": "Let\u0027s do this in a follow-up change if needed.",
+      "revId": "1d269ec7e7ba1fed57f5165b1cab76ce5b1ce958",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
