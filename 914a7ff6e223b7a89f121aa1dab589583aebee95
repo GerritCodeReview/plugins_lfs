@@ -91,6 +91,29 @@
       "revId": "914a7ff6e223b7a89f121aa1dab589583aebee95",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2864a22d_37b4b2c4",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsAuthUserProvider.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-01-23T10:55:51Z",
+      "side": 1,
+      "message": "Do you still care about anonymous LFS access for those sites which want to enable it? What is the goal?",
+      "range": {
+        "startLine": 46,
+        "startChar": 6,
+        "endLine": 46,
+        "endChar": 24
+      },
+      "revId": "914a7ff6e223b7a89f121aa1dab589583aebee95",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
