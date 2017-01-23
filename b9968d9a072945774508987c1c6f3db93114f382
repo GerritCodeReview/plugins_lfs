@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "486b96ff_b8a71593",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsAuthTokenHandler.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-01-23T10:51:29Z",
+      "side": 1,
+      "message": "Unless I am missing something it seems like all generateToken calls provide exactly these 3 parameters: operation, oid, expiration\n\nWhy not also have exactly these 3 parameters here?",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 36
+      },
+      "revId": "b9968d9a072945774508987c1c6f3db93114f382",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
