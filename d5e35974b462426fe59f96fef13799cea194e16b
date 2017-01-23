@@ -140,6 +140,29 @@
     },
     {
       "key": {
+        "uuid": "2864a22d_9454a405",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-01-23T10:55:51Z",
+      "side": 1,
+      "message": "\u003e would it be better to fix it in this change?\n\n+1",
+      "range": {
+        "startLine": 17,
+        "startChar": 3,
+        "endLine": 18,
+        "endChar": 7
+      },
+      "revId": "d5e35974b462426fe59f96fef13799cea194e16b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "037a6133_8b704d47",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsApiServlet.java",
         "patchSetId": 8
