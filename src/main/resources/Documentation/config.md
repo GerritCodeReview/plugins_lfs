@@ -2,12 +2,20 @@
 
 ## Core Gerrit Settings
 
-The following option must be set in `$GERRIT_SITE/etc/gerrit.config`.
+The following options must be set in `$GERRIT_SITE/etc/gerrit.config`.
 
 ### Section `lfs`
 
 lfs.plugin = @PLUGIN@
 : With this option set LFS requests are forwarded to the @PLUGIN@ plugin.
+
+### Section `auth`
+
+auth.gitBasicAuth = true
+: Git LFS client uses Basic HTTP auth with LFS requests. When this option
+is not enabled (not set or equals to `false`) Git LFS HTTP requests are treated
+as anonymous requests. Therefore requests will be successfully authorized only
+for projects that allows anonymous to perform requested operation.
 
 ## Per Project Settings
 
