@@ -14,130 +14,116 @@
 
 package com.googlesource.gerrit.plugins.lfs.fs;
 
-import com.google.common.base.Strings;
-import com.google.common.primitives.Bytes;
+import com.google.common.base.Optional;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
+import com.googlesource.gerrit.plugins.lfs.LfsAuthToken;
+import com.googlesource.gerrit.plugins.lfs.LfsAuthToken.LfsAuthTokenVerifier;
+import com.googlesource.gerrit.plugins.lfs.LfsCipher;
+
 import org.eclipse.jgit.lfs.lib.AnyLongObjectId;
-import org.eclipse.jgit.util.Base64;
-import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
-import org.joda.time.format.DateTimeFormat;
-import org.joda.time.format.DateTimeFormatter;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.eclipse.jgit.lfs.lib.LongObjectId;
 
-import java.nio.charset.StandardCharsets;
-import java.security.AlgorithmParameters;
-import java.security.GeneralSecurityException;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
-import java.security.spec.InvalidParameterSpecException;
-import java.util.Arrays;
-
-import javax.crypto.Cipher;
-import javax.crypto.KeyGenerator;
-import javax.crypto.NoSuchPaddingException;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.IvParameterSpec;
+import java.util.ArrayList;
+import java.util.List;
 
 @Singleton
 public class LfsFsRequestAuthorizer {
-  private static final Logger log = LoggerFactory.getLogger(LfsFsRequestAuthorizer.class);
-  private static final int IV_LENGTH = 16;
-  private static final String ALGORITHM = "AES";
-  static final DateTimeFormatter DATE_TIME =
-      DateTimeFormat.forPattern("YYYYMMDDHHmmss");
+  class AuthInfo {
+    public final String authToken;
+    public final String expiresAt;
 
-  private final SecureRandom rndm;
-  private final SecretKey key;
+    AuthInfo(String authToken, String expiresAt) {
+      this.authToken = authToken;
+      this.expiresAt = expiresAt;
+    }
+  }
+
+  private final LfsFsAuthTokenProcessor processor;
 
   @Inject
-  LfsFsRequestAuthorizer() {
-    this.rndm = new SecureRandom();
-    this.key = generateKey();
+  LfsFsRequestAuthorizer(LfsFsAuthTokenProcessor processor) {
+    this.processor = processor;
   }
 
-  public String generateToken(String operation, AnyLongObjectId id,
-      int expirationSeconds) {
-    try {
-      byte[] initVector = new byte[IV_LENGTH];
-      rndm.nextBytes(initVector);
-      Cipher cipher = cipher(initVector, Cipher.ENCRYPT_MODE);
-      return Base64.encodeBytes(Bytes.concat(initVector,
-          cipher.doFinal(String.format("%s~%s~%s", operation,
-              id.name(), timeout(expirationSeconds))
-              .getBytes(StandardCharsets.UTF_8))));
-    } catch (GeneralSecurityException e) {
-      log.error("Token generation failed with error", e);
-      throw new RuntimeException(e);
-    }
+  public AuthInfo generateToken(String operation,
+      AnyLongObjectId id, int expirationSeconds) {
+    LfsFsAuthToken token = new LfsFsAuthToken(operation, id, expirationSeconds);
+    return new AuthInfo(processor.serialize(token), token.expiresAt);
   }
 
-  public boolean verifyAgainstToken(String token, String operation,
+  public boolean verifyAgainstToken(String authToken, String operation,
       AnyLongObjectId id) {
-    if (Strings.isNullOrEmpty(token)) {
+    Optional<LfsFsAuthToken> token = processor.deserialize(authToken);
+    if (!token.isPresent()) {
       return false;
     }
 
-    byte[] bytes = Base64.decode(token);
-    byte[] initVector = Arrays.copyOf(bytes, IV_LENGTH);
-    try {
-      Cipher cipher = cipher(initVector, Cipher.DECRYPT_MODE);
-      String data = new String(
-          cipher.doFinal(Arrays.copyOfRange(bytes, IV_LENGTH, bytes.length)),
-          StandardCharsets.UTF_8);
-      String oid = id.name();
-      String prefix = String.format("%s~%s~", operation, oid);
-      return data.startsWith(prefix)
-          && onTime(data.substring(prefix.length()), operation, oid);
-    } catch (GeneralSecurityException e) {
-      log.error("Exception was thrown during token verification", e);
+    return new LfsFsAuthTokenVerifier(token.get(), operation, id)
+        .verify();
+  }
+
+  static class LfsFsAuthTokenProcessor
+    extends LfsAuthToken.LfsAuthTokenProcessor<LfsFsAuthToken> {
+    @Inject
+    protected LfsFsAuthTokenProcessor(LfsCipher cipher) {
+      super(cipher);
     }
 
-    return false;
-  }
-
-  boolean onTime(String dateTime, String operation, String id) {
-    String now = DATE_TIME.print(now());
-    if (now.compareTo(dateTime) > 0) {
-      log.info("Operation {} on id {} timed out", operation, id);
-      return false;
+    @Override
+    protected List<String> getValues(LfsFsAuthToken token) {
+      List<String> values = new ArrayList<>(3);
+      values.add(token.operation);
+      values.add(token.id.getName());
+      values.add(token.expiresAt);
+      return values;
     }
 
-    return true;
+    @Override
+    protected Optional<LfsFsAuthToken> createToken(List<String> values) {
+      if (values.size() != 3) {
+        return Optional.absent();
+      }
+
+      return Optional.of(new LfsFsAuthToken(values.get(0),
+          LongObjectId.fromString(values.get(1)), values.get(2)));
+    }
   }
 
-  private String timeout(int expirationSeconds) {
-    return DATE_TIME.print(now().plusSeconds(expirationSeconds));
+  private static class LfsFsAuthTokenVerifier
+    extends LfsAuthTokenVerifier<LfsFsAuthToken> {
+    private final String operation;
+    private final AnyLongObjectId id;
+
+    protected LfsFsAuthTokenVerifier(LfsFsAuthToken token,
+        String operation, AnyLongObjectId id) {
+      super(token);
+      this.operation = operation;
+      this.id = id;
+    }
+
+    @Override
+    protected boolean verifyTokenValues() {
+      return operation.equals(token.operation)
+          && id.getName().equals(token.id.getName());
+    }
   }
 
-  private DateTime now() {
-    return DateTime.now().toDateTime(DateTimeZone.UTC);
-  }
+  private static class LfsFsAuthToken extends LfsAuthToken {
+    private final String operation;
+    private final AnyLongObjectId id;
 
-  private Cipher cipher(byte[] initVector, int mode) throws NoSuchAlgorithmException,
-      NoSuchPaddingException, InvalidParameterSpecException,
-      InvalidKeyException, InvalidAlgorithmParameterException {
-    IvParameterSpec spec = new IvParameterSpec(initVector);
-    Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5PADDING");
-    AlgorithmParameters params = AlgorithmParameters.getInstance(ALGORITHM);
-    params.init(spec);
-    cipher.init(mode, key, params);
-    return cipher;
-  }
+    LfsFsAuthToken(String operation, AnyLongObjectId id, int expirationSeconds) {
+      super(expirationSeconds);
+      this.operation = operation;
+      this.id = id;
+    }
 
-  private SecretKey generateKey() {
-    try {
-      KeyGenerator generator = KeyGenerator.getInstance(ALGORITHM);
-      generator.init(128, rndm);
-      return generator.generateKey();
-    } catch (NoSuchAlgorithmException e) {
-      log.error("Generating key failed with error", e);
-      throw new RuntimeException(e);
+    LfsFsAuthToken(String operation, AnyLongObjectId id, String expiresAt) {
+      super(expiresAt);
+      this.operation = operation;
+      this.id = id;
     }
   }
 }

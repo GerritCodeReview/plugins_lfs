@@ -74,17 +74,17 @@ public class LocalLargeFileRepository extends FileLfsRepository {
   @Override
   public Response.Action getDownloadAction(AnyLongObjectId id) {
     Response.Action action = super.getDownloadAction(id);
-    action.header = Collections.singletonMap(HDR_AUTHORIZATION,
-        authorizer.generateToken(DOWNLOAD, id, expirationSeconds));
-    return action;
+    LfsFsRequestAuthorizer.AuthInfo token =
+        authorizer.generateToken(DOWNLOAD, id, expirationSeconds);
+    return new ExpiringAction(action.href, token);
   }
 
   @Override
   public Response.Action getUploadAction(AnyLongObjectId id, long size) {
     Response.Action action = super.getUploadAction(id, size);
-    action.header = Collections.singletonMap(HDR_AUTHORIZATION,
-        authorizer.generateToken(UPLOAD, id, expirationSeconds));
-    return action;
+    LfsFsRequestAuthorizer.AuthInfo token =
+        authorizer.generateToken(UPLOAD, id, expirationSeconds);
+    return new ExpiringAction(action.href, token);
   }
 
   private static String getContentUrl(String url, LfsBackend backend) {
@@ -119,5 +119,15 @@ public class LocalLargeFileRepository extends FileLfsRepository {
     }
 
     return ensured;
+  }
+
+  class ExpiringAction extends Response.Action {
+    public final String expiresAt;
+
+    ExpiringAction(String href, LfsFsRequestAuthorizer.AuthInfo info) {
+      this.href = href;
+      this.header = Collections.singletonMap(HDR_AUTHORIZATION, info.authToken);
+      this.expiresAt = info.expiresAt;
+    }
   }
 }
