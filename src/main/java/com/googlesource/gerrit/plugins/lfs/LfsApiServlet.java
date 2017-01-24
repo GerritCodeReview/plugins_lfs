@@ -74,13 +74,15 @@ public class LfsApiServlet extends LfsGerritProtocolServlet {
     if (!matcher.matches()) {
       throw new LfsException("no repository at " + pathInfo);
     }
+    String projName = matcher.group(1);
     Project.NameKey project = Project.NameKey.parse(
-        ProjectUtil.stripGitSuffix(matcher.group(1)));
+        ProjectUtil.stripGitSuffix(projName));
     ProjectState state = projectCache.get(project);
     if (state == null || state.getProject().getState() == HIDDEN) {
       throw new LfsRepositoryNotFound(project.get());
     }
-    authorizeUser(userProvider.getUser(auth), state, request.getOperation());
+    authorizeUser(userProvider.getUser(auth, projName, request.getOperation()),
+        state, request.getOperation());
 
     if (request.getOperation().equals(UPLOAD)
         && state.getProject().getState() == READ_ONLY) {
