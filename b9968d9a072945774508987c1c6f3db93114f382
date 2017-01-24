@@ -68,6 +68,29 @@
       "revId": "b9968d9a072945774508987c1c6f3db93114f382",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83340f3a_d7a76e55",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsAuthTokenHandler.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-01-24T12:31:44Z",
+      "side": 1,
+      "message": "Ok, see the point now - let me see how that looks after rework and I will submit PS.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 36
+      },
+      "revId": "b9968d9a072945774508987c1c6f3db93114f382",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
