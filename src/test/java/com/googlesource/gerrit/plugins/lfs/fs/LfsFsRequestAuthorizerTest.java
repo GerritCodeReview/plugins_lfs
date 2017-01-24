@@ -17,8 +17,8 @@ package com.googlesource.gerrit.plugins.lfs.fs;
 import static com.google.common.truth.Truth.assertThat;
 import static org.eclipse.jgit.lfs.lib.LongObjectId.zeroId;
 
+import com.googlesource.gerrit.plugins.lfs.AuthInfo;
 import com.googlesource.gerrit.plugins.lfs.LfsCipher;
-import com.googlesource.gerrit.plugins.lfs.fs.LfsFsRequestAuthorizer.AuthInfo;
 import com.googlesource.gerrit.plugins.lfs.fs.LfsFsRequestAuthorizer.LfsFsAuthTokenProcessor;
 
 import org.eclipse.jgit.lfs.lib.LongObjectId;
