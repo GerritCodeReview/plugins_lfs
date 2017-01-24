@@ -15,7 +15,6 @@
 package com.googlesource.gerrit.plugins.lfs.fs;
 
 import static com.googlesource.gerrit.plugins.lfs.LfsBackend.DEFAULT;
-import static org.eclipse.jgit.util.HttpSupport.HDR_AUTHORIZATION;
 
 import com.google.common.base.Strings;
 import com.google.gerrit.extensions.annotations.PluginCanonicalWebUrl;
@@ -23,6 +22,8 @@ import com.google.gerrit.extensions.annotations.PluginData;
 import com.google.inject.Inject;
 import com.google.inject.assistedinject.Assisted;
 
+import com.googlesource.gerrit.plugins.lfs.AuthInfo;
+import com.googlesource.gerrit.plugins.lfs.ExpiringAction;
 import com.googlesource.gerrit.plugins.lfs.LfsBackend;
 import com.googlesource.gerrit.plugins.lfs.LfsConfigurationFactory;
 import com.googlesource.gerrit.plugins.lfs.LfsGlobalConfig;
@@ -35,7 +36,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Collections;
 
 public class LocalLargeFileRepository extends FileLfsRepository {
   public interface Factory {
@@ -74,7 +74,7 @@ public class LocalLargeFileRepository extends FileLfsRepository {
   @Override
   public Response.Action getDownloadAction(AnyLongObjectId id) {
     Response.Action action = super.getDownloadAction(id);
-    LfsFsRequestAuthorizer.AuthInfo authInfo =
+    AuthInfo authInfo =
         authorizer.generateAuthInfo(DOWNLOAD, id, expirationSeconds);
     return new ExpiringAction(action.href, authInfo);
   }
@@ -82,7 +82,7 @@ public class LocalLargeFileRepository extends FileLfsRepository {
   @Override
   public Response.Action getUploadAction(AnyLongObjectId id, long size) {
     Response.Action action = super.getUploadAction(id, size);
-    LfsFsRequestAuthorizer.AuthInfo authInfo =
+    AuthInfo authInfo =
         authorizer.generateAuthInfo(UPLOAD, id, expirationSeconds);
     return new ExpiringAction(action.href, authInfo);
   }
@@ -119,15 +119,5 @@ public class LocalLargeFileRepository extends FileLfsRepository {
     }
 
     return ensured;
-  }
-
-  class ExpiringAction extends Response.Action {
-    public final String expiresAt;
-
-    ExpiringAction(String href, LfsFsRequestAuthorizer.AuthInfo info) {
-      this.href = href;
-      this.header = Collections.singletonMap(HDR_AUTHORIZATION, info.authToken);
-      this.expiresAt = info.expiresAt;
-    }
   }
 }
