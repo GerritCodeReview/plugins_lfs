@@ -18,6 +18,7 @@ import com.google.common.base.Optional;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
+import com.googlesource.gerrit.plugins.lfs.AuthInfo;
 import com.googlesource.gerrit.plugins.lfs.LfsAuthToken;
 import com.googlesource.gerrit.plugins.lfs.LfsAuthToken.Verifier;
 import com.googlesource.gerrit.plugins.lfs.LfsCipher;
@@ -30,16 +31,6 @@ import java.util.List;
 
 @Singleton
 public class LfsFsRequestAuthorizer {
-  class AuthInfo {
-    public final String authToken;
-    public final String expiresAt;
-
-    AuthInfo(String authToken, String expiresAt) {
-      this.authToken = authToken;
-      this.expiresAt = expiresAt;
-    }
-  }
-
   private final FsProcessor processor;
 
   @Inject
