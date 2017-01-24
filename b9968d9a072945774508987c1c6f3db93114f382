@@ -45,6 +45,29 @@
       "revId": "b9968d9a072945774508987c1c6f3db93114f382",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e58df2d7_e9300552",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsAuthTokenHandler.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-01-24T10:40:15Z",
+      "side": 1,
+      "message": "\u003e I am not sure the intention here: do you want to have Token that is built from parameters ...\n\nThe main reason I proposed to have a Token class was that in the source code it was often represented implicitly as (int expiration, String... params) and that formatting of the string representation \"%s~%s~...\" was spread all around the code. I was thinking about encapsulating this information into  a Token class.\n\nEncryption/decryption operates on String level and is, IMHO, not a part of the Token class but operates on Token\u0027s string representation.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 36
+      },
+      "revId": "b9968d9a072945774508987c1c6f3db93114f382",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
