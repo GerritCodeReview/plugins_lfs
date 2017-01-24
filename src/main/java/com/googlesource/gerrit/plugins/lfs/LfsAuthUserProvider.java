@@ -14,9 +14,15 @@
 
 package com.googlesource.gerrit.plugins.lfs;
 
+import static com.googlesource.gerrit.plugins.lfs.LfsSshRequestAuthorizer.SSH_AUTH_PREFIX;
+
+import com.google.common.base.Optional;
 import com.google.common.base.Strings;
 import com.google.gerrit.server.AnonymousUser;
 import com.google.gerrit.server.CurrentUser;
+import com.google.gerrit.server.IdentifiedUser;
+import com.google.gerrit.server.account.AccountCache;
+import com.google.gerrit.server.account.AccountState;
 import com.google.gerrit.server.config.AuthConfig;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
@@ -29,21 +35,41 @@ class LfsAuthUserProvider {
   private final Provider<AnonymousUser> anonymous;
   private final Provider<CurrentUser> user;
   private final AuthConfig authCfg;
+  private final LfsSshRequestAuthorizer sshAuth;
+  private final AccountCache accounts;
+  private final IdentifiedUser.GenericFactory userFactory;
 
   @Inject
   LfsAuthUserProvider(Provider<AnonymousUser> anonymous,
       Provider<CurrentUser> user,
-      AuthConfig authCfg) {
+      AuthConfig authCfg,
+      LfsSshRequestAuthorizer sshAuth,
+      AccountCache accounts,
+      IdentifiedUser.GenericFactory userFactory) {
     this.anonymous = anonymous;
     this.user = user;
     this.authCfg = authCfg;
+    this.sshAuth = sshAuth;
+    this.accounts = accounts;
+    this.userFactory = userFactory;
   }
 
-  CurrentUser getUser(String auth) {
-    if (!Strings.isNullOrEmpty(auth)
-        && auth.startsWith(BASIC_AUTH_PREFIX)
-        && authCfg.isGitBasicAuth()) {
-      return user.get();
+  CurrentUser getUser(String auth, String project, String operation) {
+    if (!Strings.isNullOrEmpty(auth)) {
+      if (auth.startsWith(BASIC_AUTH_PREFIX) && authCfg.isGitBasicAuth()) {
+        return user.get();
+      }
+
+      if (auth.startsWith(SSH_AUTH_PREFIX)) {
+        Optional<String> user = sshAuth.verifyToken(
+            auth.substring(SSH_AUTH_PREFIX.length()), project, operation);
+        if (user.isPresent()) {
+          AccountState acc = accounts.getByUsername(user.get());
+          if (acc != null) {
+            return userFactory.create(acc);
+          }
+        }
+      }
     }
     return anonymous.get();
   }
