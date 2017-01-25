@@ -137,6 +137,23 @@
       "revId": "914a7ff6e223b7a89f121aa1dab589583aebee95",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b3ede5df_9e3b7347",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsAuthUserProvider.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-01-25T10:53:56Z",
+      "side": 1,
+      "message": "Yes, it should be subject of the configured access rights. I wrongly understood the thing about the \"/a/\" prefix thinking that you want to enforce that all LFS API calls must go via \"/a/\" and thus enforce authentication.",
+      "revId": "914a7ff6e223b7a89f121aa1dab589583aebee95",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
