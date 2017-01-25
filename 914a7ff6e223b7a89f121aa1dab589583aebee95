@@ -154,6 +154,23 @@
       "revId": "914a7ff6e223b7a89f121aa1dab589583aebee95",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36a8cc0e_8cfd0fb3",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsAuthUserProvider.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-01-25T14:46:10Z",
+      "side": 1,
+      "message": "nope I don\u0027t want to enforce it - good that it was clarified ;)\nCan we start merging it Saša?",
+      "revId": "914a7ff6e223b7a89f121aa1dab589583aebee95",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
