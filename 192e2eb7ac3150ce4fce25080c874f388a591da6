@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0f9c3ee_7c6079e8",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsAuthTokenHandler.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2017-01-26T07:05:36Z",
+      "side": 1,
+      "message": "This is not needed; there are no injected parameters.",
+      "range": {
+        "startLine": 81,
+        "startChar": 2,
+        "endLine": 81,
+        "endChar": 9
+      },
+      "revId": "192e2eb7ac3150ce4fce25080c874f388a591da6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5a18cec_b1eecea9",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsAuthTokenHandler.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2017-01-26T07:05:36Z",
+      "side": 1,
+      "message": "This name is misleading; it does not generate a Token but and AuthInfo",
+      "range": {
+        "startLine": 87,
+        "startChar": 18,
+        "endLine": 87,
+        "endChar": 31
+      },
+      "revId": "192e2eb7ac3150ce4fce25080c874f388a591da6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7545f05c_69617c70",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsAuthTokenHandler.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2017-01-26T07:05:36Z",
+      "side": 1,
+      "message": "Are these all subclasses of GeneralSecurityException (see L119)?\n\nIf so we can just declare GeneralSecurityException here.",
+      "range": {
+        "startLine": 144,
+        "startChar": 60,
+        "endLine": 146,
+        "endChar": 61
+      },
+      "revId": "192e2eb7ac3150ce4fce25080c874f388a591da6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a9e0d560_36efbdbc",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsAuthTokenHandler.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2017-01-26T07:05:36Z",
+      "side": 1,
+      "message": "Move this to before line 151?",
+      "range": {
+        "startLine": 148,
+        "startChar": 4,
+        "endLine": 148,
+        "endChar": 63
+      },
+      "revId": "192e2eb7ac3150ce4fce25080c874f388a591da6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dceb1786_512dc604",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsAuthTokenHandler.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2017-01-26T07:05:36Z",
+      "side": 1,
+      "message": "Make this a constant?  (or use an existing constant, if there is one)",
+      "range": {
+        "startLine": 148,
+        "startChar": 39,
+        "endLine": 148,
+        "endChar": 61
+      },
+      "revId": "192e2eb7ac3150ce4fce25080c874f388a591da6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b3a37733_962b7506",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/lfs/LfsAuthTokenHandlerTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2017-01-26T07:05:36Z",
+      "side": 1,
+      "message": "What is the expected resolution of the timeout?  Should we also check for smaller resolution, for example ms or smaller?",
+      "range": {
+        "startLine": 37,
+        "startChar": 7,
+        "endLine": 37,
+        "endChar": 45
+      },
+      "revId": "192e2eb7ac3150ce4fce25080c874f388a591da6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
