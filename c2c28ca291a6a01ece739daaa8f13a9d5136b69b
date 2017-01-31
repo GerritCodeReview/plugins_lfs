@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f48e2160_86741a28",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsAuthTokenHandler.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-01-31T14:42:07Z",
+      "side": 1,
+      "message": "I am not sure I understand the AuthInfo abstraction. Looking at the fields it consists of a token and an expiration time. However, the Token.getValue(DateTime expiresAt) at the line 49 also provides a concept of token expiration. This is exactly what happens at LfsAuthTokenHandler lines 88-90.",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 36
+      },
+      "revId": "c2c28ca291a6a01ece739daaa8f13a9d5136b69b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22b9e9cb_ad8b0788",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsAuthTokenHandler.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-01-31T14:42:07Z",
+      "side": 1,
+      "message": "Here we have the expiration time two times, once as a part of the token and then second time as a part of the AuthInfo.",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 21
+      },
+      "revId": "c2c28ca291a6a01ece739daaa8f13a9d5136b69b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4089f84_bdf4958a",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsAuthTokenHandler.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-01-31T14:42:07Z",
+      "side": 1,
+      "message": "When I proposed to introduce a Token abstraction I was thinking that with it, we could also get a more structured operators (in the Token class) and that we could avoid creating these prefix strings and checking startsWith, etc..\n\nif we cannot refactor it completely then I would rather stay with the old version where everything is just a string.",
+      "revId": "c2c28ca291a6a01ece739daaa8f13a9d5136b69b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8564ad33_b0bed1c3",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LfsFsRequestAuthorizer.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-01-31T14:42:07Z",
+      "side": 1,
+      "message": "The method name suggests it generates a token, but actually it returns an AuthInfo.\n\nCompare this with the LfsAuthTokenHandler.generateAuthInfo where the method name and the return type match.",
+      "revId": "c2c28ca291a6a01ece739daaa8f13a9d5136b69b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b628d8ae_29d06811",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LocalLargeFileRepository.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-01-31T14:42:07Z",
+      "side": 1,
+      "message": "If this is an AuthInfo then name it authInfo?",
+      "revId": "c2c28ca291a6a01ece739daaa8f13a9d5136b69b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68ab7dc5_b2064b6a",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LocalLargeFileRepository.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-01-31T14:42:07Z",
+      "side": 1,
+      "message": "same as above",
+      "revId": "c2c28ca291a6a01ece739daaa8f13a9d5136b69b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
