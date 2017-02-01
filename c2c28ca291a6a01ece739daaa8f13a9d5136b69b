@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "71fd0d8c_eb318207",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsAuthTokenHandler.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-02-01T21:47:33Z",
+      "side": 1,
+      "message": "there is no token handler anymore",
+      "range": {
+        "startLine": 43,
+        "startChar": 13,
+        "endLine": 43,
+        "endChar": 32
+      },
+      "revId": "c2c28ca291a6a01ece739daaa8f13a9d5136b69b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f48e2160_86741a28",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsAuthTokenHandler.java",
         "patchSetId": 6
@@ -65,6 +88,24 @@
     },
     {
       "key": {
+        "uuid": "2cd29e93_fb2f7428",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsAuthTokenHandler.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-02-01T21:47:33Z",
+      "side": 1,
+      "message": "different approach was implemented with separation of responsibilities introduced",
+      "parentUuid": "f4089f84_bdf4958a",
+      "revId": "c2c28ca291a6a01ece739daaa8f13a9d5136b69b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8564ad33_b0bed1c3",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LfsFsRequestAuthorizer.java",
         "patchSetId": 6
@@ -76,6 +117,24 @@
       "writtenOn": "2017-01-31T14:42:07Z",
       "side": 1,
       "message": "The method name suggests it generates a token, but actually it returns an AuthInfo.\n\nCompare this with the LfsAuthTokenHandler.generateAuthInfo where the method name and the return type match.",
+      "revId": "c2c28ca291a6a01ece739daaa8f13a9d5136b69b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77bbcb43_20daa853",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LfsFsRequestAuthorizer.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-02-01T21:47:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8564ad33_b0bed1c3",
       "revId": "c2c28ca291a6a01ece739daaa8f13a9d5136b69b",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
@@ -99,6 +158,24 @@
     },
     {
       "key": {
+        "uuid": "427fb934_3e4c51b4",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LocalLargeFileRepository.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-02-01T21:47:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b628d8ae_29d06811",
+      "revId": "c2c28ca291a6a01ece739daaa8f13a9d5136b69b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "68ab7dc5_b2064b6a",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LocalLargeFileRepository.java",
         "patchSetId": 6
@@ -110,6 +187,24 @@
       "writtenOn": "2017-01-31T14:42:07Z",
       "side": 1,
       "message": "same as above",
+      "revId": "c2c28ca291a6a01ece739daaa8f13a9d5136b69b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02ac1d69_4e7858a5",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LocalLargeFileRepository.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-02-01T21:47:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68ab7dc5_b2064b6a",
       "revId": "c2c28ca291a6a01ece739daaa8f13a9d5136b69b",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
