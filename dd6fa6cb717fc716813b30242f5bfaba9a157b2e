@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0422a0c9_cf528aa8",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsAuthToken.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-02-02T07:50:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bd95800_c5654a1f",
+      "revId": "dd6fa6cb717fc716813b30242f5bfaba9a157b2e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4987f020_5223a334",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsCipher.java",
         "patchSetId": 8
@@ -30,6 +48,30 @@
       "writtenOn": "2017-02-01T22:20:48Z",
       "side": 1,
       "message": "Looks like this class has nothing much to do with \"Lfs\".\nIt just encodes/decodes Strings.",
+      "range": {
+        "startLine": 40,
+        "startChar": 13,
+        "endLine": 40,
+        "endChar": 16
+      },
+      "revId": "dd6fa6cb717fc716813b30242f5bfaba9a157b2e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45004f86_eb17adf8",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsCipher.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-02-02T07:50:35Z",
+      "side": 1,
+      "message": "it collides with javax.crypto.Cipher all references to it will have to be package qualified...",
+      "parentUuid": "4987f020_5223a334",
       "range": {
         "startLine": 40,
         "startChar": 13,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "cece7d72_83ad25b1",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsCipher.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-02-02T07:50:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38268773_09e26b95",
+      "range": {
+        "startLine": 56,
+        "startChar": 16,
+        "endLine": 56,
+        "endChar": 22
+      },
+      "revId": "dd6fa6cb717fc716813b30242f5bfaba9a157b2e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f191d76c_f6e0d11f",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsCipher.java",
         "patchSetId": 8
@@ -76,6 +142,30 @@
       "writtenOn": "2017-02-01T22:20:48Z",
       "side": 1,
       "message": "decrypt",
+      "range": {
+        "startLine": 69,
+        "startChar": 26,
+        "endLine": 69,
+        "endChar": 32
+      },
+      "revId": "dd6fa6cb717fc716813b30242f5bfaba9a157b2e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18cc6dd2_e789e247",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsCipher.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-02-02T07:50:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f191d76c_f6e0d11f",
       "range": {
         "startLine": 69,
         "startChar": 26,
