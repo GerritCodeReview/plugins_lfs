@@ -16,6 +16,24 @@
       "revId": "627f521270e2e243c1f9544b5e7435669275725b",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e03f8052_a8c8d40d",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsAuthToken.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-02-02T15:52:43Z",
+      "side": 1,
+      "message": "by mistake :D, had lines folded and haven\u0027t noticed :/",
+      "parentUuid": "ff08840d_e54eb713",
+      "revId": "627f521270e2e243c1f9544b5e7435669275725b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
