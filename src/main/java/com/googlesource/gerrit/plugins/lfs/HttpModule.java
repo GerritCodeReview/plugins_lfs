@@ -60,9 +60,6 @@ public class HttpModule extends HttpPluginModule {
     for (LfsBackend backend : backends.values()) {
       populateRepository(backend);
     }
-
-    DynamicSet.bind(binder(), WebUiPlugin.class)
-      .toInstance(new JavaScriptPlugin("lfs-project-info.js"));
   }
 
   private void populateRepository(LfsBackend backend) {

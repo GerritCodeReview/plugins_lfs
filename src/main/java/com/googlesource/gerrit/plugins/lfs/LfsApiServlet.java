@@ -19,7 +19,11 @@ import static com.google.gerrit.extensions.client.ProjectState.READ_ONLY;
 import static com.google.gerrit.httpd.plugins.LfsPluginServlet.URL_REGEX;
 
 import com.google.gerrit.common.ProjectUtil;
+import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.reviewdb.client.Project;
+import com.google.gerrit.server.config.PluginConfig;
+import com.google.gerrit.server.config.PluginConfigFactory;
+import com.google.gerrit.server.project.NoSuchProjectException;
 import com.google.gerrit.server.project.ProjectCache;
 import com.google.gerrit.server.project.ProjectState;
 import com.google.inject.Inject;
@@ -42,16 +46,22 @@ public class LfsApiServlet extends LfsProtocolServlet {
   private static final long serialVersionUID = 1L;
   private static final Pattern URL_PATTERN = Pattern.compile(URL_REGEX);
 
+  private final String pluginName;
   private final ProjectCache projectCache;
+  private final PluginConfigFactory cfgFactory;
   private final LfsConfigurationFactory lfsConfigFactory;
   private final LfsRepositoryResolver repoResolver;
 
   @Inject
-  LfsApiServlet(ProjectCache projectCache,
+  LfsApiServlet(@PluginName final String pluginName,
+      ProjectCache projectCache,
       LfsConfigurationFactory lfsConfigFactory,
+      PluginConfigFactory cfgFactory,
       LfsRepositoryResolver repoResolver) {
+    this.pluginName = pluginName;
     this.projectCache = projectCache;
     this.lfsConfigFactory = lfsConfigFactory;
+    this.cfgFactory = cfgFactory;
     this.repoResolver = repoResolver;
   }
 
@@ -76,18 +86,24 @@ public class LfsApiServlet extends LfsProtocolServlet {
       throw new LfsRepositoryReadOnly(project.get());
     }
 
-    LfsProjectConfigSection config =
-        lfsConfigFactory.getProjectsConfig().getForProject(project);
-    // Only accept requests for projects where LFS is enabled.
-    // No config means we default to "not enabled".
-    if (config != null && config.isEnabled()) {
+    try {
+      PluginConfig cfg = cfgFactory.getFromProjectConfigWithInheritance(
+          project, pluginName);
+
+      String backend = cfg.getString(Module.KEY_BACKEND,
+                                     Module.VALUE_BACKEND_NONE);
+
+      // Only accept requests for projects where LFS is enabled.
+      if (backend.equals(Module.VALUE_BACKEND_NONE)) {
+        throw new LfsUnavailable(project.get());
+      }
       // For uploads, check object sizes against limit if configured
       if (request.getOperation().equals("upload")) {
-        if (config.isReadOnly()) {
+        if (!cfg.getBoolean(Module.KEY_WRITABLE, true)) {
           throw new LfsRepositoryReadOnly(project.get());
         }
 
-        long maxObjectSize = config.getMaxObjectSize();
+        long maxObjectSize = cfg.getLong(Module.KEY_MAX_OBJECT_SIZE, 0);
         if (maxObjectSize > 0) {
           for (LfsObject object : request.getObjects()) {
             if (object.getSize() > maxObjectSize) {
@@ -97,11 +113,15 @@ public class LfsApiServlet extends LfsProtocolServlet {
             }
           }
         }
+
+        if (backend.equals(Module.VALUE_BACKEND_DEFAULT)) {
+          return repoResolver.get(project, null);
+        }
+        return repoResolver.get(project, backend);
       }
-
-      return repoResolver.get(project, config.getBackend());
+    } catch (NoSuchProjectException e) {
+      throw new LfsRepositoryNotFound(project.get());
     }
-
     throw new LfsUnavailable(project.get());
   }
 }

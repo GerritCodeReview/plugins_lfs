@@ -19,5 +19,4 @@ import java.util.Map;
 public class LfsGlobalConfigInfo {
   LfsBackendType defaultBackendType;
   Map<String, LfsBackendType> backends;
-  Map<String, LfsProjectConfigInfo> namespaces;
 }
