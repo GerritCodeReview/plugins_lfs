@@ -15,12 +15,14 @@
 package com.googlesource.gerrit.plugins.lfs;
 
 import static org.eclipse.jgit.util.HttpSupport.HDR_AUTHORIZATION;
+import static com.googlesource.gerrit.plugins.lfs.fs.LocalLargeFileRepository.DOWNLOAD;
 
 import com.google.gerrit.server.CurrentUser;
 import com.google.gerrit.server.config.CanonicalWebUrl;
 import com.google.gerrit.sshd.BaseCommand.Failure;
 import com.google.gerrit.sshd.BaseCommand.UnloggedFailure;
 import com.google.gerrit.sshd.plugin.LfsPluginAuthCommand;
+import com.google.common.base.Objects;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -37,12 +39,18 @@ import java.util.List;
 
 @Singleton
 public class LfsSshAuth implements LfsPluginAuthCommand.LfsSshPluginAuth {
-  private final String canonicalWebUrl;
+  private final String downloadUrl;
+  private final String uploadUrl;
   private final Gson gson;
 
   @Inject
-  LfsSshAuth(@CanonicalWebUrl Provider<String> canonicalWebUrl) {
-    this.canonicalWebUrl = canonicalWebUrl.get();
+  LfsSshAuth(@CanonicalWebUrl Provider<String> canonicalWebUrl,
+             LfsConfigurationFactory configFactory) {
+    LfsGlobalConfig cfg = configFactory.getGlobalConfig();
+    this.downloadUrl = Objects.firstNonNull(
+        cfg.getString("url", null, "download"), canonicalWebUrl.get());
+    this.uploadUrl = Objects.firstNonNull(
+        cfg.getString("url", null, "upload"), canonicalWebUrl.get());
     this.gson = new GsonBuilder()
         .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
         .disableHtmlEscaping()
@@ -52,8 +60,9 @@ public class LfsSshAuth implements LfsPluginAuthCommand.LfsSshPluginAuth {
   @Override
   public String authenticate(CurrentUser user, List<String> args)
       throws UnloggedFailure, Failure {
+    String sUrl = DOWNLOAD.equals(args.get(1)) ? downloadUrl : uploadUrl;
     try {
-      URL url = new URL(canonicalWebUrl);
+      URL url = new URL(sUrl);
       String path = url.getPath();
       StringBuilder href = new StringBuilder(url.getProtocol())
           .append("://")
@@ -71,8 +80,8 @@ public class LfsSshAuth implements LfsPluginAuthCommand.LfsSshPluginAuth {
 
     } catch (MalformedURLException e) {
       throw new Failure(1, "Server configuration error: "
-          + "forming Git LFS endpoint URL from canonicalWebUrl ["
-          + canonicalWebUrl + "] failed.");
+          + "forming Git LFS endpoint URL from Url ["
+          + sUrl + "] failed.");
     }
   }
 }

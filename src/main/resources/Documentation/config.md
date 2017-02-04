@@ -37,6 +37,21 @@ If not set, defaults to `true`.
 The following options can be configured in `$GERRIT_SITE/etc/@PLUGIN@.config`
 and `$GERRIT_SITE/etc/@PLUGIN@.secure.config.`
 
+### Section `url`
+
+url.download
+: (Optional) The download HTTP url to be used for LFS traffic
+If not set, the CanonicalWebUrl in $GERRIT_SITE/etc/gerrit.config will be used.
+
+url.upload
+: (Optional) The upload HTTP url to be used for LFS traffic
+If not set, the CanonicalWebUrl in $GERRIT_SITE/etc/gerrit.config will be used.
+
+Usecase for these settings can be the following:
+: Install this plugin on both master and slave servers, and redirect the download
+or upload traffic to another server. It can also be used to offload the master
+server completely for LFS traffic.
+
 ### Section `storage`
 
 storage.backend
