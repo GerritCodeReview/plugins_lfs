@@ -24,26 +24,13 @@ import com.google.inject.Singleton;
 @Singleton
 public class LfsConfigurationFactory {
   private final String pluginName;
-  private final ProjectCache projectCache;
-  private final AllProjectsName allProjects;
   private final PluginConfigFactory configFactory;
 
   @Inject
   LfsConfigurationFactory(@PluginName String pluginName,
-      ProjectCache projectCache,
-      AllProjectsName allProjects,
       PluginConfigFactory configFactory) {
     this.pluginName = pluginName;
-    this.projectCache = projectCache;
-    this.allProjects = allProjects;
     this.configFactory = configFactory;
-  }
-
-  /**
-   * @return the project-specific LFS configuration.
-   */
-  public LfsProjectsConfig getProjectsConfig() {
-    return new LfsProjectsConfig(pluginName, projectCache, allProjects);
   }
 
   /**

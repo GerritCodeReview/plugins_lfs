@@ -11,82 +11,26 @@ lfs.plugin = @PLUGIN@
 
 ## Per Project Settings
 
-The following options can be configured in `@PLUGIN@.config` on the
-`refs/meta/config` branch of the `All-Projects` project.
+The following options can be configured in `project.config` on the
+`refs/meta/config` branch of any project. The plugin provides menu options
+to configure it from the project `General` tab. It allows inheritance of
+settings as well for maintaining a flexible configuration hierarchy
 
-```
-  [@PLUGIN@ "sandbox/*"]
-    enabled = true
-    maxObjectSize = 10m
-  [@PLUGIN@ "public/*"]
-    enabled = true
-    maxObjectSize = 200m
-  [@PLUGIN@ "customerX/*"]
-    enabled = true
-    maxObjectSize = 500m
-  [@PLUGIN@ "customerY/*"]
-    enabled = false
-```
-
-A namespace can be specified as
-
-- exact project name (`plugins/myPlugin`): Defines LFS settings for one project.
-
-- pattern (`sandbox/*`): Defines LFS settings for one project namespace.
-
-- regular expression (`^test-.*/.*`): Defines LFS settings for the namespace
-matching the regular expression.
-
-- for-each-pattern (`?/*`): Defines the same LFS settings for each subfolder.
-`?` is a placeholder for any name and `?/*` with `maxObjectSize = 100m` means
-that for every subfolder the maximum object size is `100 mb`. Hence `?/*` is a
-shortcut for having n explicit namespaces.
-
-If a project name matches several @PLUGIN@ namespaces, the one the that is defined
-first in the @PLUGIN@.config will be applied.
-
-Example: Enable LFS for all projects, allowing unlimited object size for
-projects under `/test` and limiting to `500 mb` for projects under other
-folders:
-
-```
-  [@PLUGIN@ "test/*]
-    enabled = true
-  [@PLUGIN@ "?/*"]
-    enabled = true
-    maxObjectSize = 500m
-```
-
-Example: Only enable LFS for projects under `customer-A`:
-
-```
-  [@PLUGIN@ "customer-A/*]
-    enabled = true
-```
-
-
-### Section `lfs`
-
-lfs.enabled
-: Whether to enable LFS for projects in this namespace. If not set, defaults
-to `false`.
+lfs.backend
+: Backend that should be used for storing binaries. It has to be one of
+backends specified as [fs](#lfs-fs-backend) or [s3](#lfs-s3-backend) subsection
+of Global Plugin Settings. If not set, the LFS backend is disabled.
 
 lfs.maxObjectSize
 : Maximum allowed object size (per object) in bytes for projects in this
 namespace, or 0 for no limit. If not set, defaults to 0. Common unit suffixes
 of `k`, `m`, and `g` are supported.
 
-lfs.readOnly
+lfs.writable
 : Whether to switch LFS for projects in this namespace into read-only mode.
-In this mode reading LFS objects is still possible but pushing is forbidden.
-Note that regular git operations are not affected.
-If not set, defaults to `false`.
-
-lfs.backend
-: Backend that should be used for storing binaries. It has to be one of
-backends specified as [fs](#lfs-fs-backend) or [s3](#lfs-s3-backend) subsection
-of Global Plugin Settings. If not set, defaults to value of `storage.backend`
-from Global Plugin Settings.
+If set to `false` in this mode, reading LFS objects is still possible but
+pushing is forbidden. Note that regular git operations are not affected.
+If not set, defaults to `true`.
 
 ## Global Plugin Settings
 
@@ -177,6 +121,8 @@ and use them for namespace configuration by adding backend namespace parameter:
     backend = bar
     ...
 ```
+NOTE: All namespaces must be unique across all LFS backend types. Name clashes
+between for example fs and s3 are not allowed.
 
 ## Local Project Configuration
 
