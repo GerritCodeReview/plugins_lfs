@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6fb8ccf4_481f42b7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "Feb 5, 2017 10:10:47 AM",
+      "side": 1,
+      "message": "Please, see the commit message of fda58ef16958c96e37dc6defeb4315e542dc9d15:\n\n  Add standalone bazel build\n\nIOW: you cannot fix somethong that wasn\u0027t done yet. So please change the commit message to be:\n\n  Add support for Bazel in Gerrit tree build\n\nAnd remove the reference to the CI.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 34
+      },
+      "revId": "bb0dfbd6f95866d06918cf07bc12082be04bf593",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
