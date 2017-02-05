@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "041613db_7c5f8cf0",
+        "filename": "BUILD",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "Feb 5, 2017 10:24:50 AM",
+      "side": 1,
+      "message": "This is wrong. Why? Because this would break standalone build mode, that was added in previous commit. I will fix it in a minute.",
+      "range": {
+        "startLine": 20,
+        "startChar": 7,
+        "endLine": 22,
+        "endChar": 49
+      },
+      "revId": "458eabd01a059222f4621472b585cabcd5e3a8fd",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
