@@ -16,6 +16,24 @@
       "revId": "aeec5395cb99313aa9ab8d955df32bb1cf48e53b",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edaed0cc_d891964a",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsAuthToken.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-02-06T17:13:53Z",
+      "side": 1,
+      "message": "yes we do https://gerrit-review.googlesource.com/#/c/94912/9 introduces LfsSshAuthToken that contains different fields; this class is namely expiring token and provides classes that can be used to serialize/deserialize it from/to Cipher and verifies if token is valid from time perspective, we could technically introduce additional methods here but that would mean that token is again multipurpose class responsible for storing auth related fields handling various aspect of it... with additional classes we have clear separation of concerns IMHO ;)",
+      "parentUuid": "2ecea44a_363737be",
+      "revId": "aeec5395cb99313aa9ab8d955df32bb1cf48e53b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
