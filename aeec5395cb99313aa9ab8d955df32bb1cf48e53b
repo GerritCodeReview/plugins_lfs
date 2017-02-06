@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ecea44a_363737be",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsAuthToken.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-02-06T16:52:41Z",
+      "side": 1,
+      "message": "There is only one class extending this abstract class? Will we ever have more?\nThe lfs plugin doesn\u0027t process S3 tokens.\nIt only needs to process tokens of the local (FS) storage i.e. the FS storage run by the plugin itself.\n\nDo we need this abstraction?\n\nSame question for the two inner abstract classes?",
+      "revId": "aeec5395cb99313aa9ab8d955df32bb1cf48e53b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
