@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "1005b6ad_6e2c4bc4",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsAuthToken.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-02-06T16:52:41Z",
+      "side": 1,
+      "message": "Missing license",
+      "revId": "627f521270e2e243c1f9544b5e7435669275725b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ff08840d_e54eb713",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsAuthToken.java",
         "patchSetId": 9
