@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7984197_e2abd988",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "Feb 6, 2017 6:51:33 AM",
+      "side": 1,
+      "message": "Depends on the Gerrit server size and number of projects. Our main Gerrit instance has more than 10K Git repositories and we want to control which project is allowed to use LFS. Making it a self service wouldn\u0027t be an option right now.",
+      "range": {
+        "startLine": 10,
+        "startChar": 17,
+        "endLine": 11,
+        "endChar": 56
+      },
+      "revId": "187fe0e323eb7421f47d37e00c84858eebafc5a5",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a828a35_8b800eb9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "Feb 6, 2017 6:51:33 AM",
+      "side": 1,
+      "message": "Currently, the maintenance of the lfs.config in All-Projects:refs/meta/config is only intended for Gerrit admins. It is not mandatory to use a regex if one doesn\u0027t feel comfortable with that. But we do use regex\u0027s in many places in Gerrit core configuration files and in some plugins.\n\nI don\u0027t agree on this justification.",
+      "range": {
+        "startLine": 11,
+        "startChar": 57,
+        "endLine": 13,
+        "endChar": 26
+      },
+      "revId": "187fe0e323eb7421f47d37e00c84858eebafc5a5",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2fbd1cd_05ab037e",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsApiServlet.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "Feb 6, 2017 6:51:33 AM",
+      "side": 1,
+      "message": "wrong indentation",
+      "revId": "187fe0e323eb7421f47d37e00c84858eebafc5a5",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "708f2047_d2d3247d",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/Module.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "Feb 6, 2017 6:51:33 AM",
+      "side": 1,
+      "message": "This code style is not used in Gerrit\u0027s (and plugins) code base.\nUse a single space before/after \u003d",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 69
+      },
+      "revId": "187fe0e323eb7421f47d37e00c84858eebafc5a5",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
