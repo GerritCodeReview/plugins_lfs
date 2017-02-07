@@ -78,6 +78,30 @@
     },
     {
       "key": {
+        "uuid": "41bcc595_e269633f",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsAuthToken.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-02-07T09:24:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f40892f_ca947f98",
+      "range": {
+        "startLine": 29,
+        "startChar": 31,
+        "endLine": 29,
+        "endChar": 52
+      },
+      "revId": "aeec5395cb99313aa9ab8d955df32bb1cf48e53b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0dabe72f_ec7f13b9",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsAuthToken.java",
         "patchSetId": 10
@@ -89,6 +113,30 @@
       "writtenOn": "2017-02-07T07:08:23Z",
       "side": 1,
       "message": "Similarly like above, name this just Verifier so that using classes can write:\n\n  LfsAuthToken.Verifier",
+      "range": {
+        "startLine": 55,
+        "startChar": 31,
+        "endLine": 55,
+        "endChar": 51
+      },
+      "revId": "aeec5395cb99313aa9ab8d955df32bb1cf48e53b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2754c6a7_ccd65eb6",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsAuthToken.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-02-07T09:24:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0dabe72f_ec7f13b9",
       "range": {
         "startLine": 55,
         "startChar": 31,
