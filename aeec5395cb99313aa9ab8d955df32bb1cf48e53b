@@ -34,6 +34,70 @@
       "revId": "aeec5395cb99313aa9ab8d955df32bb1cf48e53b",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "353c324f_ddb58a6e",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsAuthToken.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-02-07T07:08:23Z",
+      "side": 1,
+      "message": "I see, thanks.",
+      "parentUuid": "edaed0cc_d891964a",
+      "revId": "aeec5395cb99313aa9ab8d955df32bb1cf48e53b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2f40892f_ca947f98",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsAuthToken.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-02-07T07:08:23Z",
+      "side": 1,
+      "message": "Since this is a nested class name this just Processor. Then a using class just imports:\n\n  import com.googlesource.gerrit.plugins.lfs.LfsAuthToken\n\nand references this one as:\n\n  class MyProcessor extends LfsAuthToken.Processor\u003c...\u003e",
+      "range": {
+        "startLine": 29,
+        "startChar": 31,
+        "endLine": 29,
+        "endChar": 52
+      },
+      "revId": "aeec5395cb99313aa9ab8d955df32bb1cf48e53b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0dabe72f_ec7f13b9",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsAuthToken.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-02-07T07:08:23Z",
+      "side": 1,
+      "message": "Similarly like above, name this just Verifier so that using classes can write:\n\n  LfsAuthToken.Verifier",
+      "range": {
+        "startLine": 55,
+        "startChar": 31,
+        "endLine": 55,
+        "endChar": 51
+      },
+      "revId": "aeec5395cb99313aa9ab8d955df32bb1cf48e53b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
