@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c2867d07_6bdaf263",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsAuthToken.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-02-07T10:37:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "165c6b18_3025906b",
+      "revId": "f125d892d6c4f0710e821ce11352bf8a68a91bf5",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "400414cc_2e0fa34e",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LfsFsRequestAuthorizer.java",
         "patchSetId": 11
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "cf51793b_3b5acefa",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LfsFsRequestAuthorizer.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-02-07T10:37:10Z",
+      "side": 1,
+      "message": "1. it is used in unit tests - cannot be private\n2. done",
+      "parentUuid": "400414cc_2e0fa34e",
+      "revId": "f125d892d6c4f0710e821ce11352bf8a68a91bf5",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0637dde_a3495a0a",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LfsFsRequestAuthorizer.java",
         "patchSetId": 11
@@ -47,6 +83,24 @@
       "writtenOn": "2017-02-07T09:34:25Z",
       "side": 1,
       "message": "would this not fit in the previous line?",
+      "revId": "f125d892d6c4f0710e821ce11352bf8a68a91bf5",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "82cc5248_64ebcfb0",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LfsFsRequestAuthorizer.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-02-07T10:37:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0637dde_a3495a0a",
       "revId": "f125d892d6c4f0710e821ce11352bf8a68a91bf5",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
@@ -76,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "a5d2a143_7f0a5608",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LfsFsRequestAuthorizer.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-02-07T10:37:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4916bc42_3299d034",
+      "range": {
+        "startLine": 93,
+        "startChar": 23,
+        "endLine": 93,
+        "endChar": 33
+      },
+      "revId": "f125d892d6c4f0710e821ce11352bf8a68a91bf5",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6db04d2e_1802e2db",
         "filename": "src/test/java/com/googlesource/gerrit/plugins/lfs/LfsAuthTokenTest.java",
         "patchSetId": 11
@@ -93,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "03d85383_f43f22c3",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/lfs/LfsAuthTokenTest.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-02-07T10:37:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6db04d2e_1802e2db",
+      "revId": "f125d892d6c4f0710e821ce11352bf8a68a91bf5",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57c5cfd7_a1266a97",
         "filename": "src/test/java/com/googlesource/gerrit/plugins/lfs/LfsAuthTokenTest.java",
         "patchSetId": 11
@@ -104,6 +200,24 @@
       "writtenOn": "2017-02-07T09:34:25Z",
       "side": 1,
       "message": "would this fit into the previous line?",
+      "revId": "f125d892d6c4f0710e821ce11352bf8a68a91bf5",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5feb1f8b_baf9caa3",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/lfs/LfsAuthTokenTest.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-02-07T10:37:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57c5cfd7_a1266a97",
       "revId": "f125d892d6c4f0710e821ce11352bf8a68a91bf5",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
