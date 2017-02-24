@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f88da118_34027b7e",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsApiServlet.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-02-24T07:21:29Z",
+      "side": 1,
+      "message": "please don\u0027t log error for this - Git client tries anonymous access over HTTP first so this is going to pollute the log...",
+      "range": {
+        "startLine": 135,
+        "startChar": 6,
+        "endLine": 137,
+        "endChar": 34
+      },
+      "revId": "87204f7e865e1307eeab8d295952d372c6c7b6fe",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
