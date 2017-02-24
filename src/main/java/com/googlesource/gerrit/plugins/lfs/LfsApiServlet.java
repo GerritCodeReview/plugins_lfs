@@ -38,12 +38,16 @@ import org.eclipse.jgit.lfs.errors.LfsValidationError;
 import org.eclipse.jgit.lfs.server.LargeFileRepository;
 import org.eclipse.jgit.lfs.server.LfsGerritProtocolServlet;
 import org.eclipse.jgit.lfs.server.LfsObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Singleton
 public class LfsApiServlet extends LfsGerritProtocolServlet {
+  private static final Logger log = LoggerFactory.getLogger(LfsApiServlet.class);
+
   private static final long serialVersionUID = 1L;
   private static final Pattern URL_PATTERN = Pattern.compile(URL_REGEX);
   private static final String DOWNLOAD = "download";
@@ -123,11 +127,15 @@ public class LfsApiServlet extends LfsGerritProtocolServlet {
     ProjectControl control = state.controlFor(user);
     if ((operation.equals(DOWNLOAD) && !control.isReadable()) ||
         (operation.equals(UPLOAD) && Capable.OK != control.canPushToAtLeastOneRef())) {
-      throw new LfsUnauthorized(
-          String.format("User %s is not authorized to perform %s operation",
-              Strings.isNullOrEmpty(user.getUserName())
-                ? "anonymous" :  user.getUserName(),
-              operation.toLowerCase()));
+      String op = operation.toLowerCase();
+      String project = state.getProject().getName();
+      String userName = Strings.isNullOrEmpty(user.getUserName())
+          ? "anonymous"
+          : user.getUserName();
+      log.error(String.format(
+          "operation %s unauthorized for user %s on project %s",
+          op, userName, project));
+      throw new LfsUnauthorized(op, project);
     }
   }
 }
