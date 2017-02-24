@@ -18,7 +18,6 @@ import static com.google.gerrit.extensions.client.ProjectState.HIDDEN;
 import static com.google.gerrit.extensions.client.ProjectState.READ_ONLY;
 import static com.google.gerrit.httpd.plugins.LfsPluginServlet.URL_REGEX;
 
-import com.google.common.base.Strings;
 import com.google.gerrit.common.ProjectUtil;
 import com.google.gerrit.common.data.Capable;
 import com.google.gerrit.reviewdb.client.Project;
@@ -123,11 +122,7 @@ public class LfsApiServlet extends LfsGerritProtocolServlet {
     ProjectControl control = state.controlFor(user);
     if ((operation.equals(DOWNLOAD) && !control.isReadable()) ||
         (operation.equals(UPLOAD) && Capable.OK != control.canPushToAtLeastOneRef())) {
-      throw new LfsUnauthorized(
-          String.format("User %s is not authorized to perform %s operation",
-              Strings.isNullOrEmpty(user.getUserName())
-                ? "anonymous" :  user.getUserName(),
-              operation.toLowerCase()));
+      throw new LfsUnauthorized(operation.toLowerCase(), state.getProject().getName());
     }
   }
 }
