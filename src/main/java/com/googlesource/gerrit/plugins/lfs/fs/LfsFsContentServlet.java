@@ -70,7 +70,7 @@ public class LfsFsContentServlet extends FileLfsServlet {
       return;
     }
 
-    if (!authorizer.verifyAgainstToken(req.getHeader(HDR_AUTHORIZATION),
+    if (!authorizer.verifyAuthInfo(req.getHeader(HDR_AUTHORIZATION),
         DOWNLOAD, obj)) {
       sendError(rsp, HttpStatus.SC_UNAUTHORIZED, MessageFormat.format(
           LfsServerText.get().failedToCalcSignature, "Invalid authorization token"));
@@ -91,7 +91,7 @@ public class LfsFsContentServlet extends FileLfsServlet {
       return;
     }
 
-    if (!authorizer.verifyAgainstToken(
+    if (!authorizer.verifyAuthInfo(
         req.getHeader(HDR_AUTHORIZATION), UPLOAD, id)) {
       sendError(rsp, HttpStatus.SC_UNAUTHORIZED,
           MessageFormat.format(LfsServerText.get().failedToCalcSignature,

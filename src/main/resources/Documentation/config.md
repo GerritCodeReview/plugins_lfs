@@ -2,12 +2,20 @@
 
 ## Core Gerrit Settings
 
-The following option must be set in `$GERRIT_SITE/etc/gerrit.config`.
+The following options must be set in `$GERRIT_SITE/etc/gerrit.config`.
 
 ### Section `lfs`
 
 lfs.plugin = @PLUGIN@
 : With this option set LFS requests are forwarded to the @PLUGIN@ plugin.
+
+### Section `auth`
+
+auth.gitBasicAuth = true
+: Git LFS client uses Basic HTTP auth with LFS requests. When this option
+is not enabled (not set or equals to `false`) Git LFS HTTP requests are treated
+as anonymous requests. Therefore requests will be successfully authorized only
+for projects that allows anonymous to perform requested operation.
 
 ## Per Project Settings
 
@@ -93,6 +101,15 @@ from Global Plugin Settings.
 The following options can be configured in `$GERRIT_SITE/etc/@PLUGIN@.config`
 and `$GERRIT_SITE/etc/@PLUGIN@.secure.config.`
 
+### Section `auth`
+
+auth.sshExpirationSeconds
+: Validity, in seconds, of authentication token for SSH requests.
+[Git LFS Authentication](https://github.com/git-lfs/git-lfs/blob/master/docs/api/authentication.md)
+specifies that SSH might be used to authenticate the user. Successful authentication
+provides token that is later used for Git LFS requests.
+: Default is `10` seconds.
+
 ### Section `storage`
 
 storage.backend
@@ -120,16 +137,16 @@ after this period.
 The following configuration options are only used when the backend is `s3`.
 
 s3.region
-: link:http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions
-[Amazon region] the S3 storage bucket is residing in.
+: [Amazon region](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions)
+the S3 storage bucket is residing in.
 
 s3.bucket
-: Name of the link:http://docs.aws.amazon.com/AmazonS3/latest/UG/CreatingaBucket.html
-[Amazon S3 storage bucket] which will store large objects.
+: Name of the [Amazon S3 storage bucket](http://docs.aws.amazon.com/AmazonS3/latest/UG/CreatingaBucket.html)
+ which will store large objects.
 
 s3.storageClass
-: link:http://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html
-[Amazon S3 storage class] used for storing large objects.
+: [Amazon S3 storage class](http://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html)
+ used for storing large objects.
 : Default is `REDUCED_REDUNDANCY`
 
 s3.expirationSeconds
@@ -146,13 +163,13 @@ s3.disableSslVerify
 : Default is `false`.
 
 s3.accessKey
-: The link:http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html
-[Amazon IAM accessKey] for authenticating to S3. It is recommended to place this
+: The [Amazon IAM accessKey](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html)
+for authenticating to S3. It is recommended to place this
 setting in `$GERRIT_SITE/etc/@PLUGIN@.secure.config`.
 
 s3.secretKey
-: The link:http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html
-[Amazon IAM secretKey] for authenticating to S3. It is recommended to place this
+: The [Amazon IAM secretKey](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html)
+ for authenticating to S3. It is recommended to place this
 setting in `$GERRIT_SITE/etc/@PLUGIN@.secure.config`.
 
 ### Multiple LFS backends
