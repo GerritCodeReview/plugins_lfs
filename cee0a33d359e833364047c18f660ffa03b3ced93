@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0fc64d7b_e27cc8b3",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsApiServlet.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-02-24T07:14:43Z",
+      "side": 1,
+      "message": "log info about user that is not authorized so that one can be identified later and we should be good to go ;)",
+      "range": {
+        "startLine": 125,
+        "startChar": 6,
+        "endLine": 125,
+        "endChar": 87
+      },
+      "revId": "cee0a33d359e833364047c18f660ffa03b3ced93",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
