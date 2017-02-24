@@ -14,8 +14,8 @@
 
 package com.googlesource.gerrit.plugins.lfs.fs;
 
-import static com.googlesource.gerrit.plugins.lfs.fs.LocalLargeFileRepository.DOWNLOAD;
-import static com.googlesource.gerrit.plugins.lfs.fs.LocalLargeFileRepository.UPLOAD;
+import static org.eclipse.jgit.lfs.lib.Constants.DOWNLOAD;
+import static org.eclipse.jgit.lfs.lib.Constants.UPLOAD;
 import static org.eclipse.jgit.util.HttpSupport.HDR_AUTHORIZATION;
 
 import com.google.inject.Inject;

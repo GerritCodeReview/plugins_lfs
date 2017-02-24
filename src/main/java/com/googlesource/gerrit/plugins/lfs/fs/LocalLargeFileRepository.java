@@ -15,6 +15,8 @@
 package com.googlesource.gerrit.plugins.lfs.fs;
 
 import static com.googlesource.gerrit.plugins.lfs.LfsBackend.DEFAULT;
+import static org.eclipse.jgit.lfs.lib.Constants.DOWNLOAD;
+import static org.eclipse.jgit.lfs.lib.Constants.UPLOAD;
 
 import com.google.common.base.Strings;
 import com.google.gerrit.extensions.annotations.PluginCanonicalWebUrl;
@@ -43,8 +45,6 @@ public class LocalLargeFileRepository extends FileLfsRepository {
   }
 
   public static final String CONTENT_PATH = "content";
-  public static final String UPLOAD = "upload";
-  public static final String DOWNLOAD = "download";
   private static final int DEFAULT_TIMEOUT = 10; //in seconds
 
   private final String servletUrlPattern;
