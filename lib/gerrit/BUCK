@@ -1,12 +1,12 @@
 include_defs('//bucklets/maven_jar.bucklet')
 
-VER = '2.13.1'
+VER = '2.13.6'
 REPO = MAVEN_CENTRAL
 
 maven_jar(
   name = 'plugin-api',
   id = 'com.google.gerrit:gerrit-plugin-api:' + VER,
-  sha1 = '8e12346dbb677d70987afdbec5352ff6e889a181',
+  sha1 = '1a5d650c72ebc36f4ad522d5481d5ed690bec8bf',
   attach_source = False,
   repository = REPO,
   license = 'Apache2.0',
