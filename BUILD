@@ -15,6 +15,7 @@ gerrit_plugin(
         "Gerrit-Module: com.googlesource.gerrit.plugins.lfs.Module",
         "Gerrit-HttpModule: com.googlesource.gerrit.plugins.lfs.HttpModule",
         "Gerrit-SshModule: com.googlesource.gerrit.plugins.lfs.SshModule",
+        "Gerrit-InitStep: com.googlesource.gerrit.plugins.lfs.InitLfs",
     ],
     deps = [
         "@jgit_http_apache//jar",
