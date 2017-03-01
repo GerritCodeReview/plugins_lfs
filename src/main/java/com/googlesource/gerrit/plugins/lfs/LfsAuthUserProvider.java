@@ -23,7 +23,6 @@ import com.google.gerrit.server.CurrentUser;
 import com.google.gerrit.server.IdentifiedUser;
 import com.google.gerrit.server.account.AccountCache;
 import com.google.gerrit.server.account.AccountState;
-import com.google.gerrit.server.config.AuthConfig;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.google.inject.Singleton;
@@ -34,7 +33,6 @@ class LfsAuthUserProvider {
 
   private final Provider<AnonymousUser> anonymous;
   private final Provider<CurrentUser> user;
-  private final AuthConfig authCfg;
   private final LfsSshRequestAuthorizer sshAuth;
   private final AccountCache accounts;
   private final IdentifiedUser.GenericFactory userFactory;
@@ -42,13 +40,11 @@ class LfsAuthUserProvider {
   @Inject
   LfsAuthUserProvider(Provider<AnonymousUser> anonymous,
       Provider<CurrentUser> user,
-      AuthConfig authCfg,
       LfsSshRequestAuthorizer sshAuth,
       AccountCache accounts,
       IdentifiedUser.GenericFactory userFactory) {
     this.anonymous = anonymous;
     this.user = user;
-    this.authCfg = authCfg;
     this.sshAuth = sshAuth;
     this.accounts = accounts;
     this.userFactory = userFactory;
@@ -56,7 +52,7 @@ class LfsAuthUserProvider {
 
   CurrentUser getUser(String auth, String project, String operation) {
     if (!Strings.isNullOrEmpty(auth)) {
-      if (auth.startsWith(BASIC_AUTH_PREFIX) && authCfg.isGitBasicAuth()) {
+      if (auth.startsWith(BASIC_AUTH_PREFIX)) {
         return user.get();
       }
 
