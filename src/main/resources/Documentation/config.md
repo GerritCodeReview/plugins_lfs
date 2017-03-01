@@ -11,11 +11,11 @@ lfs.plugin = @PLUGIN@
 
 ### Section `auth`
 
-auth.gitBasicAuth = true
+auth.gitBasicAuthPolicy = {http|http_ldap}
 : Git LFS client uses Basic HTTP auth with LFS requests. When this option
-is not enabled (not set or equals to `false`) Git LFS HTTP requests are treated
-as anonymous requests. Therefore requests will be successfully authorized only
-for projects that allows anonymous to perform requested operation.
+is not set, Git LFS HTTP requests are treated as anonymous requests.
+Therefore requests will be successfully authorized only for projects that
+allow anonymous users to perform the requested operation.
 
 ## Per Project Settings
 

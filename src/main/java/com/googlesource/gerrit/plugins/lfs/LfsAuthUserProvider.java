@@ -14,10 +14,13 @@
 
 package com.googlesource.gerrit.plugins.lfs;
 
+import static com.google.gerrit.extensions.client.GitBasicAuthPolicy.HTTP;
+import static com.google.gerrit.extensions.client.GitBasicAuthPolicy.HTTP_LDAP;
 import static com.googlesource.gerrit.plugins.lfs.LfsSshRequestAuthorizer.SSH_AUTH_PREFIX;
 
 import com.google.common.base.Optional;
 import com.google.common.base.Strings;
+import com.google.gerrit.extensions.client.GitBasicAuthPolicy;
 import com.google.gerrit.server.AnonymousUser;
 import com.google.gerrit.server.CurrentUser;
 import com.google.gerrit.server.IdentifiedUser;
@@ -56,8 +59,11 @@ class LfsAuthUserProvider {
 
   CurrentUser getUser(String auth, String project, String operation) {
     if (!Strings.isNullOrEmpty(auth)) {
-      if (auth.startsWith(BASIC_AUTH_PREFIX) && authCfg.isGitBasicAuth()) {
-        return user.get();
+      if (auth.startsWith(BASIC_AUTH_PREFIX)) {
+        GitBasicAuthPolicy gitBasicAuthPolicy = authCfg.getGitBasicAuthPolicy();
+        if (gitBasicAuthPolicy == HTTP || gitBasicAuthPolicy == HTTP_LDAP) {
+          return user.get();
+        }
       }
 
       if (auth.startsWith(SSH_AUTH_PREFIX)) {
