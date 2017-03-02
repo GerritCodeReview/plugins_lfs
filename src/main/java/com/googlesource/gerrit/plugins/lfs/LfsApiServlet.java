@@ -36,8 +36,8 @@ import org.eclipse.jgit.lfs.errors.LfsUnauthorized;
 import org.eclipse.jgit.lfs.errors.LfsUnavailable;
 import org.eclipse.jgit.lfs.errors.LfsValidationError;
 import org.eclipse.jgit.lfs.server.LargeFileRepository;
-import org.eclipse.jgit.lfs.server.LfsGerritProtocolServlet;
 import org.eclipse.jgit.lfs.server.LfsObject;
+import org.eclipse.jgit.lfs.server.LfsProtocolServlet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -45,7 +45,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Singleton
-public class LfsApiServlet extends LfsGerritProtocolServlet {
+public class LfsApiServlet extends LfsProtocolServlet {
   private static final Logger log = LoggerFactory.getLogger(LfsApiServlet.class);
 
   private static final long serialVersionUID = 1L;
