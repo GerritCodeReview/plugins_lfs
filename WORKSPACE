@@ -9,29 +9,32 @@ load_bazlets(
 
 load("@com_googlesource_gerrit_bazlets//tools:maven_jar.bzl",
      "maven_jar",
-     "GERRIT")
+     "GERRIT",
+     "MAVEN_CENTRAL")
 
-JGIT_VERS = "4.6.1.201703071140-r.123-g5094c1a5c"
+JGIT_VERS = "4.7.0.201704051617-r"
+
+JGIT_REPO = MAVEN_CENTRAL
 
 maven_jar(
     name = "jgit_http_apache",
     artifact = "org.eclipse.jgit:org.eclipse.jgit.http.apache:" + JGIT_VERS,
-    sha1 = "74e128137892aa75543552bcc0f6ec65aa56edff",
-    repository = GERRIT,
+    sha1 = "da1fc3c8f6ce89dd846125a38fd4c35f2436caf3",
+    repository = JGIT_REPO,
 )
 
 maven_jar(
     name = "jgit_lfs",
     artifact = "org.eclipse.jgit:org.eclipse.jgit.lfs:" + JGIT_VERS,
-    sha1 = "9b7939132ebe92c36b470a309982ef1604798a0d",
-    repository = GERRIT,
+    sha1 = "d71dbf2f97544cc6deff966e6d069b76049958e0",
+    repository = JGIT_REPO,
 )
 
 maven_jar(
     name = "jgit_lfs_server",
     artifact = "org.eclipse.jgit:org.eclipse.jgit.lfs.server:" + JGIT_VERS,
-    sha1 = "f915406042c320d3233bf734eec1856f60f279a8",
-    repository = GERRIT,
+    sha1 = "edf48b77d97abc70f0e048bd04864132b30d2be5",
+    repository = JGIT_REPO,
 )
 
 # Release Plugin API
