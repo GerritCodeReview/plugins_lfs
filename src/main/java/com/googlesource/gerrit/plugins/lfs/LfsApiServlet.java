@@ -16,18 +16,11 @@ package com.googlesource.gerrit.plugins.lfs;
 
 import static com.google.gerrit.extensions.client.ProjectState.HIDDEN;
 import static com.google.gerrit.extensions.client.ProjectState.READ_ONLY;
-import static com.google.gerrit.httpd.plugins.LfsPluginServlet.URL_REGEX;
+import static com.googlesource.gerrit.plugins.lfs.LfsPaths.LFS_OBJECTS_PATH;
+import static com.googlesource.gerrit.plugins.lfs.LfsPaths.URL_REGEX_TEMPLATE;
 
-import com.google.common.base.Strings;
-import com.google.gerrit.common.ProjectUtil;
-import com.google.gerrit.common.data.Capable;
-import com.google.gerrit.reviewdb.client.Project;
-import com.google.gerrit.server.CurrentUser;
-import com.google.gerrit.server.project.ProjectCache;
-import com.google.gerrit.server.project.ProjectControl;
-import com.google.gerrit.server.project.ProjectState;
-import com.google.inject.Inject;
-import com.google.inject.Singleton;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.eclipse.jgit.lfs.errors.LfsException;
 import org.eclipse.jgit.lfs.errors.LfsRepositoryNotFound;
@@ -41,15 +34,25 @@ import org.eclipse.jgit.lfs.server.LfsProtocolServlet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import com.google.common.base.Strings;
+import com.google.gerrit.common.ProjectUtil;
+import com.google.gerrit.common.data.Capable;
+import com.google.gerrit.reviewdb.client.Project;
+import com.google.gerrit.server.CurrentUser;
+import com.google.gerrit.server.project.ProjectCache;
+import com.google.gerrit.server.project.ProjectControl;
+import com.google.gerrit.server.project.ProjectState;
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
 
 @Singleton
 public class LfsApiServlet extends LfsProtocolServlet {
-  private static final Logger log = LoggerFactory.getLogger(LfsApiServlet.class);
+  public static final String LFS_OBJECTS_REST =
+      String.format(URL_REGEX_TEMPLATE, LFS_OBJECTS_PATH);
 
+  private static final Logger log = LoggerFactory.getLogger(LfsApiServlet.class);
   private static final long serialVersionUID = 1L;
-  private static final Pattern URL_PATTERN = Pattern.compile(URL_REGEX);
+  private static final Pattern URL_PATTERN = Pattern.compile(LFS_OBJECTS_REST);
   private static final String DOWNLOAD = "download";
   private static final String UPLOAD = "upload";
 

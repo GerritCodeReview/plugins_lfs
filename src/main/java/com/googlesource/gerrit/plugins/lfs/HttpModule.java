@@ -14,7 +14,8 @@
 
 package com.googlesource.gerrit.plugins.lfs;
 
-import static com.google.gerrit.httpd.plugins.LfsPluginServlet.URL_REGEX;
+import static com.googlesource.gerrit.plugins.lfs.LfsApiServlet.LFS_OBJECTS_REST;
+import static com.googlesource.gerrit.plugins.lfs.locks.LfsLocksServlet.LFS_LOCKS_REST;
 
 import com.google.gerrit.extensions.registration.DynamicSet;
 import com.google.gerrit.extensions.webui.JavaScriptPlugin;
@@ -24,6 +25,7 @@ import com.google.inject.Inject;
 
 import com.googlesource.gerrit.plugins.lfs.fs.LfsFsContentServlet;
 import com.googlesource.gerrit.plugins.lfs.fs.LocalLargeFileRepository;
+import com.googlesource.gerrit.plugins.lfs.locks.LfsLocksServlet;
 import com.googlesource.gerrit.plugins.lfs.s3.S3LargeFileRepository;
 
 import java.util.Map;
@@ -54,7 +56,8 @@ public class HttpModule extends HttpPluginModule {
 
   @Override
   protected void configureServlets() {
-    serveRegex(URL_REGEX).with(LfsApiServlet.class);
+    serveRegex(LFS_OBJECTS_REST).with(LfsApiServlet.class);
+    serveRegex(LFS_LOCKS_REST).with(LfsLocksServlet.class);
     populateRepository(defaultBackend);
     for (LfsBackend backend : backends.values()) {
       populateRepository(backend);
