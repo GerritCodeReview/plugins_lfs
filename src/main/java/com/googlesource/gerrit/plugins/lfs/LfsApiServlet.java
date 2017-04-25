@@ -14,9 +14,10 @@
 
 package com.googlesource.gerrit.plugins.lfs;
 
+import static com.google.gerrit.extensions.api.lfs.LfsPaths.LFS_OBJECTS_PATH;
+import static com.google.gerrit.extensions.api.lfs.LfsPaths.LFS_URL_REGEX_TEMPLATE;
 import static com.google.gerrit.extensions.client.ProjectState.HIDDEN;
 import static com.google.gerrit.extensions.client.ProjectState.READ_ONLY;
-import static com.google.gerrit.httpd.plugins.LfsPluginServlet.URL_REGEX;
 
 import com.google.common.base.Strings;
 import com.google.gerrit.common.ProjectUtil;
@@ -44,10 +45,12 @@ import org.slf4j.LoggerFactory;
 
 @Singleton
 public class LfsApiServlet extends LfsProtocolServlet {
-  private static final Logger log = LoggerFactory.getLogger(LfsApiServlet.class);
+  public static final String LFS_OBJECTS_REST =
+      String.format(LFS_URL_REGEX_TEMPLATE, LFS_OBJECTS_PATH);
 
+  private static final Logger log = LoggerFactory.getLogger(LfsApiServlet.class);
   private static final long serialVersionUID = 1L;
-  private static final Pattern URL_PATTERN = Pattern.compile(URL_REGEX);
+  private static final Pattern URL_PATTERN = Pattern.compile(LFS_OBJECTS_REST);
   private static final String DOWNLOAD = "download";
   private static final String UPLOAD = "upload";
 
