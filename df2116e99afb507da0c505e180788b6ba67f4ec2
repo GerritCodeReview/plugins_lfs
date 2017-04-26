@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23491fe7_f8055c71",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsPaths.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-04-26T09:27:39Z",
+      "side": 1,
+      "message": "consider using joiner here ;)",
+      "range": {
+        "startLine": 22,
+        "startChar": 6,
+        "endLine": 22,
+        "endChar": 76
+      },
+      "revId": "df2116e99afb507da0c505e180788b6ba67f4ec2",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4f26dd5_eeeb61fb",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsLocksServlet.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-04-26T09:27:39Z",
+      "side": 1,
+      "message": "nit: whitespace",
+      "range": {
+        "startLine": 131,
+        "startChar": 58,
+        "endLine": 131,
+        "endChar": 59
+      },
+      "revId": "df2116e99afb507da0c505e180788b6ba67f4ec2",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c67ee9c3_fdfd4ca5",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/lfs/LfsSshRequestAuthorizerTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-04-26T09:27:39Z",
+      "side": 1,
+      "message": "this file is not needed here",
+      "revId": "df2116e99afb507da0c505e180788b6ba67f4ec2",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
