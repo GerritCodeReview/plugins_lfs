@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c1bb4adc_cefb0a0e",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsLocksServlet.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1010134
+      },
+      "writtenOn": "2017-04-26T10:54:57Z",
+      "side": 1,
+      "message": "in 2 other places you do `if (matcher.matches())` (without not operator), maybe you can keep same behavior here?",
+      "range": {
+        "startLine": 76,
+        "startChar": 4,
+        "endLine": 83,
+        "endChar": 31
+      },
+      "revId": "7827158004018d945712aaf61637c255926516ae",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ca8469f_1e70159e",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsLocksServlet.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1010134
+      },
+      "writtenOn": "2017-04-26T10:54:57Z",
+      "side": 1,
+      "message": "remove `else` and add return inside `if` body",
+      "range": {
+        "startLine": 105,
+        "startChar": 6,
+        "endLine": 105,
+        "endChar": 12
+      },
+      "revId": "7827158004018d945712aaf61637c255926516ae",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
