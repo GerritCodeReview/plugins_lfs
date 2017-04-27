@@ -20,26 +20,22 @@ import com.google.common.base.Optional;
 import com.google.common.base.Strings;
 import com.google.common.primitives.Bytes;
 import com.google.inject.Singleton;
-
-import org.eclipse.jgit.util.Base64;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.security.AlgorithmParameters;
 import java.security.GeneralSecurityException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.Arrays;
-
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.IvParameterSpec;
+import org.eclipse.jgit.util.Base64;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Singleton
 public class LfsCipher {
-  private static final Logger log =
-      LoggerFactory.getLogger(LfsCipher.class);
+  private static final Logger log = LoggerFactory.getLogger(LfsCipher.class);
   private static final int IV_LENGTH = 16;
   private static final String ALGORITHM = "AES";
   private static final String CIPHER_TYPE = ALGORITHM + "/CBC/PKCS5PADDING";
@@ -58,8 +54,7 @@ public class LfsCipher {
       byte[] initVector = new byte[IV_LENGTH];
       random.nextBytes(initVector);
       Cipher cipher = cipher(initVector, Cipher.ENCRYPT_MODE);
-      return Base64.encodeBytes(
-          Bytes.concat(initVector, cipher.doFinal(input.getBytes(UTF_8))));
+      return Base64.encodeBytes(Bytes.concat(initVector, cipher.doFinal(input.getBytes(UTF_8))));
     } catch (GeneralSecurityException e) {
       log.error("Token generation failed with error", e);
       throw new RuntimeException(e);
@@ -75,9 +70,8 @@ public class LfsCipher {
     byte[] initVector = Arrays.copyOf(bytes, IV_LENGTH);
     try {
       Cipher cipher = cipher(initVector, Cipher.DECRYPT_MODE);
-      return Optional.of(new String(
-          cipher.doFinal(Arrays.copyOfRange(bytes, IV_LENGTH, bytes.length)),
-          UTF_8));
+      return Optional.of(
+          new String(cipher.doFinal(Arrays.copyOfRange(bytes, IV_LENGTH, bytes.length)), UTF_8));
     } catch (GeneralSecurityException e) {
       log.error("Exception was thrown during token verification", e);
     }
@@ -85,8 +79,7 @@ public class LfsCipher {
     return Optional.absent();
   }
 
-  private Cipher cipher(byte[] initVector, int mode)
-      throws GeneralSecurityException {
+  private Cipher cipher(byte[] initVector, int mode) throws GeneralSecurityException {
     IvParameterSpec spec = new IvParameterSpec(initVector);
     AlgorithmParameters params = AlgorithmParameters.getInstance(ALGORITHM);
     params.init(spec);

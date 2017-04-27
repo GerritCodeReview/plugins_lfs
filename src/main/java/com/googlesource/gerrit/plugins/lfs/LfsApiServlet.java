@@ -28,7 +28,8 @@ import com.google.gerrit.server.project.ProjectControl;
 import com.google.gerrit.server.project.ProjectState;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import org.eclipse.jgit.lfs.errors.LfsException;
 import org.eclipse.jgit.lfs.errors.LfsRepositoryNotFound;
 import org.eclipse.jgit.lfs.errors.LfsRepositoryReadOnly;
@@ -40,9 +41,6 @@ import org.eclipse.jgit.lfs.server.LfsObject;
 import org.eclipse.jgit.lfs.server.LfsProtocolServlet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 @Singleton
 public class LfsApiServlet extends LfsProtocolServlet {
@@ -59,7 +57,8 @@ public class LfsApiServlet extends LfsProtocolServlet {
   private final LfsAuthUserProvider userProvider;
 
   @Inject
-  LfsApiServlet(ProjectCache projectCache,
+  LfsApiServlet(
+      ProjectCache projectCache,
       LfsConfigurationFactory lfsConfigFactory,
       LfsRepositoryResolver repoResolver,
       LfsAuthUserProvider userProvider) {
@@ -70,31 +69,29 @@ public class LfsApiServlet extends LfsProtocolServlet {
   }
 
   @Override
-  protected LargeFileRepository getLargeFileRepository(
-      LfsRequest request, String path, String auth)
-          throws LfsException {
+  protected LargeFileRepository getLargeFileRepository(LfsRequest request, String path, String auth)
+      throws LfsException {
     String pathInfo = path.startsWith("/") ? path : "/" + path;
     Matcher matcher = URL_PATTERN.matcher(pathInfo);
     if (!matcher.matches()) {
       throw new LfsException("no repository at " + pathInfo);
     }
     String projName = matcher.group(1);
-    Project.NameKey project = Project.NameKey.parse(
-        ProjectUtil.stripGitSuffix(projName));
+    Project.NameKey project = Project.NameKey.parse(ProjectUtil.stripGitSuffix(projName));
     ProjectState state = projectCache.get(project);
     if (state == null || state.getProject().getState() == HIDDEN) {
       throw new LfsRepositoryNotFound(project.get());
     }
-    authorizeUser(userProvider.getUser(auth, projName, request.getOperation()),
-        state, request.getOperation());
+    authorizeUser(
+        userProvider.getUser(auth, projName, request.getOperation()),
+        state,
+        request.getOperation());
 
-    if (request.getOperation().equals(UPLOAD)
-        && state.getProject().getState() == READ_ONLY) {
+    if (request.getOperation().equals(UPLOAD) && state.getProject().getState() == READ_ONLY) {
       throw new LfsRepositoryReadOnly(project.get());
     }
 
-    LfsProjectConfigSection config =
-        lfsConfigFactory.getProjectsConfig().getForProject(project);
+    LfsProjectConfigSection config = lfsConfigFactory.getProjectsConfig().getForProject(project);
     // Only accept requests for projects where LFS is enabled.
     // No config means we default to "not enabled".
     if (config != null && config.isEnabled()) {
@@ -108,9 +105,10 @@ public class LfsApiServlet extends LfsProtocolServlet {
         if (maxObjectSize > 0) {
           for (LfsObject object : request.getObjects()) {
             if (object.getSize() > maxObjectSize) {
-              throw new LfsValidationError(String.format(
-                  "size of object %s (%d bytes) exceeds limit (%d bytes)",
-                  object.getOid(), object.getSize(), maxObjectSize));
+              throw new LfsValidationError(
+                  String.format(
+                      "size of object %s (%d bytes) exceeds limit (%d bytes)",
+                      object.getOid(), object.getSize(), maxObjectSize));
             }
           }
         }
@@ -122,19 +120,18 @@ public class LfsApiServlet extends LfsProtocolServlet {
     throw new LfsUnavailable(project.get());
   }
 
-  private void authorizeUser(CurrentUser user, ProjectState state,
-      String operation) throws LfsUnauthorized {
+  private void authorizeUser(CurrentUser user, ProjectState state, String operation)
+      throws LfsUnauthorized {
     ProjectControl control = state.controlFor(user);
-    if ((operation.equals(DOWNLOAD) && !control.isReadable()) ||
-        (operation.equals(UPLOAD) && Capable.OK != control.canPushToAtLeastOneRef())) {
+    if ((operation.equals(DOWNLOAD) && !control.isReadable())
+        || (operation.equals(UPLOAD) && Capable.OK != control.canPushToAtLeastOneRef())) {
       String op = operation.toLowerCase();
       String project = state.getProject().getName();
-      String userName = Strings.isNullOrEmpty(user.getUserName())
-          ? "anonymous"
-          : user.getUserName();
-      log.debug(String.format(
-          "operation %s unauthorized for user %s on project %s",
-          op, userName, project));
+      String userName =
+          Strings.isNullOrEmpty(user.getUserName()) ? "anonymous" : user.getUserName();
+      log.debug(
+          String.format(
+              "operation %s unauthorized for user %s on project %s", op, userName, project));
       throw new LfsUnauthorized(op, project);
     }
   }

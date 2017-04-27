@@ -23,21 +23,18 @@ import com.google.gerrit.extensions.annotations.PluginCanonicalWebUrl;
 import com.google.gerrit.extensions.annotations.PluginData;
 import com.google.inject.Inject;
 import com.google.inject.assistedinject.Assisted;
-
 import com.googlesource.gerrit.plugins.lfs.AuthInfo;
 import com.googlesource.gerrit.plugins.lfs.ExpiringAction;
 import com.googlesource.gerrit.plugins.lfs.LfsBackend;
 import com.googlesource.gerrit.plugins.lfs.LfsConfigurationFactory;
 import com.googlesource.gerrit.plugins.lfs.LfsGlobalConfig;
-
-import org.eclipse.jgit.lfs.lib.AnyLongObjectId;
-import org.eclipse.jgit.lfs.server.Response;
-import org.eclipse.jgit.lfs.server.fs.FileLfsRepository;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import org.eclipse.jgit.lfs.lib.AnyLongObjectId;
+import org.eclipse.jgit.lfs.server.Response;
+import org.eclipse.jgit.lfs.server.fs.FileLfsRepository;
 
 public class LocalLargeFileRepository extends FileLfsRepository {
   public interface Factory {
@@ -52,19 +49,22 @@ public class LocalLargeFileRepository extends FileLfsRepository {
   private final int expirationSeconds;
 
   @Inject
-  LocalLargeFileRepository(LfsConfigurationFactory configFactory,
+  LocalLargeFileRepository(
+      LfsConfigurationFactory configFactory,
       LfsFsRequestAuthorizer authorizer,
       @PluginCanonicalWebUrl String url,
       @PluginData Path defaultDataDir,
-      @Assisted LfsBackend backend) throws IOException {
-    super(getContentUrl(url, backend),
-        getOrCreateDataDir(configFactory.getGlobalConfig(),
-            backend, defaultDataDir));
+      @Assisted LfsBackend backend)
+      throws IOException {
+    super(
+        getContentUrl(url, backend),
+        getOrCreateDataDir(configFactory.getGlobalConfig(), backend, defaultDataDir));
     this.authorizer = authorizer;
     this.servletUrlPattern = "/" + getContentPath(backend) + "*";
-    this.expirationSeconds = configFactory.getGlobalConfig()
-        .getInt(backend.type.name(), backend.name, "expirationSeconds",
-            DEFAULT_TIMEOUT);
+    this.expirationSeconds =
+        configFactory
+            .getGlobalConfig()
+            .getInt(backend.type.name(), backend.name, "expirationSeconds", DEFAULT_TIMEOUT);
   }
 
   public String getServletUrlPattern() {
@@ -74,16 +74,14 @@ public class LocalLargeFileRepository extends FileLfsRepository {
   @Override
   public Response.Action getDownloadAction(AnyLongObjectId id) {
     Response.Action action = super.getDownloadAction(id);
-    AuthInfo authInfo =
-        authorizer.generateAuthInfo(DOWNLOAD, id, expirationSeconds);
+    AuthInfo authInfo = authorizer.generateAuthInfo(DOWNLOAD, id, expirationSeconds);
     return new ExpiringAction(action.href, authInfo);
   }
 
   @Override
   public Response.Action getUploadAction(AnyLongObjectId id, long size) {
     Response.Action action = super.getUploadAction(id, size);
-    AuthInfo authInfo =
-        authorizer.generateAuthInfo(UPLOAD, id, expirationSeconds);
+    AuthInfo authInfo = authorizer.generateAuthInfo(UPLOAD, id, expirationSeconds);
     return new ExpiringAction(action.href, authInfo);
   }
 
@@ -94,15 +92,15 @@ public class LocalLargeFileRepository extends FileLfsRepository {
   }
 
   private static String getContentPath(LfsBackend backend) {
-    return CONTENT_PATH + "/"
-        + (Strings.isNullOrEmpty(backend.name) ? DEFAULT : backend.name) + "/";
+    return CONTENT_PATH
+        + "/"
+        + (Strings.isNullOrEmpty(backend.name) ? DEFAULT : backend.name)
+        + "/";
   }
 
-  private static Path getOrCreateDataDir(LfsGlobalConfig config,
-      LfsBackend backendConfig, Path defaultDataDir)
-      throws IOException {
-    String dataDir = config.getString(
-        backendConfig.type.name(), backendConfig.name, "directory");
+  private static Path getOrCreateDataDir(
+      LfsGlobalConfig config, LfsBackend backendConfig, Path defaultDataDir) throws IOException {
+    String dataDir = config.getString(backendConfig.type.name(), backendConfig.name, "directory");
     if (Strings.isNullOrEmpty(dataDir)) {
       return defaultDataDir;
     }
@@ -114,8 +112,7 @@ public class LocalLargeFileRepository extends FileLfsRepository {
 
     // we should at least make sure that directory is readable
     if (!Files.isReadable(ensured)) {
-      throw new IOException(
-          "Path '" + ensured.toAbsolutePath() + "' cannot be accessed");
+      throw new IOException("Path '" + ensured.toAbsolutePath() + "' cannot be accessed");
     }
 
     return ensured;

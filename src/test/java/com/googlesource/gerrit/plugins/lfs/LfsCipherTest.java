@@ -17,7 +17,6 @@ package com.googlesource.gerrit.plugins.lfs;
 import static com.google.common.truth.Truth.assertThat;
 
 import com.google.common.base.Optional;
-
 import org.junit.Test;
 
 public class LfsCipherTest {
@@ -46,12 +45,13 @@ public class LfsCipherTest {
     String encrypted = cipher.encrypt(plain);
     // there is a chance that two first chars in token are the same
     // in such case re-generate the token
-    while(encrypted.charAt(0) == encrypted.charAt(1)) {
+    while (encrypted.charAt(0) == encrypted.charAt(1)) {
       encrypted = cipher.encrypt(plain);
     }
 
-    Optional<String> decrypted = cipher.decrypt(encrypted.substring(1, 2)
-        + encrypted.substring(0, 1) + encrypted.substring(2));
+    Optional<String> decrypted =
+        cipher.decrypt(
+            encrypted.substring(1, 2) + encrypted.substring(0, 1) + encrypted.substring(2));
     assertThat(decrypted.isPresent()).isTrue();
     assertThat(decrypted.get()).isNotEqualTo(plain);
   }

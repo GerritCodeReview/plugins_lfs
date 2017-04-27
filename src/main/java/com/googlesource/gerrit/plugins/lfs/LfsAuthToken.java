@@ -17,16 +17,14 @@ package com.googlesource.gerrit.plugins.lfs;
 import com.google.common.base.Joiner;
 import com.google.common.base.Optional;
 import com.google.common.base.Splitter;
-
+import java.util.List;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.format.DateTimeFormatter;
 import org.joda.time.format.ISODateTimeFormat;
 
-import java.util.List;
-
 public abstract class LfsAuthToken {
-  public static abstract class Processor<T extends LfsAuthToken> {
+  public abstract static class Processor<T extends LfsAuthToken> {
     private static final char DELIMETER = '~';
 
     protected final LfsCipher cipher;
@@ -49,10 +47,11 @@ public abstract class LfsAuthToken {
     }
 
     protected abstract List<String> getValues(T token);
+
     protected abstract Optional<T> createToken(List<String> values);
   }
 
-  public static abstract class Verifier<T extends LfsAuthToken> {
+  public abstract static class Verifier<T extends LfsAuthToken> {
     protected final T token;
 
     protected Verifier(T token) {
@@ -60,8 +59,7 @@ public abstract class LfsAuthToken {
     }
 
     public boolean verify() {
-      return onTime(token.expiresAt)
-          && verifyTokenValues();
+      return onTime(token.expiresAt) && verifyTokenValues();
     }
 
     protected abstract boolean verifyTokenValues();

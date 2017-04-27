@@ -19,25 +19,21 @@ import static com.googlesource.gerrit.plugins.lfs.LfsBackend.DEFAULT;
 import com.google.common.base.Strings;
 import com.google.gerrit.reviewdb.client.Project;
 import com.google.inject.Inject;
-
+import java.util.Map;
 import org.eclipse.jgit.lfs.errors.LfsRepositoryNotFound;
 import org.eclipse.jgit.lfs.server.LargeFileRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.Map;
-
 public class LfsRepositoryResolver {
-  private static final Logger log =
-      LoggerFactory.getLogger(LfsRepositoryResolver.class);
+  private static final Logger log = LoggerFactory.getLogger(LfsRepositoryResolver.class);
 
   private final LfsRepositoriesCache cache;
   private final LfsBackend defaultBackend;
   private final Map<String, LfsBackend> backends;
 
   @Inject
-  LfsRepositoryResolver(LfsRepositoriesCache cache,
-      LfsConfigurationFactory configFactory) {
+  LfsRepositoryResolver(LfsRepositoriesCache cache, LfsConfigurationFactory configFactory) {
     this.cache = cache;
 
     LfsGlobalConfig config = configFactory.getGlobalConfig();
@@ -53,9 +49,10 @@ public class LfsRepositoryResolver {
     } else {
       backend = backends.get(backendName);
       if (backend == null) {
-        log.error(String.format("Project %s is configured with not existing"
-            + " backend %s", project,
-            Strings.isNullOrEmpty(backendName) ? DEFAULT : backendName));
+        log.error(
+            String.format(
+                "Project %s is configured with not existing" + " backend %s",
+                project, Strings.isNullOrEmpty(backendName) ? DEFAULT : backendName));
         throw new LfsRepositoryNotFound(project.get());
       }
     }
@@ -66,10 +63,10 @@ public class LfsRepositoryResolver {
     }
 
     //this is unlikely situation as cache is pre-populated from config but...
-    log.error(String.format("Project %s is configured with not existing"
-        + " backend %s of type %s", project,
-        Strings.isNullOrEmpty(backendName) ? DEFAULT : backendName,
-        backend.type));
+    log.error(
+        String.format(
+            "Project %s is configured with not existing" + " backend %s of type %s",
+            project, Strings.isNullOrEmpty(backendName) ? DEFAULT : backendName, backend.type));
     throw new LfsRepositoryNotFound(project.get());
   }
 }

@@ -20,7 +20,6 @@ import static org.eclipse.jgit.lfs.lib.LongObjectId.zeroId;
 import com.googlesource.gerrit.plugins.lfs.AuthInfo;
 import com.googlesource.gerrit.plugins.lfs.LfsCipher;
 import com.googlesource.gerrit.plugins.lfs.fs.LfsFsRequestAuthorizer.Processor;
-
 import org.eclipse.jgit.lfs.lib.LongObjectId;
 import org.junit.Test;
 
@@ -43,8 +42,12 @@ public class LfsFsRequestAuthorizerTest {
   @Test
   public void testVerifyAgainstDifferentObjectId() throws Exception {
     AuthInfo info = auth.generateAuthInfo("o", zeroId(), 1);
-    assertThat(auth.verifyAuthInfo(info.authToken, "o",
-        LongObjectId.fromString("123456789012345678901234567890"
-            + "123456789012345678901234567890" + "1234"))).isFalse();
+    assertThat(
+            auth.verifyAuthInfo(
+                info.authToken,
+                "o",
+                LongObjectId.fromString(
+                    "123456789012345678901234567890" + "123456789012345678901234567890" + "1234")))
+        .isFalse();
   }
 }

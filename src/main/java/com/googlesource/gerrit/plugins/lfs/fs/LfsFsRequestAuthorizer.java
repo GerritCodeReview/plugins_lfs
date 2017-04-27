@@ -17,16 +17,13 @@ package com.googlesource.gerrit.plugins.lfs.fs;
 import com.google.common.base.Optional;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-
 import com.googlesource.gerrit.plugins.lfs.AuthInfo;
 import com.googlesource.gerrit.plugins.lfs.LfsAuthToken;
 import com.googlesource.gerrit.plugins.lfs.LfsCipher;
-
-import org.eclipse.jgit.lfs.lib.AnyLongObjectId;
-import org.eclipse.jgit.lfs.lib.LongObjectId;
-
 import java.util.ArrayList;
 import java.util.List;
+import org.eclipse.jgit.lfs.lib.AnyLongObjectId;
+import org.eclipse.jgit.lfs.lib.LongObjectId;
 
 @Singleton
 public class LfsFsRequestAuthorizer {
@@ -37,14 +34,12 @@ public class LfsFsRequestAuthorizer {
     this.processor = processor;
   }
 
-  public AuthInfo generateAuthInfo(String operation, AnyLongObjectId id,
-      int expirationSeconds) {
+  public AuthInfo generateAuthInfo(String operation, AnyLongObjectId id, int expirationSeconds) {
     LfsFsAuthToken token = new LfsFsAuthToken(operation, id, expirationSeconds);
     return new AuthInfo(processor.serialize(token), token.expiresAt);
   }
 
-  public boolean verifyAuthInfo(String authToken, String operation,
-      AnyLongObjectId id) {
+  public boolean verifyAuthInfo(String authToken, String operation, AnyLongObjectId id) {
     Optional<LfsFsAuthToken> token = processor.deserialize(authToken);
     if (!token.isPresent()) {
       return false;
@@ -74,8 +69,8 @@ public class LfsFsRequestAuthorizer {
         return Optional.absent();
       }
 
-      return Optional.of(new LfsFsAuthToken(values.get(0),
-          LongObjectId.fromString(values.get(1)), values.get(2)));
+      return Optional.of(
+          new LfsFsAuthToken(values.get(0), LongObjectId.fromString(values.get(1)), values.get(2)));
     }
   }
 
@@ -83,8 +78,7 @@ public class LfsFsRequestAuthorizer {
     private final String operation;
     private final AnyLongObjectId id;
 
-    protected Verifier(LfsFsAuthToken token,
-        String operation, AnyLongObjectId id) {
+    protected Verifier(LfsFsAuthToken token, String operation, AnyLongObjectId id) {
       super(token);
       this.operation = operation;
       this.id = id;
@@ -92,8 +86,7 @@ public class LfsFsRequestAuthorizer {
 
     @Override
     protected boolean verifyTokenValues() {
-      return operation.equals(token.operation)
-          && id.getName().equals(token.id.getName());
+      return operation.equals(token.operation) && id.getName().equals(token.id.getName());
     }
   }
 
@@ -101,8 +94,7 @@ public class LfsFsRequestAuthorizer {
     private final String operation;
     private final AnyLongObjectId id;
 
-    LfsFsAuthToken(String operation, AnyLongObjectId id,
-        int expirationSeconds) {
+    LfsFsAuthToken(String operation, AnyLongObjectId id, int expirationSeconds) {
       super(expirationSeconds);
       this.operation = operation;
       this.id = id;

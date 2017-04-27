@@ -14,16 +14,15 @@
 
 package com.googlesource.gerrit.plugins.lfs;
 
-import org.eclipse.jgit.lib.Config;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.google.common.base.Strings;
 import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.extensions.events.LifecycleListener;
 import com.google.gerrit.server.config.GerritServerConfig;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import org.eclipse.jgit.lib.Config;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Singleton
 public class Lifecycle implements LifecycleListener {
@@ -49,12 +48,13 @@ public class Lifecycle implements LifecycleListener {
   }
 
   private void warn(String msg) {
-    log.warn(String.format(
-        "%s; LFS will not be enabled. Run site initialization, or manually set"
-        + " lfs.plugin to '%s' in gerrit.config", msg, name));
+    log.warn(
+        String.format(
+            "%s; LFS will not be enabled. Run site initialization, or manually set"
+                + " lfs.plugin to '%s' in gerrit.config",
+            msg, name));
   }
 
   @Override
-  public void stop() {
-  }
+  public void stop() {}
 }

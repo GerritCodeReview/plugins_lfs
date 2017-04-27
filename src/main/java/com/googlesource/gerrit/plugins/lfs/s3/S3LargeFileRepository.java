@@ -17,11 +17,9 @@ package com.googlesource.gerrit.plugins.lfs.s3;
 import com.google.common.base.MoreObjects;
 import com.google.inject.Inject;
 import com.google.inject.assistedinject.Assisted;
-
 import com.googlesource.gerrit.plugins.lfs.LfsBackend;
 import com.googlesource.gerrit.plugins.lfs.LfsConfigurationFactory;
 import com.googlesource.gerrit.plugins.lfs.LfsGlobalConfig;
-
 import org.eclipse.jgit.lfs.server.s3.S3Config;
 import org.eclipse.jgit.lfs.server.s3.S3Repository;
 
@@ -31,29 +29,25 @@ public class S3LargeFileRepository extends S3Repository {
   }
 
   @Inject
-  S3LargeFileRepository(LfsConfigurationFactory configFactory,
-      @Assisted LfsBackend backendConfig) {
+  S3LargeFileRepository(LfsConfigurationFactory configFactory, @Assisted LfsBackend backendConfig) {
     super(getS3Config(configFactory.getGlobalConfig(), backendConfig));
   }
 
-  private static S3Config getS3Config(LfsGlobalConfig config,
-      LfsBackend backendConfig) {
+  private static S3Config getS3Config(LfsGlobalConfig config, LfsBackend backendConfig) {
     String section = backendConfig.type.name();
     String region = config.getString(section, backendConfig.name, "region");
     String bucket = config.getString(section, backendConfig.name, "bucket");
     String storageClass =
         MoreObjects.firstNonNull(
-            config.getString(section, backendConfig.name, "storageClass"),
-            "REDUCED_REDUNDANCY");
-    int expirationSeconds =
-        config.getInt(section, backendConfig.name, "expirationSeconds", 60);
+            config.getString(section, backendConfig.name, "storageClass"), "REDUCED_REDUNDANCY");
+    int expirationSeconds = config.getInt(section, backendConfig.name, "expirationSeconds", 60);
     boolean disableSslVerify =
         config.getBoolean(section, backendConfig.name, "disableSslVerify", false);
 
     String accessKey = config.getString(section, backendConfig.name, "accessKey");
     String secretKey = config.getString(section, backendConfig.name, "secretKey");
 
-    return new S3Config(region, bucket, storageClass, accessKey, secretKey,
-        expirationSeconds, disableSslVerify);
+    return new S3Config(
+        region, bucket, storageClass, accessKey, secretKey, expirationSeconds, disableSslVerify);
   }
 }

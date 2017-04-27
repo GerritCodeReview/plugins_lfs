@@ -34,19 +34,16 @@ import com.google.gerrit.server.project.ProjectResource;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.google.inject.Singleton;
-
-import org.eclipse.jgit.errors.ConfigInvalidException;
-import org.eclipse.jgit.errors.RepositoryNotFoundException;
-import org.eclipse.jgit.lib.Config;
-
 import java.io.IOException;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import org.eclipse.jgit.errors.ConfigInvalidException;
+import org.eclipse.jgit.errors.RepositoryNotFoundException;
+import org.eclipse.jgit.lib.Config;
 
 @Singleton
-class PutLfsGlobalConfig
-    implements RestModifyView<ProjectResource, LfsGlobalConfigInput> {
+class PutLfsGlobalConfig implements RestModifyView<ProjectResource, LfsGlobalConfigInput> {
 
   private final String pluginName;
   private final AllProjectsName allProjectsName;
@@ -56,7 +53,8 @@ class PutLfsGlobalConfig
   private final GetLfsGlobalConfig get;
 
   @Inject
-  PutLfsGlobalConfig(@PluginName String pluginName,
+  PutLfsGlobalConfig(
+      @PluginName String pluginName,
       AllProjectsName allProjectsName,
       Provider<CurrentUser> self,
       Provider<MetaDataUpdate.User> metaDataUpdateFactory,
@@ -71,13 +69,12 @@ class PutLfsGlobalConfig
   }
 
   @Override
-  public LfsGlobalConfigInfo apply(ProjectResource resource,
-      LfsGlobalConfigInput input) throws RestApiException {
+  public LfsGlobalConfigInfo apply(ProjectResource resource, LfsGlobalConfigInput input)
+      throws RestApiException {
     IdentifiedUser user = self.get().asIdentifiedUser();
     Project.NameKey projectName = resource.getNameKey();
 
-    if (!(projectName.equals(allProjectsName)
-        && user.getCapabilities().canAdministrateServer())) {
+    if (!(projectName.equals(allProjectsName) && user.getCapabilities().canAdministrateServer())) {
       throw new ResourceNotFoundException();
     }
 
@@ -90,38 +87,30 @@ class PutLfsGlobalConfig
       try {
         config.load(md);
       } catch (ConfigInvalidException | IOException e) {
-        throw new ResourceConflictException(
-            "Cannot read LFS config in " + projectName);
+        throw new ResourceConflictException("Cannot read LFS config in " + projectName);
       }
       Config cfg = new Config();
       if (input.namespaces != null) {
-        Set<String> backends =
-            lfsConfigFactory.getGlobalConfig().getBackends().keySet();
-        Set<Entry<String, LfsProjectConfigInfo>> namespaces =
-            input.namespaces.entrySet();
+        Set<String> backends = lfsConfigFactory.getGlobalConfig().getBackends().keySet();
+        Set<Entry<String, LfsProjectConfigInfo>> namespaces = input.namespaces.entrySet();
         for (Map.Entry<String, LfsProjectConfigInfo> namespace : namespaces) {
           LfsProjectConfigInfo info = namespace.getValue();
           if (info.enabled != null) {
-            cfg.setBoolean(
-                pluginName, namespace.getKey(), KEY_ENABLED, info.enabled);
+            cfg.setBoolean(pluginName, namespace.getKey(), KEY_ENABLED, info.enabled);
           }
           if (info.maxObjectSize != null) {
-            cfg.setLong(
-                pluginName, namespace.getKey(),
-                KEY_MAX_OBJECT_SIZE, info.maxObjectSize);
+            cfg.setLong(pluginName, namespace.getKey(), KEY_MAX_OBJECT_SIZE, info.maxObjectSize);
           }
           if (info.readOnly != null) {
-            cfg.setBoolean(
-                pluginName, namespace.getKey(), KEY_READ_ONLY, info.readOnly);
+            cfg.setBoolean(pluginName, namespace.getKey(), KEY_READ_ONLY, info.readOnly);
           }
           if (!Strings.isNullOrEmpty(info.backend)) {
             if (!backends.contains(info.backend)) {
               throw new ResourceConflictException(
-                  String.format("Namespace %s: backend %s does not exist",
-                      namespace, info.backend));
+                  String.format(
+                      "Namespace %s: backend %s does not exist", namespace, info.backend));
             }
-            cfg.setString(pluginName, namespace.getKey(),
-                KEY_BACKEND, info.backend);
+            cfg.setString(pluginName, namespace.getKey(), KEY_BACKEND, info.backend);
           }
         }
       }
@@ -131,11 +120,9 @@ class PutLfsGlobalConfig
       } catch (IOException e) {
         if (e.getCause() instanceof ConfigInvalidException) {
           throw new ResourceConflictException(
-              "Cannot update LFS config in " + projectName
-              + ": " + e.getCause().getMessage());
+              "Cannot update LFS config in " + projectName + ": " + e.getCause().getMessage());
         }
-        throw new ResourceConflictException(
-            "Cannot update LFS config in " + projectName);
+        throw new ResourceConflictException("Cannot update LFS config in " + projectName);
       }
     } catch (RepositoryNotFoundException e) {
       throw new ResourceNotFoundException(projectName.get());

@@ -15,7 +15,6 @@
 package com.googlesource.gerrit.plugins.lfs;
 
 import com.google.common.base.Strings;
-
 import java.util.Objects;
 
 public class LfsBackend {
@@ -38,8 +37,7 @@ public class LfsBackend {
   public boolean equals(Object obj) {
     if (obj instanceof LfsBackend) {
       LfsBackend other = (LfsBackend) obj;
-      return Objects.equals(name, other.name)
-          && type == other.type;
+      return Objects.equals(name, other.name) && type == other.type;
     }
 
     return false;

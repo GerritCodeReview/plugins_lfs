@@ -25,7 +25,6 @@ import com.google.gson.GsonBuilder;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.google.inject.Singleton;
-
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
@@ -37,39 +36,41 @@ public class LfsSshAuth implements LfsPluginAuthCommand.LfsSshPluginAuth {
   private final Gson gson;
 
   @Inject
-  LfsSshAuth(LfsSshRequestAuthorizer auth,
-      @CanonicalWebUrl Provider<String> canonicalWebUrl) {
+  LfsSshAuth(LfsSshRequestAuthorizer auth, @CanonicalWebUrl Provider<String> canonicalWebUrl) {
     this.auth = auth;
     this.canonicalWebUrl = canonicalWebUrl.get();
-    this.gson = new GsonBuilder()
-        .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
-        .disableHtmlEscaping()
-        .create();
+    this.gson =
+        new GsonBuilder()
+            .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
+            .disableHtmlEscaping()
+            .create();
   }
 
   @Override
-  public String authenticate(CurrentUser user, List<String> args)
-      throws UnloggedFailure, Failure {
+  public String authenticate(CurrentUser user, List<String> args) throws UnloggedFailure, Failure {
     try {
       URL url = new URL(canonicalWebUrl);
       String path = url.getPath();
       String project = args.get(0);
       String operation = args.get(1);
-      StringBuilder href = new StringBuilder(url.getProtocol())
-          .append("://")
-          .append(url.getAuthority())
-          .append(path)
-          .append(path.endsWith("/") ? "" : "/")
-          .append(project)
-          .append("/info/lfs");
-      LfsSshRequestAuthorizer.SshAuthInfo info =
-          auth.generateAuthInfo(user, project, operation);
+      StringBuilder href =
+          new StringBuilder(url.getProtocol())
+              .append("://")
+              .append(url.getAuthority())
+              .append(path)
+              .append(path.endsWith("/") ? "" : "/")
+              .append(project)
+              .append("/info/lfs");
+      LfsSshRequestAuthorizer.SshAuthInfo info = auth.generateAuthInfo(user, project, operation);
       ExpiringAction action = new ExpiringAction(href.toString(), info);
       return gson.toJson(action);
     } catch (MalformedURLException e) {
-      throw new Failure(1, "Server configuration error: "
-          + "forming Git LFS endpoint URL from canonicalWebUrl ["
-          + canonicalWebUrl + "] failed.");
+      throw new Failure(
+          1,
+          "Server configuration error: "
+              + "forming Git LFS endpoint URL from canonicalWebUrl ["
+              + canonicalWebUrl
+              + "] failed.");
     }
   }
 }

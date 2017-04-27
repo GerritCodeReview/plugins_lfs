@@ -25,7 +25,6 @@ import com.google.gerrit.server.project.ProjectResource;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.google.inject.Singleton;
-
 import java.util.HashMap;
 import java.util.List;
 
@@ -36,7 +35,8 @@ class GetLfsGlobalConfig implements RestReadView<ProjectResource> {
   private final Provider<CurrentUser> self;
 
   @Inject
-  GetLfsGlobalConfig(LfsConfigurationFactory lfsConfigFactory,
+  GetLfsGlobalConfig(
+      LfsConfigurationFactory lfsConfigFactory,
       AllProjectsName allProjectsName,
       Provider<CurrentUser> self) {
     this.lfsConfigFactory = lfsConfigFactory;
@@ -55,8 +55,7 @@ class GetLfsGlobalConfig implements RestReadView<ProjectResource> {
     LfsGlobalConfigInfo info = new LfsGlobalConfigInfo();
     LfsGlobalConfig globalConfig = lfsConfigFactory.getGlobalConfig();
     info.defaultBackendType = globalConfig.getDefaultBackend().type;
-    info.backends = Maps.transformValues(globalConfig.getBackends(),
-        b -> b.type);
+    info.backends = Maps.transformValues(globalConfig.getBackends(), b -> b.type);
 
     List<LfsProjectConfigSection> configSections =
         lfsConfigFactory.getProjectsConfig().getConfigSections();

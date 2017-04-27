@@ -19,13 +19,11 @@ import static com.googlesource.gerrit.plugins.lfs.LfsAuthToken.ISO;
 import static com.googlesource.gerrit.plugins.lfs.LfsAuthToken.Verifier.onTime;
 
 import com.google.common.base.Optional;
-
+import java.util.ArrayList;
+import java.util.List;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class LfsAuthTokenTest {
   private final LfsCipher cipher = new LfsCipher();

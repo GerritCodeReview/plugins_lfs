@@ -38,6 +38,5 @@ public class InitLfs implements InitStep {
   }
 
   @Override
-  public void postRun() throws Exception {
-  }
+  public void postRun() throws Exception {}
 }

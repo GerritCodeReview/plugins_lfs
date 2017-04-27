@@ -22,7 +22,6 @@ public class SshModule extends PluginCommandModule {
 
   @Override
   protected void configureCommands() {
-    DynamicItem.bind(binder(), LfsPluginAuthCommand.LfsSshPluginAuth.class)
-      .to(LfsSshAuth.class);
+    DynamicItem.bind(binder(), LfsPluginAuthCommand.LfsSshPluginAuth.class).to(LfsSshAuth.class);
   }
 }

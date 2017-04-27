@@ -17,7 +17,6 @@ package com.googlesource.gerrit.plugins.lfs;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import com.google.inject.Singleton;
-
 import org.eclipse.jgit.lfs.server.LargeFileRepository;
 
 @Singleton

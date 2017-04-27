@@ -28,14 +28,15 @@ public class Module extends FactoryModule {
 
   @Override
   protected void configure() {
-    install(new RestApiModule() {
-      @Override
-      protected void configure() {
-        get(PROJECT_KIND, "lfs:config-project").to(GetLfsProjectConfig.class);
-        get(PROJECT_KIND, "lfs:config-global").to(GetLfsGlobalConfig.class);
-        put(PROJECT_KIND, "lfs:config-global").to(PutLfsGlobalConfig.class);
-      }
-    });
+    install(
+        new RestApiModule() {
+          @Override
+          protected void configure() {
+            get(PROJECT_KIND, "lfs:config-project").to(GetLfsProjectConfig.class);
+            get(PROJECT_KIND, "lfs:config-global").to(GetLfsGlobalConfig.class);
+            put(PROJECT_KIND, "lfs:config-global").to(PutLfsGlobalConfig.class);
+          }
+        });
 
     bind(LifecycleListener.class).annotatedWith(UniqueAnnotations.create()).to(Lifecycle.class);
 

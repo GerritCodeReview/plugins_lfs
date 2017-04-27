@@ -38,7 +38,8 @@ class LfsAuthUserProvider {
   private final IdentifiedUser.GenericFactory userFactory;
 
   @Inject
-  LfsAuthUserProvider(Provider<AnonymousUser> anonymous,
+  LfsAuthUserProvider(
+      Provider<AnonymousUser> anonymous,
       Provider<CurrentUser> user,
       LfsSshRequestAuthorizer sshAuth,
       AccountCache accounts,
@@ -57,8 +58,9 @@ class LfsAuthUserProvider {
       }
 
       if (auth.startsWith(SSH_AUTH_PREFIX)) {
-        Optional<String> user = sshAuth.getUserFromValidToken(
-            auth.substring(SSH_AUTH_PREFIX.length()), project, operation);
+        Optional<String> user =
+            sshAuth.getUserFromValidToken(
+                auth.substring(SSH_AUTH_PREFIX.length()), project, operation);
         if (user.isPresent()) {
           AccountState acc = accounts.getByUsername(user.get());
           if (acc != null) {

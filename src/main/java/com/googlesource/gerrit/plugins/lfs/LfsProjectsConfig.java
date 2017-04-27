@@ -23,21 +23,19 @@ import com.google.gerrit.reviewdb.client.Project;
 import com.google.gerrit.server.config.AllProjectsName;
 import com.google.gerrit.server.git.VersionedMetaData;
 import com.google.gerrit.server.project.ProjectCache;
-
-import org.eclipse.jgit.errors.ConfigInvalidException;
-import org.eclipse.jgit.lib.CommitBuilder;
-import org.eclipse.jgit.lib.Config;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import org.eclipse.jgit.errors.ConfigInvalidException;
+import org.eclipse.jgit.lib.CommitBuilder;
+import org.eclipse.jgit.lib.Config;
 
 /**
- * Represents the project-specific LFS configuration stored in
- * the lfs.config file on the refs/meta/config branch of All-Projects.
+ * Represents the project-specific LFS configuration stored in the lfs.config file on the
+ * refs/meta/config branch of All-Projects.
  */
 public class LfsProjectsConfig extends VersionedMetaData {
   private final String configFilename;
@@ -45,18 +43,15 @@ public class LfsProjectsConfig extends VersionedMetaData {
   private final AllProjectsName allProjects;
   private Config projectConfig;
 
-  public LfsProjectsConfig(@PluginName String pluginName,
-      ProjectCache projectCache,
-      AllProjectsName allProjects) {
+  public LfsProjectsConfig(
+      @PluginName String pluginName, ProjectCache projectCache, AllProjectsName allProjects) {
     this.configFilename = pluginName + ".config";
     this.projectCache = projectCache;
     this.allProjects = allProjects;
     this.projectConfig = loadProjectConfig();
   }
 
-  /**
-   * @return all the configured LFS sections.
-   */
+  /** @return all the configured LFS sections. */
   public List<LfsProjectConfigSection> getConfigSections() {
     Set<String> namespaces = projectConfig.getSubsections(LfsProjectConfigSection.LFS);
     if (!namespaces.isEmpty()) {
@@ -124,8 +119,7 @@ public class LfsProjectsConfig extends VersionedMetaData {
   }
 
   @Override
-  protected boolean onSave(CommitBuilder commit)
-      throws IOException, ConfigInvalidException {
+  protected boolean onSave(CommitBuilder commit) throws IOException, ConfigInvalidException {
     if (Strings.isNullOrEmpty(commit.getMessage())) {
       commit.setMessage("Update LFS configuration\n");
     }

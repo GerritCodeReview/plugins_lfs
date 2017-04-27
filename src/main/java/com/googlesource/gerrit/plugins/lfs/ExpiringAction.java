@@ -16,9 +16,8 @@ package com.googlesource.gerrit.plugins.lfs;
 
 import static org.eclipse.jgit.util.HttpSupport.HDR_AUTHORIZATION;
 
-import org.eclipse.jgit.lfs.server.Response;
-
 import java.util.Collections;
+import org.eclipse.jgit.lfs.server.Response;
 
 public class ExpiringAction extends Response.Action {
   public final String expiresAt;

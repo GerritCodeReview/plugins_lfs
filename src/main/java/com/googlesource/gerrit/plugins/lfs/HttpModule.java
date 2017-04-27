@@ -21,11 +21,9 @@ import com.google.gerrit.extensions.webui.JavaScriptPlugin;
 import com.google.gerrit.extensions.webui.WebUiPlugin;
 import com.google.gerrit.httpd.plugins.HttpPluginModule;
 import com.google.inject.Inject;
-
 import com.googlesource.gerrit.plugins.lfs.fs.LfsFsContentServlet;
 import com.googlesource.gerrit.plugins.lfs.fs.LocalLargeFileRepository;
 import com.googlesource.gerrit.plugins.lfs.s3.S3LargeFileRepository;
-
 import java.util.Map;
 
 public class HttpModule extends HttpPluginModule {
@@ -37,7 +35,8 @@ public class HttpModule extends HttpPluginModule {
   private final Map<String, LfsBackend> backends;
 
   @Inject
-  HttpModule(LocalLargeFileRepository.Factory fsRepoFactory,
+  HttpModule(
+      LocalLargeFileRepository.Factory fsRepoFactory,
       S3LargeFileRepository.Factory s3RepoFactory,
       LfsRepositoriesCache cache,
       LfsFsContentServlet.Factory fsServletFactory,
@@ -61,7 +60,7 @@ public class HttpModule extends HttpPluginModule {
     }
 
     DynamicSet.bind(binder(), WebUiPlugin.class)
-      .toInstance(new JavaScriptPlugin("lfs-project-info.js"));
+        .toInstance(new JavaScriptPlugin("lfs-project-info.js"));
   }
 
   private void populateRepository(LfsBackend backend) {
@@ -81,16 +80,13 @@ public class HttpModule extends HttpPluginModule {
   }
 
   private void populateS3Repository(LfsBackend backend) {
-    S3LargeFileRepository repository =
-        s3RepoFactory.create(backend);
+    S3LargeFileRepository repository = s3RepoFactory.create(backend);
     cache.put(backend, repository);
   }
 
   private void populateAndServeFsRepository(LfsBackend backend) {
-    LocalLargeFileRepository repository =
-        fsRepoFactory.create(backend);
+    LocalLargeFileRepository repository = fsRepoFactory.create(backend);
     cache.put(backend, repository);
-    serve(repository.getServletUrlPattern())
-        .with(fsServletFactory.create(repository));
+    serve(repository.getServletUrlPattern()).with(fsServletFactory.create(repository));
   }
 }

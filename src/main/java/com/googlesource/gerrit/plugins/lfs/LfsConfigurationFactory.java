@@ -29,7 +29,8 @@ public class LfsConfigurationFactory {
   private final PluginConfigFactory configFactory;
 
   @Inject
-  LfsConfigurationFactory(@PluginName String pluginName,
+  LfsConfigurationFactory(
+      @PluginName String pluginName,
       ProjectCache projectCache,
       AllProjectsName allProjects,
       PluginConfigFactory configFactory) {
@@ -39,16 +40,12 @@ public class LfsConfigurationFactory {
     this.configFactory = configFactory;
   }
 
-  /**
-   * @return the project-specific LFS configuration.
-   */
+  /** @return the project-specific LFS configuration. */
   public LfsProjectsConfig getProjectsConfig() {
     return new LfsProjectsConfig(pluginName, projectCache, allProjects);
   }
 
-  /**
-   * @return the global LFS configuration.
-   */
+  /** @return the global LFS configuration. */
   public LfsGlobalConfig getGlobalConfig() {
     return new LfsGlobalConfig(configFactory.getGlobalPluginConfig(pluginName));
   }
