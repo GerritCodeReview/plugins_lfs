@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "e66705cd_8bb040ec",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsApiServlet.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010134
+      },
+      "writtenOn": "2017-04-27T11:42:21Z",
+      "side": 1,
+      "message": "format using google-java-format",
+      "revId": "7827158004018d945712aaf61637c255926516ae",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1bb4adc_cefb0a0e",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsLocksServlet.java",
         "patchSetId": 2
