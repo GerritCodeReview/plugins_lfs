@@ -14,37 +14,102 @@
 
 package com.googlesource.gerrit.plugins.lfs.locks;
 
+import static com.google.gerrit.extensions.client.ProjectState.HIDDEN;
 import static org.apache.http.HttpStatus.SC_INTERNAL_SERVER_ERROR;
+import static org.apache.http.HttpStatus.SC_NOT_FOUND;
+import static org.apache.http.HttpStatus.SC_UNAUTHORIZED;
+import static org.eclipse.jgit.util.HttpSupport.HDR_AUTHORIZATION;
 
+import com.google.common.base.Strings;
+import com.google.gerrit.common.ProjectUtil;
+import com.google.gerrit.reviewdb.client.Project;
+import com.google.gerrit.server.CurrentUser;
+import com.google.gerrit.server.project.ProjectCache;
+import com.google.gerrit.server.project.ProjectControl;
+import com.google.gerrit.server.project.ProjectState;
+import com.googlesource.gerrit.plugins.lfs.LfsAuthUserProvider;
 import java.io.IOException;
 import org.eclipse.jgit.lfs.errors.LfsException;
+import org.eclipse.jgit.lfs.errors.LfsRepositoryNotFound;
+import org.eclipse.jgit.lfs.errors.LfsUnauthorized;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.format.DateTimeFormatter;
 import org.joda.time.format.ISODateTimeFormat;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 abstract class LfsLocksAction {
   interface Factory<T extends LfsLocksAction> {
     T create(LfsLocksContext context);
   }
 
+  private static final Logger log = LoggerFactory.getLogger(LfsLocksAction.class);
   private static final DateTimeFormatter ISO = ISODateTimeFormat.dateTime();
+  /** Git LFS client uses 'upload' operation to authorize SSH Lock requests */
+  private static final String LFS_LOCKING_OPERATION = "upload";
 
+  protected final ProjectCache projectCache;
+  protected final LfsAuthUserProvider userProvider;
   protected final LfsLocksContext context;
 
-  protected LfsLocksAction(LfsLocksContext context) {
+  protected LfsLocksAction(
+      ProjectCache projectCache, LfsAuthUserProvider userProvider, LfsLocksContext context) {
+    this.projectCache = projectCache;
+    this.userProvider = userProvider;
     this.context = context;
   }
 
   public void run() throws IOException {
     try {
-      doRun();
+      String name = getProjectName();
+      ProjectState project = getProject(name);
+      CurrentUser user = getUser(name);
+      ProjectControl control = project.controlFor(user);
+      authorizeUser(control);
+      doRun(project, user);
+    } catch (LfsUnauthorized e) {
+      context.sendError(SC_UNAUTHORIZED, e.getMessage());
+    } catch (LfsRepositoryNotFound e) {
+      context.sendError(SC_NOT_FOUND, e.getMessage());
     } catch (LfsException e) {
       context.sendError(SC_INTERNAL_SERVER_ERROR, e.getMessage());
     }
   }
 
-  protected abstract void doRun() throws LfsException, IOException;
+  protected abstract String getProjectName() throws LfsException;
+
+  protected abstract void authorizeUser(ProjectControl control) throws LfsUnauthorized;
+
+  protected abstract void doRun(ProjectState project, CurrentUser user)
+      throws LfsException, IOException;
+
+  protected ProjectState getProject(String name) throws LfsRepositoryNotFound {
+    Project.NameKey project = Project.NameKey.parse(ProjectUtil.stripGitSuffix(name));
+    ProjectState state = projectCache.get(project);
+    if (state == null || state.getProject().getState() == HIDDEN) {
+      throw new LfsRepositoryNotFound(project.get());
+    }
+    return state;
+  }
+
+  protected CurrentUser getUser(String project) {
+    return userProvider.getUser(
+        context.getHeader(HDR_AUTHORIZATION), project, LFS_LOCKING_OPERATION);
+  }
+
+  protected void throwUnauthorizedOp(String op, ProjectControl control)
+      throws LfsUnauthorized {
+    String project = control.getProject().getName();
+    String userName =
+        Strings.isNullOrEmpty(control.getUser().getUserName())
+            ? "anonymous"
+            : control.getUser().getUserName();
+    log.debug(
+        String.format(
+            "operation %s unauthorized for user %s on project %s", op, userName, project));
+    throw new LfsUnauthorized(op, project);
+  }
 
   protected String now() {
     return ISO.print(DateTime.now().toDateTime(DateTimeZone.UTC));
