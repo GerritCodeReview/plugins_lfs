@@ -14,22 +14,16 @@
 
 package com.googlesource.gerrit.plugins.lfs.locks;
 
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.LoadingCache;
-import com.google.gerrit.extensions.config.FactoryModule;
-import com.google.gerrit.reviewdb.client.Project;
-import com.google.inject.Provides;
+import com.google.common.base.Function;
+import com.google.common.hash.HashCode;
+import com.google.common.hash.Hashing;
+import com.google.common.io.BaseEncoding;
+import java.nio.charset.StandardCharsets;
 
-public class LfsLocksModule extends FactoryModule {
+public class PathToLockId implements Function<String, String> {
   @Override
-  protected void configure() {
-    factory(LfsGetLocksAction.Factory.class);
-    factory(LfsPutLocksAction.Factory.class);
-    factory(LfsProjectLocks.Factory.class);
-  }
-
-  @Provides
-  LoadingCache<Project.NameKey, LfsProjectLocks> getProjectLocksCache(LfsLocksHandler.Loader loader) {
-    return CacheBuilder.newBuilder().build(loader);
+  public String apply(String path) {
+    HashCode hash = Hashing.sha256().hashString(path, StandardCharsets.UTF_8);
+    return BaseEncoding.base16().lowerCase().encode(hash.asBytes());
   }
 }

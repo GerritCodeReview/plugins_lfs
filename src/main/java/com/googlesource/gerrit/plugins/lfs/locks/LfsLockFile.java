@@ -14,22 +14,14 @@
 
 package com.googlesource.gerrit.plugins.lfs.locks;
 
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.LoadingCache;
-import com.google.gerrit.extensions.config.FactoryModule;
-import com.google.gerrit.reviewdb.client.Project;
-import com.google.inject.Provides;
+import org.eclipse.jgit.internal.storage.file.LockFile;
 
-public class LfsLocksModule extends FactoryModule {
-  @Override
-  protected void configure() {
-    factory(LfsGetLocksAction.Factory.class);
-    factory(LfsPutLocksAction.Factory.class);
-    factory(LfsProjectLocks.Factory.class);
-  }
+public class LfsLockFile {
+  public final LfsLock lfsLock;
+  public final LockFile fileLock;
 
-  @Provides
-  LoadingCache<Project.NameKey, LfsProjectLocks> getProjectLocksCache(LfsLocksHandler.Loader loader) {
-    return CacheBuilder.newBuilder().build(loader);
+  LfsLockFile(LfsLock lfsLock, LockFile fileLock) {
+    this.lfsLock = lfsLock;
+    this.fileLock = fileLock;
   }
 }
