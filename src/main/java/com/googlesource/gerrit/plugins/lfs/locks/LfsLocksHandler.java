@@ -14,10 +14,19 @@
 
 package com.googlesource.gerrit.plugins.lfs.locks;
 
-import com.google.common.collect.ImmutableList;
+import com.google.common.cache.Cache;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
+import com.google.common.collect.Lists;
 import com.google.gerrit.server.CurrentUser;
+import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import org.eclipse.jgit.lfs.errors.LfsException;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
@@ -51,67 +60,96 @@ class LfsLocksHandler {
   private static final Logger log = LoggerFactory.getLogger(LfsLockExistsException.class);
   private static final DateTimeFormatter ISO = ISODateTimeFormat.dateTime();
 
-  LfsLock createLock(String project, LfsCreateLockInput input) throws LfsLockExistsException {
-    log.debug("Create lock for {} in project {}", input.path, project);
-    //TODO: this is just the method stub lock creation
-    return new LfsLock(
-        "random_id", input.path, now(), new LfsLockOwner("Lock Owner <lock_owner@example.com>"));
+  private final PathToLockId toLockId;
+  private final LoadingCache<String, Cache<String, LfsLock>> projects;
+
+  @Inject
+  LfsLocksHandler(PathToLockId toLockId) {
+    this.toLockId = toLockId;
+    this.projects =
+        CacheBuilder.newBuilder()
+            .build(
+                new CacheLoader<String, Cache<String, LfsLock>>() {
+                  @Override
+                  public Cache<String, LfsLock> load(String key) throws Exception {
+                    return CacheBuilder.newBuilder().build();
+                  }
+                });
   }
 
-  LfsLock deleteLock(String project, String lockId, LfsDeleteLockInput input) throws LfsException {
+  LfsLock createLock(String project, CurrentUser user, LfsCreateLockInput input)
+      throws LfsLockExistsException {
+    log.debug("Create lock for {} in project {}", input.path, project);
+    String lockId = toLockId.apply(input.path);
+    Cache<String, LfsLock> locks = projects.getUnchecked(project);
+    LfsLock lock = locks.getIfPresent(lockId);
+    if (lock != null) {
+      throw new LfsLockExistsException(lock);
+    }
+
+    lock = new LfsLock(lockId, input.path, now(), new LfsLockOwner(user.getUserName()));
+    locks.put(lockId, lock);
+    return lock;
+  }
+
+  LfsLock deleteLock(String project, CurrentUser user, String lockId, LfsDeleteLockInput input)
+      throws LfsException {
     log.debug(
         "Delete (-f {}) lock for {} in project {}",
         Boolean.TRUE.equals(input.force),
         lockId,
         project);
-    //TODO: this is just the method stub for lock deletion
-    return new LfsLock(
-        lockId,
-        "some/path/to/file",
-        now(),
-        new LfsLockOwner("Lock Owner <lock_owner@example.com>"));
+    Cache<String, LfsLock> locks = projects.getUnchecked(project);
+    LfsLock lock = locks.getIfPresent(lockId);
+    if (lock == null) {
+      throw new LfsException(
+          String.format("there is no lock id %s in project %s", lockId, project));
+    }
+
+    if (lock.owner.name.equals(user.getUserName())) {
+      locks.invalidate(lockId);
+      return lock;
+    } else if (input.force) {
+      locks.invalidate(lockId);
+      return lock;
+    }
+
+    throw new LfsException(
+        String.format("Lock %s is owned by different user %s", lockId, lock.owner.name));
   }
 
-  LfsVerifyLocksResponse verifyLocks(String project, CurrentUser user) {
+  LfsVerifyLocksResponse verifyLocks(String project, final CurrentUser user) {
     log.debug("Verify list of locks for {} project and user {}", project, user);
-    //TODO method stub for verifying locks
-    return new LfsVerifyLocksResponse(Collections.emptyList(), Collections.emptyList(), null);
+    Cache<String, LfsLock> locks = projects.getUnchecked(project);
+    Function<LfsLock, Boolean> isOurs =
+        new Function<LfsLock, Boolean>() {
+          @Override
+          public Boolean apply(LfsLock input) {
+            return input.owner.name.equals(user.getUserName());
+          }
+        };
+    Map<Boolean, List<LfsLock>> groupByOurs =
+        locks.asMap().values().stream().collect(Collectors.groupingBy(isOurs));
+    return new LfsVerifyLocksResponse(groupByOurs.get(true), groupByOurs.get(false), null);
   }
 
   LfsGetLocksResponse listLocksByPath(String project, String path) {
     log.debug("Get lock for {} path in {} project", path, project);
-    // stub for searching lock by path
-    return new LfsGetLocksResponse(
-        ImmutableList.<LfsLock>builder()
-            .add(
-                new LfsLock(
-                    "random_id",
-                    path,
-                    now(),
-                    new LfsLockOwner("Lock Owner <lock_owner@example.com>")))
-            .build(),
-        null);
+    String lockId = toLockId.apply(path);
+    return listLocksById(project, lockId);
   }
 
   LfsGetLocksResponse listLocksById(String project, String id) {
     log.debug("Get lock for {} id in {} project", id, project);
-    // stub for searching lock by id
-    return new LfsGetLocksResponse(
-        ImmutableList.<LfsLock>builder()
-            .add(
-                new LfsLock(
-                    id,
-                    "path/to/file",
-                    now(),
-                    new LfsLockOwner("Lock Owner <lock_owner@example.com>")))
-            .build(),
-        null);
+    Cache<String, LfsLock> locks = projects.getUnchecked(project);
+    LfsLock lock = locks.getIfPresent(id);
+    List<LfsLock> locksById = (lock == null ? Collections.emptyList() : Lists.newArrayList(lock));
+    return new LfsGetLocksResponse(locksById, null);
   }
 
   LfsGetLocksResponse listLocks(String project) {
     log.debug("Get locks for {} project", project);
-    // stub for returning all locks
-    return new LfsGetLocksResponse(Collections.emptyList(), null);
+    return new LfsGetLocksResponse(projects.getUnchecked(project).asMap().values(), null);
   }
 
   protected String now() {
