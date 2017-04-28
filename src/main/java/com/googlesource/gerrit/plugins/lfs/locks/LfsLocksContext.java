@@ -97,9 +97,13 @@ class LfsLocksContext {
   }
 
   void sendError(int status, String message) throws IOException {
-    log.error(message);
+    sendError(status, new Error(message));
+  }
+
+  void sendError(int status, Error error) throws IOException {
+    log.error(error.message);
     res.setStatus(status);
-    gson.toJson(new Error(message), getWriter());
+    gson.toJson(error, getWriter());
     getWriter().flush();
   }
 
