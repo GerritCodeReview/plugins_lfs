@@ -28,18 +28,14 @@ import com.google.inject.Inject;
 import com.google.inject.assistedinject.Assisted;
 import com.googlesource.gerrit.plugins.lfs.LfsAuthUserProvider;
 import java.io.IOException;
-import java.util.Collections;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.eclipse.jgit.lfs.errors.LfsException;
 import org.eclipse.jgit.lfs.errors.LfsUnauthorized;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class LfsPutLocksAction extends LfsLocksAction {
   interface Factory extends LfsLocksAction.Factory<LfsPutLocksAction> {}
 
-  private static final Logger log = LoggerFactory.getLogger(LfsPutLocksAction.class);
   private static final Pattern LFS_VERIFICATION_URL_PATTERN =
       Pattern.compile(String.format(LFS_URL_REGEX_TEMPLATE, LFS_VERIFICATION_PATH));
 
@@ -49,8 +45,9 @@ public class LfsPutLocksAction extends LfsLocksAction {
   LfsPutLocksAction(
       ProjectCache projectCache,
       LfsAuthUserProvider userProvider,
+      LfsLocksHandler handler,
       @Assisted LfsLocksContext context) {
-    super(projectCache, userProvider, context);
+    super(projectCache, userProvider, handler, context);
   }
 
   @Override
@@ -104,14 +101,7 @@ public class LfsPutLocksAction extends LfsLocksAction {
     @Override
     public void run(ProjectState project, CurrentUser user) throws LfsException, IOException {
       LfsCreateLockInput input = context.input(LfsCreateLockInput.class);
-      log.debug("Create lock for {} in project {}", input.path, project);
-      //TODO: this is just the method stub lock creation
-      LfsLock lock =
-          new LfsLock(
-              "random_id",
-              input.path,
-              now(),
-              new LfsLockOwner("Lock Owner <lock_owner@example.com>"));
+      LfsLockResponse lock = handler.createLock(project.getProject().getNameKey(), user, input);
       context.sendResponse(lock);
     }
   }
@@ -131,18 +121,8 @@ public class LfsPutLocksAction extends LfsLocksAction {
     @Override
     public void run(ProjectState project, CurrentUser user) throws LfsException, IOException {
       LfsDeleteLockInput input = context.input(LfsDeleteLockInput.class);
-      log.debug(
-          "Delete (-f {}) lock for {} in project {}",
-          Boolean.TRUE.equals(input.force),
-          lockId,
-          project);
-      //TODO: this is just the method stub for lock deletion
-      LfsLock lock =
-          new LfsLock(
-              lockId,
-              "some/path/to/file",
-              now(),
-              new LfsLockOwner("Lock Owner <lock_owner@example.com>"));
+      LfsLockResponse lock =
+          handler.deleteLock(project.getProject().getNameKey(), user, lockId, input);
       context.sendResponse(lock);
     }
   }
@@ -155,10 +135,7 @@ public class LfsPutLocksAction extends LfsLocksAction {
 
     @Override
     public void run(ProjectState project, CurrentUser user) throws LfsException, IOException {
-      log.debug("Verify list of locks for {} project", project);
-      //TODO method stub for verifying locks
-      context.sendResponse(
-          new LfsVerifyLocksResponse(Collections.emptyList(), Collections.emptyList(), null));
+      context.sendResponse(handler.verifyLocks(project.getProject().getNameKey(), user));
     }
   }
 }
