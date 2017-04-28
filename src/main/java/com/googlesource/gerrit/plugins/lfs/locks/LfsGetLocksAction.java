@@ -19,13 +19,19 @@ import static com.google.gerrit.extensions.api.lfs.LfsDefinitions.LFS_URL_REGEX_
 
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableList;
+import com.google.gerrit.server.CurrentUser;
+import com.google.gerrit.server.project.ProjectCache;
+import com.google.gerrit.server.project.ProjectControl;
+import com.google.gerrit.server.project.ProjectState;
 import com.google.inject.Inject;
 import com.google.inject.assistedinject.Assisted;
+import com.googlesource.gerrit.plugins.lfs.LfsAuthUserProvider;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.eclipse.jgit.lfs.errors.LfsException;
+import org.eclipse.jgit.lfs.errors.LfsUnauthorized;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -38,23 +44,37 @@ public class LfsGetLocksAction extends LfsLocksAction {
   private static final Logger log = LoggerFactory.getLogger(LfsGetLocksAction.class);
 
   @Inject
-  LfsGetLocksAction(@Assisted LfsLocksContext context) {
-    super(context);
+  LfsGetLocksAction(
+      ProjectCache projectCache,
+      LfsAuthUserProvider userProvider,
+      @Assisted LfsLocksContext context) {
+    super(projectCache, userProvider, context);
   }
 
   @Override
-  protected void doRun() throws LfsException, IOException {
+  protected String getProjectName() throws LfsException {
     Matcher matcher = LFS_LOCKS_URL_PATTERN.matcher(context.path);
     if (matcher.matches()) {
-      String project = matcher.group(1);
-      listLocks(project);
+      return matcher.group(1);
     }
 
     throw new LfsException("no repository at " + context.path);
   }
 
-  private void listLocks(String project) throws IOException {
-    log.debug("Get list of locks for {} project", project);
+  @Override
+  protected void authorizeUser(ProjectControl control) throws LfsUnauthorized {
+    if (!control.isReadable()) {
+      throwUnauthorizedOp("list locks", control);
+    }
+  }
+
+  @Override
+  protected void doRun(ProjectState project, CurrentUser user) throws LfsException, IOException {
+    listLocks(project);
+  }
+
+  private void listLocks(ProjectState project) throws IOException {
+    log.debug("Get list of locks for {} project", project.getProject().getName());
     //TODO method stub for getting project's locks list
 
     // stub for searching lock by path
