@@ -66,6 +66,10 @@ class LfsLocksContext {
     setLfsResponseType();
   }
 
+  String getHeader(String name) {
+    return req.getHeader(name);
+  }
+
   String getParam(String name) {
     return req.getParameter(name);
   }
