@@ -104,7 +104,7 @@ public class LfsPutLocksAction extends LfsLocksAction {
     @Override
     public void run(ProjectState project, CurrentUser user) throws LfsException, IOException {
       LfsCreateLockInput input = context.input(LfsCreateLockInput.class);
-      LfsLock lock = handler.createLock(project.getProject().getName(), input);
+      LfsLockResponse lock = handler.createLock(project.getProject().getName(), user, input);
       context.sendResponse(lock);
     }
   }
@@ -124,7 +124,7 @@ public class LfsPutLocksAction extends LfsLocksAction {
     @Override
     public void run(ProjectState project, CurrentUser user) throws LfsException, IOException {
       LfsDeleteLockInput input = context.input(LfsDeleteLockInput.class);
-      LfsLock lock = handler.deleteLock(project.getProject().getName(), lockId, input);
+      LfsLockResponse lock = handler.deleteLock(project.getProject().getName(), user, lockId, input);
       context.sendResponse(lock);
     }
   }

@@ -14,14 +14,10 @@
 
 package com.googlesource.gerrit.plugins.lfs.locks;
 
-import java.util.Collection;
+public class LfsLockResponse {
+  public final LfsLock lock;
 
-public class LfsGetLocksResponse {
-  public final Collection<LfsLock> locks;
-  public final String nextCursor;
-
-  LfsGetLocksResponse(Collection<LfsLock> locks, String nextCursor) {
-    this.locks = locks;
-    this.nextCursor = nextCursor;
+  LfsLockResponse(LfsLock lock) {
+    this.lock = lock;
   }
 }
