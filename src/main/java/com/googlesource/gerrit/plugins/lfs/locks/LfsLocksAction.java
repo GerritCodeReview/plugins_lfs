@@ -15,6 +15,7 @@
 package com.googlesource.gerrit.plugins.lfs.locks;
 
 import static com.google.gerrit.extensions.client.ProjectState.HIDDEN;
+import static org.apache.http.HttpStatus.SC_CONFLICT;
 import static org.apache.http.HttpStatus.SC_INTERNAL_SERVER_ERROR;
 import static org.apache.http.HttpStatus.SC_NOT_FOUND;
 import static org.apache.http.HttpStatus.SC_UNAUTHORIZED;
@@ -28,14 +29,11 @@ import com.google.gerrit.server.project.ProjectCache;
 import com.google.gerrit.server.project.ProjectControl;
 import com.google.gerrit.server.project.ProjectState;
 import com.googlesource.gerrit.plugins.lfs.LfsAuthUserProvider;
+import com.googlesource.gerrit.plugins.lfs.locks.LfsLocksHandler.LfsLockExistsException;
 import java.io.IOException;
 import org.eclipse.jgit.lfs.errors.LfsException;
 import org.eclipse.jgit.lfs.errors.LfsRepositoryNotFound;
 import org.eclipse.jgit.lfs.errors.LfsUnauthorized;
-import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
-import org.joda.time.format.DateTimeFormatter;
-import org.joda.time.format.ISODateTimeFormat;
 import org.slf4j.Logger;
 
 abstract class LfsLocksAction {
@@ -43,18 +41,22 @@ abstract class LfsLocksAction {
     T create(LfsLocksContext context);
   }
 
-  private static final DateTimeFormatter ISO = ISODateTimeFormat.dateTime();
   /** Git LFS client uses 'upload' operation to authorize SSH Lock requests */
   private static final String LFS_LOCKING_OPERATION = "upload";
 
   protected final ProjectCache projectCache;
   protected final LfsAuthUserProvider userProvider;
+  protected final LfsLocksHandler handler;
   protected final LfsLocksContext context;
 
   protected LfsLocksAction(
-      ProjectCache projectCache, LfsAuthUserProvider userProvider, LfsLocksContext context) {
+      ProjectCache projectCache,
+      LfsAuthUserProvider userProvider,
+      LfsLocksHandler handler,
+      LfsLocksContext context) {
     this.projectCache = projectCache;
     this.userProvider = userProvider;
+    this.handler = handler;
     this.context = context;
   }
 
@@ -70,6 +72,8 @@ abstract class LfsLocksAction {
       context.sendError(SC_UNAUTHORIZED, e.getMessage());
     } catch (LfsRepositoryNotFound e) {
       context.sendError(SC_NOT_FOUND, e.getMessage());
+    } catch (LfsLockExistsException e) {
+      context.sendError(SC_CONFLICT, e.error);
     } catch (LfsException e) {
       context.sendError(SC_INTERNAL_SERVER_ERROR, e.getMessage());
     }
@@ -107,9 +111,5 @@ abstract class LfsLocksAction {
         String.format(
             "operation %s unauthorized for user %s on project %s", op, userName, project));
     throw new LfsUnauthorized(op, project);
-  }
-
-  protected String now() {
-    return ISO.print(DateTime.now().toDateTime(DateTimeZone.UTC));
   }
 }
