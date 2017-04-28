@@ -28,7 +28,7 @@ import com.google.inject.Provider;
 import com.google.inject.Singleton;
 
 @Singleton
-class LfsAuthUserProvider {
+public class LfsAuthUserProvider {
   private static final String BASIC_AUTH_PREFIX = "Basic ";
 
   private final Provider<AnonymousUser> anonymous;
@@ -51,7 +51,7 @@ class LfsAuthUserProvider {
     this.userFactory = userFactory;
   }
 
-  CurrentUser getUser(String auth, String project, String operation) {
+  public CurrentUser getUser(String auth, String project, String operation) {
     if (!Strings.isNullOrEmpty(auth)) {
       if (auth.startsWith(BASIC_AUTH_PREFIX)) {
         return user.get();
