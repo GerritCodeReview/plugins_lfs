@@ -18,7 +18,6 @@ import static com.googlesource.gerrit.plugins.lfs.LfsPaths.LFS_LOCKS_PATH;
 import static com.googlesource.gerrit.plugins.lfs.LfsPaths.URL_REGEX_TEMPLATE;
 
 import com.google.common.base.Strings;
-import com.google.common.collect.ImmutableList;
 import com.google.gerrit.server.CurrentUser;
 import com.google.gerrit.server.project.ProjectCache;
 import com.google.gerrit.server.project.ProjectControl;
@@ -27,7 +26,6 @@ import com.google.inject.Inject;
 import com.google.inject.assistedinject.Assisted;
 import com.googlesource.gerrit.plugins.lfs.LfsAuthUserProvider;
 import java.io.IOException;
-import java.util.Collections;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.eclipse.jgit.lfs.errors.LfsException;
@@ -47,8 +45,9 @@ public class LfsGetLocksAction extends LfsLocksAction {
   LfsGetLocksAction(
       ProjectCache projectCache,
       LfsAuthUserProvider userProvider,
+      LfsLocksHandler handler,
       @Assisted LfsLocksContext context) {
-    super(projectCache, userProvider, context);
+    super(projectCache, userProvider, handler, context);
   }
 
   @Override
@@ -70,48 +69,19 @@ public class LfsGetLocksAction extends LfsLocksAction {
 
   @Override
   protected void doRun(ProjectState project, CurrentUser user) throws LfsException, IOException {
-    listLocks(project);
-  }
-
-  private void listLocks(ProjectState project) throws IOException {
-    log.debug("Get list of locks for {} project", project.getProject().getName());
-    //TODO method stub for getting project's locks list
-
-    // stub for searching lock by path
+    String name = project.getProject().getName();
     String path = context.getParam("path");
     if (!Strings.isNullOrEmpty(path)) {
-      context.sendResponse(
-          new LfsGetLocksResponse(
-              ImmutableList.<LfsLock>builder()
-                  .add(
-                      new LfsLock(
-                          "random_id",
-                          path,
-                          now(),
-                          new LfsLockOwner("Lock Owner <lock_owner@example.com>")))
-                  .build(),
-              null));
+      context.sendResponse(handler.listLocksByPath(name, path));
       return;
     }
 
-    // stub for searching lock by id
     String id = context.getParam("id");
     if (!Strings.isNullOrEmpty(id)) {
-      context.sendResponse(
-          new LfsGetLocksResponse(
-              ImmutableList.<LfsLock>builder()
-                  .add(
-                      new LfsLock(
-                          id,
-                          "path/to/file",
-                          now(),
-                          new LfsLockOwner("Lock Owner <lock_owner@example.com>")))
-                  .build(),
-              null));
+      context.sendResponse(handler.listLocksById(name, id));
       return;
     }
 
-    // stub for returning all locks
-    context.sendResponse(new LfsGetLocksResponse(Collections.emptyList(), null));
+    context.sendResponse(handler.listLocks(name));
   }
 }
