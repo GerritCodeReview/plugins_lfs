@@ -14,14 +14,14 @@
 
 package com.googlesource.gerrit.plugins.lfs.locks;
 
-import java.util.Collection;
+import org.eclipse.jgit.internal.storage.file.LockFile;
 
-public class LfsGetLocksResponse {
-  public final Collection<LfsLock> locks;
-  public final String nextCursor;
+public class LfsLockFile {
+  public final LfsLock lfsLock;
+  public final LockFile fileLock;
 
-  LfsGetLocksResponse(Collection<LfsLock> locks, String nextCursor) {
-    this.locks = locks;
-    this.nextCursor = nextCursor;
+  LfsLockFile(LfsLock lfsLock, LockFile fileLock) {
+    this.lfsLock = lfsLock;
+    this.fileLock = fileLock;
   }
 }
