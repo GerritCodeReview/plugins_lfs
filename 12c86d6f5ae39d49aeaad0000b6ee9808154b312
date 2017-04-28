@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb3215e9_2d918a95",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsLocksHandler.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-04-28T14:28:13Z",
+      "side": 1,
+      "message": "fix response so that it has the following structure:\n{\n  \"lock\" : LfsLock {}\n}\nIOW LfsLock needs to be wrapped - this is according to spec",
+      "range": {
+        "startLine": 80,
+        "startChar": 2,
+        "endLine": 80,
+        "endChar": 9
+      },
+      "revId": "12c86d6f5ae39d49aeaad0000b6ee9808154b312",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b663097d_d7371f2f",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsLocksHandler.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-04-28T14:28:13Z",
+      "side": 1,
+      "message": "the same as above",
+      "range": {
+        "startLine": 95,
+        "startChar": 2,
+        "endLine": 95,
+        "endChar": 9
+      },
+      "revId": "12c86d6f5ae39d49aeaad0000b6ee9808154b312",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
