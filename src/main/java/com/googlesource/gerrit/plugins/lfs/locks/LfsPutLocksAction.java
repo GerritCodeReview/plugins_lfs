@@ -19,13 +19,20 @@ import static com.google.gerrit.extensions.api.lfs.LfsPaths.LFS_VERIFICATION_PAT
 import static com.googlesource.gerrit.plugins.lfs.locks.LfsGetLocksAction.LFS_LOCKS_URL;
 
 import com.google.common.base.Strings;
+import com.google.gerrit.common.data.Capable;
+import com.google.gerrit.server.CurrentUser;
+import com.google.gerrit.server.project.ProjectCache;
+import com.google.gerrit.server.project.ProjectControl;
+import com.google.gerrit.server.project.ProjectState;
 import com.google.inject.Inject;
 import com.google.inject.assistedinject.Assisted;
+import com.googlesource.gerrit.plugins.lfs.LfsAuthUserProvider;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.eclipse.jgit.lfs.errors.LfsException;
+import org.eclipse.jgit.lfs.errors.LfsUnauthorized;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -36,69 +43,122 @@ public class LfsPutLocksAction extends LfsLocksAction {
   private static final Pattern LFS_VERIFICATION_URL =
       Pattern.compile(String.format(LFS_URL_REGEX_TEMPLATE, LFS_VERIFICATION_PATH));
 
+  protected LockAction action;
+
   @Inject
-  LfsPutLocksAction(@Assisted LfsLocksContext context) {
-    super(context);
+  LfsPutLocksAction(
+      ProjectCache projectCache,
+      LfsAuthUserProvider userProvider,
+      @Assisted LfsLocksContext context) {
+    super(projectCache, userProvider, context);
   }
 
   @Override
-  protected void doRun() throws LfsException, IOException {
+  protected String getProjectName() throws LfsException {
     Matcher matcher = LFS_LOCKS_URL.matcher(context.path);
     if (matcher.matches()) {
       String project = matcher.group(1);
       String lockId = matcher.group(2);
       if (Strings.isNullOrEmpty(lockId)) {
-        createLock(project, context);
+        action = new CreateLock();
       } else {
-        deleteLock(project, lockId, context);
+        action = new DeleteLock(lockId);
       }
-      return;
+      return project;
     }
 
     matcher = LFS_VERIFICATION_URL.matcher(context.path);
     if (matcher.matches()) {
-      verifyLocks(matcher.group(1), context);
-      return;
+      action = new VerifyLock();
+      return matcher.group(1);
     }
 
     throw new LfsException(String.format("Unsupported path %s was provided", context.path));
   }
 
-  private void verifyLocks(String project, LfsLocksContext action) throws IOException {
-    log.debug("Verify list of locks for {} project", project);
-    //TODO method stub for verifying locks
-    action.sendResponse(
-        new LfsVerifyLocksResponse(Collections.emptyList(), Collections.emptyList(), null));
+  @Override
+  protected void authorizeUser(ProjectControl control) throws LfsUnauthorized {
+    // all operations require push permission
+    if (Capable.OK != control.canPushToAtLeastOneRef()) {
+      throwUnauthorizedOp(action.getName(), control);
+    }
   }
 
-  private void deleteLock(String project, String lockId, LfsLocksContext action)
-      throws IOException {
-    LfsDeleteLockInput input = action.input(LfsDeleteLockInput.class);
-    log.debug(
-        "Delete (-f {}) lock for {} in project {}",
-        Boolean.TRUE.equals(input.force),
-        lockId,
-        project);
-    //TODO: this is just the method stub for lock deletion
-    LfsLock lock =
-        new LfsLock(
-            "random_id",
-            "some/path/to/file",
-            now(),
-            new LfsLockOwner("Lock Owner <lock_owner@example.com>"));
-    action.sendResponse(lock);
+  @Override
+  protected void doRun(ProjectState project, CurrentUser user) throws LfsException, IOException {
+    action.run(project, user);
   }
 
-  private void createLock(String project, LfsLocksContext action) throws IOException {
-    LfsCreateLockInput input = action.input(LfsCreateLockInput.class);
-    log.debug("Create lock for {} in project {}", input.path, project);
-    //TODO: this is just the method stub lock creation
-    LfsLock lock =
-        new LfsLock(
-            "random_id",
-            input.path,
-            now(),
-            new LfsLockOwner("Lock Owner <lock_owner@example.com>"));
-    action.sendResponse(lock);
+  private interface LockAction {
+    String getName();
+
+    void run(ProjectState project, CurrentUser user) throws LfsException, IOException;
+  }
+
+  private class CreateLock implements LockAction {
+    @Override
+    public String getName() {
+      return "create lock";
+    }
+
+    @Override
+    public void run(ProjectState project, CurrentUser user) throws LfsException, IOException {
+      LfsCreateLockInput input = context.input(LfsCreateLockInput.class);
+      log.debug("Create lock for {} in project {}", input.path, project);
+      //TODO: this is just the method stub lock creation
+      LfsLock lock =
+          new LfsLock(
+              "random_id",
+              input.path,
+              now(),
+              new LfsLockOwner("Lock Owner <lock_owner@example.com>"));
+      context.sendResponse(lock);
+    }
+  }
+
+  private class DeleteLock implements LockAction {
+    private final String lockId;
+
+    private DeleteLock(String lockId) {
+      this.lockId = lockId;
+    }
+
+    @Override
+    public String getName() {
+      return "delete lock";
+    }
+
+    @Override
+    public void run(ProjectState project, CurrentUser user) throws LfsException, IOException {
+      LfsDeleteLockInput input = context.input(LfsDeleteLockInput.class);
+      log.debug(
+          "Delete (-f {}) lock for {} in project {}",
+          Boolean.TRUE.equals(input.force),
+          lockId,
+          project);
+      //TODO: this is just the method stub for lock deletion
+      LfsLock lock =
+          new LfsLock(
+              lockId,
+              "some/path/to/file",
+              now(),
+              new LfsLockOwner("Lock Owner <lock_owner@example.com>"));
+      context.sendResponse(lock);
+    }
+  }
+
+  private class VerifyLock implements LockAction {
+    @Override
+    public String getName() {
+      return "verify lock";
+    }
+
+    @Override
+    public void run(ProjectState project, CurrentUser user) throws LfsException, IOException {
+      log.debug("Verify list of locks for {} project", project);
+      //TODO method stub for verifying locks
+      context.sendResponse(
+          new LfsVerifyLocksResponse(Collections.emptyList(), Collections.emptyList(), null));
+    }
   }
 }
