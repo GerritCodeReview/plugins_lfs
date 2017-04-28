@@ -14,14 +14,16 @@
 
 package com.googlesource.gerrit.plugins.lfs.locks;
 
-import com.google.gerrit.extensions.config.FactoryModule;
+import com.google.common.base.Function;
+import com.google.common.hash.HashCode;
+import com.google.common.hash.Hashing;
+import com.google.common.io.BaseEncoding;
+import java.nio.charset.StandardCharsets;
 
-public class LfsLocksModule extends FactoryModule {
+public class PathToLockId implements Function<String, String> {
   @Override
-  protected void configure() {
-    factory(LfsGetLocksAction.Factory.class);
-    factory(LfsPutLocksAction.Factory.class);
-    factory(LfsProjectLocks.Factory.class);
-    install(LfsLocksHandler.module());
+  public String apply(String path) {
+    HashCode hash = Hashing.sha256().hashString(path, StandardCharsets.UTF_8);
+    return BaseEncoding.base16().lowerCase().encode(hash.asBytes());
   }
 }

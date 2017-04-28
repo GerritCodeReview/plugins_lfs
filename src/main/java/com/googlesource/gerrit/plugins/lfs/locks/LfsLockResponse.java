@@ -14,14 +14,10 @@
 
 package com.googlesource.gerrit.plugins.lfs.locks;
 
-import com.google.gerrit.extensions.config.FactoryModule;
+public class LfsLockResponse {
+  public final LfsLock lock;
 
-public class LfsLocksModule extends FactoryModule {
-  @Override
-  protected void configure() {
-    factory(LfsGetLocksAction.Factory.class);
-    factory(LfsPutLocksAction.Factory.class);
-    factory(LfsProjectLocks.Factory.class);
-    install(LfsLocksHandler.module());
+  LfsLockResponse(LfsLock lock) {
+    this.lock = lock;
   }
 }

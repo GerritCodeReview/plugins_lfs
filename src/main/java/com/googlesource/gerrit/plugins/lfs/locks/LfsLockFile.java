@@ -14,14 +14,14 @@
 
 package com.googlesource.gerrit.plugins.lfs.locks;
 
-import com.google.gerrit.extensions.config.FactoryModule;
+import org.eclipse.jgit.internal.storage.file.LockFile;
 
-public class LfsLocksModule extends FactoryModule {
-  @Override
-  protected void configure() {
-    factory(LfsGetLocksAction.Factory.class);
-    factory(LfsPutLocksAction.Factory.class);
-    factory(LfsProjectLocks.Factory.class);
-    install(LfsLocksHandler.module());
+public class LfsLockFile {
+  public final LfsLock lfsLock;
+  public final LockFile fileLock;
+
+  LfsLockFile(LfsLock lfsLock, LockFile fileLock) {
+    this.lfsLock = lfsLock;
+    this.fileLock = fileLock;
   }
 }
