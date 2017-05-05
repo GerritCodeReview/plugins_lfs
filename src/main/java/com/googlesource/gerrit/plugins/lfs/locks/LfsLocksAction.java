@@ -102,8 +102,7 @@ abstract class LfsLocksAction {
         context.getHeader(HDR_AUTHORIZATION), project, LFS_LOCKING_OPERATION);
   }
 
-  protected void throwUnauthorizedOp(String op, ProjectControl control)
-      throws LfsUnauthorized {
+  protected void throwUnauthorizedOp(String op, ProjectControl control) throws LfsUnauthorized {
     String project = control.getProject().getName();
     String userName =
         Strings.isNullOrEmpty(control.getUser().getUserName())
