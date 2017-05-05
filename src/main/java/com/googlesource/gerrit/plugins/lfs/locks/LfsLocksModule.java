@@ -21,5 +21,6 @@ public class LfsLocksModule extends FactoryModule {
   protected void configure() {
     factory(LfsGetLocksAction.Factory.class);
     factory(LfsPutLocksAction.Factory.class);
+    factory(LfsProjectLocks.Factory.class);
   }
 }
