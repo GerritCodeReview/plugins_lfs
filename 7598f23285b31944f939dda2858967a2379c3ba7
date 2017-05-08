@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d38497e6_7775dac0",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsLocksHandler.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-05-08T07:34:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4f3cf9d_ad547f08",
+      "range": {
+        "startLine": 17,
+        "startChar": 7,
+        "endLine": 17,
+        "endChar": 39
+      },
+      "revId": "7598f23285b31944f939dda2858967a2379c3ba7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b1beacc9_520f89b4",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsLocksHandler.java",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-05-08T05:39:32Z",
       "side": 1,
       "message": "Should locksById be immutable?  I.e. use ImmutableList or UnmodifiableList?",
+      "range": {
+        "startLine": 129,
+        "startChar": 28,
+        "endLine": 129,
+        "endChar": 84
+      },
+      "revId": "7598f23285b31944f939dda2858967a2379c3ba7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "687ab882_a6edc0d8",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsLocksHandler.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-05-08T07:34:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1beacc9_520f89b4",
       "range": {
         "startLine": 129,
         "startChar": 28,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "3602035d_504556df",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsProjectLocks.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-05-08T07:34:17Z",
+      "side": 1,
+      "message": "I am not sure if I follow - idea is to not even bother walking over directory content if directory doesn\u0027t exist. First successful lock results in project directory creation - once this is done it will always go over content to read existing locks. Just wanted to avoid creating empty directories on Gerrit start ;)",
+      "parentUuid": "7f682884_803a334b",
+      "range": {
+        "startLine": 69,
+        "startChar": 4,
+        "endLine": 71,
+        "endChar": 5
+      },
+      "revId": "7598f23285b31944f939dda2858967a2379c3ba7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41d7f943_1b411fe2",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsProjectLocks.java",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "0c6e915e_badcdb6a",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsProjectLocks.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-05-08T07:34:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41d7f943_1b411fe2",
+      "range": {
+        "startLine": 136,
+        "startChar": 28,
+        "endLine": 136,
+        "endChar": 35
+      },
+      "revId": "7598f23285b31944f939dda2858967a2379c3ba7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "517ddca8_a698a563",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsProjectLocks.java",
         "patchSetId": 1
@@ -105,6 +201,30 @@
       "writtenOn": "2017-05-08T05:39:32Z",
       "side": 1,
       "message": "Inline this?",
+      "range": {
+        "startLine": 190,
+        "startChar": 2,
+        "endLine": 195,
+        "endChar": 3
+      },
+      "revId": "7598f23285b31944f939dda2858967a2379c3ba7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a09fa65c_430b6aad",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsProjectLocks.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-05-08T07:34:17Z",
+      "side": 1,
+      "message": "have turned it into static - there is no point in having multiple GSON instances (one per project) - it is thread safe.",
+      "parentUuid": "517ddca8_a698a563",
       "range": {
         "startLine": 190,
         "startChar": 2,
