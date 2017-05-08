@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "5e498853_af28a948",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsProjectLocks.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2017-05-08T07:37:16Z",
+      "side": 1,
+      "message": "OK, if it gets created later it\u0027s fine.",
+      "parentUuid": "3602035d_504556df",
+      "range": {
+        "startLine": 69,
+        "startChar": 4,
+        "endLine": 71,
+        "endChar": 5
+      },
+      "revId": "7598f23285b31944f939dda2858967a2379c3ba7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41d7f943_1b411fe2",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsProjectLocks.java",
         "patchSetId": 1
