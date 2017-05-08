@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d4f3cf9d_ad547f08",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsLocksHandler.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2017-05-08T05:39:32Z",
+      "side": 1,
+      "message": "Use java.util.Optional",
+      "range": {
+        "startLine": 17,
+        "startChar": 7,
+        "endLine": 17,
+        "endChar": 39
+      },
+      "revId": "7598f23285b31944f939dda2858967a2379c3ba7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b1beacc9_520f89b4",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsLocksHandler.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2017-05-08T05:39:32Z",
+      "side": 1,
+      "message": "Should locksById be immutable?  I.e. use ImmutableList or UnmodifiableList?",
+      "range": {
+        "startLine": 129,
+        "startChar": 28,
+        "endLine": 129,
+        "endChar": 84
+      },
+      "revId": "7598f23285b31944f939dda2858967a2379c3ba7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f682884_803a334b",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsProjectLocks.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2017-05-08T05:39:32Z",
+      "side": 1,
+      "message": "Do we need to create it?",
+      "range": {
+        "startLine": 69,
+        "startChar": 4,
+        "endLine": 71,
+        "endChar": 5
+      },
+      "revId": "7598f23285b31944f939dda2858967a2379c3ba7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "41d7f943_1b411fe2",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsProjectLocks.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2017-05-08T05:39:32Z",
+      "side": 1,
+      "message": "\"lock\"?",
+      "range": {
+        "startLine": 136,
+        "startChar": 28,
+        "endLine": 136,
+        "endChar": 35
+      },
+      "revId": "7598f23285b31944f939dda2858967a2379c3ba7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "517ddca8_a698a563",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsProjectLocks.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2017-05-08T05:39:32Z",
+      "side": 1,
+      "message": "Inline this?",
+      "range": {
+        "startLine": 190,
+        "startChar": 2,
+        "endLine": 195,
+        "endChar": 3
+      },
+      "revId": "7598f23285b31944f939dda2858967a2379c3ba7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
