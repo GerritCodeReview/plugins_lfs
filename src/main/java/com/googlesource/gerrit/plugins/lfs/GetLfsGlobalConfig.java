@@ -14,6 +14,8 @@
 
 package com.googlesource.gerrit.plugins.lfs;
 
+import static com.google.gerrit.server.permissions.GlobalPermission.ADMINISTRATE_SERVER;
+
 import com.google.common.collect.Maps;
 import com.google.gerrit.extensions.restapi.ResourceNotFoundException;
 import com.google.gerrit.extensions.restapi.RestApiException;
@@ -21,6 +23,7 @@ import com.google.gerrit.extensions.restapi.RestReadView;
 import com.google.gerrit.server.CurrentUser;
 import com.google.gerrit.server.IdentifiedUser;
 import com.google.gerrit.server.config.AllProjectsName;
+import com.google.gerrit.server.permissions.PermissionBackend;
 import com.google.gerrit.server.project.ProjectResource;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
@@ -33,22 +36,25 @@ class GetLfsGlobalConfig implements RestReadView<ProjectResource> {
   private final LfsConfigurationFactory lfsConfigFactory;
   private final AllProjectsName allProjectsName;
   private final Provider<CurrentUser> self;
+  private final PermissionBackend permissionBackend;
 
   @Inject
   GetLfsGlobalConfig(
       LfsConfigurationFactory lfsConfigFactory,
       AllProjectsName allProjectsName,
-      Provider<CurrentUser> self) {
+      Provider<CurrentUser> self,
+      PermissionBackend permissionBackend) {
     this.lfsConfigFactory = lfsConfigFactory;
     this.allProjectsName = allProjectsName;
     this.self = self;
+    this.permissionBackend = permissionBackend;
   }
 
   @Override
   public LfsGlobalConfigInfo apply(ProjectResource resource) throws RestApiException {
     IdentifiedUser user = self.get().asIdentifiedUser();
     if (!(resource.getNameKey().equals(allProjectsName)
-        && user.getCapabilities().canAdministrateServer())) {
+        && permissionBackend.user(user).testOrFalse(ADMINISTRATE_SERVER))) {
       throw new ResourceNotFoundException();
     }
 

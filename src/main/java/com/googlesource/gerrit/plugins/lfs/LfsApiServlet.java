@@ -17,12 +17,14 @@ package com.googlesource.gerrit.plugins.lfs;
 import static com.google.gerrit.extensions.client.ProjectState.HIDDEN;
 import static com.google.gerrit.extensions.client.ProjectState.READ_ONLY;
 import static com.google.gerrit.httpd.plugins.LfsPluginServlet.URL_REGEX;
+import static com.google.gerrit.server.permissions.ProjectPermission.READ;
 
 import com.google.common.base.Strings;
 import com.google.gerrit.common.ProjectUtil;
 import com.google.gerrit.common.data.Capable;
 import com.google.gerrit.reviewdb.client.Project;
 import com.google.gerrit.server.CurrentUser;
+import com.google.gerrit.server.permissions.PermissionBackend;
 import com.google.gerrit.server.project.ProjectCache;
 import com.google.gerrit.server.project.ProjectControl;
 import com.google.gerrit.server.project.ProjectState;
@@ -52,6 +54,7 @@ public class LfsApiServlet extends LfsProtocolServlet {
   private static final String UPLOAD = "upload";
 
   private final ProjectCache projectCache;
+  private final PermissionBackend permissionBackend;
   private final LfsConfigurationFactory lfsConfigFactory;
   private final LfsRepositoryResolver repoResolver;
   private final LfsAuthUserProvider userProvider;
@@ -59,10 +62,12 @@ public class LfsApiServlet extends LfsProtocolServlet {
   @Inject
   LfsApiServlet(
       ProjectCache projectCache,
+      PermissionBackend permissionBackend,
       LfsConfigurationFactory lfsConfigFactory,
       LfsRepositoryResolver repoResolver,
       LfsAuthUserProvider userProvider) {
     this.projectCache = projectCache;
+    this.permissionBackend = permissionBackend;
     this.lfsConfigFactory = lfsConfigFactory;
     this.repoResolver = repoResolver;
     this.userProvider = userProvider;
@@ -123,7 +128,11 @@ public class LfsApiServlet extends LfsProtocolServlet {
   private void authorizeUser(CurrentUser user, ProjectState state, String operation)
       throws LfsUnauthorized {
     ProjectControl control = state.controlFor(user);
-    if ((operation.equals(DOWNLOAD) && !control.isReadable())
+    if ((operation.equals(DOWNLOAD)
+            && !permissionBackend
+                .user(user)
+                .project(state.getProject().getNameKey())
+                .testOrFalse(READ))
         || (operation.equals(UPLOAD) && Capable.OK != control.canPushToAtLeastOneRef())) {
       String op = operation.toLowerCase();
       String project = state.getProject().getName();

@@ -14,6 +14,7 @@
 
 package com.googlesource.gerrit.plugins.lfs;
 
+import static com.google.gerrit.server.permissions.GlobalPermission.ADMINISTRATE_SERVER;
 import static com.googlesource.gerrit.plugins.lfs.LfsProjectConfigSection.KEY_BACKEND;
 import static com.googlesource.gerrit.plugins.lfs.LfsProjectConfigSection.KEY_ENABLED;
 import static com.googlesource.gerrit.plugins.lfs.LfsProjectConfigSection.KEY_MAX_OBJECT_SIZE;
@@ -30,6 +31,7 @@ import com.google.gerrit.server.CurrentUser;
 import com.google.gerrit.server.IdentifiedUser;
 import com.google.gerrit.server.config.AllProjectsName;
 import com.google.gerrit.server.git.MetaDataUpdate;
+import com.google.gerrit.server.permissions.PermissionBackend;
 import com.google.gerrit.server.project.ProjectResource;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
@@ -47,6 +49,7 @@ class PutLfsGlobalConfig implements RestModifyView<ProjectResource, LfsGlobalCon
 
   private final String pluginName;
   private final AllProjectsName allProjectsName;
+  private final PermissionBackend permissionBackned;
   private final Provider<CurrentUser> self;
   private final Provider<MetaDataUpdate.User> metaDataUpdateFactory;
   private final LfsConfigurationFactory lfsConfigFactory;
@@ -56,12 +59,14 @@ class PutLfsGlobalConfig implements RestModifyView<ProjectResource, LfsGlobalCon
   PutLfsGlobalConfig(
       @PluginName String pluginName,
       AllProjectsName allProjectsName,
+      PermissionBackend permissionBackned,
       Provider<CurrentUser> self,
       Provider<MetaDataUpdate.User> metaDataUpdateFactory,
       LfsConfigurationFactory lfsConfigFactory,
       GetLfsGlobalConfig get) {
     this.pluginName = pluginName;
     this.allProjectsName = allProjectsName;
+    this.permissionBackned = permissionBackned;
     this.self = self;
     this.metaDataUpdateFactory = metaDataUpdateFactory;
     this.lfsConfigFactory = lfsConfigFactory;
@@ -74,7 +79,8 @@ class PutLfsGlobalConfig implements RestModifyView<ProjectResource, LfsGlobalCon
     IdentifiedUser user = self.get().asIdentifiedUser();
     Project.NameKey projectName = resource.getNameKey();
 
-    if (!(projectName.equals(allProjectsName) && user.getCapabilities().canAdministrateServer())) {
+    if (!(projectName.equals(allProjectsName)
+        && permissionBackned.user(user).testOrFalse(ADMINISTRATE_SERVER))) {
       throw new ResourceNotFoundException();
     }
 
