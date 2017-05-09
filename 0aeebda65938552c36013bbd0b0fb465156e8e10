@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "003d86ba_c02124be",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2017-05-09T04:47:41Z",
+      "side": 1,
+      "message": "reused",
+      "range": {
+        "startLine": 9,
+        "startChar": 54,
+        "endLine": 9,
+        "endChar": 61
+      },
+      "revId": "0aeebda65938552c36013bbd0b0fb465156e8e10",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fcb03a7c_cde6216b",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsLocksContext.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2017-05-09T04:47:41Z",
+      "side": 1,
+      "message": "missing header",
+      "revId": "0aeebda65938552c36013bbd0b0fb465156e8e10",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
