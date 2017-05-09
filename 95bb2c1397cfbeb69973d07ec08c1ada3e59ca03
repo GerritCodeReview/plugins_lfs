@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c61e1cf_47fc2ebb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-05-09T13:46:45Z",
+      "side": 1,
+      "message": "It would help if you describe how LFS plugin(s) are supposed to implement these stubs.",
+      "revId": "95bb2c1397cfbeb69973d07ec08c1ada3e59ca03",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cd38b25_640114f3",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsPaths.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-05-09T13:46:45Z",
+      "side": 1,
+      "message": "There are quite some complex regex-es involved here. Could you add unit tests which make sure that they match exactly what they are supposed to match?",
+      "revId": "95bb2c1397cfbeb69973d07ec08c1ada3e59ca03",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06ea4400_98d7e9ee",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsPaths.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-05-09T13:46:45Z",
+      "side": 1,
+      "message": "This is also a regex but its name suggests it is a path. Compared with all other names here, this looks inconsistent.",
+      "revId": "95bb2c1397cfbeb69973d07ec08c1ada3e59ca03",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
