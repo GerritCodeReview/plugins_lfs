@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8cc9f092_b039e57b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2017-05-09T14:46:22Z",
+      "side": 1,
+      "message": "The implementations are added in later commits.  It\u0027s not intended that other plugins implement them.",
+      "parentUuid": "8c61e1cf_47fc2ebb",
+      "revId": "95bb2c1397cfbeb69973d07ec08c1ada3e59ca03",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9cd38b25_640114f3",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsPaths.java",
         "patchSetId": 5
