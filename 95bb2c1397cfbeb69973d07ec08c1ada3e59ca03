@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "f1edb09f_b5a4a441",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsPaths.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2017-05-16T01:47:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cd38b25_640114f3",
+      "revId": "95bb2c1397cfbeb69973d07ec08c1ada3e59ca03",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "06ea4400_98d7e9ee",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsPaths.java",
         "patchSetId": 5
@@ -65,6 +83,24 @@
       "writtenOn": "2017-05-09T13:46:45Z",
       "side": 1,
       "message": "This is also a regex but its name suggests it is a path. Compared with all other names here, this looks inconsistent.",
+      "revId": "95bb2c1397cfbeb69973d07ec08c1ada3e59ca03",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86862b81_f77eaf71",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsPaths.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2017-05-16T01:47:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06ea4400_98d7e9ee",
       "revId": "95bb2c1397cfbeb69973d07ec08c1ada3e59ca03",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
