@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e139c71_aff793c2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-05-17T11:07:03Z",
+      "side": 1,
+      "message": "Looking at the changed code I don\u0027t see how the exception handling is changed.\n\nAlso, this change adds a lot of new files which I cannot relate to the unification of exception handling.",
+      "revId": "e18eca5d1cb175db2c64e37287fd14f718ab12e4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
