@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "5831ae84_eb75ffe4",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsPaths.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-05-17T12:58:09Z",
+      "side": 1,
+      "message": "The same tests were added as in [1] as they cover the same functionality but from plugin perspective.\n\n[1] com.google.gerrit.httpd.plugins.LfsPluginServletTest",
+      "parentUuid": "9cd38b25_640114f3",
+      "revId": "95bb2c1397cfbeb69973d07ec08c1ada3e59ca03",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "06ea4400_98d7e9ee",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsPaths.java",
         "patchSetId": 5
@@ -118,6 +136,24 @@
       "writtenOn": "2017-05-16T01:47:36Z",
       "side": 1,
       "message": "Done",
+      "parentUuid": "06ea4400_98d7e9ee",
+      "revId": "95bb2c1397cfbeb69973d07ec08c1ada3e59ca03",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f79492a4_496f08c5",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsPaths.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-05-17T12:58:09Z",
+      "side": 1,
+      "message": "renamed to regex",
       "parentUuid": "06ea4400_98d7e9ee",
       "revId": "95bb2c1397cfbeb69973d07ec08c1ada3e59ca03",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
