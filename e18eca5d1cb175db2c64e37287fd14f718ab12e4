@@ -16,6 +16,24 @@
       "revId": "e18eca5d1cb175db2c64e37287fd14f718ab12e4",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1ef9467_a53d4c58",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-05-17T13:21:45Z",
+      "side": 1,
+      "message": "It introduces LocksAction that becomes centre point of locks requests and unifies the way how exceptions are handled (through LfsException) and sends response in the way which is already known to Git LFS client. I will add that to patch description.",
+      "parentUuid": "4e139c71_aff793c2",
+      "revId": "e18eca5d1cb175db2c64e37287fd14f718ab12e4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
