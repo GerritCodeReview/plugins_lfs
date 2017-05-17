@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98c035e4_8b332aa1",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsLocksHandler.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-05-17T12:09:00Z",
+      "side": 1,
+      "message": "Optional:\n\nCould we use Project.NameKey here?",
+      "range": {
+        "startLine": 72,
+        "startChar": 32,
+        "endLine": 72,
+        "endChar": 38
+      },
+      "revId": "604a28fa002325b8a7cb4b539d8db6b21c29150f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8604de19_90a56f97",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsLocksHandler.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-05-17T12:09:00Z",
+      "side": 1,
+      "message": "Can we rely on the presence of an element in a guava cache?\n\nGuava cache will remove LRU elements when the cache approaches its full capacity. Even if a lock was put into the cache it may not exist when this code checks for it.",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 5
+      },
+      "revId": "604a28fa002325b8a7cb4b539d8db6b21c29150f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
