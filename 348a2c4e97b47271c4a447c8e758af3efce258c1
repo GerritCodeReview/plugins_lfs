@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f31a5b12_b8cd7833",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsPaths.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-05-17T10:09:11Z",
+      "side": 1,
+      "message": "The value is a regex",
+      "range": {
+        "startLine": 23,
+        "startChar": 41,
+        "endLine": 23,
+        "endChar": 46
+      },
+      "revId": "348a2c4e97b47271c4a447c8e758af3efce258c1",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fb9bccc_3f0f2cd7",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/lfs/LfsPathsTest.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-05-17T10:09:11Z",
+      "side": 1,
+      "message": "If this is true then the same regex-es must have been used both in Gerrit core and in the plugin. Right?\nIn that case we wouldn\u0027t need to repeat the tests here, but we also wouldn\u0027t need to repeat all the regex-es here.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 75
+      },
+      "revId": "348a2c4e97b47271c4a447c8e758af3efce258c1",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}

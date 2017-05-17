@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "5ef77d2a_2c7f79ca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-05-17T10:09:11Z",
+      "side": 1,
+      "message": "Correct.\n\nIt must be that I imagined that this change was done in Gerrit core when I wrote my previous comment. Sorry.",
+      "parentUuid": "8cc9f092_b039e57b",
+      "revId": "95bb2c1397cfbeb69973d07ec08c1ada3e59ca03",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9cd38b25_640114f3",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsPaths.java",
         "patchSetId": 5
