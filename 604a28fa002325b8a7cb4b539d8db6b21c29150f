@@ -141,6 +141,30 @@
       "revId": "604a28fa002325b8a7cb4b539d8db6b21c29150f",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c1516bbc_18b5cbc8",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsLocksHandler.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-05-18T07:42:05Z",
+      "side": 1,
+      "message": "\u003e When there is parameterless newBuilder() used for cache creation\n \u003e there is no automatic eviction of any type enforced - do you thing\n \u003e that there should be?\n\nI didn\u0027t know that. My assumption was that there is always some\ndefault max size so that cache cannot grow indefinitely.\n\nBtw, since with the current design there is no automatic eviction\nthe cache could grow indefinitely. Right? Is this a concern?",
+      "parentUuid": "284eac7d_7ce9e32a",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 5
+      },
+      "revId": "604a28fa002325b8a7cb4b539d8db6b21c29150f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
