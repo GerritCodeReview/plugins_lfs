@@ -19,6 +19,7 @@ import com.google.common.cache.LoadingCache;
 import com.google.gerrit.extensions.config.FactoryModule;
 import com.google.gerrit.reviewdb.client.Project;
 import com.google.inject.Provides;
+import java.util.concurrent.TimeUnit;
 
 public class LfsLocksModule extends FactoryModule {
   @Override
@@ -31,6 +32,6 @@ public class LfsLocksModule extends FactoryModule {
   @Provides
   LoadingCache<Project.NameKey, LfsProjectLocks> getProjectLocksCache(
       LfsLocksHandler.Loader loader) {
-    return CacheBuilder.newBuilder().build(loader);
+    return CacheBuilder.newBuilder().expireAfterAccess(1, TimeUnit.HOURS).build(loader);
   }
 }
