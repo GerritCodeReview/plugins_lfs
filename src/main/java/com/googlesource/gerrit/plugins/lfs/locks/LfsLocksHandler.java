@@ -26,6 +26,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import org.eclipse.jgit.lfs.errors.LfsException;
@@ -62,7 +63,7 @@ class LfsLocksHandler {
   @Inject
   LfsLocksHandler(PathToLockId toLockId, LfsLocksHandler.Loader loader) {
     this.toLockId = toLockId;
-    this.projects = CacheBuilder.newBuilder().build(loader);
+    this.projects = CacheBuilder.newBuilder().expireAfterAccess(1, TimeUnit.HOURS).build(loader);
   }
 
   LfsLockResponse createLock(Project.NameKey project, CurrentUser user, LfsCreateLockInput input)
