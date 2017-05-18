@@ -93,6 +93,30 @@
       "revId": "604a28fa002325b8a7cb4b539d8db6b21c29150f",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff115195_0dbabd7d",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsLocksHandler.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2017-05-18T01:03:55Z",
+      "side": 1,
+      "message": "Add this design detail in the commit message?",
+      "parentUuid": "284eac7d_7ce9e32a",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 5
+      },
+      "revId": "604a28fa002325b8a7cb4b539d8db6b21c29150f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
