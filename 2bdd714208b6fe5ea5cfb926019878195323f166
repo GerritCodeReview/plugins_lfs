@@ -142,6 +142,30 @@
       "revId": "2bdd714208b6fe5ea5cfb926019878195323f166",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b86a8a6f_42f4bbb8",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsLocksHandler.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-05-23T14:51:29Z",
+      "side": 1,
+      "message": "https://gerrit-review.googlesource.com/c/105856/7/src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsProjectLocks.java#105 :)",
+      "parentUuid": "634ecc9b_155fd024",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 28
+      },
+      "revId": "2bdd714208b6fe5ea5cfb926019878195323f166",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
