@@ -46,6 +46,30 @@
       "revId": "546acad9871532251f0f2fe0d94fd6707f983567",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d756951c_c3ac0a85",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsProjectLocks.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-05-23T16:22:21Z",
+      "side": 1,
+      "message": "\u003e cache contains LfsLock objects that are memory representation of\n \u003e existing lock files which are just regular files;\n\nThis means that in-memory cache is the main source of truth about existing locks?\nWhat if some emergency requires a Gerrit server restart? All locks are lost?\n\n \u003e LockFile (jgit) is used only at the time of file creation to\n \u003e guarantee that it will be created and stored by single thread.\n\nIf it is used only for that purpose then jgit LockFile is not really needed?\nThe same could be achieved by, for example, ConcurrentMap.putIfAbsent which is atomic and thread safe.\nAt least in a single-server scenario LockFile is not needed.\n\n\u003e App\n \u003e is not holding *.lock files forever only for the time needed to\n \u003e create a file and push LfsLock to cache.\n\nWhy does it then need to (again) create a LockFile in the deleteLock method? Why not simply remove from the in-memory cache?\n\n\u003e Having said that I\n \u003e believe:\n \u003e 1. we need this call to not even try to create lock if file already\n \u003e exists\n \u003e 2. line 147 locks.put(lockId, lock) should be moved to line 143 so\n \u003e that it happens before LockFile is released\n \u003e 3. there is no chance that other process will create the same lock\n \u003e as it will be either free to start doing it (in case both will\n \u003e check that there is no lock there) but only one will succeed in\n \u003e creating the *.lock file...",
+      "parentUuid": "b170a4ca_eadb0acf",
+      "range": {
+        "startLine": 105,
+        "startChar": 4,
+        "endLine": 105,
+        "endChar": 46
+      },
+      "revId": "546acad9871532251f0f2fe0d94fd6707f983567",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
