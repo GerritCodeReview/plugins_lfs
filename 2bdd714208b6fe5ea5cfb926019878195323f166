@@ -46,6 +46,30 @@
       "revId": "2bdd714208b6fe5ea5cfb926019878195323f166",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ac4dfb2_9204d774",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsLocksHandler.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-05-23T10:56:44Z",
+      "side": 1,
+      "message": "OK, only one thread can successfully create (JGit) LockFile instance.\n\nBut then what is the purpose of the check in 86-89?\nIt doesn\u0027t really bring anything because:\n* the lock may be present at line 86 and may be released just before throwing the exception at the line 88\n* the lock may be not-present at line 86 but already present before line 91\n\nThe only thing that matters is which thread first succeeds to create the LockFile.\nMy proposal is that the very first action must be creation of the LockFile.",
+      "parentUuid": "4eb466cd_b762d071",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 28
+      },
+      "revId": "2bdd714208b6fe5ea5cfb926019878195323f166",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
