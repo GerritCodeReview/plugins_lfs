@@ -117,6 +117,30 @@
       "revId": "348a2c4e97b47271c4a447c8e758af3efce258c1",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a02aa8aa_fb8d3bba",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/lfs/LfsPathsTest.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-05-23T10:28:49Z",
+      "side": 1,
+      "message": "I have tried to place them in gerrit-extension-api but it is not referenced in LfsPluginServlet :/ I am opened for suggestions as gerrit-common seems to be to broad...",
+      "parentUuid": "fc6423a0_41fd684e",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 75
+      },
+      "revId": "348a2c4e97b47271c4a447c8e758af3efce258c1",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
