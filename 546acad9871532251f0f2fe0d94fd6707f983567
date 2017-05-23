@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b170a4ca_eadb0acf",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsProjectLocks.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-05-23T11:58:56Z",
+      "side": 1,
+      "message": "cache contains LfsLock objects that are memory representation of existing lock files which are just regular files;\nLockFile (jgit) is used only at the time of file creation to guarantee that it will be created and stored by single thread. App is not holding *.lock files forever only for the time needed to create a file and push LfsLock to cache. Having said that I believe:\n1. we need this call to not even try to create lock if file already exists\n2. line 147 locks.put(lockId, lock) should be moved to line 143 so that it happens before LockFile is released\n3. there is no chance that other process will create the same lock as it will be either free to start doing it (in case both will check that there is no lock there) but only one will succeed in creating the *.lock file...",
+      "range": {
+        "startLine": 105,
+        "startChar": 4,
+        "endLine": 105,
+        "endChar": 46
+      },
+      "revId": "546acad9871532251f0f2fe0d94fd6707f983567",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
