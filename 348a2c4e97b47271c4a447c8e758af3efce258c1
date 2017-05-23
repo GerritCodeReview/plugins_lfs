@@ -93,6 +93,30 @@
       "revId": "348a2c4e97b47271c4a447c8e758af3efce258c1",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc6423a0_41fd684e",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/lfs/LfsPathsTest.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-05-23T07:41:22Z",
+      "side": 1,
+      "message": "I understand that you need to make use of the same regexes in both places. However, can\u0027t we define them once and (re)use them from both places?",
+      "parentUuid": "c5f75bd1_eef7027c",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 75
+      },
+      "revId": "348a2c4e97b47271c4a447c8e758af3efce258c1",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
