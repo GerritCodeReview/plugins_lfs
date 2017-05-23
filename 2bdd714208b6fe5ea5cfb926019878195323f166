@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa249f49_2cd98b87",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsLocksHandler.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-05-23T07:52:41Z",
+      "side": 1,
+      "message": "Is this thread safe? Looks like there are some race conditions here:\nThe assumption at the line 91 is that the lock wasn\u0027t present (lock \u003d\u003d null), however between the line 87 and 91 another thread could have created a lock.",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 28
+      },
+      "revId": "2bdd714208b6fe5ea5cfb926019878195323f166",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
