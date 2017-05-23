@@ -22,6 +22,30 @@
       "revId": "2bdd714208b6fe5ea5cfb926019878195323f166",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4eb466cd_b762d071",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsLocksHandler.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-05-23T10:13:29Z",
+      "side": 1,
+      "message": "it is not but it serves the purpose of simple API check (I was calling endpoints from Git client); see https://gerrit-review.googlesource.com/?polygerrit\u003d0#/c/105856/7/src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsProjectLocks.java createMethod - it resolves to LockFile object in order to make sure that it is not locked by the other thread",
+      "parentUuid": "fa249f49_2cd98b87",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 28
+      },
+      "revId": "2bdd714208b6fe5ea5cfb926019878195323f166",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
