@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6651f83_e358b370",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsLocksHandler.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-05-24T15:59:19Z",
+      "side": 1,
+      "message": "Can this cache building be moved into a guice module? We should avoid instantiating dependencies from constructor.\nInstead, all dependencies should be injected (which is why we use Guice :-)",
+      "revId": "0061e8a4f97489b5c9016a7fbc655c4c286f1f2b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
