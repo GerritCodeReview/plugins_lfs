@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ffe67d57_ae4d2751",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-05-24T16:08:31Z",
+      "side": 1,
+      "message": "At this point in the series the locks are not persistent? This should be clearly stated here, so that the reviewers\nare aware that this is not the final design.\nAlternatively, squash this and the follow-up change into one.",
+      "revId": "be529bfb4d4159a6caae3a5dc060c3b44039760a",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
