@@ -189,6 +189,30 @@
       "revId": "348a2c4e97b47271c4a447c8e758af3efce258c1",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fbf3b757_7d5ab137",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/lfs/LfsPathsTest.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-05-24T14:19:59Z",
+      "side": 1,
+      "message": "here is what I have done:\n1. create class com.google.gerrit.extensions.api.lfs.LfsPaths under\ngerrit-extension-api\n2. move LFS_REST static there: com.google.gerrit.extensions.api.lfs.LfsPaths.LFS_REST\n3. I have verified that /gerrit/gerrit-httpd/BUILD contains dependency to\n\"//gerrit-extension-api:api\"\n4. bazel build release results in:\nERROR: /Users/jcentkowski/workspace/open/gerrit/gerrit-httpd/BUILD:13:1: Java compilation in rule \u0027//gerrit-httpd:httpd\u0027 failed: Worker process sent response with exit code: 1.\ngerrit-httpd/src/main/java/com/google/gerrit/httpd/GitOverHttpModule.java:19: error: cannot find symbol\nimport com.google.gerrit.extensions.api.lfs.LfsPaths.LFS_REST;\n                                                    ^\n  symbol:   class LFS_REST\n  location: class LfsPaths\ngerrit-httpd/src/main/java/com/google/gerrit/httpd/GitOverHttpModule.java:17: error: cannot find symbol\nimport static com.google.gerrit.httpd.plugins.LfsPluginServlet.LFS_REST;\n^\n  symbol:   static LFS_REST\n  location: class\ngerrit-httpd/src/main/java/com/google/gerrit/httpd/AdvertisedObjectsCacheKey.java:24: error: cannot find symbol\n    return new AutoValue_AdvertisedObjectsCacheKey(account, project);\n               ^\n  symbol:   class AutoValue_AdvertisedObjectsCacheKey\n  location: class AdvertisedObjectsCacheKey\ngerrit-httpd/src/main/java/com/google/gerrit/httpd/plugins/PluginResourceKey.java:24: error: cannot find symbol\n    return new AutoValue_PluginResourceKey(p.getCacheKey(), r);\n               ^\n  symbol:   class AutoValue_PluginResourceKey\n  location: class PluginResourceKey\nTarget //:release failed to build\nUse --verbose_failures to see the command lines of failed build steps.\n\nI was calling bazel clean but it had no effect - the same problem was reported :/",
+      "parentUuid": "9018564a_e31ebeb0",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 75
+      },
+      "revId": "348a2c4e97b47271c4a447c8e758af3efce258c1",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
