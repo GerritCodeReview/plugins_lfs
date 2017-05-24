@@ -70,6 +70,30 @@
       "revId": "546acad9871532251f0f2fe0d94fd6707f983567",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "887566a4_03fc97bd",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsProjectLocks.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-05-24T10:41:35Z",
+      "side": 1,
+      "message": "\u003e \u003e cache contains LfsLock objects that are memory representation of\n \u003e \u003e existing lock files which are just regular files;\n \u003e \n \u003e This means that in-memory cache is the main source of truth about\n \u003e existing locks?\n \u003e What if some emergency requires a Gerrit server restart? All locks\n \u003e are lost?\n\n\n\nNope. Let me elaborate what actually happens. First imagine that one wants to  create lock on particular path:\n1. patch is converted to id\n2. it is being checked if lock for given id already exists\n3. in case it doesn\u0027t LockFile is used to lock given id (id.lock files is acquired)\n4. JSON structure that looks like this:\n  {\n     \"id\":\"lock_id\",\n     \"path\":\"IMG_1226.PNG.jpg\",\n     \"locked_at\":\"2017-05-05T14:40:44.683Z\",\n     \"owner\":{\n        \"name\":\"admin\"\n     }\n  }\nis being stored to the file that has filename equal to id that is placed under project name directory\n5. LfsLock that is memory representation of JSON is put to cache\n6. LockFile is being released\n\nIn case emergency is needed and Gerrit is restarted and user requests any Lfs lock related functionality for project then (line 72) load method is being called:\n1. it is checked if project named dir exists - in case yes\n2. each file this is inside it is loaded to cache as LfsLock object\n3. cache is ready for lock related operation\n\nIOW: guava cache is backed by id files and it survives gerrit restart easily. Another alternative would be using gerrit persistent cache but I wasn\u0027t sure how well it would scale...\n\n\n \u003e \u003e LockFile (jgit) is used only at the time of file creation to\n \u003e \u003e guarantee that it will be created and stored by single thread.\n \u003e \n \u003e If it is used only for that purpose then jgit LockFile is not\n \u003e really needed?\n \u003e The same could be achieved by, for example, ConcurrentMap.putIfAbsent\n \u003e which is atomic and thread safe.\n \u003e At least in a single-server scenario LockFile is not needed.\n \u003e \n \u003e \u003e App\n \u003e \u003e is not holding *.lock files forever only for the time needed to\n \u003e \u003e create a file and push LfsLock to cache.\n \u003e \n \u003e Why does it then need to (again) create a LockFile in the\n \u003e deleteLock method? Why not simply remove from the in-memory cache?\n\nDuring delete I wanted to be sure that operation is not interrupted in the middle by another process trying to lock the same id. So IOW one can lock only after unlock is finished. Truth is that I could probably remove it asynchronously but in case Gerrit was restarted in the meantime I would have to deal with edge cases... \n\n \u003e \u003e Having said that I\n \u003e \u003e believe:\n \u003e \u003e 1. we need this call to not even try to create lock if file\n \u003e already\n \u003e \u003e exists\n \u003e \u003e 2. line 147 locks.put(lockId, lock) should be moved to line 143\n \u003e so\n \u003e \u003e that it happens before LockFile is released\n \u003e \u003e 3. there is no chance that other process will create the same\n \u003e lock\n \u003e \u003e as it will be either free to start doing it (in case both will\n \u003e \u003e check that there is no lock there) but only one will succeed in\n \u003e \u003e creating the *.lock file...",
+      "parentUuid": "d756951c_c3ac0a85",
+      "range": {
+        "startLine": 105,
+        "startChar": 4,
+        "endLine": 105,
+        "endChar": 46
+      },
+      "revId": "546acad9871532251f0f2fe0d94fd6707f983567",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
