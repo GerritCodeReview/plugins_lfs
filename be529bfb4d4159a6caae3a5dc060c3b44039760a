@@ -16,6 +16,24 @@
       "revId": "be529bfb4d4159a6caae3a5dc060c3b44039760a",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bf98f7c_babad790",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-05-25T13:07:32Z",
+      "side": 1,
+      "message": "it probably makes more sense to squash them together",
+      "parentUuid": "ffe67d57_ae4d2751",
+      "revId": "be529bfb4d4159a6caae3a5dc060c3b44039760a",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
