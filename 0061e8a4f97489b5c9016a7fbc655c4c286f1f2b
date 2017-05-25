@@ -16,6 +16,24 @@
       "revId": "0061e8a4f97489b5c9016a7fbc655c4c286f1f2b",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95df8c7c_553b3ca4",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsLocksHandler.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-05-25T13:50:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6651f83_e358b370",
+      "revId": "0061e8a4f97489b5c9016a7fbc655c4c286f1f2b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
