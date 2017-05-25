@@ -213,6 +213,30 @@
       "revId": "348a2c4e97b47271c4a447c8e758af3efce258c1",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7239159e_c6b9d34c",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/lfs/LfsPathsTest.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-05-25T09:07:48Z",
+      "side": 1,
+      "message": "I haven\u0027t noticed that rerfactor f*cked up import statements - that is why it was not working for me. Thanks again David for point that out ;)",
+      "parentUuid": "fbf3b757_7d5ab137",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 75
+      },
+      "revId": "348a2c4e97b47271c4a447c8e758af3efce258c1",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
