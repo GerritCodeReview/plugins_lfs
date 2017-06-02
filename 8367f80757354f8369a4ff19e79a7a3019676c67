@@ -22,6 +22,30 @@
       "revId": "8367f80757354f8369a4ff19e79a7a3019676c67",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10200ec7_02f98872",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsLocksAction.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2017-06-02T07:41:13Z",
+      "side": 1,
+      "message": "Can there be other exceptions?  The abstract doRun only declares LfsException and IOException.",
+      "parentUuid": "54889656_9ae51197",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 66
+      },
+      "revId": "8367f80757354f8369a4ff19e79a7a3019676c67",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
