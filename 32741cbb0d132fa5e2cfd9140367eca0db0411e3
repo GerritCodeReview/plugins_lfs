@@ -169,6 +169,24 @@
       "revId": "32741cbb0d132fa5e2cfd9140367eca0db0411e3",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "645842a5_077eecbc",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsLocksModule.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-06-02T14:12:42Z",
+      "side": 1,
+      "message": "there is one drawback though Gerrit cache DSL doesn\u0027t handle expiresAfterRead and what is more it implies default limitations like 1024 entries...\nnow I started to have some doubts ;) expiring after X time of write doesn\u0027t look reasonable to me and keeping locks forever in memory sucks too...",
+      "parentUuid": "2709deeb_a8be4349",
+      "revId": "32741cbb0d132fa5e2cfd9140367eca0db0411e3",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
