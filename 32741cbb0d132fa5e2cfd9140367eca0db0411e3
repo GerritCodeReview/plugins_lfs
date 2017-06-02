@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ddb6d72_335ddc8d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-06-02T09:41:16Z",
+      "side": 1,
+      "message": "Is is a flat list of lock files under the {project} folder? How many locks do we expect per project? Does it make sense to think about sharding the locks into several subfolders of the {project} folder?",
+      "revId": "32741cbb0d132fa5e2cfd9140367eca0db0411e3",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a91199e_a275f3a2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-06-02T09:41:16Z",
+      "side": 1,
+      "message": "I have some doubts about these decisions:\n\n* loading of the LfsProjectLocks (the value of the top-level) cache loads all locks for this project. This is potentially\nslow. The first caller (and also the first caller after cache expiration) has to wait longer.\n\n* This caches either all locks of a project or nothing for that project. This means that if we have 10K locks on a project\nand only one of them is being accessed actively, then the other 10K-1 will not be evicted from memory (because they can only be evicted all as one unit)\n\n* care must be taken that no place this code stores a reference to the LfsProjectLocks obtained from the top-level Cache.\nThe stored reference becomes obsolete after the LFsProjectLocks instance is evicted and loaded again.\n\nHave you considered having one cache only where the cache key is: [project, lockId] ?",
+      "revId": "32741cbb0d132fa5e2cfd9140367eca0db0411e3",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc62486a_8a833079",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsLocksHandler.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-06-02T09:41:16Z",
+      "side": 1,
+      "message": "projectLocks ?",
+      "range": {
+        "startLine": 59,
+        "startChar": 63,
+        "endLine": 59,
+        "endChar": 71
+      },
+      "revId": "32741cbb0d132fa5e2cfd9140367eca0db0411e3",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff94d14e_960c1a26",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsLocksModule.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-06-02T09:41:16Z",
+      "side": 1,
+      "message": "Why does this need to be a @Provides method?\nOur standard way of binding a cache is by subclassing the CacheModule and then using its DSL:\n\n  cache(\"\u003cname\u003e\", Key.class, Value.class)\n      .loader(Loader.class);",
+      "revId": "32741cbb0d132fa5e2cfd9140367eca0db0411e3",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
