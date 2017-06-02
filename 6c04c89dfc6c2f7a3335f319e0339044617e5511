@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cce1d02a_d300e665",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsLocksServlet.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-06-02T07:20:55Z",
+      "side": 1,
+      "message": "logger is usually defined as the first member, move it up",
+      "revId": "6c04c89dfc6c2f7a3335f319e0339044617e5511",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
