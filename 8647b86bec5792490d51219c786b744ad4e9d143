@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e4795b7_ed5ae1a7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-06-02T08:55:02Z",
+      "side": 1,
+      "message": "Unload cached",
+      "range": {
+        "startLine": 10,
+        "startChar": 12,
+        "endLine": 10,
+        "endChar": 33
+      },
+      "revId": "8647b86bec5792490d51219c786b744ad4e9d143",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9673dec0_4ebf7d23",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-06-02T08:55:02Z",
+      "side": 1,
+      "message": "empty line above",
+      "revId": "8647b86bec5792490d51219c786b744ad4e9d143",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7376868_117a04c2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-06-02T08:55:02Z",
+      "side": 1,
+      "message": "what does \"time zone inactivity\" mean?",
+      "range": {
+        "startLine": 12,
+        "startChar": 48,
+        "endLine": 12,
+        "endChar": 68
+      },
+      "revId": "8647b86bec5792490d51219c786b744ad4e9d143",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67b59f0f_f9961287",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-06-02T08:55:02Z",
+      "side": 1,
+      "message": "empty line above",
+      "revId": "8647b86bec5792490d51219c786b744ad4e9d143",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
