@@ -46,6 +46,30 @@
       "revId": "8367f80757354f8369a4ff19e79a7a3019676c67",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "636482f0_6bf2024e",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsLocksAction.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-06-02T13:23:16Z",
+      "side": 1,
+      "message": "this is just the first attempt to indicate that different output could and actually is possible - in the following change https://gerrit-review.googlesource.com/?polygerrit\u003d0#/c/105076/ it returns different errors depending on LfsException type\n\nIOException is sth that servlet handles natively (it could be that it returns SC_INTERNAL_SERVER_ERROR for it ;))",
+      "parentUuid": "10200ec7_02f98872",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 66
+      },
+      "revId": "8367f80757354f8369a4ff19e79a7a3019676c67",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
