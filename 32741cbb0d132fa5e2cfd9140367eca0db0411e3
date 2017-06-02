@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fb3f492b_01753f72",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-06-02T13:55:21Z",
+      "side": 1,
+      "message": "have no experience here :/ but it sharding (by for instance first 2-3 letters) should be pretty easy to implement...",
+      "parentUuid": "1ddb6d72_335ddc8d",
+      "revId": "32741cbb0d132fa5e2cfd9140367eca0db0411e3",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9a91199e_a275f3a2",
         "filename": "/COMMIT_MSG",
         "patchSetId": 14
@@ -54,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "c618f97f_2ce751e7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-06-02T13:55:21Z",
+      "side": 1,
+      "message": "\u003e Have you considered having one cache only where the cache key is: [project, lockId] ?\n\ngets problematic in the moment when client calls\n- locks/verify (which is btw the method to check if LFS locks API is available)\n- lock that returns all locks for project\nboth these methods at least in theory could use cursor and limit to lower the number of returned entries but regardless they have to operate on sth which is real which means data is loaded\n\nI am opened to other suggestions (was considering to use for instance refs from lfs_locks namespace of project but have no idea how that would/could scale to thousands of locks ;))",
+      "parentUuid": "9a91199e_a275f3a2",
+      "revId": "32741cbb0d132fa5e2cfd9140367eca0db0411e3",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cc62486a_8a833079",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsLocksHandler.java",
         "patchSetId": 14
@@ -77,6 +113,30 @@
     },
     {
       "key": {
+        "uuid": "fb0835a9_d18b93c8",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsLocksHandler.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-06-02T13:55:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc62486a_8a833079",
+      "range": {
+        "startLine": 59,
+        "startChar": 63,
+        "endLine": 59,
+        "endChar": 71
+      },
+      "revId": "32741cbb0d132fa5e2cfd9140367eca0db0411e3",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ff94d14e_960c1a26",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsLocksModule.java",
         "patchSetId": 14
@@ -88,6 +148,24 @@
       "writtenOn": "2017-06-02T09:41:16Z",
       "side": 1,
       "message": "Why does this need to be a @Provides method?\nOur standard way of binding a cache is by subclassing the CacheModule and then using its DSL:\n\n  cache(\"\u003cname\u003e\", Key.class, Value.class)\n      .loader(Loader.class);",
+      "revId": "32741cbb0d132fa5e2cfd9140367eca0db0411e3",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2709deeb_a8be4349",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsLocksModule.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-06-02T13:55:21Z",
+      "side": 1,
+      "message": "done - thanks for noticing, was somehow under impression that I will have to provide somehow loader not class ;)",
+      "parentUuid": "ff94d14e_960c1a26",
       "revId": "32741cbb0d132fa5e2cfd9140367eca0db0411e3",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
