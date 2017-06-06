@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "259aa7e1_8b5fb80f",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsLocksModule.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2017-06-06T23:23:27Z",
+      "side": 1,
+      "message": "This method was removed in the parent change, so now instead we have in LfsLocksHandler:\n\n  static Module module() {\n    return new CacheModule(){\n      @Override\n      protected void configure() {\n        cache(CACHE_NAME, Project.NameKey.class, LfsProjectLocks.class)\n          .loader(Loader.class);\n      }\n    };\n  }\n\nbut I don\u0027t see any way to set the expiration after access.  The cache() method returns a CacheBinding which only exposes expireAfterWrite method.",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 3
+      },
+      "revId": "291859f5dc9e7e90ce122ab7e2df1e97b0a6e584",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
