@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "a4a46af5_3bc10a82",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-06-06T20:04:10Z",
+      "side": 1,
+      "message": "Let\u0027s proceed with your current implementation for now. We may optimize in-memory caching later.",
+      "parentUuid": "c618f97f_2ce751e7",
+      "revId": "32741cbb0d132fa5e2cfd9140367eca0db0411e3",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cc62486a_8a833079",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsLocksHandler.java",
         "patchSetId": 14
