@@ -3,7 +3,7 @@ workspace(name = "lfs")
 load("//:bazlets.bzl", "load_bazlets")
 
 load_bazlets(
-    commit = "28aa2290c7f7742261d69b358f3de30d2e87c13b",
+    commit = "636deeb7706ad232ac4717304eec429ab1be6f7f",
     #    local_path = "/home/<user>/projects/bazlets",
 )
 
@@ -38,17 +38,17 @@ maven_jar(
 )
 
 # Release Plugin API
-load("@com_googlesource_gerrit_bazlets//:gerrit_api.bzl",
-     "gerrit_api")
+#load("@com_googlesource_gerrit_bazlets//:gerrit_api.bzl",
+#     "gerrit_api")
 
 # Snapshot Plugin API
-#load(
-#    "@com_googlesource_gerrit_bazlets//:gerrit_api_maven_local.bzl",
-#    "gerrit_api_maven_local",
-#)
+load(
+    "@com_googlesource_gerrit_bazlets//:gerrit_api_maven_local.bzl",
+    "gerrit_api_maven_local",
+)
 
 # Load release Plugin API
-gerrit_api()
+#gerrit_api()
 
 # Load snapshot Plugin API
-#gerrit_api_maven_local()
+gerrit_api_maven_local()
