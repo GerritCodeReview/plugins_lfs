@@ -16,10 +16,14 @@ package com.googlesource.gerrit.plugins.lfs.locks;
 
 import static com.google.gerrit.extensions.api.lfs.LfsDefinitions.LFS_LOCKS_PATH_REGEX;
 import static com.google.gerrit.extensions.api.lfs.LfsDefinitions.LFS_URL_REGEX_TEMPLATE;
+import static com.google.gerrit.server.permissions.ProjectPermission.ACCESS;
 
 import com.google.common.base.Strings;
+import com.google.gerrit.extensions.restapi.AuthException;
 import com.google.gerrit.reviewdb.client.Project;
 import com.google.gerrit.server.CurrentUser;
+import com.google.gerrit.server.permissions.PermissionBackend;
+import com.google.gerrit.server.permissions.PermissionBackendException;
 import com.google.gerrit.server.project.ProjectCache;
 import com.google.gerrit.server.project.ProjectControl;
 import com.google.gerrit.server.project.ProjectState;
@@ -38,13 +42,17 @@ public class LfsGetLocksAction extends LfsLocksAction {
   static final Pattern LFS_LOCKS_URL_PATTERN =
       Pattern.compile(String.format(LFS_URL_REGEX_TEMPLATE, LFS_LOCKS_PATH_REGEX));
 
+  private final PermissionBackend permissionBackend;
+
   @Inject
   LfsGetLocksAction(
+      PermissionBackend permissionBackend,
       ProjectCache projectCache,
       LfsAuthUserProvider userProvider,
       LfsLocksHandler handler,
       @Assisted LfsLocksContext context) {
     super(projectCache, userProvider, handler, context);
+    this.permissionBackend = permissionBackend;
   }
 
   @Override
@@ -59,7 +67,12 @@ public class LfsGetLocksAction extends LfsLocksAction {
 
   @Override
   protected void authorizeUser(ProjectControl control) throws LfsUnauthorized {
-    if (!control.isReadable()) {
+    try {
+      permissionBackend
+          .user(control.getUser())
+          .project(control.getProject().getNameKey())
+          .check(ACCESS);
+    } catch (AuthException | PermissionBackendException e) {
       throwUnauthorizedOp("list locks", control);
     }
   }
