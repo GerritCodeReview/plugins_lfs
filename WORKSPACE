@@ -3,7 +3,7 @@ workspace(name = "lfs")
 load("//:bazlets.bzl", "load_bazlets")
 
 load_bazlets(
-    commit = "74b31c8fae3a92c6c3e46a046b57cf1d8a6549d4",
+    commit = "28aa2290c7f7742261d69b358f3de30d2e87c13b",
     #    local_path = "/home/<user>/projects/bazlets",
 )
 
@@ -12,43 +12,43 @@ load("@com_googlesource_gerrit_bazlets//tools:maven_jar.bzl",
      "GERRIT",
      "MAVEN_CENTRAL")
 
-JGIT_VERS = "4.7.0.201704051617-r"
+JGIT_VERS = "4.7.1.201706071930-r"
 
 JGIT_REPO = MAVEN_CENTRAL
 
 maven_jar(
     name = "jgit_http_apache",
     artifact = "org.eclipse.jgit:org.eclipse.jgit.http.apache:" + JGIT_VERS,
-    sha1 = "da1fc3c8f6ce89dd846125a38fd4c35f2436caf3",
+    sha1 = "16d49a8824753f2d421151c68be05e0869e0b8f6",
     repository = JGIT_REPO,
 )
 
 maven_jar(
     name = "jgit_lfs",
     artifact = "org.eclipse.jgit:org.eclipse.jgit.lfs:" + JGIT_VERS,
-    sha1 = "d71dbf2f97544cc6deff966e6d069b76049958e0",
+    sha1 = "35e8245b5c77822581dc354387e8e78846cf4e7e",
     repository = JGIT_REPO,
 )
 
 maven_jar(
     name = "jgit_lfs_server",
     artifact = "org.eclipse.jgit:org.eclipse.jgit.lfs.server:" + JGIT_VERS,
-    sha1 = "edf48b77d97abc70f0e048bd04864132b30d2be5",
+    sha1 = "9c4fc91f095b13348081acf40f6c402e10b7255d",
     repository = JGIT_REPO,
 )
 
 # Release Plugin API
-#load("@com_googlesource_gerrit_bazlets//:gerrit_api.bzl",
-#     "gerrit_api")
+load("@com_googlesource_gerrit_bazlets//:gerrit_api.bzl",
+     "gerrit_api")
 
 # Snapshot Plugin API
-load(
-    "@com_googlesource_gerrit_bazlets//:gerrit_api_maven_local.bzl",
-    "gerrit_api_maven_local",
-)
+#load(
+#    "@com_googlesource_gerrit_bazlets//:gerrit_api_maven_local.bzl",
+#    "gerrit_api_maven_local",
+#)
 
 # Load release Plugin API
-#gerrit_api()
+gerrit_api()
 
 # Load snapshot Plugin API
-gerrit_api_maven_local()
+#gerrit_api_maven_local()
