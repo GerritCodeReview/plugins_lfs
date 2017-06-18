@@ -12,28 +12,28 @@ load("@com_googlesource_gerrit_bazlets//tools:maven_jar.bzl",
      "GERRIT",
      "MAVEN_CENTRAL")
 
-JGIT_VERS = "4.7.1.201706071930-r"
+JGIT_VERS = "4.8.0.201706111038-r"
 
 JGIT_REPO = MAVEN_CENTRAL
 
 maven_jar(
     name = "jgit_http_apache",
     artifact = "org.eclipse.jgit:org.eclipse.jgit.http.apache:" + JGIT_VERS,
-    sha1 = "16d49a8824753f2d421151c68be05e0869e0b8f6",
+    sha1 = "78e55a9537e5f6b6fc196d72ad74009550dd3ed9",
     repository = JGIT_REPO,
 )
 
 maven_jar(
     name = "jgit_lfs",
     artifact = "org.eclipse.jgit:org.eclipse.jgit.lfs:" + JGIT_VERS,
-    sha1 = "35e8245b5c77822581dc354387e8e78846cf4e7e",
+    sha1 = "7f9906508cb129022120a998bdfb662748a52a79",
     repository = JGIT_REPO,
 )
 
 maven_jar(
     name = "jgit_lfs_server",
     artifact = "org.eclipse.jgit:org.eclipse.jgit.lfs.server:" + JGIT_VERS,
-    sha1 = "9c4fc91f095b13348081acf40f6c402e10b7255d",
+    sha1 = "d0631e2b55aeb41ddad167849f33f53a7eb58726",
     repository = JGIT_REPO,
 )
 
