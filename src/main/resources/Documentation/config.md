@@ -93,6 +93,16 @@ from Global Plugin Settings.
 The following options can be configured in `$GERRIT_SITE/etc/@PLUGIN@.config`
 and `$GERRIT_SITE/etc/@PLUGIN@.secure.config.`
 
+### Section `locks`
+
+locks.directory
+: The directory in which to store Git LFS file locks.
+[Git LFS File Locking API](https://github.com/git-lfs/git-lfs/blob/master/docs/api/locking.md)
+specifies that certain path can be locked by user. It prevents from accidental file overwrite
+by different user and costly (manual in most cases) binary file merge. Gerrit uses file based
+locks that are stored under `directory`.
+: Default is `$GERRIT_SITE/data/@PLUGIN@/lfs_locks`.
+
 ### Section `auth`
 
 auth.sshExpirationSeconds
