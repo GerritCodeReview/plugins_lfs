@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca651b4f_37b4fbee",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsLocksPathProvider.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-07-07T11:27:42Z",
+      "side": 1,
+      "message": "locksDir",
+      "range": {
+        "startLine": 32,
+        "startChar": 11,
+        "endLine": 32,
+        "endChar": 18
+      },
+      "revId": "81065fbb01918fadaf362f61f4bd1102c0ebe651",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b277c2cc_012625db",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-07-07T11:27:42Z",
+      "side": 1,
+      "message": "If you are already revealing implementation details here, then please also document how\nexactly is a lock represented in the file system.",
+      "revId": "81065fbb01918fadaf362f61f4bd1102c0ebe651",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
