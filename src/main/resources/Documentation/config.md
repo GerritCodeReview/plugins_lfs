@@ -99,8 +99,21 @@ locks.directory
 : The directory in which to store Git LFS file locks.
 [Git LFS File Locking API](https://github.com/git-lfs/git-lfs/blob/master/docs/api/locking.md)
 specifies that certain path can be locked by user. It prevents from accidental file overwrite
-by different user and costly (manual in most cases) binary file merge. Gerrit uses file based
-locks that are stored under `directory`.
+by different user and costly (manual in most cases) binary file merge.
+Each lock is represented by JSON structure:
+
+```
+  {
+    "id":"[lock id the same as lock file name]",
+    "path":"[path to the resource being locked]",
+    "locked_at":"[timestamp the lock was created in ISO 8601 format]",
+    "owner":{
+      "name":"[the name of the user that created the lock]"
+    }
+  }
+```
+
+It is stored in a file with name computed as SHA256 of path being locked and is stored under `directory` followed by project name.
 : Default is `$GERRIT_SITE/data/@PLUGIN@/lfs_locks`.
 
 ### Section `auth`

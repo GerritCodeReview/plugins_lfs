@@ -29,10 +29,10 @@ class LfsLocksPathProvider implements Provider<String> {
 
   @Inject
   LfsLocksPathProvider(LfsConfigurationFactory configFactory, @PluginData Path defaultDataDir) {
-    String dataDir = configFactory.getGlobalConfig().getString("locks", null, "directory");
+    String locksDir = configFactory.getGlobalConfig().getString("locks", null, "directory");
     this.path =
         MoreObjects.firstNonNull(
-            dataDir, Paths.get(defaultDataDir.toString(), "lfs_locks").toString());
+            locksDir, Paths.get(defaultDataDir.toString(), "lfs_locks").toString());
   }
 
   @Override
