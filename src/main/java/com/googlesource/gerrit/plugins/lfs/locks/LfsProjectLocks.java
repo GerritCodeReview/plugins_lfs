@@ -16,7 +16,6 @@ package com.googlesource.gerrit.plugins.lfs.locks;
 
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
-import com.google.gerrit.extensions.annotations.PluginData;
 import com.google.gerrit.reviewdb.client.Project;
 import com.google.gerrit.server.CurrentUser;
 import com.google.gson.FieldNamingPolicy;
@@ -62,10 +61,10 @@ class LfsProjectLocks {
 
   @Inject
   LfsProjectLocks(
-      PathToLockId toLockId, @PluginData Path defaultDataDir, @Assisted Project.NameKey project) {
+      PathToLockId toLockId, LfsLocksPathProvider locksPath, @Assisted Project.NameKey project) {
     this.toLockId = toLockId;
     this.project = project.get();
-    this.locksPath = Paths.get(defaultDataDir.toString(), "lfs_locks", this.project);
+    this.locksPath = Paths.get(locksPath.get(), this.project);
     this.locks = CacheBuilder.newBuilder().build();
   }
 

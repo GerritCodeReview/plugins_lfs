@@ -7,36 +7,6 @@ load_bazlets(
     #    local_path = "/home/<user>/projects/bazlets",
 )
 
-load("@com_googlesource_gerrit_bazlets//tools:maven_jar.bzl",
-     "maven_jar",
-     "GERRIT",
-     "MAVEN_CENTRAL")
-
-JGIT_VERS = "4.8.0.201706111038-r"
-
-JGIT_REPO = MAVEN_CENTRAL
-
-maven_jar(
-    name = "jgit_http_apache",
-    artifact = "org.eclipse.jgit:org.eclipse.jgit.http.apache:" + JGIT_VERS,
-    sha1 = "78e55a9537e5f6b6fc196d72ad74009550dd3ed9",
-    repository = JGIT_REPO,
-)
-
-maven_jar(
-    name = "jgit_lfs",
-    artifact = "org.eclipse.jgit:org.eclipse.jgit.lfs:" + JGIT_VERS,
-    sha1 = "7f9906508cb129022120a998bdfb662748a52a79",
-    repository = JGIT_REPO,
-)
-
-maven_jar(
-    name = "jgit_lfs_server",
-    artifact = "org.eclipse.jgit:org.eclipse.jgit.lfs.server:" + JGIT_VERS,
-    sha1 = "d0631e2b55aeb41ddad167849f33f53a7eb58726",
-    repository = JGIT_REPO,
-)
-
 # Release Plugin API
 #load("@com_googlesource_gerrit_bazlets//:gerrit_api.bzl",
 #     "gerrit_api")
@@ -52,3 +22,7 @@ load(
 
 # Load snapshot Plugin API
 gerrit_api_maven_local()
+
+load(":external_plugin_deps.bzl", "external_plugin_deps")
+
+external_plugin_deps()
