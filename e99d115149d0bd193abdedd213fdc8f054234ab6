@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "186bbf28_83fd58c0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-10-31T15:58:04Z",
+      "side": 1,
+      "message": "Explain what the problem this commit is fixing. Reference to the core commit, that removed Joda from gerrit core and plugin API.",
+      "revId": "e99d115149d0bd193abdedd213fdc8f054234ab6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7840f71d_c5caf5e4",
+        "filename": "BUILD",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2017-10-31T15:58:04Z",
+      "side": 1,
+      "message": "Gerrit core removed dependencies on Joda. fine. Mention this in the commit message? Long term, this dependency should also be removed from this plugin.",
+      "range": {
+        "startLine": 21,
+        "startChar": 8,
+        "endLine": 21,
+        "endChar": 25
+      },
+      "revId": "e99d115149d0bd193abdedd213fdc8f054234ab6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
