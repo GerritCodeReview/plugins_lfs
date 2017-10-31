@@ -22,6 +22,30 @@
       "revId": "de69808a3697ee5e42a4d6cc2d84e2425ed901fc",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c5f9eb9_3010e888",
+        "filename": "BUILD",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1029953
+      },
+      "writtenOn": "2017-10-31T17:03:21Z",
+      "side": 0,
+      "message": "It should be included by \n\n:lfs__plugin.",
+      "parentUuid": "608286c6_2d5f7e9e",
+      "range": {
+        "startLine": 33,
+        "startChar": 8,
+        "endLine": 33,
+        "endChar": 24
+      },
+      "revId": "de69808a3697ee5e42a4d6cc2d84e2425ed901fc",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
