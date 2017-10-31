@@ -18,6 +18,7 @@ gerrit_plugin(
         "Gerrit-InitStep: com.googlesource.gerrit.plugins.lfs.InitLfs",
     ],
     deps = [
+        "@joda_time//jar",
         "@jgit_http_apache//jar",
         "@jgit_lfs//jar",
         "@jgit_lfs_server//jar",
@@ -30,6 +31,5 @@ junit_tests(
     tags = ["lfs"],
     deps = PLUGIN_DEPS + PLUGIN_TEST_DEPS + [
         ":lfs__plugin",
-        "@jgit_lfs//jar",
     ],
 )
