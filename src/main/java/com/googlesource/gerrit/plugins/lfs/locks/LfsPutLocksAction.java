@@ -20,9 +20,13 @@ import static com.googlesource.gerrit.plugins.lfs.locks.LfsGetLocksAction.LFS_LO
 
 import com.google.common.base.Strings;
 import com.google.gerrit.common.data.Capable;
+import com.google.gerrit.extensions.restapi.AuthException;
+import com.google.gerrit.reviewdb.client.Project;
 import com.google.gerrit.server.CurrentUser;
+import com.google.gerrit.server.permissions.PermissionBackend;
+import com.google.gerrit.server.permissions.PermissionBackendException;
+import com.google.gerrit.server.permissions.ProjectPermission;
 import com.google.gerrit.server.project.ProjectCache;
-import com.google.gerrit.server.project.ProjectControl;
 import com.google.gerrit.server.project.ProjectState;
 import com.google.inject.Inject;
 import com.google.inject.assistedinject.Assisted;
@@ -40,14 +44,17 @@ public class LfsPutLocksAction extends LfsLocksAction {
       Pattern.compile(String.format(LFS_URL_REGEX_TEMPLATE, LFS_VERIFICATION_PATH));
 
   protected LockAction action;
+  private PermissionBackend permissionBackend;
 
   @Inject
   LfsPutLocksAction(
       ProjectCache projectCache,
       LfsAuthUserProvider userProvider,
       LfsLocksHandler handler,
-      @Assisted LfsLocksContext context) {
+      @Assisted LfsLocksContext context,
+      PermissionBackend permissionBackend) {
     super(projectCache, userProvider, handler, context);
+    this.permissionBackend = permissionBackend;
   }
 
   @Override
@@ -74,10 +81,13 @@ public class LfsPutLocksAction extends LfsLocksAction {
   }
 
   @Override
-  protected void authorizeUser(ProjectControl control) throws LfsUnauthorized {
+  protected void authorizeUser(ProjectState state, CurrentUser user) throws LfsUnauthorized {
     // all operations require push permission
-    if (Capable.OK != control.canPushToAtLeastOneRef()) {
-      throwUnauthorizedOp(action.getName(), control);
+    Project.NameKey projectName = state.getNameKey();
+    try {
+      permissionBackend.user(user).project(projectName).check(ProjectPermission.PUSH_AT_LEAST_ONE_REF);
+    } catch (AuthException | PermissionBackendException e) {
+      throwUnauthorizedOp(action.getName(), state);
     }
   }
 

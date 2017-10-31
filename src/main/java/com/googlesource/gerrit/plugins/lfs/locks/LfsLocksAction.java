@@ -26,7 +26,7 @@ import com.google.gerrit.common.ProjectUtil;
 import com.google.gerrit.reviewdb.client.Project;
 import com.google.gerrit.server.CurrentUser;
 import com.google.gerrit.server.project.ProjectCache;
-import com.google.gerrit.server.project.ProjectControl;
+import com.google.gerrit.server.project.ProjectState;
 import com.google.gerrit.server.project.ProjectState;
 import com.googlesource.gerrit.plugins.lfs.LfsAuthUserProvider;
 import com.googlesource.gerrit.plugins.lfs.locks.LfsLocksHandler.LfsLockExistsException;
@@ -67,8 +67,8 @@ abstract class LfsLocksAction {
       String name = getProjectName();
       ProjectState project = getProject(name);
       CurrentUser user = getUser(name);
-      ProjectControl control = project.controlFor(user);
-      authorizeUser(control);
+      ProjectState state = projectCache.checkedGet(project);
+      authorizeUser(state, user);
       doRun(project, user);
     } catch (LfsUnauthorized e) {
       context.sendError(SC_UNAUTHORIZED, e.getMessage());
@@ -83,7 +83,7 @@ abstract class LfsLocksAction {
 
   protected abstract String getProjectName() throws LfsException;
 
-  protected abstract void authorizeUser(ProjectControl control) throws LfsUnauthorized;
+  protected abstract void authorizeUser(ProjectState state, CurrentUser user) throws LfsUnauthorized;
 
   protected abstract void doRun(ProjectState project, CurrentUser user)
       throws LfsException, IOException;
@@ -102,8 +102,8 @@ abstract class LfsLocksAction {
         context.getHeader(HDR_AUTHORIZATION), project, LFS_LOCKING_OPERATION);
   }
 
-  protected void throwUnauthorizedOp(String op, ProjectControl control) throws LfsUnauthorized {
-    String project = control.getProject().getName();
+  protected void throwUnauthorizedOp(String op, ProjectState control) throws LfsUnauthorized {
+    String project = control.getName();
     String userName =
         Strings.isNullOrEmpty(control.getUser().getUserName())
             ? "anonymous"

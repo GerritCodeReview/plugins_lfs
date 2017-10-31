@@ -27,7 +27,6 @@ import com.google.gerrit.reviewdb.client.Project;
 import com.google.gerrit.server.CurrentUser;
 import com.google.gerrit.server.permissions.PermissionBackend;
 import com.google.gerrit.server.project.ProjectCache;
-import com.google.gerrit.server.project.ProjectControl;
 import com.google.gerrit.server.project.ProjectState;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -130,7 +129,7 @@ public class LfsApiServlet extends LfsProtocolServlet {
 
   private void authorizeUser(CurrentUser user, ProjectState state, String operation)
       throws LfsUnauthorized {
-    ProjectControl control = state.controlFor(user);
+    ProjectState control = state.controlFor(user);
     if ((operation.equals(DOWNLOAD)
             && !permissionBackend
                 .user(user)
