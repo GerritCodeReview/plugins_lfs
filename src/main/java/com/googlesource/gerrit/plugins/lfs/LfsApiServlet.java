@@ -18,6 +18,7 @@ import static com.google.gerrit.extensions.api.lfs.LfsDefinitions.LFS_OBJECTS_PA
 import static com.google.gerrit.extensions.api.lfs.LfsDefinitions.LFS_URL_REGEX_TEMPLATE;
 import static com.google.gerrit.extensions.client.ProjectState.HIDDEN;
 import static com.google.gerrit.extensions.client.ProjectState.READ_ONLY;
+import static com.google.gerrit.server.permissions.ProjectPermission.PUSH_AT_LEAST_ONE_REF;
 import static com.google.gerrit.server.permissions.ProjectPermission.READ;
 
 import com.google.common.base.Strings;
@@ -27,7 +28,6 @@ import com.google.gerrit.reviewdb.client.Project;
 import com.google.gerrit.server.CurrentUser;
 import com.google.gerrit.server.permissions.PermissionBackend;
 import com.google.gerrit.server.project.ProjectCache;
-import com.google.gerrit.server.project.ProjectControl;
 import com.google.gerrit.server.project.ProjectState;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -130,15 +130,19 @@ public class LfsApiServlet extends LfsProtocolServlet {
 
   private void authorizeUser(CurrentUser user, ProjectState state, String operation)
       throws LfsUnauthorized {
-    ProjectControl control = state.controlFor(user);
+    Project.NameKey projectName = state.getNameKey();
     if ((operation.equals(DOWNLOAD)
             && !permissionBackend
                 .user(user)
-                .project(state.getProject().getNameKey())
+                .project(projectName)
                 .testOrFalse(READ))
-        || (operation.equals(UPLOAD) && Capable.OK != control.canPushToAtLeastOneRef())) {
+        || (operation.equals(UPLOAD)
+              && !permissionBackend
+                   .user(user)
+                   .project(projectName)
+                   .check(PUSH_AT_LEAST_ONE_REF))) {
       String op = operation.toLowerCase();
-      String project = state.getProject().getName();
+      String project = state.getName();
       String userName =
           Strings.isNullOrEmpty(user.getUserName()) ? "anonymous" : user.getUserName();
       log.debug(

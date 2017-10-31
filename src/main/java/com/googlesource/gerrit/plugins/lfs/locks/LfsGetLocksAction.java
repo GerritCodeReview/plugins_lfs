@@ -25,7 +25,6 @@ import com.google.gerrit.server.CurrentUser;
 import com.google.gerrit.server.permissions.PermissionBackend;
 import com.google.gerrit.server.permissions.PermissionBackendException;
 import com.google.gerrit.server.project.ProjectCache;
-import com.google.gerrit.server.project.ProjectControl;
 import com.google.gerrit.server.project.ProjectState;
 import com.google.inject.Inject;
 import com.google.inject.assistedinject.Assisted;
@@ -66,14 +65,14 @@ public class LfsGetLocksAction extends LfsLocksAction {
   }
 
   @Override
-  protected void authorizeUser(ProjectControl control) throws LfsUnauthorized {
+  protected void authorizeUser(ProjectState state, CurrentUser user) throws LfsUnauthorized {
     try {
       permissionBackend
-          .user(control.getUser())
-          .project(control.getProject().getNameKey())
+          .user(user)
+          .project(state.getNameKey())
           .check(ACCESS);
     } catch (AuthException | PermissionBackendException e) {
-      throwUnauthorizedOp("list locks", control);
+      throwUnauthorizedOp("list locks", state, user);
     }
   }
 
