@@ -17,11 +17,10 @@ package com.googlesource.gerrit.plugins.lfs;
 import com.google.common.base.Joiner;
 import com.google.common.base.Optional;
 import com.google.common.base.Splitter;
+import java.time.Instant;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
-import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
-import org.joda.time.format.DateTimeFormatter;
-import org.joda.time.format.ISODateTimeFormat;
 
 public abstract class LfsAuthToken {
   public abstract static class Processor<T extends LfsAuthToken> {
@@ -65,12 +64,13 @@ public abstract class LfsAuthToken {
     protected abstract boolean verifyTokenValues();
 
     static boolean onTime(String dateTime) {
-      String now = LfsAuthToken.ISO.print(now());
+      String now = LfsAuthToken.ISO.format(now());
       return now.compareTo(dateTime) <= 0;
     }
   }
 
-  static final DateTimeFormatter ISO = ISODateTimeFormat.dateTime();
+  static final DateTimeFormatter ISO =
+      DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:SSSSX").withZone(ZoneOffset.UTC);
   public final String expiresAt;
 
   protected LfsAuthToken(int expirationSeconds) {
@@ -82,10 +82,10 @@ public abstract class LfsAuthToken {
   }
 
   static String timeout(int expirationSeconds) {
-    return LfsAuthToken.ISO.print(now().plusSeconds(expirationSeconds));
+    return LfsAuthToken.ISO.format(now().plusSeconds(expirationSeconds));
   }
 
-  static DateTime now() {
-    return DateTime.now().toDateTime(DateTimeZone.UTC);
+  static Instant now() {
+    return Instant.now();
   }
 }
