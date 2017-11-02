@@ -30,14 +30,13 @@ import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.Instant;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
 import java.util.Collection;
 import java.util.Optional;
 import org.eclipse.jgit.internal.storage.file.LockFile;
 import org.eclipse.jgit.lfs.errors.LfsException;
-import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
-import org.joda.time.format.DateTimeFormatter;
-import org.joda.time.format.ISODateTimeFormat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -47,7 +46,8 @@ class LfsProjectLocks {
   }
 
   private static final Logger log = LoggerFactory.getLogger(LfsProjectLocks.class);
-  private static final DateTimeFormatter ISO = ISODateTimeFormat.dateTime();
+  private static final DateTimeFormatter ISO =
+      DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mmX").withZone(ZoneOffset.UTC);
   private static final Gson gson =
       new GsonBuilder()
           .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
@@ -190,6 +190,6 @@ class LfsProjectLocks {
   }
 
   private String now() {
-    return ISO.print(DateTime.now().toDateTime(DateTimeZone.UTC));
+    return ISO.format(Instant.now());
   }
 }
