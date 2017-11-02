@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "67f543de_e74a195f",
+        "filename": "external_plugin_deps.bzl",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2017-11-02T07:01:16Z",
+      "side": 1,
+      "message": "Adaptation to removal of joda-time should be done in a separate commit.",
+      "revId": "00b2d7aced26ba8cf7a100a35821016a7e439256",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9d25051_d37c5e2b",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsApiServlet.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2017-11-02T07:01:16Z",
+      "side": 1,
+      "message": "This should be testOrFalse as in the previous block.\n\nAs it is, it doesn\u0027t compile because check returns void rather than a boolean.",
+      "range": {
+        "startLine": 143,
+        "startChar": 20,
+        "endLine": 143,
+        "endChar": 25
+      },
+      "revId": "00b2d7aced26ba8cf7a100a35821016a7e439256",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6523eff4_35d7043b",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsLocksAction.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2017-11-02T07:01:16Z",
+      "side": 1,
+      "message": "This is already imported on the next line.",
+      "revId": "00b2d7aced26ba8cf7a100a35821016a7e439256",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d71699d_f5bd308a",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsPutLocksAction.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2017-11-02T07:01:16Z",
+      "side": 1,
+      "message": "should be final",
+      "revId": "00b2d7aced26ba8cf7a100a35821016a7e439256",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96034618_70bc61a4",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsPutLocksAction.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2017-11-02T07:01:16Z",
+      "side": 1,
+      "message": "import this static",
+      "range": {
+        "startLine": 88,
+        "startChar": 80,
+        "endLine": 88,
+        "endChar": 101
+      },
+      "revId": "00b2d7aced26ba8cf7a100a35821016a7e439256",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
