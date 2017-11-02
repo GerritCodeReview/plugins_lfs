@@ -18,12 +18,10 @@ import com.google.common.base.Joiner;
 import com.google.common.base.Splitter;
 import java.util.List;
 import java.util.Optional;
-import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
-import org.joda.time.format.DateTimeFormatter;
-import org.joda.time.format.ISODateTimeFormat;
 
 public abstract class LfsAuthToken {
+  private static final LfsDateTime FORMAT = LfsDateTime.instance();
+
   public abstract static class Processor<T extends LfsAuthToken> {
     private static final char DELIMETER = '~';
 
@@ -65,12 +63,10 @@ public abstract class LfsAuthToken {
     protected abstract boolean verifyTokenValues();
 
     static boolean onTime(String dateTime) {
-      String now = LfsAuthToken.ISO.print(now());
-      return now.compareTo(dateTime) <= 0;
+      return FORMAT.now().compareTo(dateTime) <= 0;
     }
   }
 
-  static final DateTimeFormatter ISO = ISODateTimeFormat.dateTime();
   public final String expiresAt;
 
   protected LfsAuthToken(int expirationSeconds) {
@@ -82,10 +78,6 @@ public abstract class LfsAuthToken {
   }
 
   static String timeout(int expirationSeconds) {
-    return LfsAuthToken.ISO.print(now().plusSeconds(expirationSeconds));
-  }
-
-  static DateTime now() {
-    return DateTime.now().toDateTime(DateTimeZone.UTC);
+    return FORMAT.now(expirationSeconds);
   }
 }
