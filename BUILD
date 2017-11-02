@@ -33,3 +33,13 @@ junit_tests(
         "@jgit_lfs//jar",
     ],
 )
+
+java_library(
+    name = "lfs__plugin_test_deps",
+    testonly = 1,
+    visibility = ["//visibility:public"],
+    exports = PLUGIN_DEPS + PLUGIN_TEST_DEPS + [
+        ":lfs__plugin",
+        "@joda_time//jar",
+    ],
+)

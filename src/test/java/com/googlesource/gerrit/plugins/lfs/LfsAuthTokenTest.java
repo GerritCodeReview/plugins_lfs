@@ -15,14 +15,12 @@
 package com.googlesource.gerrit.plugins.lfs;
 
 import static com.google.common.truth.Truth.assertThat;
-import static com.googlesource.gerrit.plugins.lfs.LfsAuthToken.ISO;
 import static com.googlesource.gerrit.plugins.lfs.LfsAuthToken.Verifier.onTime;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
 import org.junit.Test;
 
 public class LfsAuthTokenTest {
@@ -30,16 +28,14 @@ public class LfsAuthTokenTest {
 
   @Test
   public void testExpiredTime() throws Exception {
-    DateTime now = now();
     // test that even 1ms expiration is enough
-    assertThat(onTime(ISO.print(now.minusMillis(1)))).isFalse();
+    assertThat(onTime(LfsDateTime.format(now().minusMillis(1)))).isFalse();
   }
 
   @Test
   public void testOnTime() throws Exception {
-    DateTime now = now();
     // if there is at least 1ms before there is no timeout
-    assertThat(onTime(ISO.print(now.plusMillis(1)))).isTrue();
+    assertThat(onTime(LfsDateTime.format(now().plusMillis(1)))).isTrue();
   }
 
   @Test
@@ -69,8 +65,8 @@ public class LfsAuthTokenTest {
     assertThat(verifier.verify()).isFalse();
   }
 
-  private DateTime now() {
-    return DateTime.now().toDateTime(DateTimeZone.UTC);
+  private Instant now() {
+    return Instant.now();
   }
 
   private class TestToken extends LfsAuthToken {
