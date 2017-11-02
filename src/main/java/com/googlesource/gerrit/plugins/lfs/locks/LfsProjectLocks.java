@@ -23,6 +23,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.inject.Inject;
 import com.google.inject.assistedinject.Assisted;
+import com.googlesource.gerrit.plugins.lfs.LfsDateTime;
 import com.googlesource.gerrit.plugins.lfs.locks.LfsLocksHandler.LfsLockExistsException;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -35,10 +36,6 @@ import java.util.Optional;
 import java.util.stream.Stream;
 import org.eclipse.jgit.internal.storage.file.LockFile;
 import org.eclipse.jgit.lfs.errors.LfsException;
-import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
-import org.joda.time.format.DateTimeFormatter;
-import org.joda.time.format.ISODateTimeFormat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -48,12 +45,12 @@ class LfsProjectLocks {
   }
 
   private static final Logger log = LoggerFactory.getLogger(LfsProjectLocks.class);
-  private static final DateTimeFormatter ISO = ISODateTimeFormat.dateTime();
   private static final Gson gson =
       new GsonBuilder()
           .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
           .disableHtmlEscaping()
           .create();
+  private static final LfsDateTime FORMAT = LfsDateTime.instance();
 
   private final PathToLockId toLockId;
   private final String project;
@@ -107,7 +104,8 @@ class LfsProjectLocks {
       throw new LfsLockExistsException(lock);
     }
 
-    lock = new LfsLock(lockId, input.path, now(), new LfsLockOwner(user.getUserName().get()));
+    lock =
+        new LfsLock(lockId, input.path, FORMAT.now(), new LfsLockOwner(user.getUserName().get()));
     LockFile fileLock = new LockFile(locksPath.resolve(lockId).toFile());
     try {
       if (!fileLock.lock()) {
@@ -188,9 +186,5 @@ class LfsProjectLocks {
 
   Collection<LfsLock> getLocks() {
     return locks.asMap().values();
-  }
-
-  private String now() {
-    return ISO.print(DateTime.now().toDateTime(DateTimeZone.UTC));
   }
 }
