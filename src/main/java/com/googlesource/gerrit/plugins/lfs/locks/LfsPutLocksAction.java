@@ -23,6 +23,7 @@ import com.google.common.base.Strings;
 import com.google.gerrit.extensions.restapi.AuthException;
 import com.google.gerrit.server.CurrentUser;
 import com.google.gerrit.server.permissions.PermissionBackend;
+import com.google.gerrit.server.permissions.PermissionBackend.ForProject;
 import com.google.gerrit.server.permissions.PermissionBackendException;
 import com.google.gerrit.server.project.ProjectCache;
 import com.google.gerrit.server.project.ProjectState;
@@ -33,7 +34,6 @@ import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.eclipse.jgit.lfs.errors.LfsException;
-import org.eclipse.jgit.lfs.errors.LfsUnauthorized;
 
 public class LfsPutLocksAction extends LfsLocksAction {
   interface Factory extends LfsLocksAction.Factory<LfsPutLocksAction> {}
@@ -41,19 +41,16 @@ public class LfsPutLocksAction extends LfsLocksAction {
   private static final Pattern LFS_VERIFICATION_URL_PATTERN =
       Pattern.compile(String.format(LFS_URL_REGEX_TEMPLATE, LFS_VERIFICATION_PATH));
 
-  private final PermissionBackend permissionBackend;
-
   protected LockAction action;
 
   @Inject
   LfsPutLocksAction(
+      PermissionBackend permissionBackend,
       ProjectCache projectCache,
       LfsAuthUserProvider userProvider,
       LfsLocksHandler handler,
-      PermissionBackend permissionBackend,
       @Assisted LfsLocksContext context) {
-    super(projectCache, userProvider, handler, context);
-    this.permissionBackend = permissionBackend;
+    super(permissionBackend, projectCache, userProvider, handler, context);
   }
 
   @Override
@@ -80,13 +77,14 @@ public class LfsPutLocksAction extends LfsLocksAction {
   }
 
   @Override
-  protected void authorizeUser(ProjectState state, CurrentUser user) throws LfsUnauthorized {
+  protected void authorizeUser(ForProject project) throws AuthException, PermissionBackendException {
     // all operations require push permission
-    try {
-      permissionBackend.user(user).project(state.getNameKey()).check(PUSH_AT_LEAST_ONE_REF);
-    } catch (AuthException | PermissionBackendException e) {
-      throwUnauthorizedOp(action.getName(), state, user);
-    }
+    project.check(PUSH_AT_LEAST_ONE_REF);
+  }
+
+  @Override
+  protected String getAction() {
+    return action.getName();
   }
 
   @Override

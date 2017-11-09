@@ -24,6 +24,7 @@ import com.google.gerrit.reviewdb.client.Project;
 import com.google.gerrit.server.CurrentUser;
 import com.google.gerrit.server.permissions.PermissionBackend;
 import com.google.gerrit.server.permissions.PermissionBackendException;
+import com.google.gerrit.server.permissions.PermissionBackend.ForProject;
 import com.google.gerrit.server.project.ProjectCache;
 import com.google.gerrit.server.project.ProjectState;
 import com.google.inject.Inject;
@@ -33,15 +34,12 @@ import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.eclipse.jgit.lfs.errors.LfsException;
-import org.eclipse.jgit.lfs.errors.LfsUnauthorized;
 
 public class LfsGetLocksAction extends LfsLocksAction {
   interface Factory extends LfsLocksAction.Factory<LfsGetLocksAction> {}
 
   static final Pattern LFS_LOCKS_URL_PATTERN =
       Pattern.compile(String.format(LFS_URL_REGEX_TEMPLATE, LFS_LOCKS_PATH_REGEX));
-
-  private final PermissionBackend permissionBackend;
 
   @Inject
   LfsGetLocksAction(
@@ -50,8 +48,7 @@ public class LfsGetLocksAction extends LfsLocksAction {
       LfsAuthUserProvider userProvider,
       LfsLocksHandler handler,
       @Assisted LfsLocksContext context) {
-    super(projectCache, userProvider, handler, context);
-    this.permissionBackend = permissionBackend;
+    super(permissionBackend, projectCache, userProvider, handler, context);
   }
 
   @Override
@@ -65,12 +62,13 @@ public class LfsGetLocksAction extends LfsLocksAction {
   }
 
   @Override
-  protected void authorizeUser(ProjectState state, CurrentUser user) throws LfsUnauthorized {
-    try {
-      permissionBackend.user(user).project(state.getProject().getNameKey()).check(ACCESS);
-    } catch (AuthException | PermissionBackendException e) {
-      throwUnauthorizedOp("list locks", state, user);
-    }
+  protected void authorizeUser(ForProject project) throws AuthException, PermissionBackendException {
+    project.check(ACCESS);
+  }
+
+  @Override
+  protected String getAction() {
+    return "list-locks";
   }
 
   @Override
