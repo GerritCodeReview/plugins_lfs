@@ -23,8 +23,12 @@ import static org.eclipse.jgit.util.HttpSupport.HDR_AUTHORIZATION;
 
 import com.google.common.base.Strings;
 import com.google.gerrit.common.ProjectUtil;
+import com.google.gerrit.extensions.restapi.AuthException;
 import com.google.gerrit.reviewdb.client.Project;
 import com.google.gerrit.server.CurrentUser;
+import com.google.gerrit.server.permissions.PermissionBackend;
+import com.google.gerrit.server.permissions.PermissionBackendException;
+import com.google.gerrit.server.permissions.PermissionBackend.ForProject;
 import com.google.gerrit.server.project.ProjectCache;
 import com.google.gerrit.server.project.ProjectState;
 import com.googlesource.gerrit.plugins.lfs.LfsAuthUserProvider;
@@ -49,12 +53,15 @@ abstract class LfsLocksAction {
   protected final LfsAuthUserProvider userProvider;
   protected final LfsLocksHandler handler;
   protected final LfsLocksContext context;
+  protected final PermissionBackend permissionBackend;
 
   protected LfsLocksAction(
+      PermissionBackend permissionBackend,
       ProjectCache projectCache,
       LfsAuthUserProvider userProvider,
       LfsLocksHandler handler,
       LfsLocksContext context) {
+    this.permissionBackend = permissionBackend;
     this.projectCache = projectCache;
     this.userProvider = userProvider;
     this.handler = handler;
@@ -67,7 +74,11 @@ abstract class LfsLocksAction {
       ProjectState project = getProject(name);
       CurrentUser user = getUser(name);
       ProjectState state = projectCache.checkedGet(project.getNameKey());
-      authorizeUser(state, user);
+      try {
+        authorizeUser(permissionBackend.user(user).project(state.getNameKey()));
+      } catch (AuthException | PermissionBackendException e) {
+        throwUnauthorizedOp(getAction(), project, user);
+      }
       doRun(project, user);
     } catch (LfsUnauthorized e) {
       context.sendError(SC_UNAUTHORIZED, e.getMessage());
@@ -82,8 +93,9 @@ abstract class LfsLocksAction {
 
   protected abstract String getProjectName() throws LfsException;
 
-  protected abstract void authorizeUser(ProjectState state, CurrentUser user)
-      throws LfsUnauthorized;
+  protected abstract String getAction();
+
+  protected abstract void authorizeUser(ForProject project) throws AuthException, PermissionBackendException;
 
   protected abstract void doRun(ProjectState project, CurrentUser user)
       throws LfsException, IOException;
@@ -102,7 +114,7 @@ abstract class LfsLocksAction {
         context.getHeader(HDR_AUTHORIZATION), project, LFS_LOCKING_OPERATION);
   }
 
-  protected void throwUnauthorizedOp(String op, ProjectState state, CurrentUser user)
+  private void throwUnauthorizedOp(String op, ProjectState state, CurrentUser user)
       throws LfsUnauthorized {
     String project = state.getProject().getName();
     String userName = Strings.isNullOrEmpty(user.getUserName()) ? "anonymous" : user.getUserName();
