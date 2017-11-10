@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "60411278_4e08d161",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsAuthToken.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-11-10T07:35:17Z",
+      "side": 1,
+      "message": "have you tried using any of DateTimeFormatter predefined formats? Or building from ISO format? \u0027yyyy-MM-dd\u0027T\u0027HH:mm:ss\u0027 looks like ISO to me :)",
+      "range": {
+        "startLine": 73,
+        "startChar": 34,
+        "endLine": 73,
+        "endChar": 62
+      },
+      "revId": "57e53011b1f3f296dfb776b4acd72cd8d1560617",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33e70615_9b36daf7",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsProjectLocks.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2017-11-10T07:35:17Z",
+      "side": 1,
+      "message": "the same comment as before ;)",
+      "range": {
+        "startLine": 50,
+        "startChar": 35,
+        "endLine": 50,
+        "endChar": 54
+      },
+      "revId": "57e53011b1f3f296dfb776b4acd72cd8d1560617",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
