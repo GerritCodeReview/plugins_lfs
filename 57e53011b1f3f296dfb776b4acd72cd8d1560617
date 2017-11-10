@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a04155a7_66aeb948",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsAuthToken.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2017-11-10T07:38:23Z",
+      "side": 1,
+      "message": "Yes, I spent some time messing around with this.  Without the .SSS suffix the timestamp lacks the fractional resolution and comparisons don\u0027t work as expected.\n\nI was wondering if this constant should be named something else, because I\u0027m not 100% that it\u0027s really ISO.",
+      "parentUuid": "60411278_4e08d161",
+      "range": {
+        "startLine": 73,
+        "startChar": 34,
+        "endLine": 73,
+        "endChar": 62
+      },
+      "revId": "57e53011b1f3f296dfb776b4acd72cd8d1560617",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "33e70615_9b36daf7",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsProjectLocks.java",
         "patchSetId": 3
