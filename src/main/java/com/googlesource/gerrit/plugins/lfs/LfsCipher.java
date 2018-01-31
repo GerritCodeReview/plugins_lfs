@@ -16,7 +16,6 @@ package com.googlesource.gerrit.plugins.lfs;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
-import com.google.common.base.Optional;
 import com.google.common.base.Strings;
 import com.google.common.primitives.Bytes;
 import com.google.inject.Singleton;
@@ -25,6 +24,7 @@ import java.security.GeneralSecurityException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.Arrays;
+import java.util.Optional;
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
@@ -63,7 +63,7 @@ public class LfsCipher {
 
   public Optional<String> decrypt(String input) {
     if (Strings.isNullOrEmpty(input)) {
-      return Optional.absent();
+      return Optional.empty();
     }
 
     byte[] bytes = Base64.decode(input);
@@ -76,7 +76,7 @@ public class LfsCipher {
       log.error("Exception was thrown during token verification", e);
     }
 
-    return Optional.absent();
+    return Optional.empty();
   }
 
   private Cipher cipher(byte[] initVector, int mode) throws GeneralSecurityException {
