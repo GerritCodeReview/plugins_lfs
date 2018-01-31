@@ -58,7 +58,7 @@ class LfsSshRequestAuthorizer {
 
   SshAuthInfo generateAuthInfo(CurrentUser user, String project, String operation) {
     LfsSshAuthToken token =
-        new LfsSshAuthToken(user.getUserName(), project, operation, expirationSeconds);
+        new LfsSshAuthToken(user.getUserName().get(), project, operation, expirationSeconds);
     return new SshAuthInfo(processor.serialize(token), token.expiresAt);
   }
 
