@@ -77,7 +77,8 @@ public class LfsPutLocksAction extends LfsLocksAction {
   }
 
   @Override
-  protected void authorizeUser(ForProject project) throws AuthException, PermissionBackendException {
+  protected void authorizeUser(ForProject project)
+      throws AuthException, PermissionBackendException {
     // all operations require push permission
     project.check(PUSH_AT_LEAST_ONE_REF);
   }
