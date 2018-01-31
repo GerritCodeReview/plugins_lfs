@@ -21,6 +21,7 @@ gerrit_plugin(
         "@jgit_http_apache//jar",
         "@jgit_lfs//jar",
         "@jgit_lfs_server//jar",
+        "@joda_time//jar",
     ],
 )
 

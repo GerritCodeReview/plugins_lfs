@@ -21,14 +21,13 @@ import static org.apache.http.HttpStatus.SC_NOT_FOUND;
 import static org.apache.http.HttpStatus.SC_UNAUTHORIZED;
 import static org.eclipse.jgit.util.HttpSupport.HDR_AUTHORIZATION;
 
-import com.google.common.base.Strings;
 import com.google.gerrit.common.ProjectUtil;
 import com.google.gerrit.extensions.restapi.AuthException;
 import com.google.gerrit.reviewdb.client.Project;
 import com.google.gerrit.server.CurrentUser;
 import com.google.gerrit.server.permissions.PermissionBackend;
-import com.google.gerrit.server.permissions.PermissionBackendException;
 import com.google.gerrit.server.permissions.PermissionBackend.ForProject;
+import com.google.gerrit.server.permissions.PermissionBackendException;
 import com.google.gerrit.server.project.ProjectCache;
 import com.google.gerrit.server.project.ProjectState;
 import com.googlesource.gerrit.plugins.lfs.LfsAuthUserProvider;
@@ -95,7 +94,8 @@ abstract class LfsLocksAction {
 
   protected abstract String getAction();
 
-  protected abstract void authorizeUser(ForProject project) throws AuthException, PermissionBackendException;
+  protected abstract void authorizeUser(ForProject project)
+      throws AuthException, PermissionBackendException;
 
   protected abstract void doRun(ProjectState project, CurrentUser user)
       throws LfsException, IOException;
@@ -117,7 +117,7 @@ abstract class LfsLocksAction {
   private void throwUnauthorizedOp(String op, ProjectState state, CurrentUser user)
       throws LfsUnauthorized {
     String project = state.getProject().getName();
-    String userName = Strings.isNullOrEmpty(user.getUserName()) ? "anonymous" : user.getUserName();
+    String userName = user.getUserName().isPresent() ? user.getUserName().get() : "anonymous";
     log.debug(
         String.format(
             "operation %s unauthorized for user %s on project %s", op, userName, project));

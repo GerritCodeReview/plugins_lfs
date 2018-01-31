@@ -106,7 +106,7 @@ class LfsProjectLocks {
       throw new LfsLockExistsException(lock);
     }
 
-    lock = new LfsLock(lockId, input.path, now(), new LfsLockOwner(user.getUserName()));
+    lock = new LfsLock(lockId, input.path, now(), new LfsLockOwner(user.getUserName().get()));
     LockFile fileLock = new LockFile(locksPath.resolve(lockId).toFile());
     try {
       if (!fileLock.lock()) {
