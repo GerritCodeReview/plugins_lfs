@@ -14,12 +14,12 @@
 
 package com.googlesource.gerrit.plugins.lfs;
 
-import com.google.common.base.Optional;
 import com.google.gerrit.server.CurrentUser;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -65,13 +65,13 @@ class LfsSshRequestAuthorizer {
   Optional<String> getUserFromValidToken(String authToken, String project, String operation) {
     Optional<LfsSshAuthToken> token = processor.deserialize(authToken);
     if (!token.isPresent()) {
-      return Optional.absent();
+      return Optional.empty();
     }
 
     Verifier verifier = new Verifier(token.get(), project, operation);
     if (!verifier.verify()) {
       log.error("Invalid data was provided with auth token {}.", authToken);
-      return Optional.absent();
+      return Optional.empty();
     }
 
     return Optional.of(token.get().user);
@@ -96,7 +96,7 @@ class LfsSshRequestAuthorizer {
     @Override
     protected Optional<LfsSshAuthToken> createToken(List<String> values) {
       if (values.size() != 4) {
-        return Optional.absent();
+        return Optional.empty();
       }
 
       return Optional.of(

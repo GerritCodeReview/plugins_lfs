@@ -15,9 +15,9 @@
 package com.googlesource.gerrit.plugins.lfs;
 
 import com.google.common.base.Joiner;
-import com.google.common.base.Optional;
 import com.google.common.base.Splitter;
 import java.util.List;
+import java.util.Optional;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.joda.time.format.DateTimeFormatter;
@@ -40,7 +40,7 @@ public abstract class LfsAuthToken {
     public Optional<T> deserialize(String input) {
       Optional<String> decrypted = cipher.decrypt(input);
       if (!decrypted.isPresent()) {
-        return Optional.absent();
+        return Optional.empty();
       }
 
       return createToken(Splitter.on(DELIMETER).splitToList(decrypted.get()));
