@@ -32,6 +32,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.Optional;
+import java.util.stream.Stream;
 import org.eclipse.jgit.internal.storage.file.LockFile;
 import org.eclipse.jgit.lfs.errors.LfsException;
 import org.joda.time.DateTime;
@@ -72,8 +73,8 @@ class LfsProjectLocks {
     if (!Files.exists(locksPath)) {
       return;
     }
-    try {
-      Files.list(locksPath)
+    try (Stream<Path> stream = Files.list(locksPath)) {
+      stream
           .filter(Files::isRegularFile)
           .forEach(
               path -> {
