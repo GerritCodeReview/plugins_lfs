@@ -16,7 +16,7 @@ package com.googlesource.gerrit.plugins.lfs;
 
 import static com.google.common.truth.Truth.assertThat;
 
-import com.google.common.base.Optional;
+import java.util.Optional;
 import org.junit.Test;
 
 public class LfsCipherTest {
