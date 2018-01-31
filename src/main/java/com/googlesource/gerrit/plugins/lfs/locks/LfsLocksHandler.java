@@ -122,7 +122,7 @@ class LfsLocksHandler {
         new Function<LfsLock, Boolean>() {
           @Override
           public Boolean apply(LfsLock input) {
-            return input.owner.name.equals(user.getUserName());
+            return input.owner.name.equals(user.getUserName().get());
           }
         };
     Map<Boolean, List<LfsLock>> groupByOurs =
