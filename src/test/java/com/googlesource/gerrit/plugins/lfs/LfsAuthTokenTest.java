@@ -18,9 +18,9 @@ import static com.google.common.truth.Truth.assertThat;
 import static com.googlesource.gerrit.plugins.lfs.LfsAuthToken.ISO;
 import static com.googlesource.gerrit.plugins.lfs.LfsAuthToken.Verifier.onTime;
 
-import com.google.common.base.Optional;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.junit.Test;
