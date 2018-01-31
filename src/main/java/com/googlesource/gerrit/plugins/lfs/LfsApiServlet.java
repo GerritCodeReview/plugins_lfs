@@ -21,7 +21,6 @@ import static com.google.gerrit.extensions.client.ProjectState.READ_ONLY;
 import static com.google.gerrit.server.permissions.ProjectPermission.PUSH_AT_LEAST_ONE_REF;
 import static com.google.gerrit.server.permissions.ProjectPermission.READ;
 
-import com.google.common.base.Strings;
 import com.google.gerrit.common.ProjectUtil;
 import com.google.gerrit.reviewdb.client.Project;
 import com.google.gerrit.server.CurrentUser;
@@ -139,8 +138,7 @@ public class LfsApiServlet extends LfsProtocolServlet {
                 .testOrFalse(PUSH_AT_LEAST_ONE_REF))) {
       String op = operation.toLowerCase();
       String project = state.getProject().getName();
-      String userName =
-          Strings.isNullOrEmpty(user.getUserName()) ? "anonymous" : user.getUserName();
+      String userName = user.getUserName().isPresent() ? user.getUserName().get() : "anonymous";
       log.debug(
           String.format(
               "operation %s unauthorized for user %s on project %s", op, userName, project));

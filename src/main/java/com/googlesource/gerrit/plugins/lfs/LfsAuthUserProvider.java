@@ -16,7 +16,6 @@ package com.googlesource.gerrit.plugins.lfs;
 
 import static com.googlesource.gerrit.plugins.lfs.LfsSshRequestAuthorizer.SSH_AUTH_PREFIX;
 
-import com.google.common.base.Optional;
 import com.google.common.base.Strings;
 import com.google.gerrit.server.AnonymousUser;
 import com.google.gerrit.server.CurrentUser;
@@ -26,6 +25,7 @@ import com.google.gerrit.server.account.AccountState;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.google.inject.Singleton;
+import java.util.Optional;
 
 @Singleton
 public class LfsAuthUserProvider {
@@ -62,9 +62,9 @@ public class LfsAuthUserProvider {
             sshAuth.getUserFromValidToken(
                 auth.substring(SSH_AUTH_PREFIX.length()), project, operation);
         if (user.isPresent()) {
-          AccountState acc = accounts.getByUsername(user.get());
-          if (acc != null) {
-            return userFactory.create(acc);
+          Optional<AccountState> acc = accounts.getByUsername(user.get());
+          if (acc.isPresent()) {
+            return userFactory.create(acc.get());
           }
         }
       }
