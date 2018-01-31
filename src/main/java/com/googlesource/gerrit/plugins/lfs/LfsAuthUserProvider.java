@@ -62,9 +62,9 @@ public class LfsAuthUserProvider {
             sshAuth.getUserFromValidToken(
                 auth.substring(SSH_AUTH_PREFIX.length()), project, operation);
         if (user.isPresent()) {
-          AccountState acc = accounts.getByUsername(user.get());
-          if (acc != null) {
-            return userFactory.create(acc);
+          Optional<AccountState> acc = accounts.getByUsername(user.get());
+          if (acc.isPresent()) {
+            return userFactory.create(acc.get());
           }
         }
       }
