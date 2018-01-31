@@ -23,8 +23,8 @@ import com.google.gerrit.extensions.restapi.AuthException;
 import com.google.gerrit.reviewdb.client.Project;
 import com.google.gerrit.server.CurrentUser;
 import com.google.gerrit.server.permissions.PermissionBackend;
-import com.google.gerrit.server.permissions.PermissionBackendException;
 import com.google.gerrit.server.permissions.PermissionBackend.ForProject;
+import com.google.gerrit.server.permissions.PermissionBackendException;
 import com.google.gerrit.server.project.ProjectCache;
 import com.google.gerrit.server.project.ProjectState;
 import com.google.inject.Inject;
@@ -62,7 +62,8 @@ public class LfsGetLocksAction extends LfsLocksAction {
   }
 
   @Override
-  protected void authorizeUser(ForProject project) throws AuthException, PermissionBackendException {
+  protected void authorizeUser(ForProject project)
+      throws AuthException, PermissionBackendException {
     project.check(ACCESS);
   }
 
