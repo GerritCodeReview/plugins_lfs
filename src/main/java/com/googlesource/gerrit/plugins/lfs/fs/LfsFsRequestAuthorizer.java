@@ -14,7 +14,6 @@
 
 package com.googlesource.gerrit.plugins.lfs.fs;
 
-import com.google.common.base.Optional;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.googlesource.gerrit.plugins.lfs.AuthInfo;
@@ -22,6 +21,7 @@ import com.googlesource.gerrit.plugins.lfs.LfsAuthToken;
 import com.googlesource.gerrit.plugins.lfs.LfsCipher;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import org.eclipse.jgit.lfs.lib.AnyLongObjectId;
 import org.eclipse.jgit.lfs.lib.LongObjectId;
 
@@ -66,7 +66,7 @@ public class LfsFsRequestAuthorizer {
     @Override
     protected Optional<LfsFsAuthToken> createToken(List<String> values) {
       if (values.size() != 3) {
-        return Optional.absent();
+        return Optional.empty();
       }
 
       return Optional.of(
