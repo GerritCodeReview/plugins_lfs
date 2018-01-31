@@ -103,7 +103,7 @@ class LfsLocksHandler {
     }
 
     LfsLock lock = hasLock.get();
-    if (lock.owner.name.equals(user.getUserName())) {
+    if (lock.owner.name.equals(user.getUserName().get())) {
       locks.deleteLock(lock);
       return new LfsLockResponse(lock);
     } else if (input.force) {
@@ -122,7 +122,7 @@ class LfsLocksHandler {
         new Function<LfsLock, Boolean>() {
           @Override
           public Boolean apply(LfsLock input) {
-            return input.owner.name.equals(user.getUserName());
+            return input.owner.name.equals(user.getUserName().get());
           }
         };
     Map<Boolean, List<LfsLock>> groupByOurs =
