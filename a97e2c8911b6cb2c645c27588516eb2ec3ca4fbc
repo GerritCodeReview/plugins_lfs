@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dc35019d_e2fe8ff0",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsApiServlet.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2018-02-01T00:38:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38cc1a1a_dbfa6932",
+      "range": {
+        "startLine": 141,
+        "startChar": 24,
+        "endLine": 141,
+        "endChar": 96
+      },
+      "revId": "a97e2c8911b6cb2c645c27588516eb2ec3ca4fbc",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9808372c_a4478455",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsLocksAction.java",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2018-01-31T20:37:40Z",
       "side": 1,
       "message": "user.getUserName().orElse(\"anonymous\");",
+      "range": {
+        "startLine": 120,
+        "startChar": 22,
+        "endLine": 120,
+        "endChar": 94
+      },
+      "revId": "a97e2c8911b6cb2c645c27588516eb2ec3ca4fbc",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d38dd3b4_ac5178da",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/LfsLocksAction.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2018-02-01T00:38:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9808372c_a4478455",
       "range": {
         "startLine": 120,
         "startChar": 22,
