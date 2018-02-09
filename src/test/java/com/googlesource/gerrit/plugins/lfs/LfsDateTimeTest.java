@@ -35,7 +35,7 @@ public class LfsDateTimeTest {
   public void formatWithDefaultTimezone() throws Exception {
     DateTime now = DateTime.now();
     String jodaFormat = ISODateTimeFormat.dateTime().print(now);
-    LfsDateTime formatter = LfsDateTime.instance();
+    LfsDateTime formatter = LfsDateTime.builder().build();
     String javaFormat = formatter.format(Instant.ofEpochMilli(now.getMillis()));
     assertThat(javaFormat).isEqualTo(jodaFormat);
   }
@@ -44,8 +44,20 @@ public class LfsDateTimeTest {
   public void formatWithSpecifiedTimezone(String zone) throws Exception {
     DateTime now = DateTime.now().withZone(DateTimeZone.forID(zone));
     String jodaFormat = ISODateTimeFormat.dateTime().withZone(DateTimeZone.forID(zone)).print(now);
-    LfsDateTime formatter = LfsDateTime.instance(TimeZone.getTimeZone(zone).toZoneId());
+    LfsDateTime formatter =
+        LfsDateTime.builder().withZone(TimeZone.getTimeZone(zone).toZoneId()).build();
     String javaFormat = formatter.format(Instant.ofEpochMilli(now.getMillis()));
     assertThat(javaFormat).isEqualTo(jodaFormat);
+  }
+
+  @Test
+  public void parseTimestamps() throws Exception {
+    // UTC
+    LfsDateTime.builder().build().parse("2018-02-09T04:47:10.633Z");
+    LfsDateTime.builder().strict().build().parse("2018-02-09T04:58:51Z");
+
+    // Non-UTC
+    LfsDateTime.builder().build().parse("2018-02-09T04:47:10.633+01:00");
+    LfsDateTime.builder().strict().build().parse("2018-02-09T04:58:51+01:00");
   }
 }

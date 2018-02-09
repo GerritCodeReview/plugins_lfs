@@ -21,23 +21,39 @@ import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
 public class LfsDateTime {
+  private static final String ISO = "yyyy-MM-dd'T'HH:mm:ssZZZZZ";
+  private static final String NON_ISO = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ";
+
   private final DateTimeFormatter format;
 
-  private LfsDateTime(ZoneId zone) {
+  private LfsDateTime(ZoneId zone, boolean strict) {
     format =
-        DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ")
+        DateTimeFormatter.ofPattern(strict ? ISO : NON_ISO)
             .withZone(zone)
             .withLocale(Locale.getDefault());
   }
 
-  /* Create an instance with the system default time zone. */
-  public static LfsDateTime instance() {
-    return new LfsDateTime(ZoneOffset.systemDefault());
+  public static class Builder {
+    private ZoneId zone = ZoneOffset.systemDefault();
+    private boolean strict = false;
+
+    public Builder withZone(ZoneId zone) {
+      this.zone = zone;
+      return this;
+    }
+
+    public Builder strict() {
+      this.strict = true;
+      return this;
+    }
+
+    public LfsDateTime build() {
+      return new LfsDateTime(zone, strict);
+    }
   }
 
-  /* Create an instance with the specified time zone. */
-  public static LfsDateTime instance(ZoneId zone) {
-    return new LfsDateTime(zone);
+  public static Builder builder() {
+    return new Builder();
   }
 
   public String now() {
@@ -50,5 +66,9 @@ public class LfsDateTime {
 
   public String format(Instant instant) {
     return format.format(instant);
+  }
+
+  public void parse(String in) {
+    format.parse(in);
   }
 }
