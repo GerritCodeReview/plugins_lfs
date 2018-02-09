@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56972a2a_65c8606b",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsDateTime.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2018-02-09T09:20:17Z",
+      "side": 1,
+      "message": "See LfsAuthToken - it produces time in UTC",
+      "range": {
+        "startLine": 35,
+        "startChar": 27,
+        "endLine": 35,
+        "endChar": 53
+      },
+      "revId": "af69a8b114ed98342471b2c7b1ccae3895b386f8",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
