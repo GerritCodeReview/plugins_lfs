@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "103a0f9b_4a9df78a",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsSshAuth.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2018-02-09T05:12:13Z",
+      "side": 1,
+      "message": "I wonder if this should rather be UnloggedFailure?  Also below in the existing code at L70?",
+      "range": {
+        "startLine": 52,
+        "startChar": 16,
+        "endLine": 52,
+        "endChar": 23
+      },
+      "revId": "b386fd186a552ce7a83e1d9783fe749fc9378e14",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
