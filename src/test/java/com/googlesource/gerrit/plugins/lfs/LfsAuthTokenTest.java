@@ -25,7 +25,7 @@ import org.junit.Test;
 
 public class LfsAuthTokenTest {
   private final LfsCipher cipher = new LfsCipher();
-  private final LfsDateTime formatter = LfsDateTime.instance();
+  private final LfsDateTime formatter = LfsDateTime.builder().strict().build();
 
   @Test
   public void testExpiredTime() throws Exception {

@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Optional;
 
 public abstract class LfsAuthToken {
-  private static final LfsDateTime FORMAT = LfsDateTime.instance();
+  private static final LfsDateTime FORMAT = LfsDateTime.builder().strict().build();
 
   public abstract static class Processor<T extends LfsAuthToken> {
     private static final char DELIMETER = '~';

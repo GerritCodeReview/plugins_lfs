@@ -50,7 +50,7 @@ class LfsProjectLocks {
           .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
           .disableHtmlEscaping()
           .create();
-  private static final LfsDateTime FORMAT = LfsDateTime.instance();
+  private static final LfsDateTime FORMAT = LfsDateTime.builder().build();
 
   private final PathToLockId toLockId;
   private final String project;
