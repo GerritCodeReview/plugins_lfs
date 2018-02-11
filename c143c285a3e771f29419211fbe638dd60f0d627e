@@ -22,6 +22,30 @@
       "revId": "c143c285a3e771f29419211fbe638dd60f0d627e",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0de2b25_a88d1ac3",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsAuthToken.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2018-02-11T00:25:08Z",
+      "side": 0,
+      "message": "Right, it looks like I missed this in the original implementation that was already merged on master.  I\u0027ll rework this change; if it\u0027s always UTC it actually makes the implementation simpler.",
+      "parentUuid": "894a4830_358c60a5",
+      "range": {
+        "startLine": 89,
+        "startChar": 4,
+        "endLine": 89,
+        "endChar": 55
+      },
+      "revId": "c143c285a3e771f29419211fbe638dd60f0d627e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
