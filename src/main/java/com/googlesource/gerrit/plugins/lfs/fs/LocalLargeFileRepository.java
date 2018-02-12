@@ -32,6 +32,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.Instant;
 import org.eclipse.jgit.lfs.lib.AnyLongObjectId;
 import org.eclipse.jgit.lfs.server.Response;
 import org.eclipse.jgit.lfs.server.fs.FileLfsRepository;
@@ -46,7 +47,7 @@ public class LocalLargeFileRepository extends FileLfsRepository {
 
   private final String servletUrlPattern;
   private final LfsFsRequestAuthorizer authorizer;
-  private final int expirationSeconds;
+  private final Long expiresIn;
 
   @Inject
   LocalLargeFileRepository(
@@ -61,10 +62,11 @@ public class LocalLargeFileRepository extends FileLfsRepository {
         getOrCreateDataDir(configFactory.getGlobalConfig(), backend, defaultDataDir));
     this.authorizer = authorizer;
     this.servletUrlPattern = "/" + getContentPath(backend) + "*";
-    this.expirationSeconds =
+    this.expiresIn =
         configFactory
-            .getGlobalConfig()
-            .getInt(backend.type.name(), backend.name, "expirationSeconds", DEFAULT_TIMEOUT);
+                .getGlobalConfig()
+                .getInt(backend.type.name(), backend.name, "expirationSeconds", DEFAULT_TIMEOUT)
+            * 1000L;
   }
 
   public String getServletUrlPattern() {
@@ -74,14 +76,14 @@ public class LocalLargeFileRepository extends FileLfsRepository {
   @Override
   public Response.Action getDownloadAction(AnyLongObjectId id) {
     Response.Action action = super.getDownloadAction(id);
-    AuthInfo authInfo = authorizer.generateAuthInfo(DOWNLOAD, id, expirationSeconds);
+    AuthInfo authInfo = authorizer.generateAuthInfo(DOWNLOAD, id, Instant.now(), expiresIn);
     return new ExpiringAction(action.href, authInfo);
   }
 
   @Override
   public Response.Action getUploadAction(AnyLongObjectId id, long size) {
     Response.Action action = super.getUploadAction(id, size);
-    AuthInfo authInfo = authorizer.generateAuthInfo(UPLOAD, id, expirationSeconds);
+    AuthInfo authInfo = authorizer.generateAuthInfo(UPLOAD, id, Instant.now(), expiresIn);
     return new ExpiringAction(action.href, authInfo);
   }
 
