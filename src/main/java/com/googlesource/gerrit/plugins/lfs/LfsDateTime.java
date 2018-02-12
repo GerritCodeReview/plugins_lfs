@@ -20,18 +20,28 @@ import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
 public class LfsDateTime {
+  private static final String ISO = "yyyy-MM-dd'T'HH:mm:ssZZZZZ";
+  private static final String NON_ISO = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ";
+
   private final DateTimeFormatter format;
 
-  private LfsDateTime() {
+  private LfsDateTime(boolean strict) {
     format =
-        DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ")
+        DateTimeFormatter.ofPattern(strict ? ISO : NON_ISO)
             .withZone(ZoneOffset.UTC)
             .withLocale(Locale.getDefault());
   }
 
   public static class Builder {
+    private boolean strict = false;
+
+    public Builder strict() {
+      this.strict = true;
+      return this;
+    }
+
     public LfsDateTime build() {
-      return new LfsDateTime();
+      return new LfsDateTime(strict);
     }
   }
 

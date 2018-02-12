@@ -17,7 +17,7 @@ package com.googlesource.gerrit.plugins.lfs;
 import java.time.Instant;
 
 public class AuthInfo {
-  private static final LfsDateTime DATETIME = LfsDateTime.builder().build();
+  private static final LfsDateTime DATETIME = LfsDateTime.builder().strict().build();
   private final String authToken;
   private final Instant issued;
   private final Long expiresIn;
