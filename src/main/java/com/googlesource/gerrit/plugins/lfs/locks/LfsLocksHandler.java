@@ -28,7 +28,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 import org.eclipse.jgit.lfs.errors.LfsException;
 import org.slf4j.Logger;
@@ -118,15 +117,15 @@ class LfsLocksHandler {
   LfsVerifyLocksResponse verifyLocks(Project.NameKey project, final CurrentUser user) {
     log.debug("Verify list of locks for {} project and user {}", project, user);
     LfsProjectLocks locks = projectLocks.getUnchecked(project);
-    Function<LfsLock, Boolean> isOurs =
-        new Function<LfsLock, Boolean>() {
-          @Override
-          public Boolean apply(LfsLock input) {
-            return input.owner.name.equals(user.getUserName());
-          }
-        };
     Map<Boolean, List<LfsLock>> groupByOurs =
-        locks.getLocks().stream().collect(Collectors.groupingBy(isOurs));
+        locks
+            .getLocks()
+            .stream()
+            .collect(
+                Collectors.groupingBy(
+                    (in) -> {
+                      return in.owner.name.equals(user.getUserName());
+                    }));
     return new LfsVerifyLocksResponse(groupByOurs.get(true), groupByOurs.get(false), null);
   }
 
