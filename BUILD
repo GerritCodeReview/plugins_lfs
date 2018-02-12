@@ -9,7 +9,6 @@ load(
 gerrit_plugin(
     name = "lfs",
     srcs = glob(["src/main/java/**/*.java"]),
-    resources = glob(["src/main/resources/**/*"]),
     manifest_entries = [
         "Gerrit-PluginName: lfs",
         "Gerrit-Module: com.googlesource.gerrit.plugins.lfs.Module",
@@ -17,6 +16,7 @@ gerrit_plugin(
         "Gerrit-SshModule: com.googlesource.gerrit.plugins.lfs.SshModule",
         "Gerrit-InitStep: com.googlesource.gerrit.plugins.lfs.InitLfs",
     ],
+    resources = glob(["src/main/resources/**/*"]),
     deps = [
         "@jgit_http_apache//jar",
         "@jgit_lfs//jar",
