@@ -21,10 +21,12 @@ import org.eclipse.jgit.lfs.server.Response;
 
 public class ExpiringAction extends Response.Action {
   public final String expiresAt;
+  public final Integer expiresIn;
 
   public ExpiringAction(String href, AuthInfo info) {
     this.href = href;
     this.header = Collections.singletonMap(HDR_AUTHORIZATION, info.authToken);
     this.expiresAt = info.expiresAt;
+    this.expiresIn = info.expiresIn;
   }
 }

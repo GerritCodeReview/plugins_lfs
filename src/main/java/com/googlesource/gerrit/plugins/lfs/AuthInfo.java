@@ -17,9 +17,11 @@ package com.googlesource.gerrit.plugins.lfs;
 public class AuthInfo {
   public final String authToken;
   public final String expiresAt;
+  public final Integer expiresIn;
 
-  public AuthInfo(String authToken, String expiresAt) {
+  public AuthInfo(String authToken, String expiresAt, Integer expiresIn) {
     this.authToken = authToken;
     this.expiresAt = expiresAt;
+    this.expiresIn = expiresIn;
   }
 }
