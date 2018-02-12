@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6bc9a7a2_1a815657",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/AuthInfo.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2018-02-12T22:48:38Z",
+      "side": 1,
+      "message": "issued issued ... issued - I sense too many issued here :D",
+      "range": {
+        "startLine": 27,
+        "startChar": 12,
+        "endLine": 27,
+        "endChar": 60
+      },
+      "revId": "dcf460dadc2a1afcdf82164fdd62a488a6faabab",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "875257f3_5097a8e4",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/ExpiringAction.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2018-02-12T22:48:38Z",
+      "side": 1,
+      "message": "would consider Long just in case for long expiration time (30min+)",
+      "range": {
+        "startLine": 24,
+        "startChar": 15,
+        "endLine": 24,
+        "endChar": 22
+      },
+      "revId": "dcf460dadc2a1afcdf82164fdd62a488a6faabab",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
