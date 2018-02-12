@@ -14,12 +14,35 @@
 
 package com.googlesource.gerrit.plugins.lfs;
 
-public class AuthInfo {
-  public final String authToken;
-  public final String expiresAt;
+import java.time.Instant;
 
-  public AuthInfo(String authToken, String expiresAt) {
+public class AuthInfo {
+  private static final LfsDateTime DATETIME = LfsDateTime.builder().build();
+  private final String authToken;
+  private final Instant issued;
+  private final Integer expiresIn;
+
+  /**
+   * @param authToken token
+   * @param issued issued time at which the token was issued
+   * @param expiresIn expiry time in seconds
+   */
+  public AuthInfo(String authToken, Instant issued, Integer expiresIn) {
     this.authToken = authToken;
-    this.expiresAt = expiresAt;
+    this.issued = issued;
+    this.expiresIn = expiresIn;
+  }
+
+  public String authToken() {
+    return authToken;
+  }
+
+  public String expiresAt() {
+    return DATETIME.format(issued.plusSeconds(expiresIn));
+  }
+
+  /** @return the expiry duration in milliseconds. */
+  public Integer expiresIn() {
+    return expiresIn * 1000;
   }
 }
