@@ -43,10 +43,6 @@ public class LfsDateTime {
     return format.format(Instant.now());
   }
 
-  public String now(int secondsToAdd) {
-    return format.format(Instant.now().plusSeconds(secondsToAdd));
-  }
-
   public String format(Instant instant) {
     return format.format(instant);
   }

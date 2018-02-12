@@ -15,7 +15,6 @@
 package com.googlesource.gerrit.plugins.lfs;
 
 import static com.google.common.truth.Truth.assertThat;
-import static com.googlesource.gerrit.plugins.lfs.LfsAuthToken.Verifier.onTime;
 
 import java.time.Instant;
 import java.util.ArrayList;
@@ -25,58 +24,44 @@ import org.junit.Test;
 
 public class LfsAuthTokenTest {
   private final LfsCipher cipher = new LfsCipher();
-  private final LfsDateTime formatter = LfsDateTime.builder().build();
-
-  @Test
-  public void testExpiredTime() throws Exception {
-    // test that even 1ms expiration is enough
-    assertThat(onTime(formatter.format(now().minusMillis(1)))).isFalse();
-  }
-
-  @Test
-  public void testOnTime() throws Exception {
-    // if there is at least 1ms before there is no timeout
-    assertThat(onTime(formatter.format(now().plusMillis(1)))).isTrue();
-  }
+  private static final LfsDateTime DATETIME = LfsDateTime.builder().build();
 
   @Test
   public void testTokenSerializationDeserialization() throws Exception {
     TestTokenProessor processor = new TestTokenProessor(cipher);
-    TestToken token = new TestToken(0);
+    TestToken token = new TestToken(Instant.now(), 0L);
     String serialized = processor.serialize(token);
 
     assertThat(serialized).isNotEmpty();
 
     Optional<TestToken> deserialized = processor.deserialize(serialized);
     assertThat(deserialized.isPresent()).isTrue();
-    assertThat(token.expiresAt).isEqualTo(deserialized.get().expiresAt);
+    assertThat(token.issued).isEqualTo(deserialized.get().issued);
   }
 
   @Test
   public void testTokenOnTime() throws Exception {
-    TestToken token = new TestToken(1);
+    Instant when = Instant.now();
+    TestToken token = new TestToken(when, 1L);
     TestTokenVerifier verifier = new TestTokenVerifier(token);
-    assertThat(verifier.verify()).isTrue();
+    assertThat(verifier.onTime(when.plusMillis(999))).isTrue();
   }
 
   @Test
   public void testTokenExpired() throws Exception {
-    TestToken token = new TestToken(-1);
+    Instant when = Instant.now();
+    TestToken token = new TestToken(when, 1L);
     TestTokenVerifier verifier = new TestTokenVerifier(token);
-    assertThat(verifier.verify()).isFalse();
-  }
-
-  private Instant now() {
-    return Instant.now();
+    assertThat(verifier.onTime(when.plusMillis(1001))).isFalse();
   }
 
   private class TestToken extends LfsAuthToken {
-    TestToken(int expirationSeconds) {
-      super(expirationSeconds);
+    TestToken(Instant now, Long expiresIn) {
+      super(now, expiresIn);
     }
 
-    TestToken(String expiresAt) {
-      super(expiresAt);
+    TestToken(String expiresAt, Long expiresIn) {
+      super(expiresAt, expiresIn);
     }
   }
 
@@ -88,13 +73,14 @@ public class LfsAuthTokenTest {
     @Override
     protected List<String> getValues(TestToken token) {
       List<String> values = new ArrayList<>(2);
-      values.add(token.expiresAt);
+      values.add(DATETIME.format(token.issued));
+      values.add(String.valueOf(token.expiresIn));
       return values;
     }
 
     @Override
     protected Optional<TestToken> createToken(List<String> values) {
-      return Optional.of(new TestToken(values.get(0)));
+      return Optional.of(new TestToken(values.get(0), Long.valueOf(values.get(1))));
     }
   }
 

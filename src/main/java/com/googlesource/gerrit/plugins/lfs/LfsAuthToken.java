@@ -16,12 +16,11 @@ package com.googlesource.gerrit.plugins.lfs;
 
 import com.google.common.base.Joiner;
 import com.google.common.base.Splitter;
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
 public abstract class LfsAuthToken {
-  private static final LfsDateTime FORMAT = LfsDateTime.builder().build();
-
   public abstract static class Processor<T extends LfsAuthToken> {
     private static final char DELIMETER = '~';
 
@@ -57,27 +56,26 @@ public abstract class LfsAuthToken {
     }
 
     public boolean verify() {
-      return onTime(token.expiresAt) && verifyTokenValues();
+      return onTime(Instant.now()) && verifyTokenValues();
     }
 
     protected abstract boolean verifyTokenValues();
 
-    static boolean onTime(String dateTime) {
-      return FORMAT.now().compareTo(dateTime) <= 0;
+    public boolean onTime(Instant when) {
+      return when.isBefore(token.issued.plusSeconds(token.expiresIn));
     }
   }
 
-  public final String expiresAt;
+  public final Instant issued;
+  public final Long expiresIn;
 
-  protected LfsAuthToken(int expirationSeconds) {
-    this(timeout(expirationSeconds));
+  protected LfsAuthToken(Instant issued, Long expiresIn) {
+    this.issued = issued;
+    this.expiresIn = expiresIn;
   }
 
-  protected LfsAuthToken(String expiresAt) {
-    this.expiresAt = expiresAt;
-  }
-
-  static String timeout(int expirationSeconds) {
-    return FORMAT.now(expirationSeconds);
+  protected LfsAuthToken(String issued, Long expiresIn) {
+    this.issued = Instant.parse(issued);
+    this.expiresIn = expiresIn;
   }
 }
