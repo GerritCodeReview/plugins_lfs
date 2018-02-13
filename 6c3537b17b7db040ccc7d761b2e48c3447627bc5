@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "25c3935c_b5fb2e10",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/AuthInfo.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2018-02-13T04:49:06Z",
+      "side": 1,
+      "message": "Per the spec this should be seconds.\n\nhttps://github.com/git-lfs/git-lfs/blob/master/docs/api/batch.md#successful-responses",
+      "range": {
+        "startLine": 44,
+        "startChar": 37,
+        "endLine": 44,
+        "endChar": 49
+      },
+      "revId": "6c3537b17b7db040ccc7d761b2e48c3447627bc5",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
