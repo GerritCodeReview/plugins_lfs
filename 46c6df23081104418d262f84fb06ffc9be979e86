@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "569b0bc7_6b06638c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2018-02-21T05:53:09Z",
+      "side": 1,
+      "message": "You mean rather: I897188135af4536ec875083da257358bb6202375 ? Can you explain why it was done, not exporting joda-time any more to the plugins API?",
+      "revId": "46c6df23081104418d262f84fb06ffc9be979e86",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
