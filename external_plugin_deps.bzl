@@ -4,6 +4,9 @@ JGIT_VERSION = '4.9.2.201712150930-r.4-g085d1f959'
 REPO = GERRIT
 
 def external_plugin_deps():
+  lfs()
+
+def lfs():
   maven_jar(
     name = 'jgit_http_apache',
     artifact = 'org.eclipse.jgit:org.eclipse.jgit.http.apache:' + JGIT_VERSION,
