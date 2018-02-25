@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "882b623d_bf8bb4d6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2018-02-25T13:48:12Z",
+      "side": 1,
+      "message": "This is useful to mention it, because you are claiming above, that joda-time is not exported any more in plugin API, yet this change uses this library in tests, without fetching it from the Maven Central. IOW, it may be clear, that this change as is cannot be merged to master, without either removing the dependency on joda-time, or fetching it from Central. This could be optionally clarified in the commit \nmessage.",
+      "range": {
+        "startLine": 20,
+        "startChar": 49,
+        "endLine": 21,
+        "endChar": 24
+      },
+      "revId": "c95af3c1ae39534c080701321f1ab00fae30f45f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
