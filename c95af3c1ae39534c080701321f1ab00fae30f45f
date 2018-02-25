@@ -22,6 +22,53 @@
       "revId": "c95af3c1ae39534c080701321f1ab00fae30f45f",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9d89790e_45255eee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2018-02-25T13:51:39Z",
+      "side": 1,
+      "message": "To clarify, I mean that joda_time is not pulled in external_plugin_deps.bzl, it is also not needed on stable--2.14 branch, as it\u0027s still a part of Plugin API.",
+      "parentUuid": "882b623d_bf8bb4d6",
+      "range": {
+        "startLine": 20,
+        "startChar": 49,
+        "endLine": 21,
+        "endChar": 24
+      },
+      "revId": "c95af3c1ae39534c080701321f1ab00fae30f45f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "277d4c03_733c7c82",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/lfs/LfsDateTimeTest.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2018-02-25T13:51:39Z",
+      "side": 1,
+      "message": "What is merge forward strategy to master? Remove this test? Make joda-time test dependency of this plugin and fetch it from maven Central?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 46
+      },
+      "revId": "c95af3c1ae39534c080701321f1ab00fae30f45f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
