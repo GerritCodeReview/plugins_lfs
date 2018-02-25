@@ -69,6 +69,30 @@
       "revId": "c95af3c1ae39534c080701321f1ab00fae30f45f",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "82bf8cf6_b81c12aa",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/lfs/LfsDateTimeTest.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2018-02-25T14:18:17Z",
+      "side": 1,
+      "message": "This is already done on master (you approved it :) ) and adds the dependency.\n\nOn master I will push a separate commit later to rework the implementation fixing the issues that were found in the review of this backport.  This will make it easier to merge this up to master.",
+      "parentUuid": "277d4c03_733c7c82",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 46
+      },
+      "revId": "c95af3c1ae39534c080701321f1ab00fae30f45f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
