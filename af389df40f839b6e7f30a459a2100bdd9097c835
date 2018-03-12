@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf824347_4068ad83",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2018-03-12T23:05:31Z",
+      "side": 1,
+      "message": "This doesn\u0027t describe the update properly.  It should be something like \"to the latest on stable-2.14 to use 2.14.7 release API\"",
+      "range": {
+        "startLine": 7,
+        "startChar": 15,
+        "endLine": 8,
+        "endChar": 0
+      },
+      "revId": "af389df40f839b6e7f30a459a2100bdd9097c835",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
