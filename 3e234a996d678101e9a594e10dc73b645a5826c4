@@ -22,6 +22,30 @@
       "revId": "3e234a996d678101e9a594e10dc73b645a5826c4",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "821e2153_b7f0a9e0",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LocalLargeFileRepository.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2018-03-16T07:32:49Z",
+      "side": 1,
+      "message": "This is left over from when the AuthInfo was storing in milliseconds.  It should have been undone.",
+      "parentUuid": "e6e8993a_99767be6",
+      "range": {
+        "startLine": 66,
+        "startChar": 8,
+        "endLine": 69,
+        "endChar": 20
+      },
+      "revId": "3e234a996d678101e9a594e10dc73b645a5826c4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
