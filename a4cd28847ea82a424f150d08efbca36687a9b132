@@ -22,6 +22,30 @@
       "revId": "a4cd28847ea82a424f150d08efbca36687a9b132",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c30f1562_20525fbe",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LocalLargeFileRepository.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2018-03-16T08:33:27Z",
+      "side": 1,
+      "message": "That would probably need to be added in JGit.",
+      "parentUuid": "37574182_36beccc8",
+      "range": {
+        "startLine": 69,
+        "startChar": 17,
+        "endLine": 69,
+        "endChar": 23
+      },
+      "revId": "a4cd28847ea82a424f150d08efbca36687a9b132",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
