@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e6e8993a_99767be6",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LocalLargeFileRepository.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2018-03-16T07:25:20Z",
+      "side": 1,
+      "message": "why do you multiply expiresIn by 1000? AuthInfo.expiresIn is in seconds and it is being passed directly to generateAuthInfo in get*Action IOW if one configures 10s token will be valid for 1000 * 10s...",
+      "range": {
+        "startLine": 66,
+        "startChar": 8,
+        "endLine": 69,
+        "endChar": 20
+      },
+      "revId": "3e234a996d678101e9a594e10dc73b645a5826c4",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
