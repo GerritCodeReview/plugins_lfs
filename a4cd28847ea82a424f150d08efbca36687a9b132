@@ -70,6 +70,30 @@
       "revId": "a4cd28847ea82a424f150d08efbca36687a9b132",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfc05e55_7fb894de",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LocalLargeFileRepository.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2018-03-21T07:22:52Z",
+      "side": 1,
+      "message": "Ah, right.  I thought we were dealing with a JGit Config object here.\n\nI\u0027d rather do it in a separate change though.",
+      "parentUuid": "bc9c588d_ab1c8d38",
+      "range": {
+        "startLine": 69,
+        "startChar": 17,
+        "endLine": 69,
+        "endChar": 23
+      },
+      "revId": "a4cd28847ea82a424f150d08efbca36687a9b132",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
