@@ -14,20 +14,21 @@
 
 package com.googlesource.gerrit.plugins.lfs;
 
-import com.google.common.base.Optional;
 import com.google.gerrit.server.CurrentUser;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @Singleton
 class LfsSshRequestAuthorizer {
   static class SshAuthInfo extends AuthInfo {
-    SshAuthInfo(String authToken, String expiresAt) {
-      super(SSH_AUTH_PREFIX + authToken, expiresAt);
+    SshAuthInfo(String authToken, Instant issued, Long expiresIn) {
+      super(SSH_AUTH_PREFIX + authToken, issued, expiresIn);
     }
   }
 
@@ -36,12 +37,12 @@ class LfsSshRequestAuthorizer {
   static final String SSH_AUTH_PREFIX = "Ssh: ";
 
   private final Processor processor;
-  private final int expirationSeconds;
+  private final Long expiresIn;
 
   @Inject
   LfsSshRequestAuthorizer(Processor processor, LfsConfigurationFactory configFactory) {
     this.processor = processor;
-    int timeout = DEFAULT_SSH_TIMEOUT;
+    long timeout = DEFAULT_SSH_TIMEOUT;
     try {
       timeout =
           configFactory
@@ -53,25 +54,25 @@ class LfsSshRequestAuthorizer {
           DEFAULT_SSH_TIMEOUT,
           e);
     }
-    this.expirationSeconds = timeout;
+    this.expiresIn = timeout;
   }
 
   SshAuthInfo generateAuthInfo(CurrentUser user, String project, String operation) {
     LfsSshAuthToken token =
-        new LfsSshAuthToken(user.getUserName(), project, operation, expirationSeconds);
-    return new SshAuthInfo(processor.serialize(token), token.expiresAt);
+        new LfsSshAuthToken(user.getUserName(), project, operation, Instant.now(), expiresIn);
+    return new SshAuthInfo(processor.serialize(token), token.issued, token.expiresIn);
   }
 
   Optional<String> getUserFromValidToken(String authToken, String project, String operation) {
     Optional<LfsSshAuthToken> token = processor.deserialize(authToken);
     if (!token.isPresent()) {
-      return Optional.absent();
+      return Optional.empty();
     }
 
     Verifier verifier = new Verifier(token.get(), project, operation);
     if (!verifier.verify()) {
       log.error("Invalid data was provided with auth token {}.", authToken);
-      return Optional.absent();
+      return Optional.empty();
     }
 
     return Optional.of(token.get().user);
@@ -89,18 +90,24 @@ class LfsSshRequestAuthorizer {
       values.add(token.user);
       values.add(token.project);
       values.add(token.operation);
-      values.add(token.expiresAt);
+      values.add(LfsDateTime.format(token.issued));
+      values.add(String.valueOf(token.expiresIn));
       return values;
     }
 
     @Override
     protected Optional<LfsSshAuthToken> createToken(List<String> values) {
-      if (values.size() != 4) {
-        return Optional.absent();
+      if (values.size() != 5) {
+        return Optional.empty();
       }
 
       return Optional.of(
-          new LfsSshAuthToken(values.get(0), values.get(1), values.get(2), values.get(3)));
+          new LfsSshAuthToken(
+              values.get(0),
+              values.get(1),
+              values.get(2),
+              values.get(3),
+              Long.valueOf(values.get(4))));
     }
   }
 
@@ -125,15 +132,15 @@ class LfsSshRequestAuthorizer {
     private final String project;
     private final String operation;
 
-    LfsSshAuthToken(String user, String project, String operation, int expirationSeconds) {
-      super(expirationSeconds);
+    LfsSshAuthToken(String user, String project, String operation, Instant issued, Long expiresIn) {
+      super(issued, expiresIn);
       this.user = user;
       this.project = project;
       this.operation = operation;
     }
 
-    LfsSshAuthToken(String user, String project, String operation, String expiresAt) {
-      super(expiresAt);
+    LfsSshAuthToken(String user, String project, String operation, String issued, Long expiresIn) {
+      super(issued, expiresIn);
       this.user = user;
       this.project = project;
       this.operation = operation;

@@ -9,7 +9,6 @@ load(
 gerrit_plugin(
     name = "lfs",
     srcs = glob(["src/main/java/**/*.java"]),
-    resources = glob(["src/main/resources/**/*"]),
     manifest_entries = [
         "Gerrit-PluginName: lfs",
         "Gerrit-Module: com.googlesource.gerrit.plugins.lfs.Module",
@@ -17,6 +16,7 @@ gerrit_plugin(
         "Gerrit-SshModule: com.googlesource.gerrit.plugins.lfs.SshModule",
         "Gerrit-InitStep: com.googlesource.gerrit.plugins.lfs.InitLfs",
     ],
+    resources = glob(["src/main/resources/**/*"]),
     deps = [
         "@jgit_http_apache//jar",
         "@jgit_lfs//jar",
@@ -31,5 +31,15 @@ junit_tests(
     deps = PLUGIN_DEPS + PLUGIN_TEST_DEPS + [
         ":lfs__plugin",
         "@jgit_lfs//jar",
+    ],
+)
+
+java_library(
+    name = "lfs__plugin_test_deps",
+    testonly = 1,
+    visibility = ["//visibility:public"],
+    exports = PLUGIN_DEPS + PLUGIN_TEST_DEPS + [
+        ":lfs__plugin",
+        "@joda_time//jar",
     ],
 )

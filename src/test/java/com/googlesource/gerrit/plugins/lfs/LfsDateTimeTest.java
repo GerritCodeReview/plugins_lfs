@@ -14,19 +14,19 @@
 
 package com.googlesource.gerrit.plugins.lfs;
 
-import static org.eclipse.jgit.util.HttpSupport.HDR_AUTHORIZATION;
+import static com.google.common.truth.Truth.assertThat;
 
-import java.util.Collections;
-import org.eclipse.jgit.lfs.server.Response;
+import java.time.Instant;
+import org.joda.time.DateTime;
+import org.joda.time.format.ISODateTimeFormat;
+import org.junit.Test;
 
-public class ExpiringAction extends Response.Action {
-  public final String expiresAt;
-  public final Long expiresIn;
-
-  public ExpiringAction(String href, AuthInfo info) {
-    this.href = href;
-    this.header = Collections.singletonMap(HDR_AUTHORIZATION, info.authToken());
-    this.expiresAt = info.expiresAt();
-    this.expiresIn = info.expiresIn();
+public class LfsDateTimeTest {
+  @Test
+  public void format() throws Exception {
+    DateTime now = DateTime.now();
+    String jodaFormat = ISODateTimeFormat.dateTime().withZoneUTC().print(now);
+    String javaFormat = LfsDateTime.format(Instant.ofEpochMilli(now.getMillis()));
+    assertThat(javaFormat).isEqualTo(jodaFormat);
   }
 }
