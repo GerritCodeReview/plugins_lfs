@@ -30,7 +30,7 @@ import com.google.gerrit.reviewdb.client.Project;
 import com.google.gerrit.server.CurrentUser;
 import com.google.gerrit.server.IdentifiedUser;
 import com.google.gerrit.server.config.AllProjectsName;
-import com.google.gerrit.server.git.MetaDataUpdate;
+import com.google.gerrit.server.git.meta.MetaDataUpdate;
 import com.google.gerrit.server.permissions.PermissionBackend;
 import com.google.gerrit.server.project.ProjectResource;
 import com.google.inject.Inject;

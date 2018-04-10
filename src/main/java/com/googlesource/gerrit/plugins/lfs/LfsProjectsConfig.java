@@ -21,7 +21,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.reviewdb.client.Project;
 import com.google.gerrit.server.config.AllProjectsName;
-import com.google.gerrit.server.git.VersionedMetaData;
+import com.google.gerrit.server.git.meta.VersionedMetaData;
 import com.google.gerrit.server.project.ProjectCache;
 import java.io.IOException;
 import java.util.ArrayList;
