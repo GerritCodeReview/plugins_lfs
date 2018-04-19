@@ -43,7 +43,7 @@ public class LocalLargeFileRepository extends FileLfsRepository {
   }
 
   public static final String CONTENT_PATH = "content";
-  private static final int DEFAULT_TIMEOUT = 10; //in seconds
+  private static final int DEFAULT_TIMEOUT = 10; // in seconds
 
   private final String servletUrlPattern;
   private final LfsFsRequestAuthorizer authorizer;
