@@ -22,6 +22,30 @@
       "revId": "7bd7a2b434cfe1736829ce0cf104f36bdaf9caec",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c9e1489_1f4cd1e7",
+        "filename": "WORKSPACE",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2018-04-26T05:26:24Z",
+      "side": 1,
+      "message": "Yeah, I merged from stable-2.14 on bazlets after doing this commit.  The changes on stable-2.14 are already on stable-2.15 so I don\u0027t think it makes enough difference to re-do this commit.",
+      "parentUuid": "35618e52_91b23afa",
+      "range": {
+        "startLine": 6,
+        "startChar": 14,
+        "endLine": 6,
+        "endChar": 54
+      },
+      "revId": "7bd7a2b434cfe1736829ce0cf104f36bdaf9caec",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
