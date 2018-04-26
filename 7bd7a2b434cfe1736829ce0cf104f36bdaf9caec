@@ -46,6 +46,30 @@
       "revId": "7bd7a2b434cfe1736829ce0cf104f36bdaf9caec",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2494e42_29a46090",
+        "filename": "WORKSPACE",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2018-04-26T05:38:19Z",
+      "side": 1,
+      "message": "got your point :)",
+      "parentUuid": "2c9e1489_1f4cd1e7",
+      "range": {
+        "startLine": 6,
+        "startChar": 14,
+        "endLine": 6,
+        "endChar": 54
+      },
+      "revId": "7bd7a2b434cfe1736829ce0cf104f36bdaf9caec",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
