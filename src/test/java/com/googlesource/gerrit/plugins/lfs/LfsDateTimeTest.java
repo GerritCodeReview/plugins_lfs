@@ -17,35 +17,16 @@ package com.googlesource.gerrit.plugins.lfs;
 import static com.google.common.truth.Truth.assertThat;
 
 import java.time.Instant;
-import java.util.TimeZone;
 import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
 import org.joda.time.format.ISODateTimeFormat;
 import org.junit.Test;
-import org.junit.experimental.theories.DataPoints;
-import org.junit.experimental.theories.Theories;
-import org.junit.experimental.theories.Theory;
-import org.junit.runner.RunWith;
 
-@RunWith(Theories.class)
 public class LfsDateTimeTest {
-  @DataPoints public static String[] timeZones = {"US/Eastern", "Asia/Tokyo", "UTC"};
-
   @Test
-  public void formatWithDefaultTimezone() throws Exception {
+  public void format() throws Exception {
     DateTime now = DateTime.now();
-    String jodaFormat = ISODateTimeFormat.dateTime().print(now);
-    LfsDateTime formatter = LfsDateTime.instance();
-    String javaFormat = formatter.format(Instant.ofEpochMilli(now.getMillis()));
-    assertThat(javaFormat).isEqualTo(jodaFormat);
-  }
-
-  @Theory
-  public void formatWithSpecifiedTimezone(String zone) throws Exception {
-    DateTime now = DateTime.now().withZone(DateTimeZone.forID(zone));
-    String jodaFormat = ISODateTimeFormat.dateTime().withZone(DateTimeZone.forID(zone)).print(now);
-    LfsDateTime formatter = LfsDateTime.instance(TimeZone.getTimeZone(zone).toZoneId());
-    String javaFormat = formatter.format(Instant.ofEpochMilli(now.getMillis()));
+    String jodaFormat = ISODateTimeFormat.dateTime().withZoneUTC().print(now);
+    String javaFormat = LfsDateTime.format(Instant.ofEpochMilli(now.getMillis()));
     assertThat(javaFormat).isEqualTo(jodaFormat);
   }
 }

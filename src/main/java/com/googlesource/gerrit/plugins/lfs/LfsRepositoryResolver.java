@@ -62,7 +62,7 @@ public class LfsRepositoryResolver {
       return repository;
     }
 
-    //this is unlikely situation as cache is pre-populated from config but...
+    // this is unlikely situation as cache is pre-populated from config but...
     log.error(
         String.format(
             "Project %s is configured with not existing" + " backend %s of type %s",

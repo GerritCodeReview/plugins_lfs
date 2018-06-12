@@ -50,8 +50,6 @@ class LfsProjectLocks {
           .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
           .disableHtmlEscaping()
           .create();
-  private static final LfsDateTime FORMAT = LfsDateTime.instance();
-
   private final PathToLockId toLockId;
   private final String project;
   private final Path locksPath;
@@ -105,7 +103,8 @@ class LfsProjectLocks {
     }
 
     lock =
-        new LfsLock(lockId, input.path, FORMAT.now(), new LfsLockOwner(user.getUserName().get()));
+        new LfsLock(
+            lockId, input.path, LfsDateTime.now(), new LfsLockOwner(user.getUserName().get()));
     LockFile fileLock = new LockFile(locksPath.resolve(lockId).toFile());
     try {
       if (!fileLock.lock()) {

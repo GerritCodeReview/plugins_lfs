@@ -48,6 +48,9 @@ public class LfsSshAuth implements LfsPluginAuthCommand.LfsSshPluginAuth {
 
   @Override
   public String authenticate(CurrentUser user, List<String> args) throws UnloggedFailure, Failure {
+    if (args.size() != 2) {
+      throw new UnloggedFailure(1, "Unexpected number of arguments");
+    }
     try {
       URL url = new URL(canonicalWebUrl);
       String path = url.getPath();
