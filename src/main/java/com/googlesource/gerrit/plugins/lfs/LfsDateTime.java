@@ -15,40 +15,21 @@
 package com.googlesource.gerrit.plugins.lfs;
 
 import java.time.Instant;
-import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
 public class LfsDateTime {
-  private final DateTimeFormatter format;
+  private static final DateTimeFormatter FORMAT =
+      DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ")
+          .withZone(ZoneOffset.UTC)
+          .withLocale(Locale.getDefault());
 
-  private LfsDateTime(ZoneId zone) {
-    format =
-        DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ")
-            .withZone(zone)
-            .withLocale(Locale.getDefault());
+  public static String now() {
+    return FORMAT.format(Instant.now());
   }
 
-  /* Create an instance with the system default time zone. */
-  public static LfsDateTime instance() {
-    return new LfsDateTime(ZoneOffset.systemDefault());
-  }
-
-  /* Create an instance with the specified time zone. */
-  public static LfsDateTime instance(ZoneId zone) {
-    return new LfsDateTime(zone);
-  }
-
-  public String now() {
-    return format.format(Instant.now());
-  }
-
-  public String now(int secondsToAdd) {
-    return format.format(Instant.now().plusSeconds(secondsToAdd));
-  }
-
-  public String format(Instant instant) {
-    return format.format(instant);
+  public static String format(Instant instant) {
+    return FORMAT.format(instant);
   }
 }

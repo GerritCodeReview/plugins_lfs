@@ -1,30 +1,28 @@
-//Copyright (C) 2017 The Android Open Source Project
+// Copyright (C) 2017 The Android Open Source Project
 //
-//Licensed under the Apache License, Version 2.0 (the "License");
-//you may not use this file except in compliance with the License.
-//You may obtain a copy of the License at
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
 //
-//http://www.apache.org/licenses/LICENSE-2.0
+// http://www.apache.org/licenses/LICENSE-2.0
 //
-//Unless required by applicable law or agreed to in writing, software
-//distributed under the License is distributed on an "AS IS" BASIS,
-//WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-//See the License for the specific language governing permissions and
-//limitations under the License.
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 
 package com.googlesource.gerrit.plugins.lfs;
 
 import com.google.common.base.Joiner;
 import com.google.common.base.Splitter;
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
 public abstract class LfsAuthToken {
-  private static final LfsDateTime FORMAT = LfsDateTime.instance();
-
   public abstract static class Processor<T extends LfsAuthToken> {
     private static final char DELIMETER = '~';
-
     protected final LfsCipher cipher;
 
     protected Processor(LfsCipher cipher) {
@@ -40,7 +38,6 @@ public abstract class LfsAuthToken {
       if (!decrypted.isPresent()) {
         return Optional.empty();
       }
-
       return createToken(Splitter.on(DELIMETER).splitToList(decrypted.get()));
     }
 
@@ -57,27 +54,26 @@ public abstract class LfsAuthToken {
     }
 
     public boolean verify() {
-      return onTime(token.expiresAt) && verifyTokenValues();
+      return onTime(Instant.now()) && verifyTokenValues();
     }
 
     protected abstract boolean verifyTokenValues();
 
-    static boolean onTime(String dateTime) {
-      return FORMAT.now().compareTo(dateTime) <= 0;
+    public boolean onTime(Instant when) {
+      return when.isBefore(token.issued.plusSeconds(token.expiresIn));
     }
   }
 
-  public final String expiresAt;
+  public final Instant issued;
+  public final Long expiresIn;
 
-  protected LfsAuthToken(int expirationSeconds) {
-    this(timeout(expirationSeconds));
+  protected LfsAuthToken(Instant issued, Long expiresIn) {
+    this.issued = issued;
+    this.expiresIn = expiresIn;
   }
 
-  protected LfsAuthToken(String expiresAt) {
-    this.expiresAt = expiresAt;
-  }
-
-  static String timeout(int expirationSeconds) {
-    return FORMAT.now(expirationSeconds);
+  protected LfsAuthToken(String issued, Long expiresIn) {
+    this.issued = Instant.parse(issued);
+    this.expiresIn = expiresIn;
   }
 }

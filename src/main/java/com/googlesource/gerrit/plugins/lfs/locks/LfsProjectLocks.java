@@ -50,8 +50,6 @@ class LfsProjectLocks {
           .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
           .disableHtmlEscaping()
           .create();
-  private static final LfsDateTime FORMAT = LfsDateTime.instance();
-
   private final PathToLockId toLockId;
   private final String project;
   private final Path locksPath;
@@ -79,7 +77,6 @@ class LfsProjectLocks {
                   log.warn("Lock file [{}] in project {} is not readable", path, project);
                   return;
                 }
-
                 try (Reader in = Files.newBufferedReader(path)) {
                   LfsLock lock = gson.fromJson(in, LfsLock.class);
                   locks.put(lock.id, lock);
@@ -103,9 +100,9 @@ class LfsProjectLocks {
     if (lock != null) {
       throw new LfsLockExistsException(lock);
     }
-
     lock =
-        new LfsLock(lockId, input.path, FORMAT.now(), new LfsLockOwner(user.getUserName().get()));
+        new LfsLock(
+            lockId, input.path, LfsDateTime.now(), new LfsLockOwner(user.getUserName().get()));
     LockFile fileLock = new LockFile(locksPath.resolve(lockId).toFile());
     try {
       if (!fileLock.lock()) {
@@ -120,7 +117,6 @@ class LfsProjectLocks {
       log.warn(error);
       throw new LfsException(error);
     }
-
     try {
       try (OutputStreamWriter out = new OutputStreamWriter(fileLock.getOutputStream())) {
         gson.toJson(lock, out);
@@ -146,7 +142,6 @@ class LfsProjectLocks {
     } finally {
       fileLock.unlock();
     }
-
     return lock;
   }
 
@@ -168,7 +163,6 @@ class LfsProjectLocks {
       log.warn(error);
       throw new LfsException(error);
     }
-
     try {
       Files.deleteIfExists(locksPath.resolve(lock.id));
       locks.invalidate(lock.id);
