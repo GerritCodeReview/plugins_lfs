@@ -29,8 +29,6 @@ import java.util.Optional;
 
 @Singleton
 public class LfsAuthUserProvider {
-  private static final String BASIC_AUTH_PREFIX = "Basic ";
-
   private final Provider<AnonymousUser> anonymous;
   private final Provider<CurrentUser> user;
   private final LfsSshRequestAuthorizer sshAuth;
@@ -52,23 +50,18 @@ public class LfsAuthUserProvider {
   }
 
   public CurrentUser getUser(String auth, String project, String operation) {
-    if (!Strings.isNullOrEmpty(auth)) {
-      if (auth.startsWith(BASIC_AUTH_PREFIX)) {
-        return user.get();
-      }
-
-      if (auth.startsWith(SSH_AUTH_PREFIX)) {
-        Optional<String> user =
-            sshAuth.getUserFromValidToken(
-                auth.substring(SSH_AUTH_PREFIX.length()), project, operation);
-        if (user.isPresent()) {
-          Optional<AccountState> acc = accounts.getByUsername(user.get());
-          if (acc.isPresent()) {
-            return userFactory.create(acc.get());
-          }
+    if (!Strings.isNullOrEmpty(auth) && auth.startsWith(SSH_AUTH_PREFIX)) {
+      Optional<String> user =
+          sshAuth.getUserFromValidToken(
+              auth.substring(SSH_AUTH_PREFIX.length()), project, operation);
+      if (user.isPresent()) {
+        Optional<AccountState> acc = accounts.getByUsername(user.get());
+        if (acc.isPresent()) {
+          return userFactory.create(acc.get());
         }
       }
     }
-    return anonymous.get();
+    CurrentUser currentUser = user.get();
+    return currentUser != null ? currentUser : anonymous.get();
   }
 }
