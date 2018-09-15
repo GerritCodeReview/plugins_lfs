@@ -18,7 +18,7 @@ import static com.google.gerrit.extensions.api.lfs.LfsDefinitions.LFS_OBJECTS_PA
 import static com.google.gerrit.extensions.api.lfs.LfsDefinitions.LFS_URL_REGEX_TEMPLATE;
 import static com.google.gerrit.extensions.client.ProjectState.HIDDEN;
 import static com.google.gerrit.extensions.client.ProjectState.READ_ONLY;
-import static com.google.gerrit.server.permissions.ProjectPermission.READ;
+import static com.google.gerrit.server.permissions.ProjectPermission.ACCESS;
 
 import com.google.common.base.Strings;
 import com.google.gerrit.common.ProjectUtil;
@@ -135,7 +135,7 @@ public class LfsApiServlet extends LfsProtocolServlet {
             && !permissionBackend
                 .user(user)
                 .project(state.getProject().getNameKey())
-                .testOrFalse(READ))
+                .testOrFalse(ACCESS))
         || (operation.equals(UPLOAD) && Capable.OK != control.canPushToAtLeastOneRef())) {
       String op = operation.toLowerCase();
       String project = state.getProject().getName();
