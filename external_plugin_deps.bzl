@@ -1,13 +1,13 @@
 load("//tools/bzl:maven_jar.bzl", "maven_jar", "GERRIT", "MAVEN_LOCAL", "MAVEN_CENTRAL")
 
-JGIT_VERSION = '4.11.0.201803080745-r.93-gcbb2e65db'
-REPO = GERRIT
+JGIT_VERSION = '5.1.1.201809181055-r'
+REPO = MAVEN_CENTRAL
 
 def external_plugin_deps():
   maven_jar(
     name = 'jgit_http_apache',
     artifact = 'org.eclipse.jgit:org.eclipse.jgit.http.apache:' + JGIT_VERSION,
-    sha1 = '86433bed1eb77c4dccc8038162fd36ecb5fd9890',
+    sha1 = '236c4ba73978801d7ab04f78eb321d66d7530b8e',
     repository = REPO,
     unsign = True,
     exclude = [
@@ -19,7 +19,7 @@ def external_plugin_deps():
   maven_jar(
     name = 'jgit_lfs',
     artifact = 'org.eclipse.jgit:org.eclipse.jgit.lfs:' + JGIT_VERSION,
-    sha1 = '4a73a22fff5509539cefe1004d2595c4ab805688',
+    sha1 = '73ad88fa00f0756a4bc893cdc95818da1adbd188',
     repository = REPO,
     unsign = True,
     exclude = [
@@ -31,7 +31,7 @@ def external_plugin_deps():
   maven_jar(
     name = 'jgit_lfs_server',
     artifact = 'org.eclipse.jgit:org.eclipse.jgit.lfs.server:' + JGIT_VERSION,
-    sha1 = '8a37bec85e4eab5091e8f024da6e2bd8a9957802',
+    sha1 = 'f9389d44beddaf0ecb31065c570caa916d0508de',
     repository = REPO,
     unsign = True,
     exclude = [
