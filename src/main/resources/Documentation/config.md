@@ -50,7 +50,7 @@ projects under `/test` and limiting to `500 mb` for projects under other
 folders:
 
 ```
-  [@PLUGIN@ "test/*]
+  [@PLUGIN@ "test/*"]
     enabled = true
   [@PLUGIN@ "?/*"]
     enabled = true
