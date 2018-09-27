@@ -1,1 +1,1 @@
-load("@com_googlesource_gerrit_bazlets//tools:maven_jar.bzl", "maven_jar", "GERRIT", "MAVEN_LOCAL", "MAVEN_CENTRAL")
+load("@com_googlesource_gerrit_bazlets//tools:maven_jar.bzl", "GERRIT", "MAVEN_CENTRAL", "MAVEN_LOCAL", "maven_jar")
