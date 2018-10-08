@@ -1,9 +1,9 @@
 load("//tools/bzl:junit.bzl", "junit_tests")
 load(
     "//tools/bzl:plugin.bzl",
-    "gerrit_plugin",
     "PLUGIN_DEPS",
     "PLUGIN_TEST_DEPS",
+    "gerrit_plugin",
 )
 
 gerrit_plugin(
@@ -28,9 +28,8 @@ junit_tests(
     name = "lfs_tests",
     srcs = glob(["src/test/java/**/*.java"]),
     tags = ["lfs"],
-    deps = PLUGIN_DEPS + PLUGIN_TEST_DEPS + [
-        ":lfs__plugin",
-        "@jgit_lfs//jar",
+    deps = [
+        ":lfs__plugin_test_deps",
     ],
 )
 
@@ -40,6 +39,7 @@ java_library(
     visibility = ["//visibility:public"],
     exports = PLUGIN_DEPS + PLUGIN_TEST_DEPS + [
         ":lfs__plugin",
+        "@jgit_lfs//jar",
         "@joda_time//jar",
     ],
 )
