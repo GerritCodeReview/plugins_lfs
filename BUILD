@@ -28,9 +28,8 @@ junit_tests(
     name = "lfs_tests",
     srcs = glob(["src/test/java/**/*.java"]),
     tags = ["lfs"],
-    deps = PLUGIN_DEPS + PLUGIN_TEST_DEPS + [
-        ":lfs__plugin",
-        "@jgit_lfs//jar",
+    deps = [
+        ":lfs__plugin_test_deps",
     ],
 )
 
