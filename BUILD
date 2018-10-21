@@ -28,9 +28,8 @@ junit_tests(
     name = "lfs_tests",
     srcs = glob(["src/test/java/**/*.java"]),
     tags = ["lfs"],
-    deps = PLUGIN_DEPS + PLUGIN_TEST_DEPS + [
-        ":lfs__plugin",
-        "@jgit-lfs//jar",
+    deps = [
+      ":lfs__plugin_test_deps",
     ],
 )
 
@@ -40,6 +39,6 @@ java_library(
     visibility = ["//visibility:public"],
     exports = PLUGIN_DEPS + PLUGIN_TEST_DEPS + [
         ":lfs__plugin",
-        "@joda-time//jar",
+        "@jgit-lfs//jar",
     ],
 )
