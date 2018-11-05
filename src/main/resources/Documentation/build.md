@@ -62,5 +62,13 @@ To execute the tests run:
   bazel test plugins/@PLUGIN@:@PLUGIN@_tests
 ```
 
+This project can be imported into the Eclipse IDE. Execute:
+
+```
+  ./tools/eclipse/project.sh
+```
+
+to generate the required files and then import the project.
+
 How to build the Gerrit Plugin API is described in the [Gerrit
 documentation](../../../Documentation/dev-bazel.html#_extension_and_plugin_api_jar_files).

@@ -18,8 +18,8 @@ import static com.google.gerrit.extensions.api.lfs.LfsDefinitions.LFS_OBJECTS_PA
 import static com.google.gerrit.extensions.api.lfs.LfsDefinitions.LFS_URL_REGEX_TEMPLATE;
 import static com.google.gerrit.extensions.client.ProjectState.HIDDEN;
 import static com.google.gerrit.extensions.client.ProjectState.READ_ONLY;
-import static com.google.gerrit.server.permissions.ProjectPermission.PUSH_AT_LEAST_ONE_REF;
 import static com.google.gerrit.server.permissions.ProjectPermission.READ;
+import static com.google.gerrit.server.permissions.ProjectPermission.PUSH_AT_LEAST_ONE_REF;
 
 import com.google.gerrit.common.ProjectUtil;
 import com.google.gerrit.reviewdb.client.Project;

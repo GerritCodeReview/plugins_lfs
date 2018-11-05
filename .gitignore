@@ -1,12 +1,9 @@
-/bucklets
-/.buckversion
 /.classpath
 /.project
-/.buckd
-/.watchmanconfig
-/buck-out
+/.settings
 /bazel-bin
 /bazel-genfiles
 /bazel-out
 /bazel-lfs
 /bazel-testlogs
+/eclipse-out
