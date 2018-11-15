@@ -30,7 +30,7 @@ public class LfsGlobalConfig {
   }
 
   public LfsBackend getDefaultBackend() {
-    LfsBackendType type = cfg.getEnum("storage", null, "backend", LfsBackendType.FS);
+    LfsBackendType type = cfg.getEnum("storage", null, "backend", LfsBackendType.FS_WITH_REPOS);
     return new LfsBackend(null, type);
   }
 

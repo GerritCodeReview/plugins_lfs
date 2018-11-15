@@ -1,4 +1,4 @@
-// Copyright (C) 2015 The Android Open Source Project
+// Copyright (C) 2018 The Android Open Source Project
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,11 +14,12 @@
 
 package com.googlesource.gerrit.plugins.lfs.fs;
 
-import static com.googlesource.gerrit.plugins.lfs.LfsBackend.DEFAULT;
+import static com.googlesource.gerrit.plugins.lfs.fs.LocalLargeFileRepository.DEFAULT_TIMEOUT;
+import static com.googlesource.gerrit.plugins.lfs.fs.LocalLargeFileRepository.getContentPath;
+import static com.googlesource.gerrit.plugins.lfs.fs.LocalLargeFileRepository.getOrCreateDataDir;
 import static org.eclipse.jgit.lfs.lib.Constants.DOWNLOAD;
 import static org.eclipse.jgit.lfs.lib.Constants.UPLOAD;
 
-import com.google.common.base.Strings;
 import com.google.gerrit.extensions.annotations.PluginCanonicalWebUrl;
 import com.google.gerrit.extensions.annotations.PluginData;
 import com.google.inject.Inject;
@@ -31,46 +32,37 @@ import com.googlesource.gerrit.plugins.lfs.LfsGlobalConfig;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.time.Instant;
 import org.eclipse.jgit.lfs.lib.AnyLongObjectId;
 import org.eclipse.jgit.lfs.server.Response;
 import org.eclipse.jgit.lfs.server.fs.FileLfsRepository;
 
-public class LocalLargeFileRepository extends FileLfsRepository {
+public class LocalProjectLargeFileRepository extends FileLfsRepository {
   public interface Factory {
-    LocalLargeFileRepository create(LfsBackend backendConfig);
+    LocalProjectLargeFileRepository create(LfsBackend backendConfig, String repo);
   }
 
-  public static final String CONTENT_PATH = "content";
-  static final int DEFAULT_TIMEOUT = 10; // in seconds
-
-  private final String servletUrlPattern;
   private final LfsFsRequestAuthorizer authorizer;
   private final Long expiresIn;
 
   @Inject
-  LocalLargeFileRepository(
+  LocalProjectLargeFileRepository(
       LfsConfigurationFactory configFactory,
       LfsFsRequestAuthorizer authorizer,
       @PluginCanonicalWebUrl String url,
       @PluginData Path defaultDataDir,
-      @Assisted LfsBackend backend)
+      @Assisted LfsBackend backend,
+      @Assisted String repo)
       throws IOException {
     super(
-        getContentUrl(url, backend),
-        getOrCreateDataDir(configFactory.getGlobalConfig(), backend, defaultDataDir));
+        getRepoContentUrl(url, repo, backend),
+        getOrCreateRepoDataDir(configFactory.getGlobalConfig(), backend, defaultDataDir, repo));
     this.authorizer = authorizer;
-    this.servletUrlPattern = "/" + getContentPath(backend) + "*";
     this.expiresIn =
         (long)
             configFactory
                 .getGlobalConfig()
                 .getInt(backend.type.name(), backend.name, "expirationSeconds", DEFAULT_TIMEOUT);
-  }
-
-  public String getServletUrlPattern() {
-    return servletUrlPattern;
   }
 
   @Override
@@ -87,32 +79,16 @@ public class LocalLargeFileRepository extends FileLfsRepository {
     return new ExpiringAction(action.href, authInfo);
   }
 
-  private static String getContentUrl(String url, LfsBackend backend) {
-    // for default FS we still need to define namespace as otherwise it would
-    // interfere with rest of FS backends
-    return url + (url.endsWith("/") ? "" : "/") + getContentPath(backend);
+  private static String getRepoContentUrl(String url, String repo, LfsBackend backend) {
+    return url + (url.endsWith("/") ? "" : "/") + getContentPath(backend) + repo + "/";
   }
 
-  static String getContentPath(LfsBackend backend) {
-    return CONTENT_PATH
-        + "/"
-        + (Strings.isNullOrEmpty(backend.name) ? DEFAULT : backend.name)
-        + "/";
-  }
+  private static Path getOrCreateRepoDataDir(
+      LfsGlobalConfig cfg, LfsBackend backend, Path defaultDataDir, String repo)
+      throws IOException {
+    Path backendPath = getOrCreateDataDir(cfg, backend, defaultDataDir);
+    Path ensured = Files.createDirectories(backendPath.resolve(repo));
 
-  static Path getOrCreateDataDir(
-      LfsGlobalConfig config, LfsBackend backendConfig, Path defaultDataDir) throws IOException {
-    String dataDir = config.getString(backendConfig.type.name(), backendConfig.name, "directory");
-    if (Strings.isNullOrEmpty(dataDir)) {
-      return defaultDataDir;
-    }
-
-    // note that the following method not only creates missing
-    // directory/directories but throws exception when path
-    // exists and points to file
-    Path ensured = Files.createDirectories(Paths.get(dataDir));
-
-    // we should at least make sure that directory is readable
     if (!Files.isReadable(ensured)) {
       throw new IOException("Path '" + ensured.toAbsolutePath() + "' cannot be accessed");
     }
