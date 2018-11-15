@@ -19,6 +19,7 @@ import static com.googlesource.gerrit.plugins.lfs.LfsBackend.DEFAULT;
 import com.google.common.base.Strings;
 import com.google.gerrit.reviewdb.client.Project;
 import com.google.inject.Inject;
+import com.googlesource.gerrit.plugins.lfs.fs.LocalProjectBackendLargeFileRepository;
 import java.util.Map;
 import org.eclipse.jgit.lfs.errors.LfsRepositoryNotFound;
 import org.eclipse.jgit.lfs.server.LargeFileRepository;
@@ -59,6 +60,17 @@ public class LfsRepositoryResolver {
 
     LargeFileRepository repository = cache.get(backend);
     if (repository != null) {
+      if (backend.type == LfsBackendType.FS_WITH_REPOS) {
+        if (repository instanceof LocalProjectBackendLargeFileRepository) {
+          return ((LocalProjectBackendLargeFileRepository) repository).getRepository(project.get());
+        }
+        log.error(
+            "Project {} is configured with {} backend type but actual repository is of {} type",
+            project,
+            backend.type,
+            repository.getClass().getSimpleName());
+        throw new LfsRepositoryNotFound(project.get());
+      }
       return repository;
     }
 

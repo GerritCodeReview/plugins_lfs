@@ -18,6 +18,9 @@ public enum LfsBackendType {
   /** Local filesystem. */
   FS,
 
+  /** Local filesystem but data is structured in repository directory. */
+  FS_WITH_REPOS,
+
   /** S3. */
   S3
 }
