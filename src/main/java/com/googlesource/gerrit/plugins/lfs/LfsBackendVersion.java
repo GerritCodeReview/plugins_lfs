@@ -15,7 +15,8 @@
 package com.googlesource.gerrit.plugins.lfs;
 
 public enum LfsBackendVersion {
-  V1(1);
+  V1(1),
+  V2(2);
 
   private final int version;
 
