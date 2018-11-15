@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "235a7597_75363fee",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsBackendType.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2018-11-15T17:58:54Z",
+      "side": 1,
+      "message": "another option would be to not introduce another backend type but just introduce versions to existing FS backend type\nOpinions are welcomed :)",
+      "range": {
+        "startLine": 21,
+        "startChar": 2,
+        "endLine": 22,
+        "endChar": 16
+      },
+      "revId": "f1e3d7dfe34d5013f6e948efa6cb575b124e415e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
