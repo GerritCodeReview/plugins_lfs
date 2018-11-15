@@ -23,7 +23,9 @@ import com.google.gerrit.extensions.webui.WebUiPlugin;
 import com.google.gerrit.httpd.plugins.HttpPluginModule;
 import com.google.inject.Inject;
 import com.googlesource.gerrit.plugins.lfs.fs.LfsFsContentServlet;
+import com.googlesource.gerrit.plugins.lfs.fs.LfsFsRepoContentServlet;
 import com.googlesource.gerrit.plugins.lfs.fs.LocalLargeFileRepository;
+import com.googlesource.gerrit.plugins.lfs.fs.LocalProjectBackendLargeFileRepository;
 import com.googlesource.gerrit.plugins.lfs.locks.LfsLocksServlet;
 import com.googlesource.gerrit.plugins.lfs.s3.S3LargeFileRepository;
 import java.util.Map;
@@ -31,8 +33,10 @@ import java.util.Map;
 public class HttpModule extends HttpPluginModule {
   private final LocalLargeFileRepository.Factory fsRepoFactory;
   private final S3LargeFileRepository.Factory s3RepoFactory;
+  private final LocalProjectBackendLargeFileRepository.Factory fsProjectRepoFactory;
   private final LfsRepositoriesCache cache;
   private final LfsFsContentServlet.Factory fsServletFactory;
+  private final LfsFsRepoContentServlet.Factory fsRepoServletFactory;
   private final LfsBackend defaultBackend;
   private final Map<String, LfsBackend> backends;
 
@@ -40,13 +44,17 @@ public class HttpModule extends HttpPluginModule {
   HttpModule(
       LocalLargeFileRepository.Factory fsRepoFactory,
       S3LargeFileRepository.Factory s3RepoFactory,
+      LocalProjectBackendLargeFileRepository.Factory fsProjectRepoFactory,
       LfsRepositoriesCache cache,
       LfsFsContentServlet.Factory fsServletFactory,
+      LfsFsRepoContentServlet.Factory fsRepoServletFactory,
       LfsConfigurationFactory configFactory) {
     this.fsRepoFactory = fsRepoFactory;
     this.s3RepoFactory = s3RepoFactory;
+    this.fsProjectRepoFactory = fsProjectRepoFactory;
     this.cache = cache;
     this.fsServletFactory = fsServletFactory;
+    this.fsRepoServletFactory = fsRepoServletFactory;
 
     LfsGlobalConfig config = configFactory.getGlobalConfig();
     this.defaultBackend = config.getDefaultBackend();
@@ -69,7 +77,20 @@ public class HttpModule extends HttpPluginModule {
   private void populateRepository(LfsBackend backend) {
     switch (backend.type) {
       case FS:
-        populateAndServeFsRepository(backend);
+        switch (backend.version) {
+          case V2:
+            populateAndServeProjectFsRepository(backend);
+            break;
+
+          case V1:
+            populateAndServeFsRepository(backend);
+            break;
+
+          default:
+            throw new IllegalArgumentException(
+                String.format(
+                    "Unknown version %s for backend type: %s", backend.version, backend.type));
+        }
         break;
 
       case S3:
@@ -91,5 +112,11 @@ public class HttpModule extends HttpPluginModule {
     LocalLargeFileRepository repository = fsRepoFactory.create(backend);
     cache.put(backend, repository);
     serve(repository.getServletUrlPattern()).with(fsServletFactory.create(repository));
+  }
+
+  private void populateAndServeProjectFsRepository(LfsBackend backend) {
+    LocalProjectBackendLargeFileRepository repository = fsProjectRepoFactory.create(backend);
+    cache.put(backend, repository);
+    serve(repository.getServletUrlPattern()).with(fsRepoServletFactory.create(repository));
   }
 }

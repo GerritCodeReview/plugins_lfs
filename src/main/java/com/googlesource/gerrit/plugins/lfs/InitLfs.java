@@ -18,6 +18,7 @@ import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.pgm.init.api.InitStep;
 import com.google.gerrit.pgm.init.api.Section;
 import com.google.inject.Inject;
+import com.googlesource.gerrit.plugins.lfs.fs.FsInit;
 
 public class InitLfs implements InitStep {
   private static final String LFS_SECTION = "lfs";
@@ -25,16 +26,19 @@ public class InitLfs implements InitStep {
 
   private final String name;
   private final Section lfs;
+  private final FsInit fs;
 
   @Inject
-  InitLfs(@PluginName String name, Section.Factory sections) {
+  InitLfs(@PluginName String name, Section.Factory sections, FsInit fs) {
     this.name = name;
+    this.fs = fs;
     this.lfs = sections.get(LFS_SECTION, null);
   }
 
   @Override
   public void run() throws Exception {
     lfs.set(PLUGIN_KEY, name);
+    fs.init();
   }
 
   @Override

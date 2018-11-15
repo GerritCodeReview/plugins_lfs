@@ -14,7 +14,9 @@
 
 package com.googlesource.gerrit.plugins.lfs;
 
-import com.google.common.base.Strings;
+import static com.google.common.base.MoreObjects.toStringHelper;
+import static com.google.common.base.Strings.isNullOrEmpty;
+
 import java.util.Objects;
 
 public class LfsBackend {
@@ -33,7 +35,7 @@ public class LfsBackend {
 
   @Override
   public int hashCode() {
-    return Objects.hash(Strings.isNullOrEmpty(name) ? DEFAULT : name, type);
+    return Objects.hash(isNullOrEmpty(name) ? DEFAULT : name, type);
   }
 
   @Override
@@ -46,5 +48,14 @@ public class LfsBackend {
     }
 
     return false;
+  }
+
+  @Override
+  public String toString() {
+    return toStringHelper(this)
+        .add("name", isNullOrEmpty(name) ? DEFAULT : name)
+        .add("type", type)
+        .add("version", version)
+        .toString();
   }
 }

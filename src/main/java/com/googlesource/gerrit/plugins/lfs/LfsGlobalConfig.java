@@ -24,16 +24,19 @@ import org.eclipse.jgit.lib.Config;
 
 /** Represents the global LFS configuration stored in $SITE/etc/lfs.config. */
 public class LfsGlobalConfig {
+  public static final String STORAGE = "storage";
+  public static final String VERSION = "version";
+  static final String BACKEND = "backend";
 
   private final Config cfg;
 
-  LfsGlobalConfig(Config cfg) {
+  public LfsGlobalConfig(Config cfg) {
     this.cfg = cfg;
   }
 
   public LfsBackend getDefaultBackend() {
-    LfsBackendType type = cfg.getEnum("storage", null, "backend", LfsBackendType.FS);
-    return new LfsBackend(null, type, DEFAULT_VERSION);
+    LfsBackendType type = cfg.getEnum(STORAGE, null, BACKEND, LfsBackendType.FS);
+    return new LfsBackend(null, type, cfg.getEnum(STORAGE, null, VERSION, DEFAULT_VERSION));
   }
 
   public Map<String, LfsBackend> getBackends() {
@@ -43,7 +46,7 @@ public class LfsGlobalConfig {
           FluentIterable.from(cfg.getSubsections(type.name()))
               .toMap(
                   s -> {
-                    LfsBackendVersion v = cfg.getEnum(type.name(), s, "version", DEFAULT_VERSION);
+                    LfsBackendVersion v = cfg.getEnum(type.name(), s, VERSION, DEFAULT_VERSION);
                     return new LfsBackend(s, type, v);
                   });
       builder.putAll(backendsOfType);
