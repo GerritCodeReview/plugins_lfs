@@ -24,7 +24,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 @Singleton
-class LfsLocksPathProvider implements Provider<String> {
+public class LfsLocksPathProvider implements Provider<String> {
+  public static final String LFS_LOCKS = "lfs_locks";
+
   private final String path;
 
   @Inject
@@ -32,7 +34,7 @@ class LfsLocksPathProvider implements Provider<String> {
     String locksDir = configFactory.getGlobalConfig().getString("locks", null, "directory");
     this.path =
         MoreObjects.firstNonNull(
-            locksDir, Paths.get(defaultDataDir.toString(), "lfs_locks").toString());
+            locksDir, Paths.get(defaultDataDir.toString(), LFS_LOCKS).toString());
   }
 
   @Override
