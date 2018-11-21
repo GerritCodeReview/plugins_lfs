@@ -18,8 +18,8 @@ import static com.google.gerrit.extensions.api.lfs.LfsDefinitions.LFS_OBJECTS_PA
 import static com.google.gerrit.extensions.api.lfs.LfsDefinitions.LFS_URL_REGEX_TEMPLATE;
 import static com.google.gerrit.extensions.client.ProjectState.HIDDEN;
 import static com.google.gerrit.extensions.client.ProjectState.READ_ONLY;
+import static com.google.gerrit.server.permissions.ProjectPermission.ACCESS;
 import static com.google.gerrit.server.permissions.ProjectPermission.PUSH_AT_LEAST_ONE_REF;
-import static com.google.gerrit.server.permissions.ProjectPermission.READ;
 
 import com.google.gerrit.common.ProjectUtil;
 import com.google.gerrit.reviewdb.client.Project;
@@ -125,7 +125,7 @@ public class LfsApiServlet extends LfsProtocolServlet {
       throws LfsUnauthorized {
     Project.NameKey projectName = state.getNameKey();
     if ((request.isDownload()
-            && !permissionBackend.user(user).project(projectName).testOrFalse(READ))
+            && !permissionBackend.user(user).project(projectName).testOrFalse(ACCESS))
         || (request.isUpload()
             && !permissionBackend
                 .user(user)
