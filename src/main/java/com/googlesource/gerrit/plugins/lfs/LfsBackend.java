@@ -19,13 +19,16 @@ import java.util.Objects;
 
 public class LfsBackend {
   public static final String DEFAULT = "default";
+  public static final LfsBackendVersion DEFAULT_VERSION = LfsBackendVersion.V1;
 
   public final String name;
   public final LfsBackendType type;
+  public final LfsBackendVersion version;
 
-  public LfsBackend(String name, LfsBackendType type) {
+  public LfsBackend(String name, LfsBackendType type, LfsBackendVersion version) {
     this.name = name;
     this.type = type;
+    this.version = version;
   }
 
   @Override
@@ -37,7 +40,9 @@ public class LfsBackend {
   public boolean equals(Object obj) {
     if (obj instanceof LfsBackend) {
       LfsBackend other = (LfsBackend) obj;
-      return Objects.equals(name, other.name) && type == other.type;
+      return Objects.equals(name, other.name)
+          && type == other.type
+          && Objects.equals(version, other.version);
     }
 
     return false;
