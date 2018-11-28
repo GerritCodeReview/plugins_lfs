@@ -14,6 +14,8 @@
 
 package com.googlesource.gerrit.plugins.lfs;
 
+import static com.googlesource.gerrit.plugins.lfs.LfsBackend.DEFAULT_VERSION;
+
 import com.google.common.collect.FluentIterable;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableMap.Builder;
@@ -31,14 +33,19 @@ public class LfsGlobalConfig {
 
   public LfsBackend getDefaultBackend() {
     LfsBackendType type = cfg.getEnum("storage", null, "backend", LfsBackendType.FS);
-    return new LfsBackend(null, type);
+    return new LfsBackend(null, type, DEFAULT_VERSION);
   }
 
   public Map<String, LfsBackend> getBackends() {
     Builder<String, LfsBackend> builder = ImmutableMap.builder();
     for (LfsBackendType type : LfsBackendType.values()) {
       Map<String, LfsBackend> backendsOfType =
-          FluentIterable.from(cfg.getSubsections(type.name())).toMap(s -> new LfsBackend(s, type));
+          FluentIterable.from(cfg.getSubsections(type.name()))
+              .toMap(
+                  s -> {
+                    LfsBackendVersion v = cfg.getEnum(type.name(), s, "version", DEFAULT_VERSION);
+                    return new LfsBackend(s, type, v);
+                  });
       builder.putAll(backendsOfType);
     }
 
