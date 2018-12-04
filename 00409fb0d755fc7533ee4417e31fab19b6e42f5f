@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae5e0d8f_e3a0df54",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/FsInit.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2018-12-04T10:28:42Z",
+      "side": 1,
+      "message": "move this check to filter function so that forEach is called only when necessary\nPS. return statement is missing here",
+      "range": {
+        "startLine": 70,
+        "startChar": 12,
+        "endLine": 72,
+        "endChar": 13
+      },
+      "revId": "00409fb0d755fc7533ee4417e31fab19b6e42f5f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
