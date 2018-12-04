@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cda7d590_3ebceab9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2018-12-04T00:39:41Z",
+      "side": 1,
+      "message": "Add some context here about why versioning is needed?",
+      "revId": "046e93bb4e2bbb5e75e1efcdf5760bcf877d4560",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "671a6ae4_1abb1662",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsBackendVersion.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2018-12-04T00:39:41Z",
+      "side": 1,
+      "message": "2018",
+      "range": {
+        "startLine": 1,
+        "startChar": 17,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "046e93bb4e2bbb5e75e1efcdf5760bcf877d4560",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef6db1e5_62fa51bf",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsBackendVersion.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2018-12-04T00:39:41Z",
+      "side": 1,
+      "message": "Rename this to just \"get()\"?",
+      "range": {
+        "startLine": 26,
+        "startChar": 13,
+        "endLine": 26,
+        "endChar": 23
+      },
+      "revId": "046e93bb4e2bbb5e75e1efcdf5760bcf877d4560",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
