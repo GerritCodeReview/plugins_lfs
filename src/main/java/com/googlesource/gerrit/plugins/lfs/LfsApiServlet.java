@@ -23,6 +23,7 @@ import static com.google.gerrit.server.permissions.ProjectPermission.ACCESS;
 import com.google.common.base.Strings;
 import com.google.gerrit.common.ProjectUtil;
 import com.google.gerrit.common.data.Capable;
+import com.google.gerrit.extensions.registration.DynamicSet;
 import com.google.gerrit.reviewdb.client.Project;
 import com.google.gerrit.server.CurrentUser;
 import com.google.gerrit.server.permissions.PermissionBackend;
@@ -31,6 +32,7 @@ import com.google.gerrit.server.project.ProjectControl;
 import com.google.gerrit.server.project.ProjectState;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.eclipse.jgit.lfs.errors.LfsException;
@@ -47,6 +49,35 @@ import org.slf4j.LoggerFactory;
 
 @Singleton
 public class LfsApiServlet extends LfsProtocolServlet {
+  public static class LfsRequestDescriptor {
+    private final LfsRequest request;
+
+    private LfsRequestDescriptor(LfsRequest request) {
+      this.request = request;
+    }
+
+    public List<LfsObject> objects() {
+      return request.getObjects();
+    }
+
+    public String operation() {
+      return request.getOperation();
+    }
+
+    public boolean isUpload() {
+      return request.isUpload();
+    }
+
+    public boolean isDownload() {
+      return request.isDownload();
+    }
+  }
+
+  public interface LfsApiRequestValidator {
+    void validate(Project.NameKey repository, LfsRequestDescriptor request)
+        throws LfsValidationError;
+  }
+
   public static final String LFS_OBJECTS_REGEX_REST =
       String.format(LFS_URL_REGEX_TEMPLATE, LFS_OBJECTS_PATH);
 
@@ -59,6 +90,7 @@ public class LfsApiServlet extends LfsProtocolServlet {
   private final LfsConfigurationFactory lfsConfigFactory;
   private final LfsRepositoryResolver repoResolver;
   private final LfsAuthUserProvider userProvider;
+  private final DynamicSet<LfsApiRequestValidator> validators;
 
   @Inject
   LfsApiServlet(
@@ -66,12 +98,14 @@ public class LfsApiServlet extends LfsProtocolServlet {
       PermissionBackend permissionBackend,
       LfsConfigurationFactory lfsConfigFactory,
       LfsRepositoryResolver repoResolver,
-      LfsAuthUserProvider userProvider) {
+      LfsAuthUserProvider userProvider,
+      DynamicSet<LfsApiRequestValidator> validators) {
     this.projectCache = projectCache;
     this.permissionBackend = permissionBackend;
     this.lfsConfigFactory = lfsConfigFactory;
     this.repoResolver = repoResolver;
     this.userProvider = userProvider;
+    this.validators = validators;
   }
 
   @Override
@@ -115,6 +149,11 @@ public class LfsApiServlet extends LfsProtocolServlet {
             }
           }
         }
+      }
+
+      LfsRequestDescriptor descr = new LfsRequestDescriptor(request);
+      for (LfsApiRequestValidator validator : validators) {
+        validator.validate(project, descr);
       }
 
       return repoResolver.get(project, config.getBackend());

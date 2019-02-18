@@ -18,6 +18,7 @@ import static com.google.gerrit.server.project.ProjectResource.PROJECT_KIND;
 
 import com.google.gerrit.extensions.config.FactoryModule;
 import com.google.gerrit.extensions.events.LifecycleListener;
+import com.google.gerrit.extensions.registration.DynamicSet;
 import com.google.gerrit.extensions.restapi.RestApiModule;
 import com.google.inject.internal.UniqueAnnotations;
 import com.googlesource.gerrit.plugins.lfs.fs.LfsFsContentServlet;
@@ -51,5 +52,6 @@ public class Module extends FactoryModule {
     factory(LfsFsContentServlet.Factory.class);
     factory(LfsFsRepoContentServlet.Factory.class);
     install(new LfsLocksModule());
+    DynamicSet.setOf(binder(), LfsApiServlet.LfsApiRequestValidator.class);
   }
 }
