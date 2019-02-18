@@ -33,7 +33,6 @@ import org.apache.http.HttpStatus;
 import org.eclipse.jgit.lfs.lib.AnyLongObjectId;
 import org.eclipse.jgit.lfs.server.fs.FileLfsServlet;
 import org.eclipse.jgit.lfs.server.fs.ObjectDownloadListener;
-import org.eclipse.jgit.lfs.server.fs.ObjectUploadListener;
 import org.eclipse.jgit.lfs.server.internal.LfsServerText;
 
 public class LfsFsContentServlet extends FileLfsServlet {
@@ -44,14 +43,18 @@ public class LfsFsContentServlet extends FileLfsServlet {
   private static final long serialVersionUID = 1L;
 
   private final LfsFsRequestAuthorizer authorizer;
+  private final UploadListenerProvider uploadListener;
   private final LocalLargeFileRepository repository;
   private final long timeout;
 
   @Inject
   public LfsFsContentServlet(
-      LfsFsRequestAuthorizer authorizer, @Assisted LocalLargeFileRepository repository) {
+      LfsFsRequestAuthorizer authorizer,
+      UploadListenerProvider uploadListener,
+      @Assisted LocalLargeFileRepository repository) {
     super(repository, 0);
     this.authorizer = authorizer;
+    this.uploadListener = uploadListener;
     this.repository = repository;
     this.timeout = 0;
   }
@@ -101,8 +104,7 @@ public class LfsFsContentServlet extends FileLfsServlet {
 
     AsyncContext context = req.startAsync();
     context.setTimeout(timeout);
-    req.getInputStream()
-        .setReadListener(new ObjectUploadListener(repository, context, req, rsp, id));
+    req.getInputStream().setReadListener(uploadListener.get(repository, context, req, rsp, id));
   }
 
   private Optional<AnyLongObjectId> validateGetRequest(

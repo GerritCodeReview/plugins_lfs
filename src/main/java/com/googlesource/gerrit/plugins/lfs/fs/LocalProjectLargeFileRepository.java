@@ -39,16 +39,14 @@ import java.nio.file.Path;
 import java.time.Instant;
 import org.eclipse.jgit.lfs.lib.AnyLongObjectId;
 import org.eclipse.jgit.lfs.server.Response;
-import org.eclipse.jgit.lfs.server.fs.FileLfsRepository;
 import org.eclipse.jgit.lib.Config;
 
-public class LocalProjectLargeFileRepository extends FileLfsRepository {
+public class LocalProjectLargeFileRepository extends NamedFileLfsRepository {
   public interface Factory {
     LocalProjectLargeFileRepository create(LfsBackend backendConfig, String repo);
   }
 
   private final LfsFsRequestAuthorizer authorizer;
-  private final String repo;
   private final Long expiresIn;
 
   @Inject
@@ -64,9 +62,9 @@ public class LocalProjectLargeFileRepository extends FileLfsRepository {
     super(
         getRepoContentUrl(url, repo, backend),
         getOrCreateRepoDataDir(
-            config, configFactory.getGlobalConfig(), backend, defaultDataDir, repo));
+            config, configFactory.getGlobalConfig(), backend, defaultDataDir, repo),
+        repo);
     this.authorizer = authorizer;
-    this.repo = repo;
     this.expiresIn =
         (long)
             configFactory
@@ -86,10 +84,6 @@ public class LocalProjectLargeFileRepository extends FileLfsRepository {
     Response.Action action = super.getUploadAction(id, size);
     AuthInfo authInfo = authorizer.generateAuthInfo(UPLOAD, id, Instant.now(), expiresIn);
     return new ExpiringAction(action.href, authInfo);
-  }
-
-  public String getRepo() {
-    return repo;
   }
 
   private static String getRepoContentUrl(String url, String repo, LfsBackend backend) {

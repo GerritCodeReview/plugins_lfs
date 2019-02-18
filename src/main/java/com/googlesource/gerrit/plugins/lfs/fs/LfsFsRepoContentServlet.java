@@ -34,10 +34,8 @@ import org.eclipse.jgit.lfs.errors.InvalidLongObjectIdException;
 import org.eclipse.jgit.lfs.lib.AnyLongObjectId;
 import org.eclipse.jgit.lfs.lib.Constants;
 import org.eclipse.jgit.lfs.lib.LongObjectId;
-import org.eclipse.jgit.lfs.server.fs.FileLfsRepository;
 import org.eclipse.jgit.lfs.server.fs.FileLfsServlet;
 import org.eclipse.jgit.lfs.server.fs.ObjectDownloadListener;
-import org.eclipse.jgit.lfs.server.fs.ObjectUploadListener;
 import org.eclipse.jgit.lfs.server.internal.LfsServerText;
 
 public class LfsFsRepoContentServlet extends FileLfsServlet {
@@ -48,15 +46,18 @@ public class LfsFsRepoContentServlet extends FileLfsServlet {
   private static final long serialVersionUID = 1L;
 
   private final LfsFsRequestAuthorizer authorizer;
+  private final UploadListenerProvider uploadListener;
   private final LocalProjectBackendLargeFileRepository repository;
   private final long timeout;
 
   @Inject
   public LfsFsRepoContentServlet(
       LfsFsRequestAuthorizer authorizer,
+      UploadListenerProvider uploadListener,
       @Assisted LocalProjectBackendLargeFileRepository repository) {
     super(repository, 0);
     this.authorizer = authorizer;
+    this.uploadListener = uploadListener;
     this.repository = repository;
     this.timeout = 0;
   }
@@ -106,8 +107,7 @@ public class LfsFsRepoContentServlet extends FileLfsServlet {
 
     AsyncContext context = req.startAsync();
     context.setTimeout(timeout);
-    req.getInputStream()
-        .setReadListener(new ObjectUploadListener(ctx.repo, context, req, rsp, ctx.id));
+    req.getInputStream().setReadListener(uploadListener.get(ctx.repo, context, req, rsp, ctx.id));
   }
 
   protected Context getContext(HttpServletRequest req, HttpServletResponse rsp) throws IOException {
@@ -168,10 +168,10 @@ public class LfsFsRepoContentServlet extends FileLfsServlet {
   }
 
   private class Context {
-    private final FileLfsRepository repo;
+    private final NamedFileLfsRepository repo;
     private final AnyLongObjectId id;
 
-    private Context(FileLfsRepository repo, AnyLongObjectId id) {
+    private Context(NamedFileLfsRepository repo, AnyLongObjectId id) {
       this.repo = repo;
       this.id = id;
     }

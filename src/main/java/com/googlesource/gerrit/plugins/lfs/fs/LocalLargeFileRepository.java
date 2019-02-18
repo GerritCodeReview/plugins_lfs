@@ -35,9 +35,8 @@ import java.nio.file.Paths;
 import java.time.Instant;
 import org.eclipse.jgit.lfs.lib.AnyLongObjectId;
 import org.eclipse.jgit.lfs.server.Response;
-import org.eclipse.jgit.lfs.server.fs.FileLfsRepository;
 
-public class LocalLargeFileRepository extends FileLfsRepository {
+public class LocalLargeFileRepository extends NamedFileLfsRepository {
   public interface Factory {
     LocalLargeFileRepository create(LfsBackend backendConfig);
   }
@@ -60,7 +59,8 @@ public class LocalLargeFileRepository extends FileLfsRepository {
       throws IOException {
     super(
         getContentUrl(url, backend),
-        getOrCreateDataDir(configFactory.getGlobalConfig(), backend, defaultDataDir));
+        getOrCreateDataDir(configFactory.getGlobalConfig(), backend, defaultDataDir),
+        backend.name);
     this.authorizer = authorizer;
     this.servletUrlPattern = "/" + getContentPath(backend) + "*";
     this.expiresIn =

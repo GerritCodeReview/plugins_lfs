@@ -28,6 +28,7 @@ import com.googlesource.gerrit.plugins.lfs.fs.LocalProjectBackendLargeFileReposi
 import com.googlesource.gerrit.plugins.lfs.fs.LocalProjectLargeFileRepository;
 import com.googlesource.gerrit.plugins.lfs.locks.LfsLocksModule;
 import com.googlesource.gerrit.plugins.lfs.s3.S3LargeFileRepository;
+import org.eclipse.jgit.lfs.server.fs.ObjectUploadListenerWithPostUploadHook;
 
 public class Module extends FactoryModule {
 
@@ -53,5 +54,6 @@ public class Module extends FactoryModule {
     factory(LfsFsRepoContentServlet.Factory.class);
     install(new LfsLocksModule());
     DynamicSet.setOf(binder(), LfsApiServlet.LfsApiRequestValidator.class);
+    DynamicSet.setOf(binder(), ObjectUploadListenerWithPostUploadHook.LfsPostUploadHook.class);
   }
 }

@@ -31,10 +31,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import org.eclipse.jgit.lfs.lib.AnyLongObjectId;
 import org.eclipse.jgit.lfs.server.Response;
-import org.eclipse.jgit.lfs.server.fs.FileLfsRepository;
 import org.eclipse.jgit.lib.Config;
 
-public class LocalProjectBackendLargeFileRepository extends FileLfsRepository {
+public class LocalProjectBackendLargeFileRepository extends NamedFileLfsRepository {
   public interface Factory {
     LocalProjectBackendLargeFileRepository create(LfsBackend backend);
   }
@@ -57,7 +56,8 @@ public class LocalProjectBackendLargeFileRepository extends FileLfsRepository {
       throws IOException {
     super(
         null,
-        getOrCreateRootDataDir(config, configFactory.getGlobalConfig(), backend, defaultDataDir));
+        getOrCreateRootDataDir(config, configFactory.getGlobalConfig(), backend, defaultDataDir),
+        backend.name);
     this.repoLfs = repoLfs;
     this.backend = backend;
     this.servletUrlPattern = "/" + getContentPath(backend) + "*";
@@ -67,7 +67,7 @@ public class LocalProjectBackendLargeFileRepository extends FileLfsRepository {
     return servletUrlPattern;
   }
 
-  public FileLfsRepository getRepository(String repo) {
+  public NamedFileLfsRepository getRepository(String repo) {
     return repoLfs.create(backend, repo);
   }
 
