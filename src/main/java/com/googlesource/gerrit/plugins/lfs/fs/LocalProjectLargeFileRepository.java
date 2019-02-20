@@ -17,12 +17,15 @@ package com.googlesource.gerrit.plugins.lfs.fs;
 import static com.googlesource.gerrit.plugins.lfs.fs.LocalLargeFileRepository.DEFAULT_TIMEOUT;
 import static com.googlesource.gerrit.plugins.lfs.fs.LocalLargeFileRepository.getContentPath;
 import static com.googlesource.gerrit.plugins.lfs.fs.LocalLargeFileRepository.getOrCreateDataDir;
-import static com.googlesource.gerrit.plugins.lfs.fs.LocalProjectBackendLargeFileRepository.ROOT_DIR;
+import static com.googlesource.gerrit.plugins.lfs.fs.LocalProjectBackendLargeFileRepository.STORE_IN_REPO_DIR;
+import static com.googlesource.gerrit.plugins.lfs.fs.LocalProjectBackendLargeFileRepository.resolvePath;
 import static org.eclipse.jgit.lfs.lib.Constants.DOWNLOAD;
 import static org.eclipse.jgit.lfs.lib.Constants.UPLOAD;
+import static org.eclipse.jgit.lib.Constants.DOT_GIT_EXT;
 
 import com.google.gerrit.extensions.annotations.PluginCanonicalWebUrl;
 import com.google.gerrit.extensions.annotations.PluginData;
+import com.google.gerrit.server.config.GerritServerConfig;
 import com.google.inject.Inject;
 import com.google.inject.assistedinject.Assisted;
 import com.googlesource.gerrit.plugins.lfs.AuthInfo;
@@ -37,6 +40,7 @@ import java.time.Instant;
 import org.eclipse.jgit.lfs.lib.AnyLongObjectId;
 import org.eclipse.jgit.lfs.server.Response;
 import org.eclipse.jgit.lfs.server.fs.FileLfsRepository;
+import org.eclipse.jgit.lib.Config;
 
 public class LocalProjectLargeFileRepository extends FileLfsRepository {
   public interface Factory {
@@ -53,12 +57,14 @@ public class LocalProjectLargeFileRepository extends FileLfsRepository {
       LfsFsRequestAuthorizer authorizer,
       @PluginCanonicalWebUrl String url,
       @PluginData Path defaultDataDir,
+      @GerritServerConfig Config config,
       @Assisted LfsBackend backend,
       @Assisted String repo)
       throws IOException {
     super(
         getRepoContentUrl(url, repo, backend),
-        getOrCreateRepoDataDir(configFactory.getGlobalConfig(), backend, defaultDataDir, repo));
+        getOrCreateRepoDataDir(
+            config, configFactory.getGlobalConfig(), backend, defaultDataDir, repo));
     this.authorizer = authorizer;
     this.repo = repo;
     this.expiresIn =
@@ -91,10 +97,15 @@ public class LocalProjectLargeFileRepository extends FileLfsRepository {
   }
 
   private static Path getOrCreateRepoDataDir(
-      LfsGlobalConfig cfg, LfsBackend backend, Path defaultDataDir, String repo)
+      Config config, LfsGlobalConfig cfg, LfsBackend backend, Path defaultDataDir, String repo)
       throws IOException {
     Path backendPath = getOrCreateDataDir(cfg, backend, defaultDataDir);
-    Path ensured = Files.createDirectories(backendPath.resolve(ROOT_DIR).resolve(repo));
+    String repoName =
+        cfg.getBoolean(backend.type.name(), backend.name, STORE_IN_REPO_DIR, false)
+            ? String.format("%s%s/%%binaries%%", repo, DOT_GIT_EXT)
+            : repo;
+    Path ensured =
+        Files.createDirectories(resolvePath(config, cfg, backend, backendPath).resolve(repoName));
 
     if (!Files.isReadable(ensured)) {
       throw new IOException("Path '" + ensured.toAbsolutePath() + "' cannot be accessed");

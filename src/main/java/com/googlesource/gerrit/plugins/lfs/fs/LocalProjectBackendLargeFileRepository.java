@@ -19,6 +19,7 @@ import static com.googlesource.gerrit.plugins.lfs.fs.LocalLargeFileRepository.ge
 
 import com.google.gerrit.extensions.annotations.PluginCanonicalWebUrl;
 import com.google.gerrit.extensions.annotations.PluginData;
+import com.google.gerrit.server.config.GerritServerConfig;
 import com.google.inject.Inject;
 import com.google.inject.assistedinject.Assisted;
 import com.googlesource.gerrit.plugins.lfs.LfsBackend;
@@ -27,16 +28,19 @@ import com.googlesource.gerrit.plugins.lfs.LfsGlobalConfig;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import org.eclipse.jgit.lfs.lib.AnyLongObjectId;
 import org.eclipse.jgit.lfs.server.Response;
 import org.eclipse.jgit.lfs.server.fs.FileLfsRepository;
+import org.eclipse.jgit.lib.Config;
 
 public class LocalProjectBackendLargeFileRepository extends FileLfsRepository {
   public interface Factory {
     LocalProjectBackendLargeFileRepository create(LfsBackend backend);
   }
 
-  static final String ROOT_DIR = "repository";
+  static final String STORE_IN_REPO_DIR = "storeDataInRepoDotGit";
+  private static final String ROOT_DIR = "repository";
 
   private final LocalProjectLargeFileRepository.Factory repoLfs;
   private final LfsBackend backend;
@@ -48,9 +52,12 @@ public class LocalProjectBackendLargeFileRepository extends FileLfsRepository {
       LfsConfigurationFactory configFactory,
       @PluginCanonicalWebUrl String url,
       @PluginData Path defaultDataDir,
+      @GerritServerConfig Config config,
       @Assisted LfsBackend backend)
       throws IOException {
-    super(null, getOrCreateRootDataDir(configFactory.getGlobalConfig(), backend, defaultDataDir));
+    super(
+        null,
+        getOrCreateRootDataDir(config, configFactory.getGlobalConfig(), backend, defaultDataDir));
     this.repoLfs = repoLfs;
     this.backend = backend;
     this.servletUrlPattern = "/" + getContentPath(backend) + "*";
@@ -88,10 +95,21 @@ public class LocalProjectBackendLargeFileRepository extends FileLfsRepository {
         "This is LFS FS repository proxy shouldn't be used to get data size");
   }
 
+  static Path resolvePath(
+      Config config, LfsGlobalConfig cfg, LfsBackend backend, Path backendPath) {
+    boolean storeInRepo =
+        cfg.getBoolean(backend.type.name(), backend.name, STORE_IN_REPO_DIR, false);
+    if (storeInRepo) {
+      return Paths.get(config.getString("gerrit", null, "basePath"));
+    }
+    return backendPath.resolve(ROOT_DIR);
+  }
+
   private static Path getOrCreateRootDataDir(
-      LfsGlobalConfig cfg, LfsBackend backend, Path defaultDataDir) throws IOException {
+      Config config, LfsGlobalConfig cfg, LfsBackend backend, Path defaultDataDir)
+      throws IOException {
     Path backendPath = getOrCreateDataDir(cfg, backend, defaultDataDir);
-    Path ensured = Files.createDirectories(backendPath.resolve(ROOT_DIR));
+    Path ensured = Files.createDirectories(resolvePath(config, cfg, backend, backendPath));
 
     if (!Files.isReadable(ensured)) {
       throw new IOException("Path '" + ensured.toAbsolutePath() + "' cannot be accessed");
