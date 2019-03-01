@@ -18,8 +18,8 @@ import static com.google.gerrit.extensions.api.lfs.LfsDefinitions.LFS_OBJECTS_PA
 import static com.google.gerrit.extensions.api.lfs.LfsDefinitions.LFS_URL_REGEX_TEMPLATE;
 import static com.google.gerrit.extensions.client.ProjectState.HIDDEN;
 import static com.google.gerrit.extensions.client.ProjectState.READ_ONLY;
+import static com.google.gerrit.server.permissions.ProjectPermission.ACCESS;
 import static com.google.gerrit.server.permissions.ProjectPermission.PUSH_AT_LEAST_ONE_REF;
-import static com.google.gerrit.server.permissions.ProjectPermission.READ;
 
 import com.google.gerrit.server.ProjectUtil;
 import com.google.gerrit.reviewdb.client.Project;
@@ -51,8 +51,6 @@ public class LfsApiServlet extends LfsProtocolServlet {
   private static final Logger log = LoggerFactory.getLogger(LfsApiServlet.class);
   private static final long serialVersionUID = 1L;
   private static final Pattern URL_PATTERN = Pattern.compile(LFS_OBJECTS_REGEX_REST);
-  private static final String DOWNLOAD = "download";
-  private static final String UPLOAD = "upload";
 
   private final ProjectCache projectCache;
   private final PermissionBackend permissionBackend;
@@ -88,12 +86,9 @@ public class LfsApiServlet extends LfsProtocolServlet {
     if (state == null || state.getProject().getState() == HIDDEN) {
       throw new LfsRepositoryNotFound(project.get());
     }
-    authorizeUser(
-        userProvider.getUser(auth, projName, request.getOperation()),
-        state,
-        request.getOperation());
+    authorizeUser(userProvider.getUser(auth, projName, request.getOperation()), state, request);
 
-    if (request.getOperation().equals(UPLOAD) && state.getProject().getState() == READ_ONLY) {
+    if (request.isUpload() && state.getProject().getState() == READ_ONLY) {
       throw new LfsRepositoryReadOnly(project.get());
     }
 
@@ -102,7 +97,7 @@ public class LfsApiServlet extends LfsProtocolServlet {
     // No config means we default to "not enabled".
     if (config != null && config.isEnabled()) {
       // For uploads, check object sizes against limit if configured
-      if (request.getOperation().equals(UPLOAD)) {
+      if (request.isUpload()) {
         if (config.isReadOnly()) {
           throw new LfsRepositoryReadOnly(project.get());
         }
@@ -126,17 +121,17 @@ public class LfsApiServlet extends LfsProtocolServlet {
     throw new LfsUnavailable(project.get());
   }
 
-  private void authorizeUser(CurrentUser user, ProjectState state, String operation)
+  private void authorizeUser(CurrentUser user, ProjectState state, LfsRequest request)
       throws LfsUnauthorized {
     Project.NameKey projectName = state.getNameKey();
-    if ((operation.equals(DOWNLOAD)
-            && !permissionBackend.user(user).project(projectName).testOrFalse(READ))
-        || (operation.equals(UPLOAD)
+    if ((request.isDownload()
+            && !permissionBackend.user(user).project(projectName).testOrFalse(ACCESS))
+        || (request.isUpload()
             && !permissionBackend
                 .user(user)
                 .project(projectName)
                 .testOrFalse(PUSH_AT_LEAST_ONE_REF))) {
-      String op = operation.toLowerCase();
+      String op = request.getOperation().toLowerCase();
       String project = state.getProject().getName();
       String userName = user.getUserName().orElse("anonymous");
       log.debug(
