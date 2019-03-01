@@ -21,7 +21,7 @@ import static com.google.gerrit.extensions.client.ProjectState.READ_ONLY;
 import static com.google.gerrit.server.permissions.ProjectPermission.PUSH_AT_LEAST_ONE_REF;
 import static com.google.gerrit.server.permissions.ProjectPermission.READ;
 
-import com.google.gerrit.common.ProjectUtil;
+import com.google.gerrit.server.ProjectUtil;
 import com.google.gerrit.reviewdb.client.Project;
 import com.google.gerrit.server.CurrentUser;
 import com.google.gerrit.server.permissions.PermissionBackend;

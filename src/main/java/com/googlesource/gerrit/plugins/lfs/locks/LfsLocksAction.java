@@ -21,7 +21,7 @@ import static org.apache.http.HttpStatus.SC_NOT_FOUND;
 import static org.apache.http.HttpStatus.SC_UNAUTHORIZED;
 import static org.eclipse.jgit.util.HttpSupport.HDR_AUTHORIZATION;
 
-import com.google.gerrit.common.ProjectUtil;
+import com.google.gerrit.server.ProjectUtil;
 import com.google.gerrit.extensions.restapi.AuthException;
 import com.google.gerrit.reviewdb.client.Project;
 import com.google.gerrit.server.CurrentUser;
