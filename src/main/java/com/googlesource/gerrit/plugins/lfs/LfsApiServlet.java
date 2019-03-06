@@ -132,9 +132,7 @@ public class LfsApiServlet extends LfsProtocolServlet {
       String project = state.getProject().getName();
       String userName =
           Strings.isNullOrEmpty(user.getUserName()) ? "anonymous" : user.getUserName();
-      log.debug(
-          String.format(
-              "operation %s unauthorized for user %s on project %s", op, userName, project));
+      log.debug("operation {} unauthorized for user {} on project {}", op, userName, project);
       throw new LfsUnauthorized(op, project);
     }
   }

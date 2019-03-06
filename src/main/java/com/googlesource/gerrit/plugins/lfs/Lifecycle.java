@@ -49,10 +49,10 @@ public class Lifecycle implements LifecycleListener {
 
   private void warn(String msg) {
     log.warn(
-        String.format(
-            "%s; LFS will not be enabled. Run site initialization, or manually set"
-                + " lfs.plugin to '%s' in gerrit.config",
-            msg, name));
+        "{}; LFS will not be enabled. Run site initialization, or manually set"
+            + " lfs.plugin to '{}' in gerrit.config",
+        msg,
+        name);
   }
 
   @Override

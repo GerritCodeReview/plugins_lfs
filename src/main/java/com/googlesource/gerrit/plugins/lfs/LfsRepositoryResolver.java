@@ -50,9 +50,9 @@ public class LfsRepositoryResolver {
       backend = backends.get(backendName);
       if (backend == null) {
         log.error(
-            String.format(
-                "Project %s is configured with not existing" + " backend %s",
-                project, Strings.isNullOrEmpty(backendName) ? DEFAULT : backendName));
+            "Project {} is configured with not existing backend {}",
+            project,
+            Strings.isNullOrEmpty(backendName) ? DEFAULT : backendName);
         throw new LfsRepositoryNotFound(project.get());
       }
     }
@@ -64,9 +64,10 @@ public class LfsRepositoryResolver {
 
     // this is unlikely situation as cache is pre-populated from config but...
     log.error(
-        String.format(
-            "Project %s is configured with not existing" + " backend %s of type %s",
-            project, Strings.isNullOrEmpty(backendName) ? DEFAULT : backendName, backend.type));
+        "Project {} is configured with not existing backend {} of type {}",
+        project,
+        Strings.isNullOrEmpty(backendName) ? DEFAULT : backendName,
+        backend.type);
     throw new LfsRepositoryNotFound(project.get());
   }
 }
