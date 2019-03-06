@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "04d89799_4a0844b0",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsBackend.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2019-03-06T14:40:07Z",
+      "side": 1,
+      "message": "so what is the difference if it will keep checking that over and over again?",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 42,
+        "endChar": 3
+      },
+      "revId": "b6192593cc3ff3fe3e9c626b87374f14cf494ff0",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
