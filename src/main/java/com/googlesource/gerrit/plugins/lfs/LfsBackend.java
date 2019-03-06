@@ -14,6 +14,8 @@
 
 package com.googlesource.gerrit.plugins.lfs;
 
+import static com.google.common.base.MoreObjects.toStringHelper;
+
 import com.google.common.base.Strings;
 import java.util.Objects;
 
@@ -23,14 +25,22 @@ public class LfsBackend {
   public final String name;
   public final LfsBackendType type;
 
-  public LfsBackend(String name, LfsBackendType type) {
-    this.name = name;
+  public static LfsBackend create(String name, LfsBackendType type) {
+    return new LfsBackend(name, type);
+  }
+
+  public static LfsBackend createDefault(LfsBackendType type) {
+    return new LfsBackend(null, type);
+  }
+
+  private LfsBackend(String name, LfsBackendType type) {
+    this.name = Strings.isNullOrEmpty(name) ? DEFAULT : name;
     this.type = type;
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(Strings.isNullOrEmpty(name) ? DEFAULT : name, type);
+    return Objects.hash(name, type);
   }
 
   @Override
@@ -41,5 +51,10 @@ public class LfsBackend {
     }
 
     return false;
+  }
+
+  @Override
+  public String toString() {
+    return toStringHelper(this).add("name", name).add("type", type).toString();
   }
 }
