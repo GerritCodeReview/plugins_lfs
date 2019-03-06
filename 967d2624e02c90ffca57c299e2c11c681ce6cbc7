@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69f89c7d_c0305943",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsBackend.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2019-03-06T09:35:21Z",
+      "side": 1,
+      "message": "one can use hashName parameter that was introduced in https://gerrit-review.googlesource.com/c/plugins/lfs/+/216757 ;)",
+      "range": {
+        "startLine": 58,
+        "startChar": 44,
+        "endLine": 58,
+        "endChar": 48
+      },
+      "revId": "967d2624e02c90ffca57c299e2c11c681ce6cbc7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
