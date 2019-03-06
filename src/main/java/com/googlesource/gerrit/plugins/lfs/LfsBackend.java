@@ -14,6 +14,8 @@
 
 package com.googlesource.gerrit.plugins.lfs;
 
+import static com.google.common.base.MoreObjects.toStringHelper;
+
 import com.google.common.base.Strings;
 import com.google.gerrit.common.Nullable;
 import java.util.Objects;
@@ -55,5 +57,10 @@ public class LfsBackend {
     }
 
     return false;
+  }
+
+  @Override
+  public String toString() {
+    return toStringHelper(this).add("name", name()).add("type", type).toString();
   }
 }
