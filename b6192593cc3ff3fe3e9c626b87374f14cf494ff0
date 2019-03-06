@@ -46,6 +46,30 @@
       "revId": "b6192593cc3ff3fe3e9c626b87374f14cf494ff0",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37e5d41b_89fb4463",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsBackend.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2019-03-06T23:16:25Z",
+      "side": 1,
+      "message": "No immediate difference in this class yet, but it means callers don\u0027t need to care about converting from null.  See for example the modification in LfsRepositoryResolver in this change, and in this class in the follow-up change that adds toString.\n\nI named it name() to reduce the length.  I can add a javadoc if it helps to prevent confusion.",
+      "parentUuid": "68803aad_42b4cf99",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 42,
+        "endChar": 3
+      },
+      "revId": "b6192593cc3ff3fe3e9c626b87374f14cf494ff0",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
