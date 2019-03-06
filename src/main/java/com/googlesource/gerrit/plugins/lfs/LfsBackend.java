@@ -15,22 +15,36 @@
 package com.googlesource.gerrit.plugins.lfs;
 
 import com.google.common.base.Strings;
+import com.google.gerrit.common.Nullable;
 import java.util.Objects;
 
 public class LfsBackend {
-  public static final String DEFAULT = "default";
+  private static final String DEFAULT = "default";
 
   public final String name;
   public final LfsBackendType type;
 
-  public LfsBackend(String name, LfsBackendType type) {
+  public static LfsBackend create(@Nullable String name, LfsBackendType type) {
+    return new LfsBackend(name, type);
+  }
+
+  public static LfsBackend createDefault(LfsBackendType type) {
+    return create(null, type);
+  }
+
+  private LfsBackend(String name, LfsBackendType type) {
     this.name = name;
     this.type = type;
   }
 
+  /** @return the backend name, or the default name if null. */
+  public String name() {
+    return Strings.isNullOrEmpty(name) ? DEFAULT : name;
+  }
+
   @Override
   public int hashCode() {
-    return Objects.hash(Strings.isNullOrEmpty(name) ? DEFAULT : name, type);
+    return Objects.hash(name, type);
   }
 
   @Override

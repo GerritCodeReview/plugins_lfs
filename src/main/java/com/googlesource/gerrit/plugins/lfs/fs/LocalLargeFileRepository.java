@@ -14,7 +14,6 @@
 
 package com.googlesource.gerrit.plugins.lfs.fs;
 
-import static com.googlesource.gerrit.plugins.lfs.LfsBackend.DEFAULT;
 import static org.eclipse.jgit.lfs.lib.Constants.DOWNLOAD;
 import static org.eclipse.jgit.lfs.lib.Constants.UPLOAD;
 
@@ -94,10 +93,7 @@ public class LocalLargeFileRepository extends FileLfsRepository {
   }
 
   private static String getContentPath(LfsBackend backend) {
-    return CONTENT_PATH
-        + "/"
-        + (Strings.isNullOrEmpty(backend.name) ? DEFAULT : backend.name)
-        + "/";
+    return CONTENT_PATH + "/" + backend.name() + "/";
   }
 
   private static Path getOrCreateDataDir(
