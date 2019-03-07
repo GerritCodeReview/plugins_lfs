@@ -46,6 +46,30 @@
       "revId": "9822f67eb10486164bc28b1efdff42a6ec85b4d3",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4365f5d_0444fb62",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsBackend.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2019-03-07T08:02:24Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "eee82d95_2ed3ff77",
+      "range": {
+        "startLine": 33,
+        "startChar": 24,
+        "endLine": 33,
+        "endChar": 68
+      },
+      "revId": "9822f67eb10486164bc28b1efdff42a6ec85b4d3",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
