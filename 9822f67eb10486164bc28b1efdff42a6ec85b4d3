@@ -22,6 +22,30 @@
       "revId": "9822f67eb10486164bc28b1efdff42a6ec85b4d3",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eee82d95_2ed3ff77",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsBackend.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2019-03-07T06:56:16Z",
+      "side": 0,
+      "message": "that is the proper solution that also addresses the performance issue that existed in the original code",
+      "parentUuid": "34e8a23f_9b2fbbfa",
+      "range": {
+        "startLine": 33,
+        "startChar": 24,
+        "endLine": 33,
+        "endChar": 68
+      },
+      "revId": "9822f67eb10486164bc28b1efdff42a6ec85b4d3",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }

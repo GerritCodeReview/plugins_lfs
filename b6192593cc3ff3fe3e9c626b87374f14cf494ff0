@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "969df2c4_8b337985",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsBackend.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2019-03-07T06:56:16Z",
+      "side": 1,
+      "message": "+1 for adding javadoc",
+      "parentUuid": "37e5d41b_89fb4463",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 42,
+        "endChar": 3
+      },
+      "revId": "b6192593cc3ff3fe3e9c626b87374f14cf494ff0",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9d51f8e8_554fb554",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsBackend.java",
         "patchSetId": 2
@@ -84,6 +108,30 @@
       "writtenOn": "2019-03-07T06:42:13Z",
       "side": 1,
       "message": "This is a change in behavior, before it would use null if name was null.",
+      "range": {
+        "startLine": 53,
+        "startChar": 28,
+        "endLine": 53,
+        "endChar": 49
+      },
+      "revId": "b6192593cc3ff3fe3e9c626b87374f14cf494ff0",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c235cb8_6f14e023",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsBackend.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2019-03-07T06:56:16Z",
+      "side": 1,
+      "message": "it is also less performant... would keep previous one if possible",
+      "parentUuid": "9d51f8e8_554fb554",
       "range": {
         "startLine": 53,
         "startChar": 28,
