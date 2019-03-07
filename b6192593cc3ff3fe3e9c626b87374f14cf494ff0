@@ -70,6 +70,29 @@
       "revId": "b6192593cc3ff3fe3e9c626b87374f14cf494ff0",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d51f8e8_554fb554",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsBackend.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2019-03-07T06:42:13Z",
+      "side": 1,
+      "message": "This is a change in behavior, before it would use null if name was null.",
+      "range": {
+        "startLine": 53,
+        "startChar": 28,
+        "endLine": 53,
+        "endChar": 49
+      },
+      "revId": "b6192593cc3ff3fe3e9c626b87374f14cf494ff0",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
