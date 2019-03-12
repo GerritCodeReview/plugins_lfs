@@ -41,7 +41,7 @@ public class LocalLargeFileRepository extends FileLfsRepository {
     LocalLargeFileRepository create(LfsBackend backendConfig);
   }
 
-  public static final String CONTENT_PATH = "content";
+  private static final String CONTENT_PATH_TEMPLATE = "content/%s/";
   private static final int DEFAULT_TIMEOUT = 10; // in seconds
 
   private final String servletUrlPattern;
@@ -93,7 +93,7 @@ public class LocalLargeFileRepository extends FileLfsRepository {
   }
 
   private static String getContentPath(LfsBackend backend) {
-    return CONTENT_PATH + "/" + backend.name() + "/";
+    return String.format(CONTENT_PATH_TEMPLATE, backend.name());
   }
 
   private static Path getOrCreateDataDir(
