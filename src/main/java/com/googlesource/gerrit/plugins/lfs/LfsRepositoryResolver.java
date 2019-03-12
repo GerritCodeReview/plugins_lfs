@@ -14,8 +14,6 @@
 
 package com.googlesource.gerrit.plugins.lfs;
 
-import static com.googlesource.gerrit.plugins.lfs.LfsBackend.DEFAULT;
-
 import com.google.common.base.Strings;
 import com.google.gerrit.reviewdb.client.Project;
 import com.google.inject.Inject;
@@ -49,10 +47,7 @@ public class LfsRepositoryResolver {
     } else {
       backend = backends.get(backendName);
       if (backend == null) {
-        log.error(
-            String.format(
-                "Project %s is configured with not existing" + " backend %s",
-                project, Strings.isNullOrEmpty(backendName) ? DEFAULT : backendName));
+        log.error("Project {} is configured with not existing backend {}", project, backendName);
         throw new LfsRepositoryNotFound(project.get());
       }
     }
@@ -64,9 +59,10 @@ public class LfsRepositoryResolver {
 
     // this is unlikely situation as cache is pre-populated from config but...
     log.error(
-        String.format(
-            "Project %s is configured with not existing" + " backend %s of type %s",
-            project, Strings.isNullOrEmpty(backendName) ? DEFAULT : backendName, backend.type));
+        "Project {} is configured with not existing backend {} of type {}",
+        project,
+        backend.name(),
+        backend.type);
     throw new LfsRepositoryNotFound(project.get());
   }
 }
