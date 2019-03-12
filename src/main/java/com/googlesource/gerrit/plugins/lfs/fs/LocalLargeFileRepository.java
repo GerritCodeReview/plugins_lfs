@@ -42,7 +42,7 @@ public class LocalLargeFileRepository extends FileLfsRepository {
   }
 
   private static final String CONTENT_PATH_TEMPLATE = "content/%s/";
-  private static final int DEFAULT_TIMEOUT = 10; // in seconds
+  private static final int DEFAULT_EXPIRATION_SECONDS = 10;
 
   private final String servletUrlPattern;
   private final LfsFsRequestAuthorizer authorizer;
@@ -65,7 +65,11 @@ public class LocalLargeFileRepository extends FileLfsRepository {
         (long)
             configFactory
                 .getGlobalConfig()
-                .getInt(backend.type.name(), backend.name, "expirationSeconds", DEFAULT_TIMEOUT);
+                .getInt(
+                    backend.type.name(),
+                    backend.name,
+                    "expirationSeconds",
+                    DEFAULT_EXPIRATION_SECONDS);
   }
 
   public String getServletUrlPattern() {
