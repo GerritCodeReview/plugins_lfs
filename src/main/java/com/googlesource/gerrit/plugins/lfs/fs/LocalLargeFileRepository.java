@@ -14,7 +14,6 @@
 
 package com.googlesource.gerrit.plugins.lfs.fs;
 
-import static com.googlesource.gerrit.plugins.lfs.LfsBackend.DEFAULT;
 import static org.eclipse.jgit.lfs.lib.Constants.DOWNLOAD;
 import static org.eclipse.jgit.lfs.lib.Constants.UPLOAD;
 
@@ -42,8 +41,8 @@ public class LocalLargeFileRepository extends FileLfsRepository {
     LocalLargeFileRepository create(LfsBackend backendConfig);
   }
 
-  public static final String CONTENT_PATH = "content";
-  private static final int DEFAULT_TIMEOUT = 10; // in seconds
+  private static final String CONTENT_PATH_TEMPLATE = "content/%s/";
+  private static final int DEFAULT_EXPIRATION_SECONDS = 10;
 
   private final String servletUrlPattern;
   private final LfsFsRequestAuthorizer authorizer;
@@ -66,7 +65,11 @@ public class LocalLargeFileRepository extends FileLfsRepository {
         (long)
             configFactory
                 .getGlobalConfig()
-                .getInt(backend.type.name(), backend.name, "expirationSeconds", DEFAULT_TIMEOUT);
+                .getInt(
+                    backend.type.name(),
+                    backend.name,
+                    "expirationSeconds",
+                    DEFAULT_EXPIRATION_SECONDS);
   }
 
   public String getServletUrlPattern() {
@@ -94,10 +97,7 @@ public class LocalLargeFileRepository extends FileLfsRepository {
   }
 
   private static String getContentPath(LfsBackend backend) {
-    return CONTENT_PATH
-        + "/"
-        + (Strings.isNullOrEmpty(backend.name) ? DEFAULT : backend.name)
-        + "/";
+    return String.format(CONTENT_PATH_TEMPLATE, backend.name());
   }
 
   private static Path getOrCreateDataDir(
