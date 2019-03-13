@@ -37,8 +37,7 @@ public class LfsGlobalConfig {
     ImmutableMap.Builder<String, LfsBackend> builder = ImmutableMap.builder();
     for (LfsBackendType type : LfsBackendType.values()) {
       Map<String, LfsBackend> backendsOfType =
-          cfg.getSubsections(type.name())
-              .stream()
+          cfg.getSubsections(type.name()).stream()
               .collect(toMap(name -> name, name -> LfsBackend.create(name, type)));
       builder.putAll(backendsOfType);
     }
