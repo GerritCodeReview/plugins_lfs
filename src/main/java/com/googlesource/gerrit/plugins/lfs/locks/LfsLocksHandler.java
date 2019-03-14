@@ -118,9 +118,7 @@ class LfsLocksHandler {
     log.debug("Verify list of locks for {} project and user {}", project, user);
     LfsProjectLocks locks = projectLocks.getUnchecked(project);
     Map<Boolean, List<LfsLock>> groupByOurs =
-        locks
-            .getLocks()
-            .stream()
+        locks.getLocks().stream()
             .collect(
                 Collectors.groupingBy(
                     (in) -> {
