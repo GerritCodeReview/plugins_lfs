@@ -20,15 +20,15 @@ import static com.googlesource.gerrit.plugins.lfs.locks.LfsLocksServlet.LFS_LOCK
 import com.google.gerrit.extensions.registration.DynamicSet;
 import com.google.gerrit.extensions.webui.JavaScriptPlugin;
 import com.google.gerrit.extensions.webui.WebUiPlugin;
-import com.google.gerrit.httpd.plugins.HttpPluginModule;
 import com.google.inject.Inject;
+import com.google.inject.servlet.ServletModule;
 import com.googlesource.gerrit.plugins.lfs.fs.LfsFsContentServlet;
 import com.googlesource.gerrit.plugins.lfs.fs.LocalLargeFileRepository;
 import com.googlesource.gerrit.plugins.lfs.locks.LfsLocksServlet;
 import com.googlesource.gerrit.plugins.lfs.s3.S3LargeFileRepository;
 import java.util.Map;
 
-public class HttpModule extends HttpPluginModule {
+public class HttpModule extends ServletModule {
   private final LocalLargeFileRepository.Factory fsRepoFactory;
   private final S3LargeFileRepository.Factory s3RepoFactory;
   private final LfsRepositoriesCache cache;
