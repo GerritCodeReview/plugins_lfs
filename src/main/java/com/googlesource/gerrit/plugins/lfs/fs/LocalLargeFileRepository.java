@@ -18,7 +18,6 @@ import static org.eclipse.jgit.lfs.lib.Constants.DOWNLOAD;
 import static org.eclipse.jgit.lfs.lib.Constants.UPLOAD;
 
 import com.google.common.base.Strings;
-import com.google.gerrit.extensions.annotations.PluginCanonicalWebUrl;
 import com.google.gerrit.extensions.annotations.PluginData;
 import com.google.inject.Inject;
 import com.google.inject.assistedinject.Assisted;
@@ -52,12 +51,12 @@ public class LocalLargeFileRepository extends FileLfsRepository {
   LocalLargeFileRepository(
       LfsConfigurationFactory configFactory,
       LfsFsRequestAuthorizer authorizer,
-      @PluginCanonicalWebUrl String url,
+      LfsFsContentProxy proxy,
       @PluginData Path defaultDataDir,
       @Assisted LfsBackend backend)
       throws IOException {
     super(
-        getContentUrl(url, backend),
+        getContentUrl(proxy.resolveUrl(configFactory.getGlobalConfig(), backend), backend),
         getOrCreateDataDir(configFactory.getGlobalConfig(), backend, defaultDataDir));
     this.authorizer = authorizer;
     this.servletUrlPattern = "/" + getContentPath(backend) + "*";

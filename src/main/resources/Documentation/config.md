@@ -150,6 +150,26 @@ access objects in the FS bucket. Validity of these request signatures expires
 after this period.
 : Default is `10` seconds.
 
+fs.proxy
+: The URL that should be used in LFS content API responses that are used to
+perform LFS `upload`/`download` operations e.g.
+
+```
+  "actions":{
+    "download":{
+      "expires_at":"2019-03-20T16:23:51.195Z",
+      "expires_in":10,
+      "href":"[proxy hostname]/plugins/@PLUGIN@/content/.../[long object id]",
+      "header":{
+        "Authorization":"..."
+      }
+    }
+  }
+```
+
+Could be used to proxy/offload LFS traffic to different server.
+By default `@PluginCanonicalWebUrl` is used.
+
 ### <a id="lfs-s3-backend"></a>Section `s3` - default S3 backend
 
 The following configuration options are only used when the backend is `s3`.
