@@ -21,6 +21,7 @@ import static org.apache.http.HttpStatus.SC_NOT_FOUND;
 import static org.apache.http.HttpStatus.SC_UNAUTHORIZED;
 import static org.eclipse.jgit.util.HttpSupport.HDR_AUTHORIZATION;
 
+import com.google.common.flogger.FluentLogger;
 import com.google.gerrit.common.ProjectUtil;
 import com.google.gerrit.extensions.restapi.AuthException;
 import com.google.gerrit.reviewdb.client.Project;
@@ -36,15 +37,13 @@ import java.io.IOException;
 import org.eclipse.jgit.lfs.errors.LfsException;
 import org.eclipse.jgit.lfs.errors.LfsRepositoryNotFound;
 import org.eclipse.jgit.lfs.errors.LfsUnauthorized;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 abstract class LfsLocksAction {
   interface Factory<T extends LfsLocksAction> {
     T create(LfsLocksContext context);
   }
 
-  private static final Logger log = LoggerFactory.getLogger(LfsLocksAction.class);
+  private static final FluentLogger log = FluentLogger.forEnclosingClass();
   /** Git LFS client uses 'upload' operation to authorize SSH Lock requests */
   private static final String LFS_LOCKING_OPERATION = "upload";
 
@@ -118,9 +117,7 @@ abstract class LfsLocksAction {
       throws LfsUnauthorized {
     String project = state.getProject().getName();
     String userName = user.getUserName().orElse("anonymous");
-    log.debug(
-        String.format(
-            "operation %s unauthorized for user %s on project %s", op, userName, project));
+    log.atFine().log("operation %s unauthorized for user %s on project %s", op, userName, project);
     throw new LfsUnauthorized(op, project);
   }
 }

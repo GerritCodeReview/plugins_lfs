@@ -17,6 +17,7 @@ package com.googlesource.gerrit.plugins.lfs;
 import static java.nio.charset.StandardCharsets.UTF_8;
 
 import com.google.common.base.Strings;
+import com.google.common.flogger.FluentLogger;
 import com.google.common.primitives.Bytes;
 import com.google.inject.Singleton;
 import java.security.AlgorithmParameters;
@@ -30,12 +31,10 @@ import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.IvParameterSpec;
 import org.eclipse.jgit.util.Base64;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 @Singleton
 public class LfsCipher {
-  private static final Logger log = LoggerFactory.getLogger(LfsCipher.class);
+  private static final FluentLogger log = FluentLogger.forEnclosingClass();
   private static final int IV_LENGTH = 16;
   private static final String ALGORITHM = "AES";
   private static final String CIPHER_TYPE = ALGORITHM + "/CBC/PKCS5PADDING";
@@ -56,7 +55,7 @@ public class LfsCipher {
       Cipher cipher = cipher(initVector, Cipher.ENCRYPT_MODE);
       return Base64.encodeBytes(Bytes.concat(initVector, cipher.doFinal(input.getBytes(UTF_8))));
     } catch (GeneralSecurityException e) {
-      log.error("Token generation failed with error", e);
+      log.atSevere().withCause(e).log("Token generation failed with error");
       throw new RuntimeException(e);
     }
   }
@@ -73,7 +72,7 @@ public class LfsCipher {
       return Optional.of(
           new String(cipher.doFinal(Arrays.copyOfRange(bytes, IV_LENGTH, bytes.length)), UTF_8));
     } catch (GeneralSecurityException e) {
-      log.error("Exception was thrown during token verification", e);
+      log.atSevere().withCause(e).log("Exception was thrown during token verification");
     }
 
     return Optional.empty();
@@ -94,7 +93,7 @@ public class LfsCipher {
       generator.init(KEY_SIZE, random);
       return generator.generateKey();
     } catch (NoSuchAlgorithmException e) {
-      log.error("Generating key failed with error", e);
+      log.atSevere().withCause(e).log("Generating key failed with error");
       throw new RuntimeException(e);
     }
   }

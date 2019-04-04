@@ -14,6 +14,7 @@
 
 package com.googlesource.gerrit.plugins.lfs;
 
+import com.google.common.flogger.FluentLogger;
 import com.google.gerrit.server.CurrentUser;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -21,8 +22,6 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 @Singleton
 class LfsSshRequestAuthorizer {
@@ -32,7 +31,7 @@ class LfsSshRequestAuthorizer {
     }
   }
 
-  private static final Logger log = LoggerFactory.getLogger(LfsSshRequestAuthorizer.class);
+  private static final FluentLogger log = FluentLogger.forEnclosingClass();
   private static final int DEFAULT_SSH_TIMEOUT = 10;
   static final String SSH_AUTH_PREFIX = "Ssh: ";
   private final Processor processor;
@@ -48,10 +47,9 @@ class LfsSshRequestAuthorizer {
               .getGlobalConfig()
               .getInt("auth", null, "sshExpirationSeconds", DEFAULT_SSH_TIMEOUT);
     } catch (IllegalArgumentException e) {
-      log.warn(
-          "Reading expiration timeout failed with error." + " Falling back to default {}",
-          DEFAULT_SSH_TIMEOUT,
-          e);
+      log.atWarning().withCause(e).log(
+          "Reading expiration timeout failed with error. Falling back to default %d",
+          DEFAULT_SSH_TIMEOUT);
     }
     this.expiresIn = timeout;
   }
@@ -69,7 +67,7 @@ class LfsSshRequestAuthorizer {
     }
     Verifier verifier = new Verifier(token.get(), project, operation);
     if (!verifier.verify()) {
-      log.error("Invalid data was provided with auth token {}.", authToken);
+      log.atSevere().log("Invalid data was provided with auth token %s.", authToken);
       return Optional.empty();
     }
     return Optional.of(token.get().user);

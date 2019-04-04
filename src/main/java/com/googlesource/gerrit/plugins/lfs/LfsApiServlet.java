@@ -21,6 +21,7 @@ import static com.google.gerrit.extensions.client.ProjectState.READ_ONLY;
 import static com.google.gerrit.server.permissions.ProjectPermission.ACCESS;
 import static com.google.gerrit.server.permissions.ProjectPermission.PUSH_AT_LEAST_ONE_REF;
 
+import com.google.common.flogger.FluentLogger;
 import com.google.gerrit.common.ProjectUtil;
 import com.google.gerrit.reviewdb.client.Project;
 import com.google.gerrit.server.CurrentUser;
@@ -40,15 +41,13 @@ import org.eclipse.jgit.lfs.errors.LfsValidationError;
 import org.eclipse.jgit.lfs.server.LargeFileRepository;
 import org.eclipse.jgit.lfs.server.LfsObject;
 import org.eclipse.jgit.lfs.server.LfsProtocolServlet;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 @Singleton
 public class LfsApiServlet extends LfsProtocolServlet {
   public static final String LFS_OBJECTS_REGEX_REST =
       String.format(LFS_URL_REGEX_TEMPLATE, LFS_OBJECTS_PATH);
 
-  private static final Logger log = LoggerFactory.getLogger(LfsApiServlet.class);
+  private static final FluentLogger log = FluentLogger.forEnclosingClass();
   private static final long serialVersionUID = 1L;
   private static final Pattern URL_PATTERN = Pattern.compile(LFS_OBJECTS_REGEX_REST);
 
@@ -134,7 +133,8 @@ public class LfsApiServlet extends LfsProtocolServlet {
       String op = request.getOperation().toLowerCase();
       String project = state.getProject().getName();
       String userName = user.getUserName().orElse("anonymous");
-      log.debug("operation {} unauthorized for user {} on project {}", op, userName, project);
+      log.atFine().log(
+          "operation %s unauthorized for user %s on project %s", op, userName, project);
       throw new LfsUnauthorized(op, project);
     }
   }
