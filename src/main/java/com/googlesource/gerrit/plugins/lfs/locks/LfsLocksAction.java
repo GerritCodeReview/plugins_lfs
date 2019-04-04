@@ -108,9 +108,7 @@ abstract class LfsLocksAction {
         Strings.isNullOrEmpty(control.getUser().getUserName())
             ? "anonymous"
             : control.getUser().getUserName();
-    log.debug(
-        String.format(
-            "operation %s unauthorized for user %s on project %s", op, userName, project));
+    log.debug("operation {} unauthorized for user {} on project {}", op, userName, project);
     throw new LfsUnauthorized(op, project);
   }
 }
