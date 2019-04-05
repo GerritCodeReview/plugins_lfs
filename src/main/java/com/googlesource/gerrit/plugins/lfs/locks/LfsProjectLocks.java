@@ -16,6 +16,7 @@ package com.googlesource.gerrit.plugins.lfs.locks;
 
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
+import com.google.common.flogger.FluentLogger;
 import com.google.gerrit.reviewdb.client.Project;
 import com.google.gerrit.server.CurrentUser;
 import com.google.gson.FieldNamingPolicy;
@@ -36,15 +37,13 @@ import java.util.Optional;
 import java.util.stream.Stream;
 import org.eclipse.jgit.internal.storage.file.LockFile;
 import org.eclipse.jgit.lfs.errors.LfsException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 class LfsProjectLocks {
   interface Factory {
     LfsProjectLocks create(Project.NameKey project);
   }
 
-  private static final Logger log = LoggerFactory.getLogger(LfsProjectLocks.class);
+  private static final FluentLogger log = FluentLogger.forEnclosingClass();
   private static final Gson gson =
       new GsonBuilder()
           .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
@@ -74,7 +73,8 @@ class LfsProjectLocks {
           .forEach(
               path -> {
                 if (!Files.isReadable(path)) {
-                  log.warn("Lock file [{}] in project {} is not readable", path, project);
+                  log.atWarning().log(
+                      "Lock file [%s] in project %s is not readable", path, project);
                   return;
                 }
 
@@ -82,11 +82,11 @@ class LfsProjectLocks {
                   LfsLock lock = gson.fromJson(in, LfsLock.class);
                   locks.put(lock.id, lock);
                 } catch (IOException e) {
-                  log.warn("Reading lock [{}] failed", path, e);
+                  log.atWarning().withCause(e).log("Reading lock [%s] failed", path);
                 }
               });
     } catch (IOException e) {
-      log.warn("Reading locks in project {} failed", project, e);
+      log.atWarning().withCause(e).log("Reading locks in project %s failed", project);
     }
   }
 
@@ -95,7 +95,7 @@ class LfsProjectLocks {
   }
 
   LfsLock createLock(CurrentUser user, LfsCreateLockInput input) throws LfsException {
-    log.debug("Create lock for {} in project {}", input.path, project);
+    log.atFine().log("Create lock for %s in project %s", input.path, project);
     String lockId = toLockId.apply(input.path);
     LfsLock lock = locks.getIfPresent(lockId);
     if (lock != null) {
@@ -108,7 +108,7 @@ class LfsProjectLocks {
     LockFile fileLock = new LockFile(locksPath.resolve(lockId).toFile());
     try {
       if (!fileLock.lock()) {
-        log.warn("Cannot lock path [{}] in project {}", input.path, project);
+        log.atWarning().log("Cannot lock path [%s] in project %s", input.path, project);
         throw new LfsLockExistsException(lock);
       }
     } catch (IOException e) {
@@ -116,7 +116,7 @@ class LfsProjectLocks {
           String.format(
               "Locking path [%s] in project %s failed with error %s",
               input.path, project, e.getMessage());
-      log.warn(error);
+      log.atWarning().log(error);
       throw new LfsException(error);
     }
 
@@ -128,13 +128,13 @@ class LfsProjectLocks {
             String.format(
                 "Locking path [%s] in project %s failed during write with error %s",
                 input.path, project, e.getMessage());
-        log.warn(error);
+        log.atWarning().log(error);
         throw new LfsException(error);
       }
       if (!fileLock.commit()) {
         String error =
             String.format("Committing lock to path [%s] in project %s failed", input.path, project);
-        log.warn(error);
+        log.atWarning().log(error);
         throw new LfsException(error);
       }
       // put lock object to cache while file lock is being hold so that
@@ -156,7 +156,7 @@ class LfsProjectLocks {
         String error =
             String.format(
                 "Deleting lock on path [%s] in project %s is not possible", lock.path, project);
-        log.warn(error);
+        log.atWarning().log(error);
         throw new LfsException(error);
       }
     } catch (IOException e) {
@@ -164,7 +164,7 @@ class LfsProjectLocks {
           String.format(
               "Getting lock on path [%s] in project %s failed with error %s",
               lock.path, project, e.getMessage());
-      log.warn(error);
+      log.atWarning().log(error);
       throw new LfsException(error);
     }
 
@@ -176,7 +176,7 @@ class LfsProjectLocks {
           String.format(
               "Deleting lock on path [%s] in project %s failed with error %s",
               lock.path, project, e.getMessage());
-      log.warn(error);
+      log.atWarning().log(error);
       throw new LfsException(error);
     } finally {
       fileLock.unlock();

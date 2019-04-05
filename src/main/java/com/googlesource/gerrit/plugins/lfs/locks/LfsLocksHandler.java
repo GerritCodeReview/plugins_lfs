@@ -17,6 +17,7 @@ package com.googlesource.gerrit.plugins.lfs.locks;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 import com.google.common.collect.ImmutableList;
+import com.google.common.flogger.FluentLogger;
 import com.google.gerrit.reviewdb.client.Project;
 import com.google.gerrit.server.CurrentUser;
 import com.google.gerrit.server.cache.CacheModule;
@@ -30,8 +31,6 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import org.eclipse.jgit.lfs.errors.LfsException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 @Singleton
 class LfsLocksHandler {
@@ -55,7 +54,7 @@ class LfsLocksHandler {
     }
   }
 
-  private static final Logger log = LoggerFactory.getLogger(LfsLocksHandler.class);
+  private static final FluentLogger log = FluentLogger.forEnclosingClass();
   private static final String CACHE_NAME = "lfs_project_locks";
 
   static Module module() {
@@ -80,7 +79,7 @@ class LfsLocksHandler {
 
   LfsLockResponse createLock(Project.NameKey project, CurrentUser user, LfsCreateLockInput input)
       throws LfsException {
-    log.debug("Create lock for {} in project {}", input.path, project);
+    log.atFine().log("Create lock for %s in project %s", input.path, project);
     LfsProjectLocks locks = projectLocks.getUnchecked(project);
     LfsLock lock = locks.createLock(user, input);
     return new LfsLockResponse(lock);
@@ -89,11 +88,9 @@ class LfsLocksHandler {
   LfsLockResponse deleteLock(
       Project.NameKey project, CurrentUser user, String lockId, LfsDeleteLockInput input)
       throws LfsException {
-    log.debug(
-        "Delete (-f {}) lock for {} in project {}",
-        Boolean.TRUE.equals(input.force),
-        lockId,
-        project);
+    log.atFine().log(
+        "Delete (-f %s) lock for %s in project %s",
+        Boolean.TRUE.equals(input.force), lockId, project);
     LfsProjectLocks locks = projectLocks.getUnchecked(project);
     Optional<LfsLock> hasLock = locks.getLock(lockId);
     if (!hasLock.isPresent()) {
@@ -115,7 +112,7 @@ class LfsLocksHandler {
   }
 
   LfsVerifyLocksResponse verifyLocks(Project.NameKey project, final CurrentUser user) {
-    log.debug("Verify list of locks for {} project and user {}", project, user);
+    log.atFine().log("Verify list of locks for %s project and user %s", project, user);
     LfsProjectLocks locks = projectLocks.getUnchecked(project);
     Map<Boolean, List<LfsLock>> groupByOurs =
         locks.getLocks().stream()
@@ -128,13 +125,13 @@ class LfsLocksHandler {
   }
 
   LfsGetLocksResponse listLocksByPath(Project.NameKey project, String path) {
-    log.debug("Get lock for {} path in {} project", path, project);
+    log.atFine().log("Get lock for %s path in %s project", path, project);
     String lockId = toLockId.apply(path);
     return listLocksById(project, lockId);
   }
 
   LfsGetLocksResponse listLocksById(Project.NameKey project, String id) {
-    log.debug("Get lock for {} id in {} project", id, project);
+    log.atFine().log("Get lock for %s id in %s project", id, project);
     LfsProjectLocks locks = projectLocks.getUnchecked(project);
     Optional<LfsLock> lock = locks.getLock(id);
     List<LfsLock> locksById =
@@ -143,7 +140,7 @@ class LfsLocksHandler {
   }
 
   LfsGetLocksResponse listLocks(Project.NameKey project) {
-    log.debug("Get locks for {} project", project);
+    log.atFine().log("Get locks for %s project", project);
     return new LfsGetLocksResponse(projectLocks.getUnchecked(project).getLocks(), null);
   }
 

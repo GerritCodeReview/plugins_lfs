@@ -15,16 +15,15 @@
 package com.googlesource.gerrit.plugins.lfs;
 
 import com.google.common.base.Strings;
+import com.google.common.flogger.FluentLogger;
 import com.google.gerrit.reviewdb.client.Project;
 import com.google.inject.Inject;
 import java.util.Map;
 import org.eclipse.jgit.lfs.errors.LfsRepositoryNotFound;
 import org.eclipse.jgit.lfs.server.LargeFileRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class LfsRepositoryResolver {
-  private static final Logger log = LoggerFactory.getLogger(LfsRepositoryResolver.class);
+  private static final FluentLogger log = FluentLogger.forEnclosingClass();
 
   private final LfsRepositoriesCache cache;
   private final LfsBackend defaultBackend;
@@ -47,7 +46,8 @@ public class LfsRepositoryResolver {
     } else {
       backend = backends.get(backendName);
       if (backend == null) {
-        log.error("Project {} is configured with not existing backend {}", project, backendName);
+        log.atSevere().log(
+            "Project %s is configured with not existing backend %s", project, backendName);
         throw new LfsRepositoryNotFound(project.get());
       }
     }
@@ -58,11 +58,9 @@ public class LfsRepositoryResolver {
     }
 
     // this is unlikely situation as cache is pre-populated from config but...
-    log.error(
-        "Project {} is configured with not existing backend {} of type {}",
-        project,
-        backend.name(),
-        backend.type);
+    log.atSevere().log(
+        "Project %s is configured with not existing backend %s of type %s",
+        project, backend.name(), backend.type);
     throw new LfsRepositoryNotFound(project.get());
   }
 }

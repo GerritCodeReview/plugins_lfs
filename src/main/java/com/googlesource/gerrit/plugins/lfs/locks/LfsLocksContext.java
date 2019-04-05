@@ -20,6 +20,7 @@ import static org.apache.http.HttpStatus.SC_OK;
 
 import com.google.common.base.Supplier;
 import com.google.common.base.Suppliers;
+import com.google.common.flogger.FluentLogger;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -32,11 +33,9 @@ import java.io.Reader;
 import java.io.Writer;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 class LfsLocksContext {
-  private static final Logger log = LoggerFactory.getLogger(LfsLocksContext.class);
+  private static final FluentLogger log = FluentLogger.forEnclosingClass();
 
   public final String path;
 
@@ -101,7 +100,7 @@ class LfsLocksContext {
   }
 
   void sendError(int status, Error error) throws IOException {
-    log.error(error.message);
+    log.atSevere().log(error.message);
     res.setStatus(status);
     gson.toJson(error, getWriter());
     getWriter().flush();
