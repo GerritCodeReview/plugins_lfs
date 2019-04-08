@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.googlesource.gerrit.plugins.lfs;
+package com.googlesource.gerrit.plugins.lfs.auth;
 
 import static org.eclipse.jgit.util.HttpSupport.HDR_AUTHORIZATION;
 
