@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e5c3c61_ece286f9",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsGson.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2019-04-08T13:40:54Z",
+      "side": 1,
+      "message": "I was confused whether this would method mean a stateful class, that could be problematic if used in many different places (the same @sngleton instance). But looking deeper, this would only produce Json into the Appendable writer and should be fine.",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 3
+      },
+      "revId": "1882ba6df878efb66fde4f8f313de6bf823b41ee",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
