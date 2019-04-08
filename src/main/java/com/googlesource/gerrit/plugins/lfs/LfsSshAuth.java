@@ -19,9 +19,6 @@ import com.google.gerrit.server.config.CanonicalWebUrl;
 import com.google.gerrit.sshd.BaseCommand.Failure;
 import com.google.gerrit.sshd.BaseCommand.UnloggedFailure;
 import com.google.gerrit.sshd.plugin.LfsPluginAuthCommand;
-import com.google.gson.FieldNamingPolicy;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.google.inject.Singleton;
@@ -33,17 +30,16 @@ import java.util.List;
 public class LfsSshAuth implements LfsPluginAuthCommand.LfsSshPluginAuth {
   private final LfsSshRequestAuthorizer auth;
   private final String canonicalWebUrl;
-  private final Gson gson;
+  private final LfsGson gson;
 
   @Inject
-  LfsSshAuth(LfsSshRequestAuthorizer auth, @CanonicalWebUrl Provider<String> canonicalWebUrl) {
+  LfsSshAuth(
+      LfsSshRequestAuthorizer auth,
+      @CanonicalWebUrl Provider<String> canonicalWebUrl,
+      LfsGson gson) {
     this.auth = auth;
     this.canonicalWebUrl = canonicalWebUrl.get();
-    this.gson =
-        new GsonBuilder()
-            .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
-            .disableHtmlEscaping()
-            .create();
+    this.gson = gson;
   }
 
   @Override
