@@ -31,7 +31,7 @@ import com.google.gerrit.server.permissions.PermissionBackend.ForProject;
 import com.google.gerrit.server.permissions.PermissionBackendException;
 import com.google.gerrit.server.project.ProjectCache;
 import com.google.gerrit.server.project.ProjectState;
-import com.googlesource.gerrit.plugins.lfs.LfsAuthUserProvider;
+import com.googlesource.gerrit.plugins.lfs.auth.LfsAuthUserProvider;
 import com.googlesource.gerrit.plugins.lfs.locks.LfsLocksHandler.LfsLockExistsException;
 import java.io.IOException;
 import org.eclipse.jgit.lfs.errors.LfsException;

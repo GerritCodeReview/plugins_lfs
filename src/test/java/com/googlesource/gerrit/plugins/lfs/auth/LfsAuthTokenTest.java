@@ -12,10 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.googlesource.gerrit.plugins.lfs;
+package com.googlesource.gerrit.plugins.lfs.auth;
 
 import static com.google.common.truth.Truth.assertThat;
 
+import com.googlesource.gerrit.plugins.lfs.LfsDateTime;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
