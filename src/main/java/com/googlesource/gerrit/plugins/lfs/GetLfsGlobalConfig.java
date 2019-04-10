@@ -14,19 +14,11 @@
 
 package com.googlesource.gerrit.plugins.lfs;
 
-import static com.google.gerrit.server.permissions.GlobalPermission.ADMINISTRATE_SERVER;
-
 import com.google.common.collect.Maps;
-import com.google.gerrit.extensions.restapi.ResourceNotFoundException;
 import com.google.gerrit.extensions.restapi.RestApiException;
 import com.google.gerrit.extensions.restapi.RestReadView;
-import com.google.gerrit.server.CurrentUser;
-import com.google.gerrit.server.IdentifiedUser;
-import com.google.gerrit.server.config.AllProjectsName;
-import com.google.gerrit.server.permissions.PermissionBackend;
 import com.google.gerrit.server.project.ProjectResource;
 import com.google.inject.Inject;
-import com.google.inject.Provider;
 import com.google.inject.Singleton;
 import java.util.HashMap;
 import java.util.List;
@@ -34,29 +26,17 @@ import java.util.List;
 @Singleton
 class GetLfsGlobalConfig implements RestReadView<ProjectResource> {
   private final LfsConfigurationFactory lfsConfigFactory;
-  private final AllProjectsName allProjectsName;
-  private final Provider<CurrentUser> self;
-  private final PermissionBackend permissionBackend;
+  private final LfsAdminView adminView;
 
   @Inject
-  GetLfsGlobalConfig(
-      LfsConfigurationFactory lfsConfigFactory,
-      AllProjectsName allProjectsName,
-      Provider<CurrentUser> self,
-      PermissionBackend permissionBackend) {
+  GetLfsGlobalConfig(LfsConfigurationFactory lfsConfigFactory, LfsAdminView adminView) {
     this.lfsConfigFactory = lfsConfigFactory;
-    this.allProjectsName = allProjectsName;
-    this.self = self;
-    this.permissionBackend = permissionBackend;
+    this.adminView = adminView;
   }
 
   @Override
   public LfsGlobalConfigInfo apply(ProjectResource resource) throws RestApiException {
-    IdentifiedUser user = self.get().asIdentifiedUser();
-    if (!(resource.getNameKey().equals(allProjectsName)
-        && permissionBackend.user(user).testOrFalse(ADMINISTRATE_SERVER))) {
-      throw new ResourceNotFoundException();
-    }
+    adminView.apply(resource);
 
     LfsGlobalConfigInfo info = new LfsGlobalConfigInfo();
     LfsGlobalConfig globalConfig = lfsConfigFactory.getGlobalConfig();

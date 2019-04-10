@@ -14,7 +14,6 @@
 
 package com.googlesource.gerrit.plugins.lfs;
 
-import static com.google.gerrit.server.permissions.GlobalPermission.ADMINISTRATE_SERVER;
 import static com.googlesource.gerrit.plugins.lfs.LfsProjectConfigSection.KEY_BACKEND;
 import static com.googlesource.gerrit.plugins.lfs.LfsProjectConfigSection.KEY_ENABLED;
 import static com.googlesource.gerrit.plugins.lfs.LfsProjectConfigSection.KEY_MAX_OBJECT_SIZE;
@@ -27,11 +26,7 @@ import com.google.gerrit.extensions.restapi.ResourceNotFoundException;
 import com.google.gerrit.extensions.restapi.RestApiException;
 import com.google.gerrit.extensions.restapi.RestModifyView;
 import com.google.gerrit.reviewdb.client.Project;
-import com.google.gerrit.server.CurrentUser;
-import com.google.gerrit.server.IdentifiedUser;
-import com.google.gerrit.server.config.AllProjectsName;
 import com.google.gerrit.server.git.meta.MetaDataUpdate;
-import com.google.gerrit.server.permissions.PermissionBackend;
 import com.google.gerrit.server.project.ProjectResource;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
@@ -48,9 +43,7 @@ import org.eclipse.jgit.lib.Config;
 class PutLfsGlobalConfig implements RestModifyView<ProjectResource, LfsGlobalConfigInput> {
 
   private final String pluginName;
-  private final AllProjectsName allProjectsName;
-  private final PermissionBackend permissionBackend;
-  private final Provider<CurrentUser> self;
+  private final LfsAdminView adminView;
   private final Provider<MetaDataUpdate.User> metaDataUpdateFactory;
   private final LfsConfigurationFactory lfsConfigFactory;
   private final GetLfsGlobalConfig get;
@@ -58,16 +51,12 @@ class PutLfsGlobalConfig implements RestModifyView<ProjectResource, LfsGlobalCon
   @Inject
   PutLfsGlobalConfig(
       @PluginName String pluginName,
-      AllProjectsName allProjectsName,
-      PermissionBackend permissionBackend,
-      Provider<CurrentUser> self,
+      LfsAdminView adminView,
       Provider<MetaDataUpdate.User> metaDataUpdateFactory,
       LfsConfigurationFactory lfsConfigFactory,
       GetLfsGlobalConfig get) {
     this.pluginName = pluginName;
-    this.allProjectsName = allProjectsName;
-    this.permissionBackend = permissionBackend;
-    this.self = self;
+    this.adminView = adminView;
     this.metaDataUpdateFactory = metaDataUpdateFactory;
     this.lfsConfigFactory = lfsConfigFactory;
     this.get = get;
@@ -76,13 +65,8 @@ class PutLfsGlobalConfig implements RestModifyView<ProjectResource, LfsGlobalCon
   @Override
   public LfsGlobalConfigInfo apply(ProjectResource resource, LfsGlobalConfigInput input)
       throws RestApiException {
-    IdentifiedUser user = self.get().asIdentifiedUser();
+    adminView.apply(resource);
     Project.NameKey projectName = resource.getNameKey();
-
-    if (!(projectName.equals(allProjectsName)
-        && permissionBackend.user(user).testOrFalse(ADMINISTRATE_SERVER))) {
-      throw new ResourceNotFoundException();
-    }
 
     if (input == null) {
       input = new LfsGlobalConfigInput();
