@@ -29,7 +29,7 @@ import com.google.gerrit.server.project.ProjectCache;
 import com.google.gerrit.server.project.ProjectState;
 import com.google.inject.Inject;
 import com.google.inject.assistedinject.Assisted;
-import com.googlesource.gerrit.plugins.lfs.LfsAuthUserProvider;
+import com.googlesource.gerrit.plugins.lfs.auth.LfsAuthUserProvider;
 import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

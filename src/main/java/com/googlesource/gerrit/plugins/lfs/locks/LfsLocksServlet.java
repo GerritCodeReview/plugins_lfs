@@ -20,6 +20,7 @@ import static com.google.gerrit.extensions.api.lfs.LfsDefinitions.LFS_VERIFICATI
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import com.googlesource.gerrit.plugins.lfs.LfsGson;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -35,24 +36,27 @@ public class LfsLocksServlet extends HttpServlet {
 
   private final LfsGetLocksAction.Factory getters;
   private final LfsPutLocksAction.Factory putters;
+  private final LfsGson gson;
 
   @Inject
-  LfsLocksServlet(LfsGetLocksAction.Factory getters, LfsPutLocksAction.Factory putters) {
+  LfsLocksServlet(
+      LfsGetLocksAction.Factory getters, LfsPutLocksAction.Factory putters, LfsGson gson) {
     this.getters = getters;
     this.putters = putters;
+    this.gson = gson;
   }
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
-    LfsLocksContext context = new LfsLocksContext(req, resp);
+    LfsLocksContext context = new LfsLocksContext(gson, req, resp);
     getters.create(context).run();
   }
 
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
-    LfsLocksContext context = new LfsLocksContext(req, resp);
+    LfsLocksContext context = new LfsLocksContext(gson, req, resp);
     putters.create(context).run();
   }
 }

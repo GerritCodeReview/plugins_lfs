@@ -21,9 +21,7 @@ import static org.apache.http.HttpStatus.SC_OK;
 import com.google.common.base.Supplier;
 import com.google.common.base.Suppliers;
 import com.google.common.flogger.FluentLogger;
-import com.google.gson.FieldNamingPolicy;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.googlesource.gerrit.plugins.lfs.LfsGson;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -43,9 +41,9 @@ class LfsLocksContext {
   private final HttpServletResponse res;
   private final Supplier<Writer> writer;
   private final Supplier<Reader> reader;
-  private final Gson gson;
+  private final LfsGson gson;
 
-  LfsLocksContext(final HttpServletRequest req, final HttpServletResponse res) {
+  LfsLocksContext(LfsGson gson, final HttpServletRequest req, final HttpServletResponse res) {
     this.path = req.getPathInfo().startsWith("/") ? req.getPathInfo() : "/" + req.getPathInfo();
     this.req = req;
     this.res = res;
@@ -73,7 +71,7 @@ class LfsLocksContext {
                 }
               }
             });
-    this.gson = createGson();
+    this.gson = gson;
     setLfsResponseType();
   }
 
@@ -116,13 +114,6 @@ class LfsLocksContext {
 
   void setLfsResponseType() {
     res.setContentType(CONTENTTYPE_VND_GIT_LFS_JSON);
-  }
-
-  private Gson createGson() {
-    return new GsonBuilder()
-        .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
-        .disableHtmlEscaping()
-        .create();
   }
 
   /** copied from org.eclipse.jgit.lfs.server.LfsProtocolServlet.Error */

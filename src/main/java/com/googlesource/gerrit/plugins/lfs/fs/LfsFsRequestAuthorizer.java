@@ -16,10 +16,10 @@ package com.googlesource.gerrit.plugins.lfs.fs;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import com.googlesource.gerrit.plugins.lfs.AuthInfo;
-import com.googlesource.gerrit.plugins.lfs.LfsAuthToken;
-import com.googlesource.gerrit.plugins.lfs.LfsCipher;
 import com.googlesource.gerrit.plugins.lfs.LfsDateTime;
+import com.googlesource.gerrit.plugins.lfs.auth.AuthInfo;
+import com.googlesource.gerrit.plugins.lfs.auth.LfsAuthToken;
+import com.googlesource.gerrit.plugins.lfs.auth.LfsCipher;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
