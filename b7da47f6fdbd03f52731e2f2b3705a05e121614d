@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7abada57_9d03f6a7",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LfsFsContentProxy.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2019-04-11T04:49:15Z",
+      "side": 1,
+      "message": "Should be annotated as @Singleton",
+      "revId": "b7da47f6fdbd03f52731e2f2b3705a05e121614d",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5adb1de_91035740",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LfsFsContentProxy.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2019-04-11T04:49:15Z",
+      "side": 1,
+      "message": "KEY_PROXY",
+      "range": {
+        "startLine": 26,
+        "startChar": 22,
+        "endLine": 26,
+        "endChar": 27
+      },
+      "revId": "b7da47f6fdbd03f52731e2f2b3705a05e121614d",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fd70eb9_8e6e7322",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LfsFsContentProxy.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2019-04-11T04:49:15Z",
+      "side": 1,
+      "message": "canonicalUrl and pluginName to avoid confusion?",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 28
+      },
+      "revId": "b7da47f6fdbd03f52731e2f2b3705a05e121614d",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7edcdce_8cce24ec",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LfsFsContentProxy.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2019-04-11T04:49:15Z",
+      "side": 1,
+      "message": "This is getting the proxy value per FS configuration, which means the proxy must be configured on each FS, i.e.:\n\n [fs \"foo\"]\n     proxy \u003d /path/to/proxy\n [fs \"bar\"]\n     proxy \u003d /path/to/proxy\n\nand if it\u0027s not configured on one of them, that one will fall back to the canonical URL.\n\nWouldn\u0027t it be better to make this a config that\u0027s effective for all FS backends? I.e.\n\n [fs]\n     proxy \u003d /path/to/proxy\n\nand then the setting should be read without passing the backend name, i.e.:\n\n  String proxy \u003d config.getString(backend.type.name(), null, PROXY);",
+      "range": {
+        "startLine": 38,
+        "startChar": 19,
+        "endLine": 38,
+        "endChar": 78
+      },
+      "revId": "b7da47f6fdbd03f52731e2f2b3705a05e121614d",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80dde5c5_65c9f1a4",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LfsFsContentProxy.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2019-04-11T04:49:15Z",
+      "side": 1,
+      "message": "Is it necessary to have a separate class for this?  It could be inlined in LocalLargeFileRepository.",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 3
+      },
+      "revId": "b7da47f6fdbd03f52731e2f2b3705a05e121614d",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c387bbf_1863c541",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LocalLargeFileRepository.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2019-04-11T04:49:15Z",
+      "side": 1,
+      "message": "The LfsConfigurationFactory can be injected in LfsFsContentProxy",
+      "range": {
+        "startLine": 59,
+        "startChar": 39,
+        "endLine": 59,
+        "endChar": 70
+      },
+      "revId": "b7da47f6fdbd03f52731e2f2b3705a05e121614d",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
