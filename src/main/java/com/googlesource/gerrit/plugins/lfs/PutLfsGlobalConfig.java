@@ -49,7 +49,7 @@ class PutLfsGlobalConfig implements RestModifyView<ProjectResource, LfsGlobalCon
 
   private final String pluginName;
   private final AllProjectsName allProjectsName;
-  private final PermissionBackend permissionBackned;
+  private final PermissionBackend permissionBackend;
   private final Provider<CurrentUser> self;
   private final Provider<MetaDataUpdate.User> metaDataUpdateFactory;
   private final LfsConfigurationFactory lfsConfigFactory;
@@ -59,14 +59,14 @@ class PutLfsGlobalConfig implements RestModifyView<ProjectResource, LfsGlobalCon
   PutLfsGlobalConfig(
       @PluginName String pluginName,
       AllProjectsName allProjectsName,
-      PermissionBackend permissionBackned,
+      PermissionBackend permissionBackend,
       Provider<CurrentUser> self,
       Provider<MetaDataUpdate.User> metaDataUpdateFactory,
       LfsConfigurationFactory lfsConfigFactory,
       GetLfsGlobalConfig get) {
     this.pluginName = pluginName;
     this.allProjectsName = allProjectsName;
-    this.permissionBackned = permissionBackned;
+    this.permissionBackend = permissionBackend;
     this.self = self;
     this.metaDataUpdateFactory = metaDataUpdateFactory;
     this.lfsConfigFactory = lfsConfigFactory;
@@ -80,7 +80,7 @@ class PutLfsGlobalConfig implements RestModifyView<ProjectResource, LfsGlobalCon
     Project.NameKey projectName = resource.getNameKey();
 
     if (!(projectName.equals(allProjectsName)
-        && permissionBackned.user(user).testOrFalse(ADMINISTRATE_SERVER))) {
+        && permissionBackend.user(user).testOrFalse(ADMINISTRATE_SERVER))) {
       throw new ResourceNotFoundException();
     }
 

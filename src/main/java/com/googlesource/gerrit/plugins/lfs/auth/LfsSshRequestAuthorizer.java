@@ -12,12 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package com.googlesource.gerrit.plugins.lfs;
+package com.googlesource.gerrit.plugins.lfs.auth;
 
 import com.google.common.flogger.FluentLogger;
 import com.google.gerrit.server.CurrentUser;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import com.googlesource.gerrit.plugins.lfs.LfsConfigurationFactory;
+import com.googlesource.gerrit.plugins.lfs.LfsDateTime;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;

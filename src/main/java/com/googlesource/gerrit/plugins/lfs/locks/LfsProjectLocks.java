@@ -19,12 +19,10 @@ import com.google.common.cache.CacheBuilder;
 import com.google.common.flogger.FluentLogger;
 import com.google.gerrit.reviewdb.client.Project;
 import com.google.gerrit.server.CurrentUser;
-import com.google.gson.FieldNamingPolicy;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.inject.Inject;
 import com.google.inject.assistedinject.Assisted;
 import com.googlesource.gerrit.plugins.lfs.LfsDateTime;
+import com.googlesource.gerrit.plugins.lfs.LfsGson;
 import com.googlesource.gerrit.plugins.lfs.locks.LfsLocksHandler.LfsLockExistsException;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -44,11 +42,7 @@ class LfsProjectLocks {
   }
 
   private static final FluentLogger log = FluentLogger.forEnclosingClass();
-  private static final Gson gson =
-      new GsonBuilder()
-          .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
-          .disableHtmlEscaping()
-          .create();
+  private final LfsGson gson;
   private final PathToLockId toLockId;
   private final String project;
   private final Path locksPath;
@@ -56,7 +50,11 @@ class LfsProjectLocks {
 
   @Inject
   LfsProjectLocks(
-      PathToLockId toLockId, LfsLocksPathProvider locksPath, @Assisted Project.NameKey project) {
+      LfsGson gson,
+      PathToLockId toLockId,
+      LfsLocksPathProvider locksPath,
+      @Assisted Project.NameKey project) {
+    this.gson = gson;
     this.toLockId = toLockId;
     this.project = project.get();
     this.locksPath = Paths.get(locksPath.get(), this.project);
