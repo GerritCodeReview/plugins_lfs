@@ -20,6 +20,8 @@ import static org.eclipse.jgit.util.HttpSupport.HDR_AUTHORIZATION;
 
 import com.google.common.base.Strings;
 import com.google.common.net.HttpHeaders;
+import com.google.gerrit.extensions.events.LfsObjectUploadListener;
+import com.google.gerrit.extensions.registration.DynamicSet;
 import com.google.inject.Inject;
 import com.google.inject.assistedinject.Assisted;
 import java.io.IOException;
@@ -36,7 +38,7 @@ import org.eclipse.jgit.lfs.server.fs.ObjectDownloadListener;
 import org.eclipse.jgit.lfs.server.fs.ObjectUploadListener;
 import org.eclipse.jgit.lfs.server.internal.LfsServerText;
 
-public class LfsFsContentServlet extends FileLfsServlet {
+public class LfsFsContentServlet extends FileLfsServlet implements ObjectUploadListener.Callback {
   public interface Factory {
     LfsFsContentServlet create(LocalLargeFileRepository largeFileRepository);
   }
@@ -44,14 +46,18 @@ public class LfsFsContentServlet extends FileLfsServlet {
   private static final long serialVersionUID = 1L;
 
   private final LfsFsRequestAuthorizer authorizer;
+  private final DynamicSet<LfsObjectUploadListener> listeners;
   private final LocalLargeFileRepository repository;
   private final long timeout;
 
   @Inject
   public LfsFsContentServlet(
-      LfsFsRequestAuthorizer authorizer, @Assisted LocalLargeFileRepository repository) {
+      LfsFsRequestAuthorizer authorizer,
+      DynamicSet<LfsObjectUploadListener> listeners,
+      @Assisted LocalLargeFileRepository repository) {
     super(repository, 0);
     this.authorizer = authorizer;
+    this.listeners = listeners;
     this.repository = repository;
     this.timeout = 0;
   }
@@ -102,7 +108,15 @@ public class LfsFsContentServlet extends FileLfsServlet {
     AsyncContext context = req.startAsync();
     context.setTimeout(timeout);
     req.getInputStream()
-        .setReadListener(new ObjectUploadListener(repository, context, req, rsp, id));
+        .setReadListener(
+            new ObjectUploadListener(repository, context, req, rsp, id).setCallback(this));
+  }
+
+  @Override
+  public void uploadCompleted(String path, long uploaded) {
+    for (LfsObjectUploadListener listener : listeners) {
+      listener.afterObjectUploaded(path, uploaded);
+    }
   }
 
   private Optional<AnyLongObjectId> validateGetRequest(
