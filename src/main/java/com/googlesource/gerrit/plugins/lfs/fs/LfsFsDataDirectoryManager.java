@@ -28,6 +28,7 @@ import java.nio.file.Paths;
 @Singleton
 public class LfsFsDataDirectoryManager {
   private static final String KEY_DIRECTORY = "directory";
+  private static final String ROOT_DIR = "repositories";
 
   private final LfsConfigurationFactory configFactory;
   private final Path defaultDataDir;
@@ -43,6 +44,14 @@ public class LfsFsDataDirectoryManager {
     return getForBackend(backend, true);
   }
 
+  public Path ensureForRepoBackend(LfsBackend backend, String repo) throws IOException {
+    return ensureDirsForBackend(backend, ROOT_DIR, repo);
+  }
+
+  public Path ensureForRepoBackend(LfsBackend backend) throws IOException {
+    return ensureDirsForBackend(backend, ROOT_DIR);
+  }
+
   public Path getForBackend(LfsBackend backend, boolean ensure) throws IOException {
     String dataDir =
         configFactory.getGlobalConfig().getString(backend.type.name(), backend.name, KEY_DIRECTORY);
@@ -51,18 +60,30 @@ public class LfsFsDataDirectoryManager {
     }
 
     if (ensure) {
-      // note that the following method not only creates missing
-      // directory/directories but throws exception when path
-      // exists and points to file
-      Path ensured = Files.createDirectories(Paths.get(dataDir));
-
-      // we should at least make sure that directory is readable
-      if (!Files.isReadable(ensured)) {
-        throw new IOException("Path '" + ensured.toAbsolutePath() + "' cannot be accessed");
-      }
-
-      return ensured;
+      return ensureDir(dataDir);
     }
     return Paths.get(dataDir);
+  }
+
+  private Path ensureDirsForBackend(LfsBackend backend, String... dirs) throws IOException {
+    Path path = getForBackend(backend, false);
+    for (String dir : dirs) {
+      path = path.resolve(dir);
+    }
+    return ensureDir(path.toString());
+  }
+
+  private Path ensureDir(String dataDir) throws IOException {
+    // note that the following method not only creates missing
+    // directory/directories but throws exception when path
+    // exists and points to file
+    Path ensured = Files.createDirectories(Paths.get(dataDir));
+
+    // we should at least make sure that directory is readable
+    if (!Files.isReadable(ensured)) {
+      throw new IOException("Path '" + ensured.toAbsolutePath() + "' cannot be accessed");
+    }
+
+    return ensured;
   }
 }
