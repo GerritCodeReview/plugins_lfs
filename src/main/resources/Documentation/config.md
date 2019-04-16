@@ -142,6 +142,16 @@ fs.directory
 : The directory in which to store data files. If not specified, defaults to
 the plugin's data folder: `$GERRIT_SITE/data/@PLUGIN@`.
 
+fs.dataStructure
+: The way how data should be stored. Possible values are `per_repository`
+(intermediate `repositories` dir is created under `fs.directory` and LFS objects
+are stored in subdirectories called after repository name they belong), `set`.
+: Default is `set` which means that particular LFS object is stored only once
+regardless of how many repositories it is referenced from. This configuration
+is more space efficient than `per_repository` option.
+: Note that once a value is set (or to be more precised when LFS data exists)
+this parameter shouldn't be modified unless manual migration is performed.
+
 fs.expirationSeconds
 : Validity, in seconds, of authentication token for signed requests.
 Gerrit's LFS protocol handler signs requests to be issued by the git-lfs

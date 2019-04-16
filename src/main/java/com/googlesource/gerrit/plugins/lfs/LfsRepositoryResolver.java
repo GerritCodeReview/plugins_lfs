@@ -18,6 +18,8 @@ import com.google.common.base.Strings;
 import com.google.common.flogger.FluentLogger;
 import com.google.gerrit.reviewdb.client.Project;
 import com.google.inject.Inject;
+import com.googlesource.gerrit.plugins.lfs.fs.FsDataStructure;
+import com.googlesource.gerrit.plugins.lfs.fs.LocalLargeFileRepositoryProxy;
 import java.util.Map;
 import org.eclipse.jgit.lfs.errors.LfsRepositoryNotFound;
 import org.eclipse.jgit.lfs.server.LargeFileRepository;
@@ -26,14 +28,14 @@ public class LfsRepositoryResolver {
   private static final FluentLogger log = FluentLogger.forEnclosingClass();
 
   private final LfsRepositoriesCache cache;
+  private final LfsGlobalConfig config;
   private final LfsBackend defaultBackend;
   private final Map<String, LfsBackend> backends;
 
   @Inject
   LfsRepositoryResolver(LfsRepositoriesCache cache, LfsConfigurationFactory configFactory) {
     this.cache = cache;
-
-    LfsGlobalConfig config = configFactory.getGlobalConfig();
+    this.config = configFactory.getGlobalConfig();
     this.defaultBackend = config.getDefaultBackend();
     this.backends = config.getBackends();
   }
@@ -54,6 +56,19 @@ public class LfsRepositoryResolver {
 
     LargeFileRepository repository = cache.get(backend);
     if (repository != null) {
+      if (LfsBackendType.FS.equals(backend.type)
+          && FsDataStructure.PER_REPOSITORY.equals(FsDataStructure.get(config, backendName))) {
+        if (repository instanceof LocalLargeFileRepositoryProxy) {
+          return ((LocalLargeFileRepositoryProxy) repository).getRepository(project.get());
+        }
+        log.atSevere().log(
+            "Project %s (backend %s) is configured with data structure %s but actual backend class is %s type",
+            project,
+            backend.type,
+            FsDataStructure.PER_REPOSITORY,
+            repository.getClass().getSimpleName());
+        throw new LfsRepositoryNotFound(project.get());
+      }
       return repository;
     }
 

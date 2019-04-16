@@ -22,33 +22,43 @@ import com.google.gerrit.extensions.webui.JavaScriptPlugin;
 import com.google.gerrit.extensions.webui.WebUiPlugin;
 import com.google.inject.Inject;
 import com.google.inject.servlet.ServletModule;
+import com.googlesource.gerrit.plugins.lfs.fs.FsDataStructure;
 import com.googlesource.gerrit.plugins.lfs.fs.LfsFsContentServlet;
+import com.googlesource.gerrit.plugins.lfs.fs.LfsFsRepoContentServlet;
 import com.googlesource.gerrit.plugins.lfs.fs.LocalLargeFileRepository;
+import com.googlesource.gerrit.plugins.lfs.fs.LocalLargeFileRepositoryProxy;
 import com.googlesource.gerrit.plugins.lfs.locks.LfsLocksServlet;
 import com.googlesource.gerrit.plugins.lfs.s3.S3LargeFileRepository;
 import java.util.Map;
 
 public class HttpModule extends ServletModule {
   private final LocalLargeFileRepository.Factory fsRepoFactory;
+  private final LocalLargeFileRepositoryProxy.Factory fsProjectRepoFactory;
   private final S3LargeFileRepository.Factory s3RepoFactory;
   private final LfsRepositoriesCache cache;
   private final LfsFsContentServlet.Factory fsServletFactory;
+  private final LfsFsRepoContentServlet.Factory fsRepoServletFactory;
+  private final LfsGlobalConfig config;
   private final LfsBackend defaultBackend;
   private final Map<String, LfsBackend> backends;
 
   @Inject
   HttpModule(
       LocalLargeFileRepository.Factory fsRepoFactory,
+      LocalLargeFileRepositoryProxy.Factory fsProjectRepoFactory,
       S3LargeFileRepository.Factory s3RepoFactory,
       LfsRepositoriesCache cache,
       LfsFsContentServlet.Factory fsServletFactory,
+      LfsFsRepoContentServlet.Factory fsRepoServletFactory,
       LfsConfigurationFactory configFactory) {
     this.fsRepoFactory = fsRepoFactory;
+    this.fsProjectRepoFactory = fsProjectRepoFactory;
     this.s3RepoFactory = s3RepoFactory;
     this.cache = cache;
     this.fsServletFactory = fsServletFactory;
+    this.fsRepoServletFactory = fsRepoServletFactory;
 
-    LfsGlobalConfig config = configFactory.getGlobalConfig();
+    this.config = configFactory.getGlobalConfig();
     this.defaultBackend = config.getDefaultBackend();
     this.backends = config.getBackends();
   }
@@ -88,6 +98,29 @@ public class HttpModule extends ServletModule {
   }
 
   private void populateAndServeFsRepository(LfsBackend backend) {
+    FsDataStructure s = FsDataStructure.get(config, backend.name);
+    switch (s) {
+      case PER_REPOSITORY:
+        populateAndServePerRepoFsRepository(backend);
+        break;
+
+      case SET:
+        populateAndServeSetFsRespository(backend);
+        break;
+
+      default:
+        throw new IllegalArgumentException(
+            String.format("Unknown data structure %s for backend type: %s", s, backend.type));
+    }
+  }
+
+  private void populateAndServePerRepoFsRepository(LfsBackend backend) {
+    LocalLargeFileRepositoryProxy repository = fsProjectRepoFactory.create(backend);
+    cache.put(backend, repository);
+    serve(repository.getServletUrlPattern()).with(fsRepoServletFactory.create(repository));
+  }
+
+  private void populateAndServeSetFsRespository(LfsBackend backend) {
     LocalLargeFileRepository repository = fsRepoFactory.create(backend);
     cache.put(backend, repository);
     serve(repository.getServletUrlPattern()).with(fsServletFactory.create(repository));

@@ -56,4 +56,9 @@ public class LfsGlobalConfig {
   public boolean getBoolean(String section, String subsection, String name, boolean defaultValue) {
     return cfg.getBoolean(section, subsection, name, defaultValue);
   }
+
+  public <T extends Enum<?>> T getEnum(
+      String section, String subsection, String name, T defaultValue) {
+    return cfg.getEnum(section, subsection, name, defaultValue);
+  }
 }

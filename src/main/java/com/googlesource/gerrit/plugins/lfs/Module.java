@@ -21,7 +21,9 @@ import com.google.gerrit.extensions.events.LifecycleListener;
 import com.google.gerrit.extensions.restapi.RestApiModule;
 import com.google.inject.internal.UniqueAnnotations;
 import com.googlesource.gerrit.plugins.lfs.fs.LfsFsContentServlet;
+import com.googlesource.gerrit.plugins.lfs.fs.LfsFsRepoContentServlet;
 import com.googlesource.gerrit.plugins.lfs.fs.LocalLargeFileRepository;
+import com.googlesource.gerrit.plugins.lfs.fs.LocalLargeFileRepositoryProxy;
 import com.googlesource.gerrit.plugins.lfs.locks.LfsLocksModule;
 import com.googlesource.gerrit.plugins.lfs.s3.S3LargeFileRepository;
 
@@ -43,7 +45,9 @@ public class Module extends FactoryModule {
 
     factory(S3LargeFileRepository.Factory.class);
     factory(LocalLargeFileRepository.Factory.class);
+    factory(LocalLargeFileRepositoryProxy.Factory.class);
     factory(LfsFsContentServlet.Factory.class);
+    factory(LfsFsRepoContentServlet.Factory.class);
     install(new LfsLocksModule());
   }
 }
