@@ -152,6 +152,17 @@ is more space efficient than `per_repository` option.
 : Note that once a value is set (or to be more precised when LFS data exists)
 this parameter shouldn't be modified unless manual migration is performed.
 
+fs.storeDataInRepoDotGit
+: Relevant when `per_repository` is set for `fs.dataStructure`. Parameter is used
+to decide if data should be stored under _repository_ of `fs.directory/respositories`
+directory (when value is `false`) or under `gerrit.basePath/repository.git/%binaries%`
+(when value is `true`). It gets useful when one wants to have LFS binaries being
+taken care when project is deleted with _delete-plugin_, etc. Setting this parameter
+to `true` causes `fs.directory` parameter to be ignored.
+: Default is `false`.
+: Note that once a value is set (or to be more precised when LFS data exists)
+this parameter shouldn't be modified unless manual migration is performed.
+
 fs.expirationSeconds
 : Validity, in seconds, of authentication token for signed requests.
 Gerrit's LFS protocol handler signs requests to be issued by the git-lfs

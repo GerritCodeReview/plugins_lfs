@@ -14,8 +14,12 @@
 
 package com.googlesource.gerrit.plugins.lfs.fs;
 
+import static org.eclipse.jgit.lib.Constants.DOT_GIT_EXT;
+
 import com.google.common.base.Strings;
 import com.google.gerrit.extensions.annotations.PluginData;
+import com.google.gerrit.server.config.GerritServerConfig;
+import com.google.gerrit.server.config.SitePaths;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.googlesource.gerrit.plugins.lfs.LfsBackend;
@@ -24,20 +28,30 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Optional;
+import org.eclipse.jgit.lib.Config;
 
 @Singleton
 public class LfsFsDataDirectoryManager {
+  static final String STORE_IN_REPO_DIR = "storeDataInRepoDotGit";
   private static final String KEY_DIRECTORY = "directory";
   private static final String ROOT_DIR = "repositories";
 
   private final LfsConfigurationFactory configFactory;
+  private final SitePaths site;
   private final Path defaultDataDir;
+  private final Config config;
 
   @Inject
   LfsFsDataDirectoryManager(
-      LfsConfigurationFactory configFactory, @PluginData Path defaultDataDir) {
+      LfsConfigurationFactory configFactory,
+      SitePaths site,
+      @PluginData Path defaultDataDir,
+      @GerritServerConfig Config config) {
     this.configFactory = configFactory;
+    this.site = site;
     this.defaultDataDir = defaultDataDir;
+    this.config = config;
   }
 
   public Path ensureForBackend(LfsBackend backend) throws IOException {
@@ -45,11 +59,35 @@ public class LfsFsDataDirectoryManager {
   }
 
   public Path ensureForRepoBackend(LfsBackend backend, String repo) throws IOException {
-    return ensureDirsForBackend(backend, ROOT_DIR, repo);
+    boolean storeInRepo =
+        configFactory
+            .getGlobalConfig()
+            .getBoolean(backend.type.name(), backend.name, STORE_IN_REPO_DIR, false);
+    if (storeInRepo) {
+      Path path =
+          Optional.ofNullable(config.getString("gerrit", null, "basePath"))
+              .map(p -> site.resolve(p))
+              .orElse(getForBackend(backend, false));
+      return ensureDirsForBackend(path, repo + DOT_GIT_EXT, "%binaries%");
+    }
+
+    return ensureDirsForBackend(getForBackend(backend, false), ROOT_DIR, repo);
   }
 
   public Path ensureForRepoBackend(LfsBackend backend) throws IOException {
-    return ensureDirsForBackend(backend, ROOT_DIR);
+    boolean storeInRepo =
+        configFactory
+            .getGlobalConfig()
+            .getBoolean(backend.type.name(), backend.name, STORE_IN_REPO_DIR, false);
+    if (storeInRepo) {
+      Path path =
+          Optional.ofNullable(config.getString("gerrit", null, "basePath"))
+              .map(p -> site.resolve(p))
+              .orElse(getForBackend(backend, false));
+      return ensureDirsForBackend(path);
+    }
+
+    return ensureDirsForBackend(getForBackend(backend, false), ROOT_DIR);
   }
 
   public Path getForBackend(LfsBackend backend, boolean ensure) throws IOException {
@@ -65,8 +103,7 @@ public class LfsFsDataDirectoryManager {
     return Paths.get(dataDir);
   }
 
-  private Path ensureDirsForBackend(LfsBackend backend, String... dirs) throws IOException {
-    Path path = getForBackend(backend, false);
+  private Path ensureDirsForBackend(Path path, String... dirs) throws IOException {
     for (String dir : dirs) {
       path = path.resolve(dir);
     }
