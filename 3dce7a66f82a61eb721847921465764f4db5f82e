@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c7c550b_4227c8c3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2019-04-16T00:08:34Z",
+      "side": 1,
+      "message": "\"repository\" per the code",
+      "range": {
+        "startLine": 20,
+        "startChar": 8,
+        "endLine": 20,
+        "endChar": 20
+      },
+      "revId": "3dce7a66f82a61eb721847921465764f4db5f82e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c30bebba_f1427aac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2019-04-16T00:08:34Z",
+      "side": 1,
+      "message": "- Per comments on the previous change, I think it would be better to make this a configuration setting per FS backend, rather than introducing version numbers.\n\n- I don\u0027t think we should automatically \u0027upgrade\u0027 to this; the default should remain as before and it should only use the new structure when explicitly configured to do so.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 0
+      },
+      "revId": "3dce7a66f82a61eb721847921465764f4db5f82e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
