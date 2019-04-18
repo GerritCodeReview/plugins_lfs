@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f27d1f1e_ef74c6ca",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/LfsBackendVersion.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2019-04-18T14:54:54Z",
+      "side": 1,
+      "message": "This is unnecessary because:\n\n* every enum type provides the ordinal() method\n* every enum type implements Comparable which defined order of enum constants based on the order of their declaration",
+      "range": {
+        "startLine": 18,
+        "startChar": 4,
+        "endLine": 20,
+        "endChar": 28
+      },
+      "revId": "00a62e9e852912d3f50f4a62f52f39cb28d190eb",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
