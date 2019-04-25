@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f42bd19f_8ba090b4",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LfsFsDataDirectoryManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2019-04-25T14:12:20Z",
+      "side": 1,
+      "message": "would introduce a version that assumes ensure \u003d true",
+      "range": {
+        "startLine": 42,
+        "startChar": 2,
+        "endLine": 42,
+        "endChar": 84
+      },
+      "revId": "5a05d90d881f5893b737ea7aee3b7ee7ae22ff42",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7f1dd3c_408649d1",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/fs/LfsFsDataDirectoryManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2019-04-25T14:12:20Z",
+      "side": 1,
+      "message": "this is not needed",
+      "range": {
+        "startLine": 53,
+        "startChar": 62,
+        "endLine": 53,
+        "endChar": 73
+      },
+      "revId": "5a05d90d881f5893b737ea7aee3b7ee7ae22ff42",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
