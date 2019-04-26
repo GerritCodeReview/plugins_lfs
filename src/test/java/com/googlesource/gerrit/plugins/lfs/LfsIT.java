@@ -14,10 +14,11 @@
 
 package com.googlesource.gerrit.plugins.lfs;
 
-import com.google.gerrit.acceptance.GerritConfig;
 import com.google.gerrit.acceptance.LightweightPluginDaemonTest;
 import com.google.gerrit.acceptance.TestPlugin;
 import com.google.gerrit.reviewdb.client.Project;
+import com.google.gerrit.testing.ConfigSuite;
+import org.eclipse.jgit.lib.Config;
 import org.junit.Test;
 
 @TestPlugin(
@@ -26,20 +27,24 @@ import org.junit.Test;
     httpModule = "com.googlesource.gerrit.plugins.lfs.HttpModule",
     sshModule = "com.googlesource.gerrit.plugins.lfs.SshModule")
 public class LfsIT extends LightweightPluginDaemonTest {
+  @ConfigSuite.Default
+  public static Config enablePlugin() {
+    Config cfg = new Config();
+    cfg.setString("lfs", null, "plugin", "lfs");
+    return cfg;
+  }
+
   @Test
-  @GerritConfig(name = "lfs.plugin", value = "lfs")
   public void globalConfigCanBeReadByAdmin() throws Exception {
     adminRestSession.get(globalConfig(allProjects)).assertOK();
   }
 
   @Test
-  @GerritConfig(name = "lfs.plugin", value = "lfs")
   public void globalConfigCannotBeReadByNonAdmin() throws Exception {
     userRestSession.get(globalConfig(allProjects)).assertNotFound();
   }
 
   @Test
-  @GerritConfig(name = "lfs.plugin", value = "lfs")
   public void globalConfigCannotBeReadOnOtherProject() throws Exception {
     adminRestSession.get(globalConfig(project)).assertNotFound();
   }
