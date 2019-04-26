@@ -17,20 +17,14 @@ package com.googlesource.gerrit.plugins.lfs.fs;
 import static org.eclipse.jgit.lfs.lib.Constants.DOWNLOAD;
 import static org.eclipse.jgit.lfs.lib.Constants.UPLOAD;
 
-import com.google.common.base.Strings;
 import com.google.gerrit.extensions.annotations.PluginCanonicalWebUrl;
-import com.google.gerrit.extensions.annotations.PluginData;
 import com.google.inject.Inject;
 import com.google.inject.assistedinject.Assisted;
 import com.googlesource.gerrit.plugins.lfs.LfsBackend;
 import com.googlesource.gerrit.plugins.lfs.LfsConfigurationFactory;
-import com.googlesource.gerrit.plugins.lfs.LfsGlobalConfig;
 import com.googlesource.gerrit.plugins.lfs.auth.AuthInfo;
 import com.googlesource.gerrit.plugins.lfs.auth.ExpiringAction;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.time.Instant;
 import org.eclipse.jgit.lfs.lib.AnyLongObjectId;
 import org.eclipse.jgit.lfs.server.Response;
@@ -50,15 +44,13 @@ public class LocalLargeFileRepository extends FileLfsRepository {
 
   @Inject
   LocalLargeFileRepository(
+      LfsFsDataDirectoryManager dataDirManager,
       LfsConfigurationFactory configFactory,
       LfsFsRequestAuthorizer authorizer,
       @PluginCanonicalWebUrl String url,
-      @PluginData Path defaultDataDir,
       @Assisted LfsBackend backend)
       throws IOException {
-    super(
-        getContentUrl(url, backend),
-        getOrCreateDataDir(configFactory.getGlobalConfig(), backend, defaultDataDir));
+    super(getContentUrl(url, backend), dataDirManager.ensureForBackend(backend));
     this.authorizer = authorizer;
     this.servletUrlPattern = "/" + getContentPath(backend) + "*";
     this.expiresIn =
@@ -98,25 +90,5 @@ public class LocalLargeFileRepository extends FileLfsRepository {
 
   private static String getContentPath(LfsBackend backend) {
     return String.format(CONTENT_PATH_TEMPLATE, backend.name());
-  }
-
-  private static Path getOrCreateDataDir(
-      LfsGlobalConfig config, LfsBackend backendConfig, Path defaultDataDir) throws IOException {
-    String dataDir = config.getString(backendConfig.type.name(), backendConfig.name, "directory");
-    if (Strings.isNullOrEmpty(dataDir)) {
-      return defaultDataDir;
-    }
-
-    // note that the following method not only creates missing
-    // directory/directories but throws exception when path
-    // exists and points to file
-    Path ensured = Files.createDirectories(Paths.get(dataDir));
-
-    // we should at least make sure that directory is readable
-    if (!Files.isReadable(ensured)) {
-      throw new IOException("Path '" + ensured.toAbsolutePath() + "' cannot be accessed");
-    }
-
-    return ensured;
   }
 }
