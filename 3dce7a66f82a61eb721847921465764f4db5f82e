@@ -69,6 +69,30 @@
       "revId": "3dce7a66f82a61eb721847921465764f4db5f82e",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a926cf3_b117a4b5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2019-05-06T15:53:54Z",
+      "side": 1,
+      "message": "we ditched the idea of version in favour of structure and there is no automatic migration, admin decides at the beginning about the structure he/she wants to have in terms of LFS over FS",
+      "parentUuid": "f1f21920_aef70e8c",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 0
+      },
+      "revId": "3dce7a66f82a61eb721847921465764f4db5f82e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
