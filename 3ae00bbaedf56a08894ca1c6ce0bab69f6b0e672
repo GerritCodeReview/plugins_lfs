@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "effc0aa4_a887448d",
+        "filename": "src/main/resources/Documentation/config.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2019-05-08T01:02:18Z",
+      "side": 1,
+      "message": "It should be mentioned that this setting is one-off, i.e. it once it\u0027s set to a specific value and data has been stored it cannot be changed to another value without manual migration of the data.\n\nThe important thing to make clear is that the plugin does not provide any migration between the different structures.",
+      "revId": "3ae00bbaedf56a08894ca1c6ce0bab69f6b0e672",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
