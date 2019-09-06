@@ -14,6 +14,7 @@
 
 package com.googlesource.gerrit.plugins.lfs;
 
+import com.google.gerrit.extensions.restapi.Response;
 import com.google.gerrit.extensions.restapi.RestApiException;
 import com.google.gerrit.extensions.restapi.RestReadView;
 import com.google.gerrit.server.project.ProjectResource;
@@ -31,7 +32,7 @@ class GetLfsProjectConfig implements RestReadView<ProjectResource> {
   }
 
   @Override
-  public LfsProjectConfigInfo apply(ProjectResource resource) throws RestApiException {
+  public Response apply(ProjectResource resource) throws RestApiException {
     LfsProjectConfigInfo info = new LfsProjectConfigInfo();
     LfsProjectConfigSection config =
         lfsConfigFactory.getProjectsConfig().getForProject(resource.getNameKey());
@@ -41,6 +42,6 @@ class GetLfsProjectConfig implements RestReadView<ProjectResource> {
       info.readOnly = config.isReadOnly();
       info.backend = config.getBackend();
     }
-    return info;
+    return Response.ok(info);
   }
 }

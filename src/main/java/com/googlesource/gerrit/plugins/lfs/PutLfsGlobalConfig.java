@@ -23,6 +23,7 @@ import com.google.common.base.Strings;
 import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.extensions.restapi.ResourceConflictException;
 import com.google.gerrit.extensions.restapi.ResourceNotFoundException;
+import com.google.gerrit.extensions.restapi.Response;
 import com.google.gerrit.extensions.restapi.RestApiException;
 import com.google.gerrit.extensions.restapi.RestModifyView;
 import com.google.gerrit.reviewdb.client.Project;
@@ -63,7 +64,7 @@ class PutLfsGlobalConfig implements RestModifyView<ProjectResource, LfsGlobalCon
   }
 
   @Override
-  public LfsGlobalConfigInfo apply(ProjectResource resource, LfsGlobalConfigInput input)
+  public Response apply(ProjectResource resource, LfsGlobalConfigInput input)
       throws RestApiException {
     adminView.validate(resource);
     Project.NameKey projectName = resource.getNameKey();

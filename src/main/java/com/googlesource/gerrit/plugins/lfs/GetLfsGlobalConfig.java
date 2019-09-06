@@ -15,6 +15,7 @@
 package com.googlesource.gerrit.plugins.lfs;
 
 import com.google.common.collect.Maps;
+import com.google.gerrit.extensions.restapi.Response;
 import com.google.gerrit.extensions.restapi.RestApiException;
 import com.google.gerrit.extensions.restapi.RestReadView;
 import com.google.gerrit.server.project.ProjectResource;
@@ -35,7 +36,7 @@ class GetLfsGlobalConfig implements RestReadView<ProjectResource> {
   }
 
   @Override
-  public LfsGlobalConfigInfo apply(ProjectResource resource) throws RestApiException {
+  public Response apply(ProjectResource resource) throws RestApiException {
     adminView.validate(resource);
 
     LfsGlobalConfigInfo info = new LfsGlobalConfigInfo();
@@ -56,6 +57,6 @@ class GetLfsGlobalConfig implements RestReadView<ProjectResource> {
         info.namespaces.put(section.getNamespace(), sectionInfo);
       }
     }
-    return info;
+    return Response.ok(info);
   }
 }
