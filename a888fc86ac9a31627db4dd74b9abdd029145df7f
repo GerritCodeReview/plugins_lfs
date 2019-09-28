@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "302081b3_a2ebff0f",
+        "filename": "src/main/resources/static/gr-lfs.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2019-09-28T02:04:55Z",
+      "side": 1,
+      "message": "gr-lfs-project-info?",
+      "range": {
+        "startLine": 20,
+        "startChar": 15,
+        "endLine": 20,
+        "endChar": 38
+      },
+      "revId": "a888fc86ac9a31627db4dd74b9abdd029145df7f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
