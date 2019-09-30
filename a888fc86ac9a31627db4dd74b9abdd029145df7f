@@ -22,6 +22,30 @@
       "revId": "a888fc86ac9a31627db4dd74b9abdd029145df7f",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3eef014_9d8612a2",
+        "filename": "src/main/resources/static/gr-lfs.html",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1065256
+      },
+      "writtenOn": "2019-09-30T06:58:25Z",
+      "side": 1,
+      "message": "Sorry for the copy-paste error :-(. It should have been gr-lfs. \nSince this dom-module is not associated by a Polymer-Object (`Polymer({is: \u0027gr-lfs\u0027,})`), it still worked as intended.",
+      "parentUuid": "302081b3_a2ebff0f",
+      "range": {
+        "startLine": 20,
+        "startChar": 15,
+        "endLine": 20,
+        "endChar": 38
+      },
+      "revId": "a888fc86ac9a31627db4dd74b9abdd029145df7f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
