@@ -16,7 +16,7 @@ package com.googlesource.gerrit.plugins.lfs;
 
 import com.google.common.base.Strings;
 import com.google.common.flogger.FluentLogger;
-import com.google.gerrit.reviewdb.client.Project;
+import com.google.gerrit.entities.Project;
 import com.google.inject.Inject;
 import java.util.Map;
 import org.eclipse.jgit.lfs.errors.LfsRepositoryNotFound;

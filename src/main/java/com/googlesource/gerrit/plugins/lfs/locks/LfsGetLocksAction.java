@@ -19,8 +19,8 @@ import static com.google.gerrit.extensions.api.lfs.LfsDefinitions.LFS_URL_REGEX_
 import static com.google.gerrit.server.permissions.ProjectPermission.ACCESS;
 
 import com.google.common.base.Strings;
+import com.google.gerrit.entities.Project;
 import com.google.gerrit.extensions.restapi.AuthException;
-import com.google.gerrit.reviewdb.client.Project;
 import com.google.gerrit.server.CurrentUser;
 import com.google.gerrit.server.permissions.PermissionBackend;
 import com.google.gerrit.server.permissions.PermissionBackend.ForProject;

@@ -20,13 +20,13 @@ import static com.googlesource.gerrit.plugins.lfs.LfsProjectConfigSection.KEY_MA
 import static com.googlesource.gerrit.plugins.lfs.LfsProjectConfigSection.KEY_READ_ONLY;
 
 import com.google.common.base.Strings;
+import com.google.gerrit.entities.Project;
 import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.extensions.restapi.ResourceConflictException;
 import com.google.gerrit.extensions.restapi.ResourceNotFoundException;
 import com.google.gerrit.extensions.restapi.Response;
 import com.google.gerrit.extensions.restapi.RestApiException;
 import com.google.gerrit.extensions.restapi.RestModifyView;
-import com.google.gerrit.reviewdb.client.Project;
 import com.google.gerrit.server.git.meta.MetaDataUpdate;
 import com.google.gerrit.server.project.ProjectResource;
 import com.google.inject.Inject;

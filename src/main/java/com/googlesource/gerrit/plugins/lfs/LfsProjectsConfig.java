@@ -14,12 +14,12 @@
 
 package com.googlesource.gerrit.plugins.lfs;
 
-import static com.google.gerrit.reviewdb.client.RefNames.REFS_CONFIG;
+import static com.google.gerrit.entities.RefNames.REFS_CONFIG;
 
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableList;
+import com.google.gerrit.entities.Project;
 import com.google.gerrit.extensions.annotations.PluginName;
-import com.google.gerrit.reviewdb.client.Project;
 import com.google.gerrit.server.config.AllProjectsName;
 import com.google.gerrit.server.git.meta.VersionedMetaData;
 import com.google.gerrit.server.project.ProjectCache;
