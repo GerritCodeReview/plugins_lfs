@@ -13,6 +13,11 @@
 // limitations under the License.
 
 Gerrit.install(function(self) {
+
+  if (window.Polymer) { return; }
+
+  // The code below is only used by the GWT-UI
+
   function toUpperCamel(str) {
     var words = str.split('_');
     for (i=0; i<words.length; i++) {
