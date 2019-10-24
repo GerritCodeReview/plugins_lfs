@@ -28,8 +28,9 @@
     },
 
     _getPreferences() {
+      let encodedRepoName = encodeURIComponent(this.repoName);
       return this.plugin.restApi('/projects/')
-        .get(`${this.repoName}/${this.plugin.getPluginName()}~lfs:config-project`)
+        .get(`${encodedRepoName}/${this.plugin.getPluginName()}~lfs:config-project`)
         .then(config => {
           if (!config || Object.entries(config).length === 0) {
             this.$.lfsProjectInfo.hidden = true;
