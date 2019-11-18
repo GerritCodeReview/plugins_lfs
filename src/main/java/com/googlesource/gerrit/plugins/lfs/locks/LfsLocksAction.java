@@ -100,7 +100,7 @@ abstract class LfsLocksAction {
       throws LfsException, IOException;
 
   protected ProjectState getProject(String name) throws LfsRepositoryNotFound {
-    Project.NameKey project = Project.NameKey.parse(ProjectUtil.stripGitSuffix(name));
+    Project.NameKey project = Project.nameKey(ProjectUtil.stripGitSuffix(name));
     ProjectState state = projectCache.get(project);
     if (state == null || state.getProject().getState() == HIDDEN) {
       throw new LfsRepositoryNotFound(project.get());

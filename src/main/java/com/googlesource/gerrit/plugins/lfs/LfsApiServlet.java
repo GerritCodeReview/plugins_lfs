@@ -81,7 +81,7 @@ public class LfsApiServlet extends LfsProtocolServlet {
       throw new LfsException("no repository at " + pathInfo);
     }
     String projName = matcher.group(1);
-    Project.NameKey project = Project.NameKey.parse(ProjectUtil.stripGitSuffix(projName));
+    Project.NameKey project = Project.nameKey(ProjectUtil.stripGitSuffix(projName));
     ProjectState state = projectCache.get(project);
     if (state == null || state.getProject().getState() == HIDDEN) {
       throw new LfsRepositoryNotFound(project.get());
