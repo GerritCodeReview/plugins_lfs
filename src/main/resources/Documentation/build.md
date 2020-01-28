@@ -25,6 +25,14 @@ To execute the tests run:
   bazel test //...
 ```
 
+This project can be imported into the Eclipse IDE. Execute:
+
+```
+  ./tools/eclipse/project.sh
+```
+
+to generate the required files and then import the project.
+
 ### Build in Gerrit tree
 
 Put the external dependency Bazel build file into the Gerrit /plugins directory,
@@ -48,6 +56,13 @@ The output is created in
   bazel-bin/plugins/@PLUGIN@/@PLUGIN@.jar
 ```
 
+To execute the tests run either one of:
+
+```
+  bazel test --test_tag_filters=@PLUGIN@ //...
+  bazel test plugins/@PLUGIN@:@PLUGIN@_tests
+```
+
 This project can be imported into the Eclipse IDE.
 Add the plugin name to the `CUSTOM_PLUGINS` set in
 Gerrit core in `tools/bzl/plugins.bzl`, and execute:
@@ -56,20 +71,9 @@ Gerrit core in `tools/bzl/plugins.bzl`, and execute:
   ./tools/eclipse/project.py
 ```
 
-To execute the tests run either one of:
-
-```
-  bazel test --test_tag_filters=@PLUGIN@ //...
-  bazel test plugins/@PLUGIN@:@PLUGIN@_tests
-```
-
-This project can be imported into the Eclipse IDE. Execute:
-
-```
-  ./tools/eclipse/project.sh
-```
-
-to generate the required files and then import the project.
-
 How to build the Gerrit Plugin API is described in the [Gerrit
 documentation](../../../Documentation/dev-bazel.html#_extension_and_plugin_api_jar_files).
+
+[Back to @PLUGIN@ documentation index][index]
+
+[index]: index.html
