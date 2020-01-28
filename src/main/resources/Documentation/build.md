@@ -73,3 +73,7 @@ to generate the required files and then import the project.
 
 How to build the Gerrit Plugin API is described in the [Gerrit
 documentation](../../../Documentation/dev-bazel.html#_extension_and_plugin_api_jar_files).
+
+[Back to @PLUGIN@ documentation index][index]
+
+[index]: index.html
