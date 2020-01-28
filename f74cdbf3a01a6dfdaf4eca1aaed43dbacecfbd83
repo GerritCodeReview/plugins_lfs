@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4799860d_c5ca4d23",
+        "filename": "src/main/resources/Documentation/build.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1012732
+      },
+      "writtenOn": "2020-01-28T19:37:50Z",
+      "side": 1,
+      "message": "Is the newline removed by mistake?",
+      "revId": "f74cdbf3a01a6dfdaf4eca1aaed43dbacecfbd83",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
