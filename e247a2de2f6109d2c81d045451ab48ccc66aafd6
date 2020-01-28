@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7ed7f74e_4c4f5700",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1083195
+      },
+      "writtenOn": "2020-01-28T20:07:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b589df2_5ba3fd67",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 9,
+        "endChar": 67
+      },
+      "revId": "e247a2de2f6109d2c81d045451ab48ccc66aafd6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "82f19691_004f57d5",
         "filename": "src/main/resources/Documentation/build.md",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "e247a2de2f6109d2c81d045451ab48ccc66aafd6",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d09d0d58_9c51a220",
+        "filename": "src/main/resources/Documentation/build.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1083195
+      },
+      "writtenOn": "2020-01-28T20:07:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82f19691_004f57d5",
+      "revId": "e247a2de2f6109d2c81d045451ab48ccc66aafd6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
