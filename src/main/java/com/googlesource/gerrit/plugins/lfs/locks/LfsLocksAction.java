@@ -23,6 +23,7 @@ import static org.eclipse.jgit.util.HttpSupport.HDR_AUTHORIZATION;
 
 import com.google.common.flogger.FluentLogger;
 import com.google.gerrit.entities.Project;
+import com.google.gerrit.exceptions.StorageException;
 import com.google.gerrit.extensions.restapi.AuthException;
 import com.google.gerrit.server.CurrentUser;
 import com.google.gerrit.server.ProjectUtil;
@@ -34,6 +35,7 @@ import com.google.gerrit.server.project.ProjectState;
 import com.googlesource.gerrit.plugins.lfs.auth.LfsAuthUserProvider;
 import com.googlesource.gerrit.plugins.lfs.locks.LfsLocksHandler.LfsLockExistsException;
 import java.io.IOException;
+import java.util.Optional;
 import org.eclipse.jgit.lfs.errors.LfsException;
 import org.eclipse.jgit.lfs.errors.LfsRepositoryNotFound;
 import org.eclipse.jgit.lfs.errors.LfsUnauthorized;
@@ -71,9 +73,12 @@ abstract class LfsLocksAction {
       String name = getProjectName();
       ProjectState project = getProject(name);
       CurrentUser user = getUser(name);
-      ProjectState state = projectCache.checkedGet(project.getNameKey());
+      Optional<ProjectState> state = projectCache.get(project.getNameKey());
+      if (!state.isPresent()) {
+        throw new LfsRepositoryNotFound(project.getNameKey().get());
+      }
       try {
-        authorizeUser(permissionBackend.user(user).project(state.getNameKey()));
+        authorizeUser(permissionBackend.user(user).project(state.get().getNameKey()));
       } catch (AuthException | PermissionBackendException e) {
         throwUnauthorizedOp(getAction(), project, user);
       }
@@ -84,7 +89,7 @@ abstract class LfsLocksAction {
       context.sendError(SC_NOT_FOUND, e.getMessage());
     } catch (LfsLockExistsException e) {
       context.sendError(SC_CONFLICT, e.error);
-    } catch (LfsException e) {
+    } catch (LfsException | StorageException e) {
       context.sendError(SC_INTERNAL_SERVER_ERROR, e.getMessage());
     }
   }
@@ -101,11 +106,11 @@ abstract class LfsLocksAction {
 
   protected ProjectState getProject(String name) throws LfsRepositoryNotFound {
     Project.NameKey project = Project.nameKey(ProjectUtil.stripGitSuffix(name));
-    ProjectState state = projectCache.get(project);
-    if (state == null || state.getProject().getState() == HIDDEN) {
+    Optional<ProjectState> state = projectCache.get(project);
+    if (!state.isPresent() || state.get().getProject().getState() == HIDDEN) {
       throw new LfsRepositoryNotFound(project.get());
     }
-    return state;
+    return state.get();
   }
 
   protected CurrentUser getUser(String project) {
