@@ -31,7 +31,6 @@ import com.google.gerrit.server.project.ProjectState;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.googlesource.gerrit.plugins.lfs.auth.LfsAuthUserProvider;
-import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.eclipse.jgit.lfs.errors.LfsException;
@@ -83,14 +82,13 @@ public class LfsApiServlet extends LfsProtocolServlet {
     }
     String projName = matcher.group(1);
     Project.NameKey project = Project.nameKey(ProjectUtil.stripGitSuffix(projName));
-    Optional<ProjectState> state = projectCache.get(project);
-    if (!state.isPresent() || state.get().getProject().getState() == HIDDEN) {
+    ProjectState state = projectCache.get(project);
+    if (state == null || state.getProject().getState() == HIDDEN) {
       throw new LfsRepositoryNotFound(project.get());
     }
-    authorizeUser(
-        userProvider.getUser(auth, projName, request.getOperation()), state.get(), request);
+    authorizeUser(userProvider.getUser(auth, projName, request.getOperation()), state, request);
 
-    if (request.isUpload() && state.get().getProject().getState() == READ_ONLY) {
+    if (request.isUpload() && state.getProject().getState() == READ_ONLY) {
       throw new LfsRepositoryReadOnly(project.get());
     }
 
