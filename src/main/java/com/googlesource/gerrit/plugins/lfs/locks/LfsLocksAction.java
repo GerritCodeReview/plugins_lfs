@@ -35,7 +35,6 @@ import com.google.gerrit.server.project.ProjectState;
 import com.googlesource.gerrit.plugins.lfs.auth.LfsAuthUserProvider;
 import com.googlesource.gerrit.plugins.lfs.locks.LfsLocksHandler.LfsLockExistsException;
 import java.io.IOException;
-import java.util.Optional;
 import org.eclipse.jgit.lfs.errors.LfsException;
 import org.eclipse.jgit.lfs.errors.LfsRepositoryNotFound;
 import org.eclipse.jgit.lfs.errors.LfsUnauthorized;
@@ -73,12 +72,12 @@ abstract class LfsLocksAction {
       String name = getProjectName();
       ProjectState project = getProject(name);
       CurrentUser user = getUser(name);
-      Optional<ProjectState> state = projectCache.get(project.getNameKey());
-      if (!state.isPresent()) {
+      ProjectState state = projectCache.get(project.getNameKey());
+      if (state == null) {
         throw new LfsRepositoryNotFound(project.getNameKey().get());
       }
       try {
-        authorizeUser(permissionBackend.user(user).project(state.get().getNameKey()));
+        authorizeUser(permissionBackend.user(user).project(state.getNameKey()));
       } catch (AuthException | PermissionBackendException e) {
         throwUnauthorizedOp(getAction(), project, user);
       }
@@ -106,11 +105,11 @@ abstract class LfsLocksAction {
 
   protected ProjectState getProject(String name) throws LfsRepositoryNotFound {
     Project.NameKey project = Project.nameKey(ProjectUtil.stripGitSuffix(name));
-    Optional<ProjectState> state = projectCache.get(project);
-    if (!state.isPresent() || state.get().getProject().getState() == HIDDEN) {
+    ProjectState state = projectCache.get(project);
+    if (state == null || state.getProject().getState() == HIDDEN) {
       throw new LfsRepositoryNotFound(project.get());
     }
-    return state.get();
+    return state;
   }
 
   protected CurrentUser getUser(String project) {
