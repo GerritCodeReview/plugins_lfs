@@ -154,6 +154,11 @@ after this period.
 
 The following configuration options are only used when the backend is `s3`.
 
+s3.hostname
+: Custom hostname for the S3 API server. This will allow for easier local testing
+of gerrit instances with lfs storage and for the utilization of custom storage
+solutions. If not specified, lfs will use AWS as the backend.
+
 s3.region
 : [Amazon region](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions)
 the S3 storage bucket is residing in.
