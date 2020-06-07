@@ -62,11 +62,6 @@ public class HttpModule extends ServletModule {
       populateRepository(backend);
     }
 
-    // Only for GWT-UI
-    DynamicSet.bind(binder(), WebUiPlugin.class)
-        .toInstance(new JavaScriptPlugin("lfs-project-info.js"));
-
-    // Only for PolyGerrit-UI
     DynamicSet.bind(binder(), WebUiPlugin.class).toInstance(new JavaScriptPlugin("gr-lfs.html"));
   }
 
