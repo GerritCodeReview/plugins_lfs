@@ -20,8 +20,6 @@ limitations under the License.
 <dom-module id="gr-lfs">
   <script>
     Gerrit.install(plugin => {
-      if (!window.Polymer) { return; }
-
       plugin.registerCustomComponent('repo-config', 'gr-lfs-project-info');
     });
   </script>
