@@ -36,7 +36,7 @@ class GetLfsGlobalConfig implements RestReadView<ProjectResource> {
   }
 
   @Override
-  public Response apply(ProjectResource resource) throws RestApiException {
+  public Response<LfsGlobalConfigInfo> apply(ProjectResource resource) throws RestApiException {
     adminView.validate(resource);
 
     LfsGlobalConfigInfo info = new LfsGlobalConfigInfo();
