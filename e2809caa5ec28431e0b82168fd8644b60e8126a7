@@ -22,6 +22,30 @@
       "revId": "e2809caa5ec28431e0b82168fd8644b60e8126a7",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adbc5b44_9d787749",
+        "filename": "WORKSPACE",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1012732
+      },
+      "writtenOn": "2020-06-16T17:50:06Z",
+      "side": 1,
+      "message": "Yes. Good catch. Thanks. Done in follow-up changes.",
+      "parentUuid": "e0112aee_c6ed67b4",
+      "range": {
+        "startLine": 19,
+        "startChar": 25,
+        "endLine": 19,
+        "endChar": 26
+      },
+      "revId": "e2809caa5ec28431e0b82168fd8644b60e8126a7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
