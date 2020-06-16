@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e0112aee_c6ed67b4",
+        "filename": "WORKSPACE",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2020-06-16T16:58:53Z",
+      "side": 1,
+      "message": "nit: it should be probably changed to 1, so that people are not getting confused, right?",
+      "range": {
+        "startLine": 19,
+        "startChar": 25,
+        "endLine": 19,
+        "endChar": 26
+      },
+      "revId": "e2809caa5ec28431e0b82168fd8644b60e8126a7",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
