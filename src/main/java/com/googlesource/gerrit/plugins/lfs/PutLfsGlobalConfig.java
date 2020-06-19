@@ -64,7 +64,7 @@ class PutLfsGlobalConfig implements RestModifyView<ProjectResource, LfsGlobalCon
   }
 
   @Override
-  public Response apply(ProjectResource resource, LfsGlobalConfigInput input)
+  public Response<LfsGlobalConfigInfo> apply(ProjectResource resource, LfsGlobalConfigInput input)
       throws RestApiException {
     adminView.validate(resource);
     Project.NameKey projectName = resource.getNameKey();

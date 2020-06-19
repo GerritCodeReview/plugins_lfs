@@ -32,7 +32,7 @@ class GetLfsProjectConfig implements RestReadView<ProjectResource> {
   }
 
   @Override
-  public Response apply(ProjectResource resource) throws RestApiException {
+  public Response<LfsProjectConfigInfo> apply(ProjectResource resource) throws RestApiException {
     LfsProjectConfigInfo info = new LfsProjectConfigInfo();
     LfsProjectConfigSection config =
         lfsConfigFactory.getProjectsConfig().getForProject(resource.getNameKey());
