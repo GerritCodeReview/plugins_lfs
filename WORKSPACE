@@ -16,4 +16,4 @@ gerrit_api()
 
 load(":external_plugin_deps.bzl", "external_plugin_deps")
 
-external_plugin_deps()
+external_plugin_deps(use_lfs_from_gerrit_tree = False)
