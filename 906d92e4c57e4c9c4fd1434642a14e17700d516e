@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "6340dd9e_f9b1baa9",
+        "filename": "external_plugin_deps.bzl",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2020-06-22T04:48:59Z",
+      "side": 1,
+      "message": "I wrote this issue: [1].\n\n[1] https://bugs.chromium.org/p/gerrit/issues/detail?id\u003d12974",
+      "range": {
+        "startLine": 45,
+        "startChar": 8,
+        "endLine": 45,
+        "endChar": 26
+      },
+      "revId": "906d92e4c57e4c9c4fd1434642a14e17700d516e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b1c48985_2f8bb10b",
         "filename": "external_plugin_deps.bzl",
         "patchSetId": 2
