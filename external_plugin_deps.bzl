@@ -42,6 +42,7 @@ def external_plugin_deps():
 
     maven_jar(
         name = "joda-time",
+        testonly = 1,
         artifact = "joda-time:joda-time:2.9.9",
         sha1 = "f7b520c458572890807d143670c9b24f4de90897",
     )
