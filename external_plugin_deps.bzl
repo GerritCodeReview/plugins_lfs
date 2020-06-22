@@ -9,7 +9,6 @@ def external_plugin_deps():
         artifact = "org.eclipse.jgit:org.eclipse.jgit.http.apache:" + JGIT_VERSION,
         sha1 = "668c69822b4f54b430dd9880cc2bb13f13aa88d1",
         repository = REPO,
-        unsign = True,
         exclude = [
             "about.html",
             "plugin.properties",
@@ -21,7 +20,6 @@ def external_plugin_deps():
         artifact = "org.eclipse.jgit:org.eclipse.jgit.lfs:" + JGIT_VERSION,
         sha1 = "153e32275cb0ccfd7f6dba89cf58392d42e16c3a",
         repository = REPO,
-        unsign = True,
         exclude = [
             "about.html",
             "plugin.properties",
@@ -33,7 +31,6 @@ def external_plugin_deps():
         artifact = "org.eclipse.jgit:org.eclipse.jgit.lfs.server:" + JGIT_VERSION,
         sha1 = "e37339c77dd00d96269e280d582c742c424b908f",
         repository = REPO,
-        unsign = True,
         exclude = [
             "about.html",
             "plugin.properties",
