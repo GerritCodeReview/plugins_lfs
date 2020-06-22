@@ -2,10 +2,20 @@ load("@rules_java//java:defs.bzl", "java_library")
 load("//tools/bzl:junit.bzl", "junit_tests")
 load(
     "//tools/bzl:plugin.bzl",
+    "IN_TREE_BUILD_MODE",
     "PLUGIN_DEPS",
     "PLUGIN_TEST_DEPS",
     "gerrit_plugin",
 )
+
+LFS_DEPS = [
+    "@jgit//org.eclipse.jgit.lfs.server:jgit-lfs-server",
+    "@jgit//org.eclipse.jgit.lfs:jgit-lfs",
+] if IN_TREE_BUILD_MODE else [
+    "@jgit-http-apache//jar",
+    "@jgit-lfs-server//jar",
+    "@jgit-lfs//jar",
+]
 
 gerrit_plugin(
     name = "lfs",
@@ -18,11 +28,7 @@ gerrit_plugin(
         "Gerrit-InitStep: com.googlesource.gerrit.plugins.lfs.InitLfs",
     ],
     resources = glob(["src/main/resources/**/*"]),
-    deps = [
-        "@jgit-http-apache//jar",
-        "@jgit-lfs-server//jar",
-        "@jgit-lfs//jar",
-    ],
+    deps = LFS_DEPS,
 )
 
 junit_tests(
@@ -38,9 +44,8 @@ java_library(
     name = "lfs__plugin_test_deps",
     testonly = 1,
     visibility = ["//visibility:public"],
-    exports = PLUGIN_DEPS + PLUGIN_TEST_DEPS + [
+    exports = PLUGIN_DEPS + PLUGIN_TEST_DEPS + LFS_DEPS + [
         ":lfs__plugin",
-        "@jgit-lfs//jar",
         "@joda-time//jar",
     ],
 )
