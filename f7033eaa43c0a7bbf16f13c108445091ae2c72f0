@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba71f20e_d09f8017",
+        "filename": "BUILD",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2020-06-22T04:40:47Z",
+      "side": 1,
+      "message": "This would need to be exposed in gerrit core, with this diff:\n\n   diff --git a/tools/bzl/plugin.bzl b/tools/bzl/plugin.bzl\n   index d49e700e8a..6b9ed9c188 100644\n   --- a/tools/bzl/plugin.bzl\n   +++ b/tools/bzl/plugin.bzl\n   @@ -13,6 +13,8 @@ PLUGIN_TEST_DEPS \u003d [\n       \"//lib/bouncycastle:bcprov\",\n   ]\n    \n   +IN_TREE_BUILD_MODE \u003d True\n   +",
+      "range": {
+        "startLine": 5,
+        "startChar": 4,
+        "endLine": 5,
+        "endChar": 25
+      },
+      "revId": "f7033eaa43c0a7bbf16f13c108445091ae2c72f0",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}

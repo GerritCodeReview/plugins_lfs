@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b1c48985_2f8bb10b",
+        "filename": "external_plugin_deps.bzl",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2020-06-22T04:40:47Z",
+      "side": 1,
+      "message": "This could be extracted in its own change, or even better, this testonly dependency should be removed and cthe code ported to java times, like it is used in Gerrit core.",
+      "range": {
+        "startLine": 46,
+        "startChar": 8,
+        "endLine": 46,
+        "endChar": 24
+      },
+      "revId": "906d92e4c57e4c9c4fd1434642a14e17700d516e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
