@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "540d13fc_ac219163",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2020-06-22T11:52:40Z",
+      "side": 1,
+      "message": "Apparently it was copied/passed from gerrit core, where is was used for specific reason: For GWT UI, we had to patch the JGit binaries, an replace Diff Edit classes. However, because JGit artifacts are signed, it cannot be easily manipulated, that why we hade to unsign them. LFS\u0027s JGit libraries are not patched at all. So that the unsinging here was wrong from day one.",
+      "revId": "fd3a6639e7634490720ce0afdd33fc0f6982758a",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
