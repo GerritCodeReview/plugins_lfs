@@ -39,6 +39,30 @@
       "revId": "fd3a6639e7634490720ce0afdd33fc0f6982758a",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "783466b0_e1c7fa9e",
+        "filename": "WORKSPACE",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2020-06-22T11:54:36Z",
+      "side": 1,
+      "message": "To get the version of bazlets that removes the param in the standalone build.",
+      "parentUuid": "a74e4518_e453cde5",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 56
+      },
+      "revId": "fd3a6639e7634490720ce0afdd33fc0f6982758a",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
