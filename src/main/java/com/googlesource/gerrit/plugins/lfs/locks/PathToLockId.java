@@ -14,16 +14,17 @@
 
 package com.googlesource.gerrit.plugins.lfs.locks;
 
-import com.google.common.base.Function;
+import static java.nio.charset.StandardCharsets.UTF_8;
+
 import com.google.common.hash.HashCode;
 import com.google.common.hash.Hashing;
 import com.google.common.io.BaseEncoding;
-import java.nio.charset.StandardCharsets;
+import java.util.function.UnaryOperator;
 
-public class PathToLockId implements Function<String, String> {
+public class PathToLockId implements UnaryOperator<String> {
   @Override
   public String apply(String path) {
-    HashCode hash = Hashing.sha256().hashString(path, StandardCharsets.UTF_8);
+    HashCode hash = Hashing.sha256().hashString(path, UTF_8);
     return BaseEncoding.base16().lowerCase().encode(hash.asBytes());
   }
 }
