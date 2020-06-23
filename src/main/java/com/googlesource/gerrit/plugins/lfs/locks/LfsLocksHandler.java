@@ -67,14 +67,10 @@ class LfsLocksHandler {
     };
   }
 
-  private final PathToLockId toLockId;
   private final LoadingCache<Project.NameKey, LfsProjectLocks> projectLocks;
 
   @Inject
-  LfsLocksHandler(
-      PathToLockId toLockId,
-      @Named(CACHE_NAME) LoadingCache<Project.NameKey, LfsProjectLocks> projectLocks) {
-    this.toLockId = toLockId;
+  LfsLocksHandler(@Named(CACHE_NAME) LoadingCache<Project.NameKey, LfsProjectLocks> projectLocks) {
     this.projectLocks = projectLocks;
   }
 
@@ -122,8 +118,7 @@ class LfsLocksHandler {
 
   LfsGetLocksResponse listLocksByPath(Project.NameKey project, String path) {
     log.atFine().log("Get lock for %s path in %s project", path, project);
-    String lockId = toLockId.apply(path);
-    return listLocksById(project, lockId);
+    return listLocksById(project, PathToLockId.CONVERTER.convert(path));
   }
 
   LfsGetLocksResponse listLocksById(Project.NameKey project, String id) {
