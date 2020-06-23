@@ -22,6 +22,30 @@
       "revId": "b66523c56295d2cdedc50e41cc7ece429fafa5c6",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a61d4fe1_1a4b1b05",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2020-06-23T05:02:23Z",
+      "side": 1,
+      "message": "Formatting is fine; it\u0027s the UI wrapping the text.",
+      "parentUuid": "6253bc03_f48fa442",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 29
+      },
+      "revId": "b66523c56295d2cdedc50e41cc7ece429fafa5c6",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
