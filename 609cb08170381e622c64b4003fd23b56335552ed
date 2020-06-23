@@ -46,6 +46,30 @@
       "revId": "609cb08170381e622c64b4003fd23b56335552ed",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d431471d_b85c0327",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/PathToLockId.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2020-06-23T05:30:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b1a5832_9e9baa6d",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 0
+      },
+      "revId": "609cb08170381e622c64b4003fd23b56335552ed",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
