@@ -20,39 +20,38 @@ import java.util.Optional;
 import org.junit.Test;
 
 public class LfsCipherTest {
+  private static final String PLAIN_TEXT = "plain text";
+
   private final LfsCipher cipher = new LfsCipher();
 
   @Test
   public void testCipherTextIsDifferentThanInput() throws Exception {
-    String plain = "plain text";
-    String encrypted = cipher.encrypt(plain);
+    String encrypted = cipher.encrypt(PLAIN_TEXT);
     assertThat(encrypted).isNotEmpty();
-    assertThat(encrypted).isNotEqualTo(plain);
+    assertThat(encrypted).isNotEqualTo(PLAIN_TEXT);
   }
 
   @Test
   public void testVerifyDecodeAgainstEncodedInput() throws Exception {
-    String plain = "plain text";
-    String encrypted = cipher.encrypt(plain);
+    String encrypted = cipher.encrypt(PLAIN_TEXT);
     Optional<String> decrypted = cipher.decrypt(encrypted);
     assertThat(decrypted.isPresent()).isTrue();
-    assertThat(decrypted.get()).isEqualTo(plain);
+    assertThat(decrypted.get()).isEqualTo(PLAIN_TEXT);
   }
 
   @Test
   public void testVerifyDecodeAgainstInvalidInput() throws Exception {
-    String plain = "plain text";
-    String encrypted = cipher.encrypt(plain);
+    String encrypted = cipher.encrypt(PLAIN_TEXT);
     // there is a chance that two first chars in token are the same
     // in such case re-generate the token
     while (encrypted.charAt(0) == encrypted.charAt(1)) {
-      encrypted = cipher.encrypt(plain);
+      encrypted = cipher.encrypt(PLAIN_TEXT);
     }
 
     Optional<String> decrypted =
         cipher.decrypt(
             encrypted.substring(1, 2) + encrypted.substring(0, 1) + encrypted.substring(2));
     assertThat(decrypted.isPresent()).isTrue();
-    assertThat(decrypted.get()).isNotEqualTo(plain);
+    assertThat(decrypted.get()).isNotEqualTo(PLAIN_TEXT);
   }
 }
