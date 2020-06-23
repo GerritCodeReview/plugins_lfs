@@ -36,7 +36,4 @@ public class InitLfs implements InitStep {
   public void run() throws Exception {
     lfs.set(PLUGIN_KEY, name);
   }
-
-  @Override
-  public void postRun() throws Exception {}
 }
