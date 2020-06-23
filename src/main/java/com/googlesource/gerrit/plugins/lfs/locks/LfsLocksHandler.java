@@ -101,10 +101,8 @@ class LfsLocksHandler {
 
     LfsLock lock = hasLock.get();
     Optional<String> username = user.getUserName();
-    if (username.isPresent() && lock.owner.name.equals(username.get())) {
-      locks.deleteLock(lock);
-      return new LfsLockResponse(lock);
-    } else if (input.force) {
+    if ((username.isPresent() && lock.owner.name.equals(username.get()))
+        || Boolean.TRUE.equals(input.force)) {
       locks.deleteLock(lock);
       return new LfsLockResponse(lock);
     }
