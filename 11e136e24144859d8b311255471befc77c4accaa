@@ -69,6 +69,30 @@
       "revId": "11e136e24144859d8b311255471befc77c4accaa",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b61252f_0d3865c7",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/Lifecycle.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2020-06-23T04:22:49Z",
+      "side": 1,
+      "message": "I\u0027ll do this later. For now we can\u0027t do it until the new API is released, otherwise it\u0027ll break the standalone build.",
+      "parentUuid": "28b56624_65c473be",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 59,
+        "endChar": 3
+      },
+      "revId": "11e136e24144859d8b311255471befc77c4accaa",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
