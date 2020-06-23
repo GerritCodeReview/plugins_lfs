@@ -22,6 +22,30 @@
       "revId": "609cb08170381e622c64b4003fd23b56335552ed",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b1a5832_9e9baa6d",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/PathToLockId.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2020-06-23T05:00:31Z",
+      "side": 1,
+      "message": "That involves more refactoring at the callers (they get PathToLockId injected). I would prefer to do it in a separate change later.",
+      "parentUuid": "8f42107b_a9ef8470",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 0
+      },
+      "revId": "609cb08170381e622c64b4003fd23b56335552ed",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
