@@ -14,6 +14,7 @@
 
 package com.googlesource.gerrit.plugins.lfs.auth;
 
+import static com.google.common.base.MoreObjects.firstNonNull;
 import static com.googlesource.gerrit.plugins.lfs.auth.LfsSshRequestAuthorizer.SSH_AUTH_PREFIX;
 
 import com.google.common.base.Strings;
@@ -30,7 +31,7 @@ import java.util.Optional;
 @Singleton
 public class LfsAuthUserProvider {
   private final Provider<AnonymousUser> anonymous;
-  private final Provider<CurrentUser> user;
+  private final Provider<CurrentUser> currentUser;
   private final LfsSshRequestAuthorizer sshAuth;
   private final AccountCache accounts;
   private final IdentifiedUser.GenericFactory userFactory;
@@ -38,12 +39,12 @@ public class LfsAuthUserProvider {
   @Inject
   LfsAuthUserProvider(
       Provider<AnonymousUser> anonymous,
-      Provider<CurrentUser> user,
+      Provider<CurrentUser> currentUser,
       LfsSshRequestAuthorizer sshAuth,
       AccountCache accounts,
       IdentifiedUser.GenericFactory userFactory) {
     this.anonymous = anonymous;
-    this.user = user;
+    this.currentUser = currentUser;
     this.sshAuth = sshAuth;
     this.accounts = accounts;
     this.userFactory = userFactory;
@@ -61,7 +62,6 @@ public class LfsAuthUserProvider {
         }
       }
     }
-    CurrentUser currentUser = user.get();
-    return currentUser != null ? currentUser : anonymous.get();
+    return firstNonNull(currentUser.get(), anonymous.get());
   }
 }
