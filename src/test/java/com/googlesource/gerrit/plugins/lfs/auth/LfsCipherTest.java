@@ -15,6 +15,7 @@
 package com.googlesource.gerrit.plugins.lfs.auth;
 
 import static com.google.common.truth.Truth.assertThat;
+import static com.google.common.truth.Truth8.assertThat;
 
 import java.util.Optional;
 import org.junit.Test;
@@ -35,7 +36,7 @@ public class LfsCipherTest {
   public void testVerifyDecodeAgainstEncodedInput() throws Exception {
     String encrypted = cipher.encrypt(PLAIN_TEXT);
     Optional<String> decrypted = cipher.decrypt(encrypted);
-    assertThat(decrypted.isPresent()).isTrue();
+    assertThat(decrypted).isPresent();
     assertThat(decrypted.get()).isEqualTo(PLAIN_TEXT);
   }
 
@@ -51,7 +52,7 @@ public class LfsCipherTest {
     Optional<String> decrypted =
         cipher.decrypt(
             encrypted.substring(1, 2) + encrypted.substring(0, 1) + encrypted.substring(2));
-    assertThat(decrypted.isPresent()).isTrue();
+    assertThat(decrypted).isPresent();
     assertThat(decrypted.get()).isNotEqualTo(PLAIN_TEXT);
   }
 }

@@ -15,6 +15,7 @@
 package com.googlesource.gerrit.plugins.lfs.auth;
 
 import static com.google.common.truth.Truth.assertThat;
+import static com.google.common.truth.Truth8.assertThat;
 
 import com.googlesource.gerrit.plugins.lfs.LfsDateTime;
 import java.time.Instant;
@@ -33,7 +34,7 @@ public class LfsAuthTokenTest {
     String serialized = processor.serialize(token);
     assertThat(serialized).isNotEmpty();
     Optional<TestToken> deserialized = processor.deserialize(serialized);
-    assertThat(deserialized.isPresent()).isTrue();
+    assertThat(deserialized).isPresent();
     assertThat(token.issued).isEqualTo(deserialized.get().issued);
   }
 
