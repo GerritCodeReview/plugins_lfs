@@ -54,5 +54,7 @@ public class Lifecycle implements LifecycleListener {
   }
 
   @Override
-  public void stop() {}
+  public void stop() {
+    // Do nothing.
+  }
 }
