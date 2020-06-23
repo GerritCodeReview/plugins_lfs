@@ -44,7 +44,7 @@ public class LfsSshAuth implements LfsPluginAuthCommand.LfsSshPluginAuth {
   }
 
   @Override
-  public String authenticate(CurrentUser user, List<String> args) throws UnloggedFailure, Failure {
+  public String authenticate(CurrentUser user, List<String> args) throws Failure {
     if (args.size() != 2) {
       throw new UnloggedFailure(1, "Unexpected number of arguments");
     }

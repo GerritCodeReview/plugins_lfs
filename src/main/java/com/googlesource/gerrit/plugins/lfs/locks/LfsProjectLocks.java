@@ -43,19 +43,13 @@ class LfsProjectLocks {
 
   private static final FluentLogger log = FluentLogger.forEnclosingClass();
   private final LfsGson gson;
-  private final PathToLockId toLockId;
   private final String project;
   private final Path locksPath;
   private final Cache<String, LfsLock> locks;
 
   @Inject
-  LfsProjectLocks(
-      LfsGson gson,
-      PathToLockId toLockId,
-      LfsLocksPathProvider locksPath,
-      @Assisted Project.NameKey project) {
+  LfsProjectLocks(LfsGson gson, LfsLocksPathProvider locksPath, @Assisted Project.NameKey project) {
     this.gson = gson;
-    this.toLockId = toLockId;
     this.project = project.get();
     this.locksPath = Paths.get(locksPath.get(), this.project);
     this.locks = CacheBuilder.newBuilder().build();
@@ -94,7 +88,7 @@ class LfsProjectLocks {
 
   LfsLock createLock(CurrentUser user, LfsCreateLockInput input) throws LfsException {
     log.atFine().log("Create lock for %s in project %s", input.path, project);
-    String lockId = toLockId.apply(input.path);
+    String lockId = PathToLockId.CONVERTER.convert(input.path);
     LfsLock lock = locks.getIfPresent(lockId);
     if (lock != null) {
       throw new LfsLockExistsException(lock);

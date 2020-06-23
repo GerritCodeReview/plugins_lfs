@@ -14,6 +14,8 @@
 
 package com.googlesource.gerrit.plugins.lfs.locks;
 
+import static java.util.stream.Collectors.groupingBy;
+
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 import com.google.common.collect.ImmutableList;
@@ -29,7 +31,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Collectors;
 import org.eclipse.jgit.lfs.errors.LfsException;
 
 @Singleton
@@ -66,14 +67,10 @@ class LfsLocksHandler {
     };
   }
 
-  private final PathToLockId toLockId;
   private final LoadingCache<Project.NameKey, LfsProjectLocks> projectLocks;
 
   @Inject
-  LfsLocksHandler(
-      PathToLockId toLockId,
-      @Named(CACHE_NAME) LoadingCache<Project.NameKey, LfsProjectLocks> projectLocks) {
-    this.toLockId = toLockId;
+  LfsLocksHandler(@Named(CACHE_NAME) LoadingCache<Project.NameKey, LfsProjectLocks> projectLocks) {
     this.projectLocks = projectLocks;
   }
 
@@ -99,10 +96,9 @@ class LfsLocksHandler {
     }
 
     LfsLock lock = hasLock.get();
-    if (lock.owner.name.equals(user.getUserName().get())) {
-      locks.deleteLock(lock);
-      return new LfsLockResponse(lock);
-    } else if (input.force) {
+    Optional<String> username = user.getUserName();
+    if ((username.isPresent() && lock.owner.name.equals(username.get()))
+        || Boolean.TRUE.equals(input.force)) {
       locks.deleteLock(lock);
       return new LfsLockResponse(lock);
     }
@@ -116,18 +112,13 @@ class LfsLocksHandler {
     LfsProjectLocks locks = projectLocks.getUnchecked(project);
     Map<Boolean, List<LfsLock>> groupByOurs =
         locks.getLocks().stream()
-            .collect(
-                Collectors.groupingBy(
-                    (in) -> {
-                      return in.owner.name.equals(user.getUserName().get());
-                    }));
+            .collect(groupingBy(in -> in.owner.name.equals(user.getUserName().get())));
     return new LfsVerifyLocksResponse(groupByOurs.get(true), groupByOurs.get(false), null);
   }
 
   LfsGetLocksResponse listLocksByPath(Project.NameKey project, String path) {
     log.atFine().log("Get lock for %s path in %s project", path, project);
-    String lockId = toLockId.apply(path);
-    return listLocksById(project, lockId);
+    return listLocksById(project, PathToLockId.CONVERTER.convert(path));
   }
 
   LfsGetLocksResponse listLocksById(Project.NameKey project, String id) {
