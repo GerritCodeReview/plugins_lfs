@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f42107b_a9ef8470",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/locks/PathToLockId.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2020-06-23T04:45:21Z",
+      "side": 1,
+      "message": "You can use dedicated interface that is marked with FunctionalInterface annotation, and then create lambda expression and re-use in the plugin code. Something like:\n\n  public class PathToLockId {\n    @FunctionalInterface\n    public interface PathToLockIdInterface {\n      String convert(String path);\n    }\n\n    static final PathToLockIdInterface CONVERTER \u003d\n        path -\u003e\n            BaseEncoding.base16()\n                .lowerCase()\n                .encode(Hashing.sha256().hashString(path, UTF_8).asBytes());\n  }\n\nIn caller sites you would just call the expression through the functional interface: \n\n  String lock \u003d PathToLockId.CONVERTER.convert(path);",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 0
+      },
+      "revId": "609cb08170381e622c64b4003fd23b56335552ed",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
