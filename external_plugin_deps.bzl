@@ -36,9 +36,3 @@ def external_plugin_deps():
             "plugin.properties",
         ],
     )
-
-    maven_jar(
-        name = "joda-time",
-        artifact = "joda-time:joda-time:2.9.9",
-        sha1 = "f7b520c458572890807d143670c9b24f4de90897",
-    )

@@ -17,8 +17,6 @@ package com.googlesource.gerrit.plugins.lfs;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonIOException;
-import com.google.gson.JsonSyntaxException;
 import com.google.inject.Singleton;
 import java.io.Reader;
 
@@ -34,7 +32,7 @@ public class LfsGson {
             .create();
   }
 
-  public void toJson(Object src, Appendable writer) throws JsonIOException {
+  public void toJson(Object src, Appendable writer) {
     gson.toJson(src, writer);
   }
 
@@ -42,8 +40,7 @@ public class LfsGson {
     return gson.toJson(src);
   }
 
-  public <T> T fromJson(Reader json, Class<T> classOfT)
-      throws JsonSyntaxException, JsonIOException {
+  public <T> T fromJson(Reader json, Class<T> classOfT) {
     return gson.fromJson(json, classOfT);
   }
 }
