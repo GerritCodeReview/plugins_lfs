@@ -22,6 +22,29 @@
       "revId": "11e136e24144859d8b311255471befc77c4accaa",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28b56624_65c473be",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/Lifecycle.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2020-06-23T04:17:24Z",
+      "side": 1,
+      "message": "Same here. Remove once this fix is submitted: [1].\n\n[1] https://gerrit-review.googlesource.com/c/gerrit/+/272812",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 59,
+        "endChar": 3
+      },
+      "revId": "11e136e24144859d8b311255471befc77c4accaa",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
