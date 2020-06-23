@@ -20,6 +20,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
 public class LfsDateTime {
+  private LfsDateTime() {}
+
   private static final DateTimeFormatter FORMAT =
       DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ")
           .withZone(ZoneOffset.UTC)
