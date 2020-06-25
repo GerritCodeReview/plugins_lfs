@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "c0b2367c_36849bba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2020-06-25T07:58:41Z",
+      "side": 1,
+      "message": "Rather than adding all this complexity, maybe it would be better to just remove the standalone build from 3.1 and later, and make it so that this plugin must always be built in-tree?\n",
+      "revId": "7345487834806bb3b421d89586d154631b7b2cdb",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f8b7c729_1eb848ed",
         "filename": "external_plugin_deps.bzl",
         "patchSetId": 6
