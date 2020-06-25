@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "18b19754_af08cf8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2020-06-25T07:51:25Z",
+      "side": 1,
+      "message": "Depends on [1] which is only included in JGit 5.8.0, hence why it is based on the upgrade change. This should be moved to the master branch since we won\u0027t be submitting that upgrade on stable-3.0.\n\n[1] https://git.eclipse.org/r/#/c/162070/",
+      "revId": "b013b713e534af22e2b00f024b3996c04b03016b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
