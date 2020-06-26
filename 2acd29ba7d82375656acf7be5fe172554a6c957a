@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9d4334f4_db69375a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2020-06-26T07:15:34Z",
+      "side": 1,
+      "message": "Verified, that the plugin can be built and that the final artifact is sane (without any transitive dependencies). I have not tested the plugin in Gerrit server.\n\nThere is one remaining issue to include the jgit-lfs sources from jgit submodule in Eclipse. Currently, only packages are included that actually needed by Gerrit core. This could be probably extended to jgit-lfs packages as well in follow-up change in gerrit core, in tools/eclipse/project.py?",
+      "revId": "2acd29ba7d82375656acf7be5fe172554a6c957a",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
