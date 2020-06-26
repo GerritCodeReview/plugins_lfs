@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "cfef393e_b79fb268",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2020-06-26T06:03:05Z",
+      "side": 1,
+      "message": "Mention the reason for doing this?  I.e. to make it easier to upgrade jgit which is now consumed as a submodule in gerrit core, which means it can be any arbitrary revision that doesn\u0027t have corresponding artifacts available for download from a maven repository (unless they are manually built and deployed by someone).",
+      "revId": "ebb7eb1003c3a32edd1e6d927b4420a983496734",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "565aa6da_8683f816",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
