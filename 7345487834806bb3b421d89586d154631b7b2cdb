@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "c5283a8c_43906767",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2020-06-26T05:41:04Z",
+      "side": 1,
+      "message": "\u003e Rather than adding all this complexity [...]\n\nYou cannot avoid all his complexity, to cut off transitive dependencies from JGit artifacts, deploy_env complexity must be added. Otherwise, the JGit and Appache httpclient and even servlet-api would be added to the final artifact.\n\nThe only simplification in removing standalone build would be, that it must not be done conditionally.",
+      "parentUuid": "3b3ca273_32a6db28",
+      "revId": "7345487834806bb3b421d89586d154631b7b2cdb",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f8b7c729_1eb848ed",
         "filename": "external_plugin_deps.bzl",
         "patchSetId": 6
