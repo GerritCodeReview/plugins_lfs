@@ -3,48 +3,7 @@ Build
 
 This @PLUGIN@ plugin is built with Bazel.
 
-Two build modes are supported: Standalone and in Gerrit tree.
-The standalone build mode is recommended, as this mode doesn't require
-the Gerrit tree to exist locally.
-
-### Build standalone
-
-```
-  bazel build @PLUGIN@
-```
-
-The output is created in
-
-```
-  bazel-bin/@PLUGIN@.jar
-```
-
-To execute the tests run:
-
-```
-  bazel test //...
-```
-
-This project can be imported into the Eclipse IDE. Execute:
-
-```
-  ./tools/eclipse/project.sh
-```
-
-to generate the required files and then import the project.
-
-### Build in Gerrit tree
-
-Put the external dependency Bazel build file into the Gerrit /plugins directory,
-replacing the existing empty one.
-
-```
-  cd gerrit/plugins
-  rm external_plugin_deps.bzl
-  ln -s @PLUGIN@/external_plugin_deps.bzl .
-```
-
-Then issue
+Link the plugin directory in plugins directory in Gerrit core and run
 
 ```
   bazel build plugins/@PLUGIN@
