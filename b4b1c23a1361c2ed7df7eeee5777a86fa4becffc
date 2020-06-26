@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e199faf6_998e9ee4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2020-06-26T06:03:49Z",
+      "side": 1,
+      "message": "src/main/resources/Documentation/build.md should also be updated",
+      "revId": "b4b1c23a1361c2ed7df7eeee5777a86fa4becffc",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
