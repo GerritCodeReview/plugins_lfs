@@ -128,6 +128,30 @@
       "revId": "cbce40cc10f38308e35d6555c30668d23ad7f0ab",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6afe352b_b41e8e67",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/s3/S3LargeFileRepository.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2020-07-06T17:08:34Z",
+      "side": 1,
+      "message": "no worries I did the same mistake - the original:\n\n  (hostname !\u003d \"\")\n\nwould be \u0027true\u0027 in case when \u0027null\u0027 was returned from config (valid case) so I gave \u0027+1\u0027 prematurely and your proposal made me to thing \u0026 revaluate :D",
+      "parentUuid": "e7df9e0d_72aafdee",
+      "range": {
+        "startLine": 51,
+        "startChar": 8,
+        "endLine": 51,
+        "endChar": 22
+      },
+      "revId": "cbce40cc10f38308e35d6555c30668d23ad7f0ab",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
