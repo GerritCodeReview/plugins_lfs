@@ -16,6 +16,46 @@
       "revId": "cbce40cc10f38308e35d6555c30668d23ad7f0ab",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "26f3fd84_8a8112b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1012732
+      },
+      "writtenOn": "2020-07-06T16:01:25Z",
+      "side": 1,
+      "message": "Nit or so below.",
+      "revId": "cbce40cc10f38308e35d6555c30668d23ad7f0ab",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ecb4cd00_7eafc52a",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/s3/S3LargeFileRepository.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1012732
+      },
+      "writtenOn": "2020-07-06T16:01:25Z",
+      "side": 1,
+      "message": "!hostname.isEmpty()",
+      "range": {
+        "startLine": 51,
+        "startChar": 8,
+        "endLine": 51,
+        "endChar": 22
+      },
+      "revId": "cbce40cc10f38308e35d6555c30668d23ad7f0ab",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
