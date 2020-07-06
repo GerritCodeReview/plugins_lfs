@@ -16,6 +16,23 @@
       "revId": "01536b65d932832e65ba35df79e17ddab9913274",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad23a47f_03e38532",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1012732
+      },
+      "writtenOn": "2020-07-06T19:59:18Z",
+      "side": 1,
+      "message": "This change\u0027s Details under Checks lead to a 404 error, as noticed by Patrick.",
+      "revId": "01536b65d932832e65ba35df79e17ddab9913274",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
