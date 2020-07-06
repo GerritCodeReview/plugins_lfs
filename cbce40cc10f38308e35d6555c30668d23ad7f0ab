@@ -152,6 +152,30 @@
       "revId": "cbce40cc10f38308e35d6555c30668d23ad7f0ab",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb4b8693_2bfd7f73",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/s3/S3LargeFileRepository.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2020-07-06T17:09:26Z",
+      "side": 1,
+      "message": "thing \u003d think, geez ;)",
+      "parentUuid": "6afe352b_b41e8e67",
+      "range": {
+        "startLine": 51,
+        "startChar": 8,
+        "endLine": 51,
+        "endChar": 22
+      },
+      "revId": "cbce40cc10f38308e35d6555c30668d23ad7f0ab",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
