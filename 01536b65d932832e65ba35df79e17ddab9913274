@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6f9ee12_f44850cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1012732
+      },
+      "writtenOn": "2020-07-06T18:39:42Z",
+      "side": 1,
+      "message": "Somebody re-ran the Zuul checks it seems; good. Let\u0027s see. Other feedback welcome, submit at will once Verified.",
+      "revId": "01536b65d932832e65ba35df79e17ddab9913274",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
