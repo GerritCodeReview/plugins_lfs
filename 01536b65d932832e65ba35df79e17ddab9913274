@@ -51,6 +51,24 @@
       "revId": "01536b65d932832e65ba35df79e17ddab9913274",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a02d7d3b_33debe9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064086
+      },
+      "writtenOn": "2020-07-06T20:36:06Z",
+      "side": 1,
+      "message": "I just wouldn\u0027t have expected them to be removed so soon. (\u003c1hr)",
+      "parentUuid": "61b2b386_506fa7a2",
+      "revId": "01536b65d932832e65ba35df79e17ddab9913274",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
