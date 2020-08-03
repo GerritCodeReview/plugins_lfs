@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0946de9d_a294ec30",
+        "filename": "src/main/resources/Documentation/build.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2020-08-03T16:31:20Z",
+      "side": 1,
+      "message": "Should this be 2. and below 3. ?",
+      "revId": "8709454280d3c25d6234aa5038e9e9fe33c65909",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
