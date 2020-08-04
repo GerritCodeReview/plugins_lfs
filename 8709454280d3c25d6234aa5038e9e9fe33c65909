@@ -16,6 +16,24 @@
       "revId": "8709454280d3c25d6234aa5038e9e9fe33c65909",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83e85c87_d9857907",
+        "filename": "src/main/resources/Documentation/build.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2020-08-04T08:20:12Z",
+      "side": 1,
+      "message": "Nope, MD processor recognises list items anyway and puts numbering itself provided that right (processor specific) formatting is applied. It ignores any numbering one provides if formatting is wrong anyway. I have double checked the look \u0026 feel in local gerrit instance (hence the adjusted formatting in the next PS).\n\nPS. it was already all rendering fine when viewed in different MD processor hence this is really a processor specific thing ;)",
+      "parentUuid": "0946de9d_a294ec30",
+      "revId": "8709454280d3c25d6234aa5038e9e9fe33c65909",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
