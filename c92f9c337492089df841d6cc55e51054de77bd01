@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b1210dd_8fbfb3b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1012732
+      },
+      "writtenOn": "2020-11-11T19:32:27Z",
+      "side": 1,
+      "message": "I\u0027ve only been getting this single failure for some while already, locally. I think it is specific to my local(e) environment:\n\n1) testTokenSerializationDeserialization(com.googlesource.gerrit.plugins.lfs.auth.LfsAuthTokenTest)\nexpected: 2020-11-11T19:02:34.364Z\nbut was : 2020-11-11T19:02:34.364129Z\n        at com.googlesource.gerrit.plugins.lfs.auth.LfsAuthTokenTest.testTokenSerializationDeserialization(LfsAuthTokenTest.java:37)\n        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n        at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\n        at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)",
+      "revId": "c92f9c337492089df841d6cc55e51054de77bd01",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
