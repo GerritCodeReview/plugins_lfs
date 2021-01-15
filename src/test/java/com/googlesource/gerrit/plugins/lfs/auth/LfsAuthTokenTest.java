@@ -16,6 +16,7 @@ package com.googlesource.gerrit.plugins.lfs.auth;
 
 import static com.google.common.truth.Truth.assertThat;
 import static com.google.common.truth.Truth8.assertThat;
+import static java.time.temporal.ChronoUnit.MILLIS;
 
 import com.googlesource.gerrit.plugins.lfs.LfsDateTime;
 import java.time.Instant;
@@ -30,7 +31,7 @@ public class LfsAuthTokenTest {
   @Test
   public void testTokenSerializationDeserialization() throws Exception {
     TestTokenProessor processor = new TestTokenProessor(cipher);
-    TestToken token = new TestToken(Instant.now(), 0L);
+    TestToken token = new TestToken(Instant.now().truncatedTo(MILLIS), 0L);
     String serialized = processor.serialize(token);
     assertThat(serialized).isNotEmpty();
     Optional<TestToken> deserialized = processor.deserialize(serialized);
