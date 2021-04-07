@@ -1,3 +1,4 @@
+load("@npm_bazel_rollup//:index.bzl", "rollup_bundle")
 load("@rules_java//java:defs.bzl", "java_library")
 load("//tools/bzl:junit.bzl", "junit_tests")
 load(
@@ -6,6 +7,8 @@ load(
     "PLUGIN_TEST_DEPS",
     "gerrit_plugin",
 )
+load("//tools/bzl:genrule2.bzl", "genrule2")
+load("//tools/bzl:js.bzl", "polygerrit_plugin")
 
 LFS_DEPS = [
     "@jgit//org.eclipse.jgit.lfs.server:jgit-lfs-server",
@@ -38,8 +41,39 @@ gerrit_plugin(
         "Gerrit-SshModule: com.googlesource.gerrit.plugins.lfs.SshModule",
         "Gerrit-InitStep: com.googlesource.gerrit.plugins.lfs.InitLfs",
     ],
+    resource_jars = [":gr-lfs-static"],
     resources = glob(["src/main/resources/**/*"]),
     deps = LFS_DEPS,
+)
+
+genrule2(
+    name = "gr-lfs-static",
+    srcs = [":gr-lfs"],
+    outs = ["gr-lfs-static.jar"],
+    cmd = " && ".join([
+        "mkdir $$TMP/static",
+        "cp -r $(locations :gr-lfs) $$TMP/static",
+        "cd $$TMP",
+        "zip -Drq $$ROOT/$@ -g .",
+    ]),
+)
+
+polygerrit_plugin(
+    name = "gr-lfs",
+    app = "gr-lfs-bundle.js",
+    plugin_name = "gr-lfs",
+)
+
+rollup_bundle(
+    name = "gr-lfs-bundle",
+    srcs = glob(["gr-lfs/*.js"]),
+    entry_point = "gr-lfs/plugin.js",
+    format = "iife",
+    rollup_bin = "//tools/node_tools:rollup-bin",
+    sourcemap = "hidden",
+    deps = [
+        "@tools_npm//rollup-plugin-node-resolve",
+    ],
 )
 
 junit_tests(
