@@ -62,7 +62,7 @@ public class HttpModule extends ServletModule {
       populateRepository(backend);
     }
 
-    DynamicSet.bind(binder(), WebUiPlugin.class).toInstance(new JavaScriptPlugin("gr-lfs.html"));
+    DynamicSet.bind(binder(), WebUiPlugin.class).toInstance(new JavaScriptPlugin("gr-lfs.js"));
   }
 
   private void populateRepository(LfsBackend backend) {
