@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6e9a329_be415245",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2021-04-08T07:54:10Z",
+      "side": 1,
+      "message": "This was uploaded to stable-3.1, so that this clean up should also be moved there and merged up to master.",
+      "range": {
+        "startLine": 9,
+        "startChar": 3,
+        "endLine": 9,
+        "endChar": 14
+      },
+      "revId": "aa753c47ea1fd35c9ec018f46bc1ba378e13d4bd",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
