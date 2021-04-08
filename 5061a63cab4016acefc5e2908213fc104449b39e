@@ -16,6 +16,23 @@
       "message": "AFAIR Polygerit 3 was introduced in `stable-3.2` how about applying this change to the ref in question and merging it up later?",
       "revId": "5061a63cab4016acefc5e2908213fc104449b39e",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8075c4f7_b4934dab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1013302
+      },
+      "writtenOn": "2021-04-08T06:59:23Z",
+      "side": 1,
+      "message": "Thanks a lot for the Polymer 3 migration. Much appreciated!\n\nConversion as such looks good.\n\nJacek comment about applying the conversion to stable-3.2. makes sense to me.",
+      "revId": "5061a63cab4016acefc5e2908213fc104449b39e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
