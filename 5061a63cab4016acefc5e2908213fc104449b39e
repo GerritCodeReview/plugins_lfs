@@ -33,6 +33,24 @@
       "message": "Thanks a lot for the Polymer 3 migration. Much appreciated!\n\nConversion as such looks good.\n\nJacek comment about applying the conversion to stable-3.2. makes sense to me.",
       "revId": "5061a63cab4016acefc5e2908213fc104449b39e",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78361fe3_36e2b502",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2021-04-08T08:34:35Z",
+      "side": 1,
+      "message": "\u003e AFAIR Polygerit 3 was introduced in `stable-3.2` how about applying this change to the ref in question and merging it up later?\n\nThis plugins doesn\u0027t have stable-3.2 branch, the oldest branch is stable-3.1, so that master branch for Polymer 3 migration change is just fine.",
+      "parentUuid": "36509c8a_c9f8975f",
+      "revId": "5061a63cab4016acefc5e2908213fc104449b39e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
