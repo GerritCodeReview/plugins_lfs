@@ -51,6 +51,29 @@
       "parentUuid": "36509c8a_c9f8975f",
       "revId": "5061a63cab4016acefc5e2908213fc104449b39e",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2145a4e5_35a96974",
+        "filename": "BUILD",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2021-04-08T08:43:08Z",
+      "side": 1,
+      "message": "This wouldn\u0027t work against stable-3.2 branch in gerrit. On stable-3.2 an older release of rules_nodejs is used and this line should be:\n\n  load(\"@npm_bazel_rollup//:index.bzl\", \"rollup_bundle\")\n\nBut there is no stable-3.2 yet for this plugin. We have two options:\n\n* we create stable-3.2, upload this change to stable-3.2 and then merge up to master and adapt this line in merge commit\n* we merged this change to master, create stable-3.2 branch after this change was merged, and adapt this line on stable-3.2 branch.\n\nI would defer to maintainers of this plugin for solution how to proceed here.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 54
+      },
+      "revId": "5061a63cab4016acefc5e2908213fc104449b39e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
