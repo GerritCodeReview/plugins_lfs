@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36509c8a_c9f8975f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2021-04-08T06:06:39Z",
+      "side": 1,
+      "message": "AFAIR Polygerit 3 was introduced in `stable-3.2` how about applying this change to the ref in question and merging it up later?",
+      "revId": "5061a63cab4016acefc5e2908213fc104449b39e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
