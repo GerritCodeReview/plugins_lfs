@@ -22,6 +22,30 @@
       },
       "revId": "929833bd0044012a51dddea38954d35ca1ef2235",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e5c121e_78147016",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/lfs/HttpModule.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1029953
+      },
+      "writtenOn": "2021-04-09T14:31:36Z",
+      "side": 1,
+      "message": "Yes: https://github.com/GerritCodeReview/gerrit/blob/stable-3.2/polygerrit-ui/app/elements/plugins/gr-plugin-host/gr-plugin-host.js#L68 \u0026 https://github.com/GerritCodeReview/gerrit/blob/stable-3.2/polygerrit-ui/app/elements/shared/gr-js-api-interface/gr-plugin-loader.js#L130",
+      "parentUuid": "c87d2183_bd7fd36f",
+      "range": {
+        "startLine": 65,
+        "startChar": 82,
+        "endLine": 65,
+        "endChar": 92
+      },
+      "revId": "929833bd0044012a51dddea38954d35ca1ef2235",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
