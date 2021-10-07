@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b30a405d_dce7f47c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010404
+      },
+      "writtenOn": "2021-10-07T11:24:53Z",
+      "side": 1,
+      "message": "I tested the change locally with our in-house Gerrit Docker image, replacing the lfs.jar with the one I just built, with Gerrit 3.4.1 and thus on branch \u0027master\u0027 of \u0027plugins/lfs\u0027 (and \u0027stable-3.4\u0027 of the gerrit project when building), and I then cherry-picked the change to the stable-3.2 branch.\n\nI didn\u0027t know which branch to target for this change, so I picked stable-3.2 as Gerrit 3.1 and before are all EOL (https://www.gerritcodereview.com/support.html)",
+      "revId": "eaa7b361c3cf3040503d9b12a5281455acb3a8ba",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
