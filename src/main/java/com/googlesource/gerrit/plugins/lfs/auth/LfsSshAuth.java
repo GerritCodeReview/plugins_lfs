@@ -52,6 +52,9 @@ public class LfsSshAuth implements LfsPluginAuthCommand.LfsSshPluginAuth {
       URL url = new URL(canonicalWebUrl);
       String path = url.getPath();
       String project = args.get(0);
+      if (project.startsWith("/")) {
+        project = project.substring(1);
+      }
       String operation = args.get(1);
       StringBuilder href =
           new StringBuilder(url.getProtocol())
