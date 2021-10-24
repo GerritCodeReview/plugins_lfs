@@ -51,6 +51,23 @@
       "message": "@Jacek can you double-check?",
       "revId": "eaa7b361c3cf3040503d9b12a5281455acb3a8ba",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54d31097_46c425fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1065558
+      },
+      "writtenOn": "2021-10-24T21:08:13Z",
+      "side": 1,
+      "message": "Hey guys, the problematic git-lfs was released in the latest GIT for windows, so this is kind of going to become more problematic quickly. Any update?",
+      "revId": "eaa7b361c3cf3040503d9b12a5281455acb3a8ba",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
