@@ -89,6 +89,12 @@ public class LfsPutLocksAction extends LfsLocksAction {
   }
 
   @Override
+  protected String getLockingOperation() {
+    /** Git LFS client uses 'upload' operation to authorize writing lock requests */
+    return "upload";
+  }
+
+  @Override
   protected void doRun(ProjectState project, CurrentUser user) throws LfsException, IOException {
     action.run(project, user);
   }
