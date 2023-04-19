@@ -73,6 +73,12 @@ public class LfsGetLocksAction extends LfsLocksAction {
   }
 
   @Override
+  protected String getLockingOperation() {
+    /** Git LFS client uses 'download' operation to authorize reading lock requests */
+    return "download";
+  }
+
+  @Override
   protected void doRun(ProjectState project, CurrentUser user) throws LfsException, IOException {
     Project.NameKey name = project.getProject().getNameKey();
     String path = context.getParam("path");
