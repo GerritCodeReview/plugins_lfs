@@ -46,8 +46,6 @@ abstract class LfsLocksAction {
   }
 
   private static final FluentLogger log = FluentLogger.forEnclosingClass();
-  /** Git LFS client uses 'upload' operation to authorize SSH Lock requests */
-  private static final String LFS_LOCKING_OPERATION = "upload";
 
   protected final ProjectCache projectCache;
   protected final LfsAuthUserProvider userProvider;
@@ -98,6 +96,8 @@ abstract class LfsLocksAction {
 
   protected abstract String getAction();
 
+  protected abstract String getLockingOperation();
+
   protected abstract void authorizeUser(ForProject project)
       throws AuthException, PermissionBackendException;
 
@@ -115,7 +115,7 @@ abstract class LfsLocksAction {
 
   protected CurrentUser getUser(String project) {
     return userProvider.getUser(
-        context.getHeader(HDR_AUTHORIZATION), project, LFS_LOCKING_OPERATION);
+        context.getHeader(HDR_AUTHORIZATION), project, getLockingOperation());
   }
 
   private void throwUnauthorizedOp(String op, ProjectState state, CurrentUser user)
