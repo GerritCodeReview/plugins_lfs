@@ -9,6 +9,7 @@ load(
 load("//tools/bzl:js.bzl", "gerrit_js_bundle")
 
 LFS_DEPS = [
+    "//java/com/google/gerrit/server:project_util",
     "@jgit//org.eclipse.jgit.lfs.server:jgit-lfs-server",
     "@jgit//org.eclipse.jgit.lfs:jgit-lfs",
 ]
