@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b041412f_9f319423",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2023-04-28T07:24:38Z",
+      "side": 1,
+      "message": "Shouldn\u0027t be needed, see another comment.",
+      "range": {
+        "startLine": 7,
+        "startChar": 11,
+        "endLine": 7,
+        "endChar": 27
+      },
+      "revId": "72d9f7048a0d160b732a7c1c6ccbc9c7cffa6f54",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "345b5800_3caa7fdb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2023-04-28T07:24:38Z",
+      "side": 1,
+      "message": "These infos are not really helpful, remove it?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 79
+      },
+      "revId": "72d9f7048a0d160b732a7c1c6ccbc9c7cffa6f54",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7b35650_9fe87fa6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2023-04-28T07:24:38Z",
+      "side": 1,
+      "message": "Be more specific and mention error prone bug pattern was reported that is fixed here? See for example commit message in change 364198.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 58
+      },
+      "revId": "72d9f7048a0d160b732a7c1c6ccbc9c7cffa6f54",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89273258_2259cc2c",
+        "filename": "BUILD",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2023-04-28T07:24:38Z",
+      "side": 1,
+      "message": "This is a wrong fix, and shouldn\u0027t be needed once change 371794 (or similar fix) is applied in gerrit core.",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 50
+      },
+      "revId": "72d9f7048a0d160b732a7c1c6ccbc9c7cffa6f54",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
