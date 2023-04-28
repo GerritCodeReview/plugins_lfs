@@ -72,6 +72,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0e5f3556_44d1b26a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1159455
+      },
+      "writtenOn": "2023-04-28T16:13:33Z",
+      "side": 1,
+      "message": "Thanks for the feedback, David! I\u0027ll address your comments next week.",
+      "revId": "72d9f7048a0d160b732a7c1c6ccbc9c7cffa6f54",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "89273258_2259cc2c",
         "filename": "BUILD",
         "patchSetId": 2
