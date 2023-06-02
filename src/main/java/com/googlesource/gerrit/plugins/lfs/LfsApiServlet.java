@@ -23,8 +23,8 @@ import static com.google.gerrit.server.permissions.ProjectPermission.PUSH_AT_LEA
 
 import com.google.common.flogger.FluentLogger;
 import com.google.gerrit.entities.Project;
+import com.google.gerrit.entities.ProjectUtil;
 import com.google.gerrit.server.CurrentUser;
-import com.google.gerrit.server.ProjectUtil;
 import com.google.gerrit.server.permissions.PermissionBackend;
 import com.google.gerrit.server.project.ProjectCache;
 import com.google.gerrit.server.project.ProjectState;
