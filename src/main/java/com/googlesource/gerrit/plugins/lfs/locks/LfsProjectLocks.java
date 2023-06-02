@@ -108,7 +108,7 @@ class LfsProjectLocks {
           String.format(
               "Locking path [%s] in project %s failed with error %s",
               input.path, project, e.getMessage());
-      log.atWarning().log(error);
+      log.atWarning().log("%s", error);
       throw new LfsException(error);
     }
 
@@ -120,13 +120,13 @@ class LfsProjectLocks {
             String.format(
                 "Locking path [%s] in project %s failed during write with error %s",
                 input.path, project, e.getMessage());
-        log.atWarning().log(error);
+        log.atWarning().log("%s", error);
         throw new LfsException(error);
       }
       if (!fileLock.commit()) {
         String error =
             String.format("Committing lock to path [%s] in project %s failed", input.path, project);
-        log.atWarning().log(error);
+        log.atWarning().log("%s", error);
         throw new LfsException(error);
       }
       // put lock object to cache while file lock is being hold so that
@@ -148,7 +148,7 @@ class LfsProjectLocks {
         String error =
             String.format(
                 "Deleting lock on path [%s] in project %s is not possible", lock.path, project);
-        log.atWarning().log(error);
+        log.atWarning().log("%s", error);
         throw new LfsException(error);
       }
     } catch (IOException e) {
@@ -156,7 +156,7 @@ class LfsProjectLocks {
           String.format(
               "Getting lock on path [%s] in project %s failed with error %s",
               lock.path, project, e.getMessage());
-      log.atWarning().log(error);
+      log.atWarning().log("%s", error);
       throw new LfsException(error);
     }
 
@@ -168,7 +168,7 @@ class LfsProjectLocks {
           String.format(
               "Deleting lock on path [%s] in project %s failed with error %s",
               lock.path, project, e.getMessage());
-      log.atWarning().log(error);
+      log.atWarning().log("%s", error);
       throw new LfsException(error);
     } finally {
       fileLock.unlock();
