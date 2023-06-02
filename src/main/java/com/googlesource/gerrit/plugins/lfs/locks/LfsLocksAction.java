@@ -23,10 +23,10 @@ import static org.eclipse.jgit.util.HttpSupport.HDR_AUTHORIZATION;
 
 import com.google.common.flogger.FluentLogger;
 import com.google.gerrit.entities.Project;
+import com.google.gerrit.entities.ProjectUtil;
 import com.google.gerrit.exceptions.StorageException;
 import com.google.gerrit.extensions.restapi.AuthException;
 import com.google.gerrit.server.CurrentUser;
-import com.google.gerrit.server.ProjectUtil;
 import com.google.gerrit.server.permissions.PermissionBackend;
 import com.google.gerrit.server.permissions.PermissionBackend.ForProject;
 import com.google.gerrit.server.permissions.PermissionBackendException;
