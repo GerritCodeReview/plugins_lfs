@@ -16,6 +16,23 @@
       "message": "Really sorry for the super long delay. The change should be in a better shape now.",
       "revId": "b0c106be2671e3c35449bea022623db8e5d3121c",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dffa5a9f_deed3385",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2023-06-04T11:39:48Z",
+      "side": 1,
+      "message": "The build problems seem to haven been fixed in change 375854 and change 375827.",
+      "revId": "b0c106be2671e3c35449bea022623db8e5d3121c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
