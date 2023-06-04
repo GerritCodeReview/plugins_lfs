@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67f7cb84_bf49c888",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2023-06-04T07:45:10Z",
+      "side": 1,
+      "message": "Nit: abbreviate change id: I4851d8dc0e.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 41
+      },
+      "revId": "ba8e1d7eb5b74c5db0eeaa64c68aebf8824d2f2c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af8566a8_082bbacf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2023-06-04T07:45:10Z",
+      "side": 1,
+      "message": "This change would break older branches. However, the oldest existing staböe-branch is stable-3.2. We could create stable-3.7.",
+      "revId": "ba8e1d7eb5b74c5db0eeaa64c68aebf8824d2f2c",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
