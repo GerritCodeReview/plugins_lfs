@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "726de1c1_ece15b7b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2023-06-13T06:21:26Z",
+      "side": 1,
+      "message": "This can be merged now: stable-3.6 branch was created and the CI-Job was updated as well: change 376517.",
+      "revId": "6e745dfa4173d736986f15a4282006f0ccc3ea7b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
