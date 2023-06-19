@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39f93e02_29f314be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1159455
+      },
+      "writtenOn": "2023-06-19T07:45:35Z",
+      "side": 1,
+      "message": "Hi David, I added you to Reviewers, hoping that you don\u0027t mind.  Please let me know if I shall modify anything.  Ideally the change should work with all Gerrit versions 3.6+; that\u0027s at least my goal.  Is that checked automatically now that CI change 376517 is merged?  Shall I rebase this change onto the plugin\u0027s stable-3.6 branch to achieve the goal?",
+      "revId": "c4ec487c620cc3b3d15f5b558b47047aca9e68a3",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
