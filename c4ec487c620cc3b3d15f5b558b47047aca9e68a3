@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "04d3d7ff_e350f03a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1159455
+      },
+      "writtenOn": "2023-06-21T09:30:34Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "ff913f61_d1108c51",
+      "range": {
+        "startLine": 9,
+        "startChar": 54,
+        "endLine": 9,
+        "endChar": 67
+      },
+      "revId": "c4ec487c620cc3b3d15f5b558b47047aca9e68a3",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5e4b2b15_8052b7ea",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -37,6 +61,30 @@
       "writtenOn": "2023-06-21T05:10:13Z",
       "side": 1,
       "message": "Compared to GitHub, this shouldn\u0027t be needed, as the footer on line 13 already stating this.",
+      "range": {
+        "startLine": 11,
+        "startChar": 31,
+        "endLine": 11,
+        "endChar": 47
+      },
+      "revId": "c4ec487c620cc3b3d15f5b558b47047aca9e68a3",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1f5b06d_c0956521",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1159455
+      },
+      "writtenOn": "2023-06-21T09:30:34Z",
+      "side": 1,
+      "message": "Acknowledged",
+      "parentUuid": "5e4b2b15_8052b7ea",
       "range": {
         "startLine": 11,
         "startChar": 31,
@@ -95,6 +143,42 @@
       "side": 1,
       "message": "+1. This change can be moved and rebased without conflicts to stable-3.6 branch.",
       "parentUuid": "92d86aa4_f592a471",
+      "revId": "c4ec487c620cc3b3d15f5b558b47047aca9e68a3",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "621f68de_fca20239",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1159455
+      },
+      "writtenOn": "2023-06-21T09:30:34Z",
+      "side": 1,
+      "message": "The move to stable-3.6 is tracked in the other comment.",
+      "parentUuid": "39f93e02_29f314be",
+      "revId": "c4ec487c620cc3b3d15f5b558b47047aca9e68a3",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2634805_48cf1efd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1159455
+      },
+      "writtenOn": "2023-06-21T09:30:34Z",
+      "side": 1,
+      "message": "At my side, I processed the comments on the commit message using `git commit --amend`, rebased onto `origin/stable-3.6`, and mistakenly assumed that `git push origin HEAD:refs/for/stable-3.6` would move this change, sorry.\n\nInstead, Gerrit created a second change (377594) with the same Id - surprising behavior (at least for me)! See https://gerrit-review.googlesource.com/q/Ifc84a36a6a6464c858c7e64e82b95b699e2de6f4\n\nI abandoned the second change, but have no rights to delete it. Deletion is required to move this change (the first one, 369856)! Who can help?",
+      "parentUuid": "94726ced_298431dc",
       "revId": "c4ec487c620cc3b3d15f5b558b47047aca9e68a3",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
