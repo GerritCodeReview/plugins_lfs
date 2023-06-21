@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ff913f61_d1108c51",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2023-06-21T06:16:50Z",
+      "side": 1,
+      "message": "nit: unconditionally ?",
+      "range": {
+        "startLine": 9,
+        "startChar": 54,
+        "endLine": 9,
+        "endChar": 67
+      },
+      "revId": "c4ec487c620cc3b3d15f5b558b47047aca9e68a3",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5e4b2b15_8052b7ea",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -37,6 +60,23 @@
       "writtenOn": "2023-06-19T07:45:35Z",
       "side": 1,
       "message": "Hi David, I added you to Reviewers, hoping that you don\u0027t mind.  Please let me know if I shall modify anything.  Ideally the change should work with all Gerrit versions 3.6+; that\u0027s at least my goal.  Is that checked automatically now that CI change 376517 is merged?  Shall I rebase this change onto the plugin\u0027s stable-3.6 branch to achieve the goal?",
+      "revId": "c4ec487c620cc3b3d15f5b558b47047aca9e68a3",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92d86aa4_f592a471",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2023-06-21T06:16:50Z",
+      "side": 1,
+      "message": "Thanks for the contribution 🔥\nIMHO it make sense to apply this change to the earliest supported Gerrit version related branch (`stable-3.6`) and then merge-up though all branches to `master`, WDYT? In case you agree there is this `Move change` option in the Gerrit\u0027s UI available 😊",
       "revId": "c4ec487c620cc3b3d15f5b558b47047aca9e68a3",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
