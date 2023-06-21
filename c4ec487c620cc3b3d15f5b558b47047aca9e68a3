@@ -198,6 +198,24 @@
       "message": "Yes only Google employees allowed to delete changes. Should we move it for you to stable-3.6 branch? You should find the menu entry in upper corner (three dots).",
       "revId": "c4ec487c620cc3b3d15f5b558b47047aca9e68a3",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f51ea2f6_1d73984c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1159455
+      },
+      "writtenOn": "2023-06-21T10:03:53Z",
+      "side": 1,
+      "message": "I\u0027ll move it myself (already tried the menu entry - to find out that change 377594 blocks the move of change 369856). I just need someone to delete change 377594, thanks.",
+      "parentUuid": "f8282bc5_5a4d2062",
+      "revId": "c4ec487c620cc3b3d15f5b558b47047aca9e68a3",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
