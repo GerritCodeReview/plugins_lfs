@@ -79,6 +79,24 @@
       "message": "Thanks for the contribution 🔥\nIMHO it make sense to apply this change to the earliest supported Gerrit version related branch (`stable-3.6`) and then merge-up though all branches to `master`, WDYT? In case you agree there is this `Move change` option in the Gerrit\u0027s UI available 😊",
       "revId": "c4ec487c620cc3b3d15f5b558b47047aca9e68a3",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94726ced_298431dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2023-06-21T06:33:08Z",
+      "side": 1,
+      "message": "+1. This change can be moved and rebased without conflicts to stable-3.6 branch.",
+      "parentUuid": "92d86aa4_f592a471",
+      "revId": "c4ec487c620cc3b3d15f5b558b47047aca9e68a3",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
