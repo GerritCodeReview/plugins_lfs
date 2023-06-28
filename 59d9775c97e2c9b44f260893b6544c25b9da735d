@@ -1,12 +1,13 @@
 {
   "checks": {
     "zuul-check:plugins_lfs": {
-      "state": "RUNNING",
-      "message": "Jobs have started running",
-      "url": "https://ci.gerritcodereview.com/t/gerrit/status/change/369856,6",
+      "state": "SUCCESSFUL",
+      "message": "Change passed all voting jobs",
+      "url": "https://ci.gerritcodereview.com/t/gerrit/buildset/6f7e50ba25e547f5a67c1f631926fe36",
       "started": "2023-06-28T04:38:11Z",
+      "finished": "2023-06-28T04:48:41Z",
       "created": "2023-06-28T04:38:11Z",
-      "updated": "2023-06-28T04:38:17Z"
+      "updated": "2023-06-28T04:48:42Z"
     }
   }
 }
