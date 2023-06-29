@@ -16,6 +16,24 @@
       "message": "Side note: Even though indicated, it was not me who added David P. to the reviewers. I guess that happened somehow (automatically?) while Edwin adjusted the bug number in the commit message.\n\nI addressed both comments about the commit message. Hence, w.r.t. the content the change is ready.\n\nThe only thing left is the move to stable-3.6, which still requires help from a Googler, see comment https://gerrit-review.googlesource.com/c/plugins/lfs/+/369856/comments/9cf703ae_ab9431ba from davido.",
       "revId": "59d9775c97e2c9b44f260893b6544c25b9da735d",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f753465_20eda00a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1011123
+      },
+      "writtenOn": "2023-06-29T14:19:28Z",
+      "side": 1,
+      "message": "\u003e Side note: Even though indicated, it was not me who added David P. to the reviewers. I guess that happened somehow (automatically?) while Edwin adjusted the bug number in the commit message.\n\u003e \n\nIt seems I was still listed in the default reviewers config for this project.  I have removed myself:\n\nhttps://gerrit.googlesource.com/plugins/lfs/+/fc3ceb0ea29622cd3a164533c6b11bbe075e626b",
+      "parentUuid": "df83e95b_7252ba39",
+      "revId": "59d9775c97e2c9b44f260893b6544c25b9da735d",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
