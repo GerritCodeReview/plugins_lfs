@@ -281,6 +281,42 @@
       "message": "Edwin, Patrick can you please delete this change: [1]. Alternatively, we could abandon this change, restore: [1] change and proceed with it.\n\n[1]: https://gerrit-review.googlesource.com/c/plugins/lfs/+/377594",
       "revId": "c4ec487c620cc3b3d15f5b558b47047aca9e68a3",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3a47168_d1e9b69c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1159455
+      },
+      "writtenOn": "2023-06-30T08:31:54Z",
+      "side": 1,
+      "message": "Tracked by another comment thread.",
+      "parentUuid": "f2634805_48cf1efd",
+      "revId": "c4ec487c620cc3b3d15f5b558b47047aca9e68a3",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcb68c8b_ec4eb444",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1159455
+      },
+      "writtenOn": "2023-06-30T08:31:54Z",
+      "side": 1,
+      "message": "Hi DavidO, how to proceed now that both Googlers removed themselves from CC without doing what you originally asked them for?",
+      "parentUuid": "9cf703ae_ab9431ba",
+      "revId": "c4ec487c620cc3b3d15f5b558b47047aca9e68a3",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
