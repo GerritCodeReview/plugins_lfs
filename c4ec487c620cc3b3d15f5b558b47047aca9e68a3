@@ -335,6 +335,24 @@
       "parentUuid": "dcb68c8b_ec4eb444",
       "revId": "c4ec487c620cc3b3d15f5b558b47047aca9e68a3",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a51e26d_a50c4c88",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2023-07-03T18:40:58Z",
+      "side": 1,
+      "message": "@steinertdct@gmail.com Let\u0027s proceed in this change: https://gerrit-review.googlesource.com/c/plugins/lfs/+/377594 on stable-3.6 branch (I restored it), as suggested by @hanwen@google.com.",
+      "parentUuid": "dc5743e3_55de8445",
+      "revId": "c4ec487c620cc3b3d15f5b558b47047aca9e68a3",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
