@@ -317,6 +317,24 @@
       "parentUuid": "9cf703ae_ab9431ba",
       "revId": "c4ec487c620cc3b3d15f5b558b47047aca9e68a3",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc5743e3_55de8445",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1024147
+      },
+      "writtenOn": "2023-07-03T15:30:46Z",
+      "side": 1,
+      "message": "unless there is a pressing reason (sensitive data being leaked), there is no need to delete the change, and you can just abandon it.",
+      "parentUuid": "dcb68c8b_ec4eb444",
+      "revId": "c4ec487c620cc3b3d15f5b558b47047aca9e68a3",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
