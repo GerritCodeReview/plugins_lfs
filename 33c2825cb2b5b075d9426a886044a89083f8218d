@@ -16,6 +16,23 @@
       "message": "For original review comments, see the now abandoned change 369856. \n\nI adjusted the bug number in commit message to the new tracker.\n\nQuestions:\n- Assuming the change is merged, how will it be propagated to stable-3.7 and master?\n- Who maintains the reported (now resolved) bug?",
       "revId": "33c2825cb2b5b075d9426a886044a89083f8218d",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43bc85d3_7aee25ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1159455
+      },
+      "writtenOn": "2023-11-01T12:15:11Z",
+      "side": 1,
+      "message": "Please see previous comment. Any chance to get this reviewed/submitted?",
+      "revId": "33c2825cb2b5b075d9426a886044a89083f8218d",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
