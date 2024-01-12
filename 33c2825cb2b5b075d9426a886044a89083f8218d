@@ -50,6 +50,24 @@
       "message": "where i can find a compiled version?",
       "revId": "33c2825cb2b5b075d9426a886044a89083f8218d",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c9cceb1_6fa9d76f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1159455
+      },
+      "writtenOn": "2024-01-12T06:30:26Z",
+      "side": 1,
+      "message": "I guess that you can take it from Zuul. But be warned that it targets 3.6; I assume that it may be not compatible with recent Gerrit versions.\n\nIf you follow the link presented by \"Zuuk Check Pipeline\", and click on the Build, then Artifacts, you can download the jar.",
+      "parentUuid": "2c096d48_8c207da4",
+      "revId": "33c2825cb2b5b075d9426a886044a89083f8218d",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
     }
   ]
 }
