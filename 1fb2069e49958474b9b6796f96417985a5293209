@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1abd045_05bc0d43",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010788
+      },
+      "writtenOn": "2024-06-14T22:37:39Z",
+      "side": 1,
+      "message": "This one should pass with stable-3.9  , then for stable-3.10 / master we need to fix PluginCommandModule which is https://gerrit-review.googlesource.com/c/plugins/lfs/+/430179/\n\nIt is a bit of a chicken and egg problem, I am not sure how to have them merged with CI passing.  Maybe merge this one in a stable-3.9,  cut a stable-3.10 out of it and then move the other change 430179 to stable-3.10 (which will pass).",
+      "revId": "1fb2069e49958474b9b6796f96417985a5293209",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
