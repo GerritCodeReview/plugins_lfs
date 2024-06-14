@@ -15,7 +15,6 @@
 package com.googlesource.gerrit.plugins.lfs.auth;
 
 import static com.google.common.truth.Truth.assertThat;
-import static com.google.common.truth.Truth8.assertThat;
 
 import java.util.Optional;
 import org.junit.Test;

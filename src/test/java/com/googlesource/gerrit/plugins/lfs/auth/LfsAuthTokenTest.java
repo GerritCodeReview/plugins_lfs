@@ -15,7 +15,6 @@
 package com.googlesource.gerrit.plugins.lfs.auth;
 
 import static com.google.common.truth.Truth.assertThat;
-import static com.google.common.truth.Truth8.assertThat;
 import static java.time.temporal.ChronoUnit.MILLIS;
 
 import com.googlesource.gerrit.plugins.lfs.LfsDateTime;
