@@ -14,12 +14,19 @@
 
 package com.googlesource.gerrit.plugins.lfs;
 
+import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.extensions.registration.DynamicItem;
 import com.google.gerrit.sshd.PluginCommandModule;
 import com.google.gerrit.sshd.plugin.LfsPluginAuthCommand;
+import com.google.inject.Inject;
 import com.googlesource.gerrit.plugins.lfs.auth.LfsSshAuth;
 
 public class SshModule extends PluginCommandModule {
+
+  @Inject
+  SshModule(@PluginName String pluginName) {
+    super(pluginName);
+  }
 
   @Override
   protected void configureCommands() {
