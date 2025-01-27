@@ -36,6 +36,7 @@ public class S3LargeFileRepository extends S3Repository {
 
   private static S3Config getS3Config(LfsGlobalConfig config, LfsBackend backendConfig) {
     String section = backendConfig.type.name();
+    String signatureHostname = config.getString(section, backendConfig.name, "signatureHostname");
     String hostname = config.getString(section, backendConfig.name, "hostname");
     String region = config.getString(section, backendConfig.name, "region");
     String bucket = config.getString(section, backendConfig.name, "bucket");
@@ -48,6 +49,12 @@ public class S3LargeFileRepository extends S3Repository {
 
     String accessKey = config.getString(section, backendConfig.name, "accessKey");
     String secretKey = config.getString(section, backendConfig.name, "secretKey");
+
+    if (!Strings.isNullOrEmpty(signatureHostname)) {
+      return new S3Config(
+          signatureHostname, hostname, region, bucket, storageClass, accessKey, secretKey, expirationSeconds,
+          disableSslVerify);
+    }
 
     if (!Strings.isNullOrEmpty(hostname)) {
       return new S3Config(
