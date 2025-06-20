@@ -6,7 +6,6 @@ load(
     "PLUGIN_TEST_DEPS",
     "gerrit_plugin",
 )
-load("//tools/bzl:js.bzl", "gerrit_js_bundle")
 
 LFS_DEPS = [
     "@jgit//org.eclipse.jgit.lfs.server:jgit-lfs-server",
@@ -39,15 +38,9 @@ gerrit_plugin(
         "Gerrit-SshModule: com.googlesource.gerrit.plugins.lfs.SshModule",
         "Gerrit-InitStep: com.googlesource.gerrit.plugins.lfs.InitLfs",
     ],
-    resource_jars = [":gr-lfs"],
+    resource_jars = ["//plugins/lfs/web:lfs"],
     resources = glob(["src/main/resources/**/*"]),
     deps = LFS_DEPS,
-)
-
-gerrit_js_bundle(
-    name = "gr-lfs",
-    srcs = glob(["gr-lfs/*.js"]),
-    entry_point = "gr-lfs/plugin.js",
 )
 
 junit_tests(
