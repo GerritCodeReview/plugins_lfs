@@ -14,7 +14,7 @@ gerrit_plugin(
     resources = glob(["src/main/resources/**/*"]),
     deps = [
         "@jgit//org.eclipse.jgit.lfs:jgit-lfs",
-        "@jgit//org.eclipse.jgit.lfs.server:jgit-lfs-server",
+        "@jgit//org.eclipse.jgit.lfs.server.ee8:jgit-lfs-server-ee8",
     ],
 )
 
@@ -25,6 +25,6 @@ gerrit_plugin_tests(
     deps = [
         ":lfs__plugin",
         "@jgit//org.eclipse.jgit.lfs:jgit-lfs",
-        "@jgit//org.eclipse.jgit.lfs.server:jgit-lfs-server",
+        "@jgit//org.eclipse.jgit.lfs.server.ee8:jgit-lfs-server-ee8",
     ],
 )
