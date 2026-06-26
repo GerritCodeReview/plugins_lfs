@@ -1,16 +1,5 @@
-load("@rules_java//java:defs.bzl", "java_library")
-load("//tools/bzl:junit.bzl", "junit_tests")
-load(
-    "//tools/bzl:plugin.bzl",
-    "PLUGIN_DEPS",
-    "PLUGIN_TEST_DEPS",
-    "gerrit_plugin",
-)
-
-LFS_DEPS = [
-    "@jgit//org.eclipse.jgit.lfs.server:jgit-lfs-server",
-    "@jgit//org.eclipse.jgit.lfs:jgit-lfs",
-]
+load("@com_googlesource_gerrit_bazlets//:gerrit_plugin.bzl", "gerrit_plugin", "gerrit_plugin_tests")
+load("@rules_java//java:defs.bzl", "java_binary")
 
 DEPLOY_ENV = [
     "//lib:gson",
@@ -28,7 +17,6 @@ java_binary(
 )
 
 gerrit_plugin(
-    name = "lfs",
     srcs = glob(["src/main/java/**/*.java"]),
     deploy_env = ["gerrit_core_provided_env"],
     manifest_entries = [
@@ -38,25 +26,20 @@ gerrit_plugin(
         "Gerrit-SshModule: com.googlesource.gerrit.plugins.lfs.SshModule",
         "Gerrit-InitStep: com.googlesource.gerrit.plugins.lfs.InitLfs",
     ],
+    plugin = "lfs",
     resource_jars = ["//plugins/lfs/web:lfs"],
     resources = glob(["src/main/resources/**/*"]),
-    deps = LFS_DEPS,
-)
-
-junit_tests(
-    name = "lfs_tests",
-    srcs = glob(["src/test/java/**/*.java"]),
-    tags = ["lfs"],
     deps = [
-        ":lfs__plugin_test_deps",
+        "@jgit//org.eclipse.jgit.lfs:jgit-lfs",
+        "@jgit//org.eclipse.jgit.lfs.server:jgit-lfs-server",
     ],
 )
 
-java_library(
-    name = "lfs__plugin_test_deps",
-    testonly = 1,
-    visibility = ["//visibility:public"],
-    exports = PLUGIN_DEPS + PLUGIN_TEST_DEPS + LFS_DEPS + [
-        ":lfs__plugin",
+gerrit_plugin_tests(
+    srcs = glob(["src/test/java/**/*.java"]),
+    plugin = "lfs",
+    deps = [
+        "@jgit//org.eclipse.jgit.lfs:jgit-lfs",
+        "@jgit//org.eclipse.jgit.lfs.server:jgit-lfs-server",
     ],
 )
