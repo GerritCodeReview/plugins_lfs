@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "045a6b21_fa4a22ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1004034
+      },
+      "writtenOn": "2026-07-07T06:24:35Z",
+      "side": 1,
+      "message": "build and tests validated locally against gerrit core master (876ef589c8)",
+      "revId": "79537857b32392fb120bed5dca69d0ca89149bb3",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153"
+    }
+  ]
+}
