@@ -1,6 +1,11 @@
 load("@com_googlesource_gerrit_bazlets//:gerrit_plugin.bzl", "gerrit_plugin", "gerrit_plugin_tests")
 load("@rules_java//java:defs.bzl", "java_binary")
 
+LFS_DEPS = [
+    "@jgit//org.eclipse.jgit.lfs:jgit-lfs",
+    "@jgit//org.eclipse.jgit.lfs.server.ee8:jgit-lfs-server-ee8",
+]
+
 DEPLOY_ENV = [
     "//lib:gson",
     "//lib/httpcomponents:httpclient",
@@ -29,17 +34,11 @@ gerrit_plugin(
     plugin = "lfs",
     resource_jars = ["//plugins/lfs/web:lfs"],
     resources = glob(["src/main/resources/**/*"]),
-    deps = [
-        "@jgit//org.eclipse.jgit.lfs:jgit-lfs",
-        "@jgit//org.eclipse.jgit.lfs.server.ee8:jgit-lfs-server-ee8",
-    ],
+    deps = LFS_DEPS,
 )
 
 gerrit_plugin_tests(
     srcs = glob(["src/test/java/**/*.java"]),
     plugin = "lfs",
-    deps = [
-        "@jgit//org.eclipse.jgit.lfs:jgit-lfs",
-        "@jgit//org.eclipse.jgit.lfs.server.ee8:jgit-lfs-server-ee8",
-    ],
+    deps = LFS_DEPS,
 )
