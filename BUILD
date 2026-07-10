@@ -8,7 +8,7 @@ load(
 )
 
 LFS_DEPS = [
-    "@jgit//org.eclipse.jgit.lfs.server:jgit-lfs-server",
+    "@jgit//org.eclipse.jgit.lfs.server.ee8:jgit-lfs-server-ee8",
     "@jgit//org.eclipse.jgit.lfs:jgit-lfs",
 ]
 
