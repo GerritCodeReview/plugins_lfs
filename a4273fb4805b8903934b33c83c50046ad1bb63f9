@@ -1,13 +1,9 @@
 {
   "checks": {
     "zuul-check:plugins_lfs": {
-      "state": "FAILED",
-      "message": "Change failed",
-      "url": "https://ci.gerritcodereview.com/t/gerrit/buildset/736317de3bbf4921a041267a2ecbe86e",
-      "started": "2026-07-10T05:01:28Z",
-      "finished": "2026-07-10T05:19:15Z",
+      "state": "NOT_STARTED",
       "created": "2026-07-10T05:01:28Z",
-      "updated": "2026-07-10T05:19:16Z"
+      "updated": "2026-07-11T05:07:52Z"
     }
   }
 }
